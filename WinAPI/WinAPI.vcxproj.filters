@@ -201,6 +201,9 @@
     <ClInclude Include="CAttack2.h">
       <Filter>GameObject\Player</Filter>
     </ClInclude>
+    <ClInclude Include="CLineMove.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -331,6 +334,9 @@
     </ClCompile>
     <ClCompile Include="CAttack2.cpp">
       <Filter>GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CLineMove.cpp">
+      <Filter>Engine\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

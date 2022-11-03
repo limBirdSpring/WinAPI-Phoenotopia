@@ -4,6 +4,7 @@
 #include "CComponent.h"
 #include "CCollider.h"
 #include "CGravity.h"
+#include "CLineMove.h"
 
 CGameObject::CGameObject()
 {
@@ -15,6 +16,7 @@ CGameObject::CGameObject()
 
 	m_pCollider = nullptr;
 	m_pGravity = nullptr;
+	m_pLineMove = nullptr;
 }
 
 CGameObject::~CGameObject()
@@ -123,6 +125,16 @@ void CGameObject::AddGravity(float velocity)
 	m_pGravity->SetVelocity(velocity);
 	AddComponent(m_pGravity);
 }
+
+void  CGameObject::AddLineMove(Vector start, Vector end, float speed)
+{
+	m_pLineMove = new CLineMove;
+	m_pLineMove->SetStart(start);
+	m_pLineMove->SetEnd(end);
+	m_pLineMove->m_fSpeed = speed;
+	AddComponent(m_pLineMove);
+}
+
 
 void CGameObject::SetGravity(float velocity)
 {

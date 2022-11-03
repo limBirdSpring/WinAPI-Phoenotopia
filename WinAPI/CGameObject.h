@@ -7,6 +7,7 @@ class CScene;
 class CComponent;
 class CCollider;
 class CGravity;
+class CLineMove;
 enum class ColliderType;
 
 // 게임오브젝트 : 
@@ -69,24 +70,28 @@ protected:
 private:
 	CCollider* m_pCollider;
 	CGravity* m_pGravity;
+	CLineMove* m_pLineMove;
 
 protected:
 	CCollider* GetCollider();
 	void AddCollider(ColliderType type, Vector scale, Vector offsetPos);
-
-	void AddGravity(float velocity);
-
-
 	void RemoveCollider();
 
 	virtual void OnCollisionEnter(CCollider* pOtherCollider) {};	// 충돌체크를 확인하는 오브젝트는 재정의하여 사용
 	virtual void OnCollisionStay(CCollider* pOtherCollider) {};	// 충돌체크를 확인하는 오브젝트는 재정의하여 사용
 	virtual void OnCollisionExit(CCollider* pOtherCollider) {};	// 충돌체크를 확인하는 오브젝트는 재정의하여 사용
+
+	void AddGravity(float velocity);
+	void AddLineMove(Vector start, Vector end, float speed);
+
+
 public:
 	void SetGround(int ground);
 	int GetGround();
 	void SetPlatform(int platform);
 	int GetPlatform();
+
+
 
 protected:
 	// 게임오브젝트 부모 전용 함수들 :
