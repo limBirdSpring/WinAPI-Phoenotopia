@@ -12,14 +12,21 @@ public:
 
 private:
 	CAnimator* m_pAnimator;
+
+
 	CImage* m_pIdleImage;
 	CImage* m_pMoveImage;
+	CImage* m_pRunImage;
+	CImage* m_pJumpImage;
+	CImage* m_pDownImage;
+
+
 
 	Vector m_vecMoveDir;
 	Vector m_vecLookDir;
-	bool m_bIsMove;
+	Behavior m_behavior;
 
-	float m_fSpeed = 200.0f;
+
 
 private:
 	void Init() override;

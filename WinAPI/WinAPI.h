@@ -63,3 +63,21 @@ enum class TypeTile
 
 	Size,
 };
+
+//========================================
+//##				¸ð¼Ç 				##
+//========================================
+
+enum class Behavior
+{
+	Idle,
+	Walk,
+	Run,
+	Jump,
+	Fall,
+	Down,
+	Attack,
+	Critical,
+
+	Size,
+};

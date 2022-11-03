@@ -16,16 +16,20 @@
 CPlayer::CPlayer()
 {
 	m_vecPos = Vector(0, 0);
-	m_vecScale = Vector(100, 100);
+	m_vecScale = Vector(20, 34);
 	m_layer = Layer::Player;
 	m_strName = L"ÇÃ·¹ÀÌ¾î";
+	m_fSpeed = 100;
 
 	m_pIdleImage = nullptr;
 	m_pMoveImage = nullptr;
+	m_pRunImage = nullptr;
+	m_pJumpImage = nullptr;
+	m_pDownImage = nullptr;
 
 	m_vecMoveDir = Vector(0, 0);
 	m_vecLookDir = Vector(0, -1);
-	m_bIsMove = false;
+	m_behavior = Behavior::Idle;
 }
 
 CPlayer::~CPlayer()
@@ -34,70 +38,123 @@ CPlayer::~CPlayer()
 
 void CPlayer::Init()
 {
-	m_pIdleImage = RESOURCE->LoadImg(L"PlayerIdle", L"Image\\PlayerIdle.png");
-	m_pMoveImage = RESOURCE->LoadImg(L"PlayerMove", L"Image\\PlayerMove.png");
+	m_pIdleImage = RESOURCE->LoadImg(L"Gail_Standing", L"Image\\Gail_Standing.png");
+	m_pMoveImage = RESOURCE->LoadImg(L"Gail_Walking", L"Image\\Gail_Walking.png");
+	m_pRunImage = RESOURCE->LoadImg(L"Gail_Run", L"Image\\Gail_Run.png");
+	m_pJumpImage = RESOURCE->LoadImg(L"Gail_Jump", L"Image\\Gail_Jump.png");
+	m_pDownImage = RESOURCE->LoadImg(L"Gail_Down", L"Image\\Gail_Down.png");
 
 	m_pAnimator = new CAnimator;
-	m_pAnimator->CreateAnimation(L"IdleUp", m_pIdleImage, Vector(8.f, 0.f), Vector(80.f, 70.f), Vector(80.f, 0.f), 0.1f, 7);
-	m_pAnimator->CreateAnimation(L"IdleRightUp", m_pIdleImage, Vector(8.f, 70.f), Vector(80.f, 70.f), Vector(80.f, 0.f), 0.1f, 7);
-	m_pAnimator->CreateAnimation(L"IdleRight", m_pIdleImage, Vector(8.f, 140.f), Vector(80.f, 70.f), Vector(80.f, 0.f), 0.1f, 7);
-	m_pAnimator->CreateAnimation(L"IdleRightDown", m_pIdleImage, Vector(8.f, 210.f), Vector(80.f, 70.f), Vector(80.f, 0.f), 0.1f, 7);
-	m_pAnimator->CreateAnimation(L"IdleDown", m_pIdleImage, Vector(8.f, 280.f), Vector(80.f, 70.f), Vector(80.f, 0.f), 0.1f, 7);
-	m_pAnimator->CreateAnimation(L"IdleLeftDown", m_pIdleImage, Vector(8.f, 350.f), Vector(80.f, 70.f), Vector(80.f, 0.f), 0.1f, 7);
-	m_pAnimator->CreateAnimation(L"IdleLeft", m_pIdleImage, Vector(8.f, 420.f), Vector(80.f, 70.f), Vector(80.f, 0.f), 0.1f, 7);
-	m_pAnimator->CreateAnimation(L"IdleLeftUp", m_pIdleImage, Vector(8.f, 490.f), Vector(80.f, 70.f), Vector(80.f, 0.f), 0.1f, 7);
+	m_pAnimator->CreateAnimation(L"Gail_Standing_Right", m_pIdleImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 6);
+	m_pAnimator->CreateAnimation(L"Gail_Standing_Left", m_pIdleImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.2f, 6);
+	m_pAnimator->CreateAnimation(L"Gail_Walking_Right", m_pMoveImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 8);
+	m_pAnimator->CreateAnimation(L"Gail_Walking_Left", m_pMoveImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.1f, 8);
+	m_pAnimator->CreateAnimation(L"Gail_Run_Right", m_pRunImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 6);
+	m_pAnimator->CreateAnimation(L"Gail_Run_Left", m_pRunImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.1f, 6);
+	m_pAnimator->CreateAnimation(L"Gail_Jump_Right", m_pJumpImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 13, false);
+	m_pAnimator->CreateAnimation(L"Gail_Jump_Left", m_pJumpImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.1f, 13, false);
+	m_pAnimator->CreateAnimation(L"Gail_Fall_Right", m_pJumpImage, Vector(750, 0), Vector(100, 100), Vector(150, 0), 0.1f, 8);
+	m_pAnimator->CreateAnimation(L"Gail_Fall_Left", m_pJumpImage, Vector(750, 150), Vector(100, 100), Vector(150, 0), 0.1f, 8);
+	m_pAnimator->CreateAnimation(L"Gail_Down_Right", m_pDownImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
+	m_pAnimator->CreateAnimation(L"Gail_Down_Left", m_pDownImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
 
-	m_pAnimator->CreateAnimation(L"MoveUp", m_pMoveImage, Vector(0.f, 0.f), Vector(80.f, 75.f), Vector(84.f, 0.f), 0.05f, 16);
-	m_pAnimator->CreateAnimation(L"MoveRightUp", m_pMoveImage, Vector(0.f, 79.f), Vector(80.f, 75.f), Vector(84.f, 0.f), 0.05f, 16);
-	m_pAnimator->CreateAnimation(L"MoveRight", m_pMoveImage, Vector(0.f, 158.f), Vector(80.f, 75.f), Vector(84.f, 0.f), 0.05f, 16);
-	m_pAnimator->CreateAnimation(L"MoveRightDown", m_pMoveImage, Vector(0.f, 237.f), Vector(80.f, 75.f), Vector(84.f, 0.f), 0.05f, 16);
-	m_pAnimator->CreateAnimation(L"MoveDown", m_pMoveImage, Vector(0.f, 316.f), Vector(80.f, 75.f), Vector(84.f, 0.f), 0.05f, 16);
-	m_pAnimator->CreateAnimation(L"MoveLeftDown", m_pMoveImage, Vector(0.f, 395.f), Vector(80.f, 75.f), Vector(84.f, 0.f), 0.05f, 16);
-	m_pAnimator->CreateAnimation(L"MoveLeft", m_pMoveImage, Vector(0.f, 474.f), Vector(80.f, 75.f), Vector(84.f, 0.f), 0.05f, 16);
-	m_pAnimator->CreateAnimation(L"MoveLeftUp", m_pMoveImage, Vector(0.f, 553.f), Vector(80.f, 75.f), Vector(84.f, 0.f), 0.05f, 16);
-	m_pAnimator->Play(L"IdleDown", false);
+	m_pAnimator->Play(L"Gail_Standing_Right", false);
 	AddComponent(m_pAnimator);
 
-	AddCollider(ColliderType::Rect, Vector(90, 90), Vector(0, 0));
+	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
+	AddGravity(1);
 }
 
 void CPlayer::Update()
 {
-	m_bIsMove = false;
 
+	if (!GetGround())
+	{
+		if (GetGravity() > 100)
+			m_behavior = Behavior::Fall;
+		else
+			m_behavior = Behavior::Jump;
+	}
+	//¾É±â
+	else if (BUTTONSTAY(VK_DOWN) && GetGround())
+	{
+		m_behavior = Behavior::Down;
+	}
+
+	else
+	{
+		m_behavior = Behavior::Idle;
+	}
+
+	//Á¡ÇÁ
+	if (BUTTONSTAY(VK_DOWN) && BUTTONDOWN('X') && GetPlatform() != 0)//ÇÏÇâÁ¡ÇÁ
+	{
+		m_behavior = Behavior::Jump;
+		this->SetGround(0);
+		this->SetPlatform(0);
+		this->SetGravity(1);
+	}
+	else if (BUTTONDOWN('X') && GetGround())
+	{
+		m_behavior = Behavior::Jump;
+		m_vecPos.y--;
+		SetGravity(-300);
+	}
+
+
+
+	//°È±â
 	if (BUTTONSTAY(VK_LEFT))
 	{
 		m_vecPos.x -= m_fSpeed * DT;
-		m_bIsMove = true;
+		if (GetGround())
+			m_behavior = Behavior::Walk;
 		m_vecMoveDir.x = -1;
 	}
 	else if (BUTTONSTAY(VK_RIGHT))
 	{
 		m_vecPos.x += m_fSpeed * DT;
-		m_bIsMove = true;
+		if (GetGround())
+			m_behavior = Behavior::Walk;
 		m_vecMoveDir.x = +1;
 	}
-	else
+
+	//¶Ù±â
+	if (BUTTONSTAY(VK_LEFT) && BUTTONSTAY(VK_SHIFT) && GetGround())
 	{
-		m_vecMoveDir.x = 0;
+		m_vecPos.x -= (m_fSpeed + 50) * DT;
+		m_behavior = Behavior::Run;
+		m_vecMoveDir.x = -1;
+	}
+	else if (BUTTONSTAY(VK_RIGHT) && BUTTONSTAY(VK_SHIFT) && GetGround())
+	{
+		m_vecPos.x += (m_fSpeed + 50) * DT;
+		m_behavior = Behavior::Run;
+		m_vecMoveDir.x = +1;
 	}
 
-	if (BUTTONSTAY(VK_UP))
-	{
-		m_vecPos.y -= m_fSpeed * DT;
-		m_bIsMove = true;
-		m_vecMoveDir.y = +1;
-	}
-	else if (BUTTONSTAY(VK_DOWN))
-	{
-		m_vecPos.y += m_fSpeed * DT;
-		m_bIsMove = true;
-		m_vecMoveDir.y = -1;
-	}
-	else
-	{
-		m_vecMoveDir.y = 0;
-	}
+
+
+	//if (BUTTONSTAY(VK_UP))
+	//{
+	//	m_vecPos.y -= m_fSpeed * DT;
+	//	m_bIsMove = true;
+	//	m_vecMoveDir.y = +1;
+	//}
+	//else if (BUTTONSTAY(VK_DOWN))
+	//{
+	//	m_vecPos.y += m_fSpeed * DT;
+	//	m_bIsMove = true;
+	//	m_vecMoveDir.y = -1;
+	//}
+	//else
+	//{
+	//	m_vecMoveDir.y = 0;
+	//}
+
+
+
+
 
 	if (BUTTONDOWN(VK_SPACE))
 	{
@@ -120,16 +177,26 @@ void CPlayer::AnimatorUpdate()
 	if (m_vecMoveDir.Length() > 0)
 		m_vecLookDir = m_vecMoveDir;
 
-	wstring str = L"";
+	wstring str = L"Gail";
 
-	if (m_bIsMove)	str += L"Move";
-	else			str += L"Idle";
+	switch (m_behavior)
+	{
+	case Behavior::Walk: str += L"_Walking";
+		break;
+	case Behavior::Run: str += L"_Run";
+		break;
+	case Behavior::Jump: str += L"_Jump";
+		break;
+	case Behavior::Fall: str += L"_Fall";
+		break;
+	case Behavior::Down: str += L"_Down";
+		break;
+	default: str += L"_Standing";
+	}
 
-	if (m_vecLookDir.x > 0) str += L"Right";
-	else if (m_vecLookDir.x < 0) str += L"Left";
 
-	if (m_vecLookDir.y > 0) str += L"Up";
-	else if (m_vecLookDir.y < 0) str += L"Down";
+	if (m_vecLookDir.x > 0) str += L"_Right";
+	else if (m_vecLookDir.x <= 0) str += L"_Left";
 
 	m_pAnimator->Play(str, false);
 }
@@ -170,8 +237,11 @@ void CPlayer::OnCollisionEnter(CCollider* pOtherCollider)
 
 void CPlayer::OnCollisionStay(CCollider* pOtherCollider)
 {
+
+
 }
 
 void CPlayer::OnCollisionExit(CCollider* pOtherCollider)
 {
+
 }
