@@ -82,7 +82,7 @@ protected:
 	virtual void OnCollisionExit(CCollider* pOtherCollider) {};	// 충돌체크를 확인하는 오브젝트는 재정의하여 사용
 
 	void AddGravity(float velocity);
-	void AddLineMove(Vector start, Vector end, float speed);
+	void AddLineMove(Vector start, Vector end, float speed = 100);
 
 
 public:

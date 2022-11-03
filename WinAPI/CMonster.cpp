@@ -6,7 +6,7 @@
 
 CMonster::CMonster()
 {
-	m_vecScale = Vector(100, 100);
+	m_vecScale = Vector(50, 50);
 	m_layer = Layer::Monster;
 }
 
@@ -16,7 +16,8 @@ CMonster::~CMonster()
 
 void CMonster::Init()
 {
-	AddCollider(ColliderType::Rect, Vector(90, 90), Vector(0, 0));
+	AddCollider(ColliderType::Rect, Vector(m_vecScale.x-1, m_vecScale.y - 1), Vector(0, 0));
+	AddLineMove(m_vecPos, Vector(m_vecPos.x + 100, m_vecPos.y));
 }
 
 void CMonster::Update()

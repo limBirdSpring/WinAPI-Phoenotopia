@@ -28,14 +28,14 @@ void CLineMove::Update()
 	if (repeat == false)
 	{
 		if (pos.x < m_vecEnd.x)
-			pos.x++;
+			pos.x += m_fSpeed * DT;
 		else
 			repeat = true;
 	}
 	else
 	{
 		if (pos.x > m_vecStart.x)
-			pos.x--;
+			pos.x -= m_fSpeed * DT;
 		else
 			repeat = false;
 	}

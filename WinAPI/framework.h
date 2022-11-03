@@ -51,6 +51,7 @@ using namespace FMOD;
 // Engine 1.0
 #include "WinAPI.h"
 
+/*
 #include "CCore.h"
 #include "CTimeManager.h"
 #include "CRenderManager.h"
@@ -84,3 +85,4 @@ using namespace FMOD;
 #include "CComponent.h"
 #include "CAnimator.h"
 #include "CCollider.h"
+*/
