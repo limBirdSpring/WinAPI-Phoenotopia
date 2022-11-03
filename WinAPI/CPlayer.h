@@ -22,10 +22,11 @@ private:
 	CImage* m_pAttackImage;
 	CImage* m_pAttack2Image;
 	CImage* m_pCriticalImage;
+	CImage* m_pAttackReadyImage;
 
 
 
-	Vector m_vecMoveDir;
+
 	Vector m_vecLookDir;
 	Behavior m_behavior;
 

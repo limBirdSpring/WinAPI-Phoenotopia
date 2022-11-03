@@ -3,11 +3,14 @@
 
 #include "CRenderManager.h"
 #include "CCollider.h"
+#include "CEventManager.h"
 
 CMonster::CMonster()
 {
+	m_strName = L"몬스터";
 	m_vecScale = Vector(50, 50);
 	m_layer = Layer::Monster;
+	hp = 10;
 }
 
 CMonster::~CMonster()
@@ -22,6 +25,9 @@ void CMonster::Init()
 
 void CMonster::Update()
 {
+	if (hp < 0)
+		DELETEOBJECT(this);
+	
 }
 
 void CMonster::Render()
@@ -31,6 +37,7 @@ void CMonster::Render()
 		m_vecPos.y - m_vecScale.y * 0.5f,
 		m_vecPos.x + m_vecScale.x * 0.5f,
 		m_vecPos.y + m_vecScale.y * 0.5f);
+
 }
 
 void CMonster::Release()
@@ -43,9 +50,11 @@ void CMonster::OnCollisionEnter(CCollider* pOtherCollider)
 	{
 		Logger::Debug(L"몬스터가 플레이어와 충돌진입");
 	}
-	else if (pOtherCollider->GetObjName() == L"미사일")
+	else if (pOtherCollider->GetObjName() == L"공격")
 	{
-		Logger::Debug(L"몬스터가 미사일과 충돌진입");
+		Logger::Debug(L"몬스터가 공격과 충돌진입");
+
+		hp -= 5;
 	}
 }
 

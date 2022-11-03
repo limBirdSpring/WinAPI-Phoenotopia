@@ -32,6 +32,7 @@ CPlayer::CPlayer()
 	m_pAttackImage  = nullptr;
 	m_pAttack2Image = nullptr;
 	m_pCriticalImage = nullptr;
+	m_pAttackReadyImage = nullptr;
 
 	m_vecMoveDir = Vector(0, 0);
 	m_vecLookDir = Vector(0, -1);
@@ -53,6 +54,7 @@ void CPlayer::Init()
 	m_pAttackImage = RESOURCE->LoadImg(L"Gail_Attack", L"Image\\Gail_Attack.png");
 	m_pAttack2Image = RESOURCE->LoadImg(L"Gail_Attack2", L"Image\\Gail_Attack2.png");
 	m_pCriticalImage = RESOURCE->LoadImg(L"Gail_Critical", L"Image\\Gail_Critical.png");
+	m_pAttackReadyImage = RESOURCE->LoadImg(L"Gail_AttackReady", L"Image\\Gail_AttackReady.png");
 
 	m_pAnimator = new CAnimator;
 	m_pAnimator->CreateAnimation(L"Gail_Standing_Right", m_pIdleImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 6);
@@ -70,8 +72,10 @@ void CPlayer::Init()
 
 	m_pAnimator->CreateAnimation(L"Gail_Attack_Right", m_pAttackImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.08f, 7, false);
 	m_pAnimator->CreateAnimation(L"Gail_Attack_Left", m_pAttackImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.08f, 7, false);
-	m_pAnimator->CreateAnimation(L"Gail_Attack2_Right", m_pAttack2Image, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
-	m_pAnimator->CreateAnimation(L"Gail_Attack2_Left", m_pAttack2Image, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
+	m_pAnimator->CreateAnimation(L"Gail_Attack2_Right", m_pAttack2Image, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.08f, 5, false);
+	m_pAnimator->CreateAnimation(L"Gail_Attack2_Left", m_pAttack2Image, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.08f, 5, false);
+	m_pAnimator->CreateAnimation(L"Gail_AttackReady_Right", m_pAttackReadyImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 12);
+	m_pAnimator->CreateAnimation(L"Gail_AttackReady_Left", m_pAttackReadyImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.1f, 12);
 
 
 
@@ -84,14 +88,20 @@ void CPlayer::Init()
 
 void CPlayer::Update()
 {
+	m_fSpeed = 100;
+	m_vecMoveDir.x = 0;
 
-
+	//공격 준비
+	if (BUTTONSTAY('X') && !GAME->GetAttack())
+	{
+		m_behavior = Behavior::AttackReady;
+		GAME->SetAttack(true);
+	}
 
 	//공격
-	if (BUTTONUP('X') /*&& 무기를 가지고 있을 때*/ && !GAME->GetAttack())
+	if (BUTTONUP('X') /*&& 무기를 가지고 있을 때*/)
 	{
-		GAME->SetAttack(true);
-
+		
 		if (GetGround())//일반공격
 		{
 			m_behavior = Behavior::Attack2;
@@ -116,8 +126,6 @@ void CPlayer::Update()
 			pAttack2->SetPos(m_vecPos);
 			ADDOBJECT(pAttack2);
 		}
-
-		
 	}
 
 	
@@ -171,14 +179,12 @@ void CPlayer::Update()
 	//걷기
 	if (BUTTONSTAY(VK_LEFT))
 	{
-		m_vecPos.x -= m_fSpeed * DT;
 		if (GetGround() && !GAME->GetAttack())
 			m_behavior = Behavior::Walk;
 		m_vecMoveDir.x = -1;
 	}
 	else if (BUTTONSTAY(VK_RIGHT))
 	{
-		m_vecPos.x += m_fSpeed * DT;
 		if (GetGround() && !GAME->GetAttack())
 			m_behavior = Behavior::Walk;
 		m_vecMoveDir.x = +1;
@@ -187,40 +193,18 @@ void CPlayer::Update()
 	//뛰기
 	if (BUTTONSTAY(VK_LEFT) && BUTTONSTAY(VK_SHIFT) && GetGround())
 	{
-		m_vecPos.x -= (m_fSpeed + 50) * DT;
 		if (!GAME->GetAttack())
 			m_behavior = Behavior::Run;
 		m_vecMoveDir.x = -1;
+		m_fSpeed += 100;
 	}
 	else if (BUTTONSTAY(VK_RIGHT) && BUTTONSTAY(VK_SHIFT) && GetGround())
 	{
-		m_vecPos.x += (m_fSpeed + 50) * DT;
 		if (!GAME->GetAttack())
 			m_behavior = Behavior::Run;
 		m_vecMoveDir.x = +1;
+		m_fSpeed += 100;
 	}
-
-
-
-	//if (BUTTONSTAY(VK_UP))
-	//{
-	//	m_vecPos.y -= m_fSpeed * DT;
-	//	m_bIsMove = true;
-	//	m_vecMoveDir.y = +1;
-	//}
-	//else if (BUTTONSTAY(VK_DOWN))
-	//{
-	//	m_vecPos.y += m_fSpeed * DT;
-	//	m_bIsMove = true;
-	//	m_vecMoveDir.y = -1;
-	//}
-	//else
-	//{
-	//	m_vecMoveDir.y = 0;
-	//}
-
-
-
 
 
 	if (BUTTONDOWN(VK_SPACE))
@@ -233,6 +217,7 @@ void CPlayer::Update()
 	GAME->SetPlayerPos(m_vecPos);
 	GAME->SetPlayerDir(m_vecMoveDir);
 
+	m_vecPos.x += (m_fSpeed * DT) * m_vecMoveDir.x;
 
 	AnimatorUpdate();
 
@@ -268,6 +253,8 @@ void CPlayer::AnimatorUpdate()
 	case Behavior::Attack: str += L"_Attack";
 		break;
 	case Behavior::Attack2: str += L"_Attack2";
+		break;
+	case Behavior::AttackReady: str += L"_AttackReady";
 		break;
 	default: str += L"_Standing";
 	}
@@ -311,11 +298,26 @@ void CPlayer::CreateMissile()
 
 void CPlayer::OnCollisionEnter(CCollider* pOtherCollider)
 {
+	
 }
 
 void CPlayer::OnCollisionStay(CCollider* pOtherCollider)
 {
+	if (pOtherCollider->GetObjName() == L"몬스터")
+	{
+		Logger::Debug(L"몬스터가 플레이어와 충돌진입");
 
+		if (m_vecPos.x < pOtherCollider->GetOwner()->GetPos().x)
+		{
+			m_vecPos.x -= 10;
+		}
+		else
+		{
+			m_vecPos.x += 10;
+		}
+
+
+	}
 
 }
 

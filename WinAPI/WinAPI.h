@@ -76,6 +76,7 @@ enum class Behavior
 	Jump,
 	Fall,
 	Down,
+	AttackReady,
 	Attack,
 	Attack2,
 	Critical,

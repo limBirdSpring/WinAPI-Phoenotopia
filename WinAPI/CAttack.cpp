@@ -36,7 +36,7 @@ void  CAttack::Update()
 
 	m_fTime += DT;
 
-	if (m_fTime > 0.66)
+	if (m_fTime > 0.5)
 	{
 		GAME->SetAttack(false);
 		DELETEOBJECT(this);

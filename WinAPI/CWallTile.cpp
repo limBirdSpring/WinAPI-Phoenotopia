@@ -9,6 +9,7 @@
 
 CWallTile::CWallTile()
 {
+	wall = false;
 }
 
 CWallTile::~CWallTile()
@@ -45,24 +46,20 @@ void CWallTile::OnCollisionEnter(CCollider* pOther)
 {
 	if (pOther->GetObjName() == L"플레이어")
 	{
-		Vector pos = pOther->GetOwner()->GetPos();
-
-		if (pos.x > this->GetPos().x)
-			pOther->GetOwner()->SetPos(this->GetPos().x + this->GetScale().x + (pOther->GetOwner()->GetScale().x * 0.5), pos.y);
-		if (pos.x < this->GetPos().x)
-			pOther->GetOwner()->SetPos(this->GetPos().x - (pOther->GetOwner()->GetScale().x * 0.5), pos.y);
-		if (pos.y < this->GetPos().y)
-			pOther->GetOwner()->SetPos(pos.x, this->GetPos().y - (pOther->GetOwner()->GetScale().y * 0.5));
+		wall = true;
 	}
 }
 
 void CWallTile::OnCollisionStay(CCollider* pOther)
 {
-
+	
 	// 땅타일과 충돌했을 경우 처리
 }
 
 void CWallTile::OnCollisionExit(CCollider* pOther)
 {
-
+	if (pOther->GetObjName() == L"플레이어")
+	{
+		wall = false;
+	}
 }

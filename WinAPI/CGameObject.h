@@ -29,6 +29,7 @@ protected:
 	Vector m_vecScale;	// 게임오브젝트의 크기
 	Layer m_layer;		// 게임오브젝트의 레이어
 	wstring m_strName;	// 게임오브젝트의 이름
+	Vector m_vecMoveDir; //게임오브젝트의 방향
 
 	float m_fSpeed;
 
@@ -43,6 +44,8 @@ public:
 	void SetLayer(Layer layer);
 	wstring GetName();
 	void SetName(wstring name);
+	Vector GetDir() { return m_vecMoveDir; }
+	void SetDir(Vector dir) { m_vecMoveDir = dir; }
 
 	void SetGravity(float velocity);
 	float GetGravity();

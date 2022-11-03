@@ -53,6 +53,8 @@ void CPlatformTile::OnCollisionEnter(CCollider* pOther)
 
 			int ground = pOther->GetOwner()->GetGround();
 			pOther->GetOwner()->SetGround(++ground);
+
+			pOther->GetOwner()->SetGravity(1);
 		}
 	}
 }

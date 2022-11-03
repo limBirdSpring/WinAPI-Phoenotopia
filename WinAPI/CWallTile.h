@@ -14,6 +14,7 @@ private:
 	void Render() override;
 	void Release() override;
 
+	bool wall;
 
 private:
 	void OnCollisionEnter(CCollider* pOther) override;
