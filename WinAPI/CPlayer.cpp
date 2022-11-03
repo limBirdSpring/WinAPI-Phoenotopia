@@ -15,6 +15,7 @@
 #include "CMissile.h"
 #include "CAttack.h"
 #include "CAttack2.h"
+#include "CCritical.h"
 
 CPlayer::CPlayer()
 {
@@ -76,6 +77,10 @@ void CPlayer::Init()
 	m_pAnimator->CreateAnimation(L"Gail_Attack2_Left", m_pAttack2Image, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.08f, 5, false);
 	m_pAnimator->CreateAnimation(L"Gail_AttackReady_Right", m_pAttackReadyImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 12);
 	m_pAnimator->CreateAnimation(L"Gail_AttackReady_Left", m_pAttackReadyImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.1f, 12);
+	m_pAnimator->CreateAnimation(L"Gail_Critical_Right", m_pCriticalImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 10, false);
+	m_pAnimator->CreateAnimation(L"Gail_Critical_Left", m_pCriticalImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.1f, 10, false);
+	m_pAnimator->CreateAnimation(L"Gail_CriticalReady_Right", m_pAttackReadyImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 3);
+	m_pAnimator->CreateAnimation(L"Gail_CriticalReady_Left", m_pAttackReadyImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.1f, 3);
 
 
 
@@ -89,7 +94,7 @@ void CPlayer::Init()
 void CPlayer::Update()
 {
 	m_fSpeed = 100;
-	m_vecMoveDir.x = 0;
+	m_vecMoveDir.x = 0; 
 
 	//공격 준비
 	if (BUTTONSTAY('X') && !GAME->GetAttack())
@@ -97,12 +102,26 @@ void CPlayer::Update()
 		m_behavior = Behavior::AttackReady;
 		GAME->SetAttack(true);
 	}
+	if (GAME->GetAttack() == true)//얼마나 공격준비를 했는지 시간 더하기
+		GAME->SetAttackTime(GAME->GetAttackTime() + DT);
+	if (GAME->GetAttackTime() > 2.5)
+		m_behavior = Behavior::CriticalReady;
 
 	//공격
 	if (BUTTONUP('X') /*&& 무기를 가지고 있을 때*/)
 	{
-		
-		if (GetGround())//일반공격
+		if (GAME->GetAttackTime() > 2.5)//크리티컬 공격
+		{
+			m_behavior = Behavior::Critical;
+			CCritical* pCritical = new CCritical;
+			if (m_vecMoveDir.x == -1)
+				pCritical->SetPos(m_vecPos.x, m_vecPos.y);
+			else if (m_vecMoveDir.x == 1)
+				pCritical->SetPos(m_vecPos.x, m_vecPos.y);
+			pCritical->SetPos(m_vecPos);
+			ADDOBJECT(pCritical);
+		}
+		else if (GetGround())//일반공격
 		{
 			m_behavior = Behavior::Attack2;
 			CAttack* pAttack = new CAttack();
@@ -126,6 +145,7 @@ void CPlayer::Update()
 			pAttack2->SetPos(m_vecPos);
 			ADDOBJECT(pAttack2);
 		}
+		GAME->SetAttackTime(0);
 	}
 
 	
@@ -254,7 +274,11 @@ void CPlayer::AnimatorUpdate()
 		break;
 	case Behavior::Attack2: str += L"_Attack2";
 		break;
+	case Behavior::Critical: str += L"_Critical";
+		break;
 	case Behavior::AttackReady: str += L"_AttackReady";
+		break;
+	case Behavior::CriticalReady: str += L"_CriticalReady";
 		break;
 	default: str += L"_Standing";
 	}

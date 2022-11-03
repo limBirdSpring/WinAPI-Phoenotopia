@@ -204,6 +204,9 @@
     <ClInclude Include="CLineMove.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
+    <ClInclude Include="CCritical.h">
+      <Filter>GameObject\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -337,6 +340,9 @@
     </ClCompile>
     <ClCompile Include="CLineMove.cpp">
       <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CCritical.cpp">
+      <Filter>GameObject\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

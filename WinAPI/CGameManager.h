@@ -15,6 +15,7 @@ public:
 private:
 	bool m_bTalk;
 	bool m_bAttack;
+	float m_fAttackTime;
 
 
 private :
@@ -23,11 +24,15 @@ private :
 
 
 public :
-	Vector GetPlayerPos() { return m_vecPlayerPos; }
-	void SetPlayerPos(Vector pos) { m_vecPlayerPos = pos; }
 
 	bool GetAttack() { return m_bAttack; }
 	void SetAttack(bool attack) { m_bAttack = attack; }
+
+	float GetAttackTime() { return m_fAttackTime; }
+	void SetAttackTime(float time) { m_fAttackTime = time; }
+
+	Vector GetPlayerPos() { return m_vecPlayerPos; }
+	void SetPlayerPos(Vector pos) { m_vecPlayerPos = pos; }
 
 	Vector GetPlayerDir() { return m_vecplayerDir; }
 	void SetPlayerDir(Vector dir) { m_vecplayerDir = dir; }

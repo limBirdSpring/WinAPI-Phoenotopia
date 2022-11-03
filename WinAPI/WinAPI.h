@@ -79,6 +79,7 @@ enum class Behavior
 	AttackReady,
 	Attack,
 	Attack2,
+	CriticalReady,
 	Critical,
 
 	Size,
