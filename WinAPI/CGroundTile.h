@@ -12,6 +12,7 @@ private:
 	void Render() override;
 	void Release() override;
 
+
 private:
 	void OnCollisionEnter(CCollider* pOther) override;
 	void OnCollisionStay(CCollider* pOther) override;
