@@ -7,14 +7,18 @@
 
 CCameraManager::CCameraManager()
 {
-	m_vecLookAt		= Vector(0, 0);
-	m_vecTargetPos	= Vector(0, 0);
-	m_pTargetObj	= nullptr;
+	m_vecLookAt = Vector(0, 0);
+	m_vecTargetPos = Vector(0, 0);
+	m_pTargetObj = nullptr;
 	m_fTimeToTarget = 0;
 
 	m_fTargetBright = 1.f;
 	m_fCurBright = 1.f;
 	m_fTimeToBright = 0.f;
+
+	m_fCameraScale = 1.f;
+	m_fTargetScale = 1;
+	m_fTimeToZoom = 0;
 }
 
 CCameraManager::~CCameraManager()
@@ -49,12 +53,37 @@ void CCameraManager::SetTargetObj(CGameObject* pTargetObj)
 
 Vector CCameraManager::WorldToScreenPoint(Vector worldPoint)
 {
-	return worldPoint - (m_vecLookAt - Vector(WINSIZEX * 0.5f, WINSIZEY * 0.5f));
+
+	worldPoint = worldPoint - (m_vecLookAt - Vector(WINSIZEX * 0.5f, WINSIZEY * 0.5f));
+	Zoom(worldPoint);
+
+	return worldPoint;
 }
+
 
 Vector CCameraManager::ScreenToWorldPoint(Vector screenPoint)
 {
-	return screenPoint + (m_vecLookAt - Vector(WINSIZEX * 0.5f, WINSIZEY * 0.5f));
+	Zoom(screenPoint);
+	screenPoint = screenPoint + (m_vecLookAt - Vector(WINSIZEX * 0.5f, WINSIZEY * 0.5f));
+
+	return screenPoint;
+}
+
+void CCameraManager::ZoomInOut(float scale, float duration)
+{
+
+	m_fTimeToZoom = duration;
+
+	m_fTargetScale = scale;
+
+}
+
+void CCameraManager::Zoom(Vector& Point)
+{
+	//Vector middleXY = ScreenToWorldPoint(Vector(WINSIZEX * 0.5, WINSIZEY * 0.5));
+
+	Point.x = (WINSIZEX * 0.5) + ((Point.x - (WINSIZEX * 0.5)) * m_fCameraScale);
+	Point.y = (WINSIZEY * 0.5) + ((Point.y - (WINSIZEY * 0.5)) * m_fCameraScale);
 }
 
 void CCameraManager::Scroll(Vector dir, float velocity)
@@ -80,6 +109,7 @@ void CCameraManager::FadeOut(float duration)
 	m_fTargetBright = 0.f;
 	m_fTimeToBright = duration;
 }
+
 
 void CCameraManager::Init()
 {
@@ -109,9 +139,13 @@ void CCameraManager::Update()
 void CCameraManager::Render()
 {
 	RenderEffect();
+	RenderZoom();
 
+	float scale = m_fCameraScale;
+	m_fCameraScale = 1;
 	Vector screenPos = ScreenToWorldPoint(Vector(0, 0));
 	RENDER->FillRect(screenPos.x, screenPos.y, screenPos.x + WINSIZEX, screenPos.y + WINSIZEY, Color(0, 0, 0, 1 - m_fCurBright));
+	m_fCameraScale = scale;
 }
 
 void CCameraManager::Release()
@@ -150,5 +184,17 @@ void CCameraManager::RenderEffect()
 	else
 	{
 		m_fCurBright += (m_fTargetBright - m_fCurBright) / m_fTimeToBright * DT;
+	}
+}
+
+void CCameraManager::RenderZoom()
+{
+	m_fTimeToZoom -= DT;
+
+	if (m_fTimeToZoom <= 0)
+		m_fCameraScale = m_fTargetScale;
+	else
+	{
+		m_fCameraScale += ((m_fTargetScale - m_fCameraScale) / m_fTimeToZoom * DT);
 	}
 }

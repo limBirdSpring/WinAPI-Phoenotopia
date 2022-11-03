@@ -22,6 +22,7 @@ void CSceneTitle::Init()
 void CSceneTitle::Enter()
 {
 	CAMERA->FadeIn(0.25f);
+	CAMERA->ZoomInOut(1);
 }
 
 void CSceneTitle::Update()

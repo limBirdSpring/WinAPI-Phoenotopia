@@ -14,10 +14,13 @@
 #include "CCameraController.h"
 #include "CButton.h"
 #include "CPanel.h"
+#include "CResourceManager.h"
+#include "CImage.h"
 
 CSceneStage01::CSceneStage01()
 {
 	pPlayer = nullptr;
+	m_pVillageImage = nullptr;
 }
 
 CSceneStage01::~CSceneStage01()
@@ -36,12 +39,20 @@ void CSceneStage01::Init()
 
 	CCameraController* pCamController = new CCameraController;
 	AddGameObject(pCamController);
+
+
+
 }
 
 void CSceneStage01::Enter()
 {
+	CAMERA->ZoomInOut(2);
+	CAMERA->SetTargetObj(pPlayer);
 	CAMERA->FadeIn(0.25f);
 	LoadTile(GETPATH + L"Tile\\Stage01.tile");
+
+	m_pVillageImage = RESOURCE->LoadImg(L"Village", L"Image\\Village.png");
+
 }
 
 void CSceneStage01::Update()
@@ -55,6 +66,12 @@ void CSceneStage01::Update()
 
 void CSceneStage01::Render()
 {
+	RENDER->Image(
+		m_pVillageImage,
+		-m_pVillageImage->GetWidth() * 0.5f,
+		-m_pVillageImage->GetHeight() * 0.5f,
+		+m_pVillageImage->GetWidth() * 0.5f,
+		+m_pVillageImage->GetHeight() * 0.5f);
 }
 
 void CSceneStage01::Exit()

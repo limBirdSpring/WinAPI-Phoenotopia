@@ -104,9 +104,16 @@ void CRenderManager::Init()
 
 void CRenderManager::BeginDraw()
 {
+	float scale = CAMERA->GetScale();
+	CAMERA->SetScale(1);
+
 	m_pRenderTarget->BeginDraw();
 	Vector screenPos = CAMERA->ScreenToWorldPoint(Vector(0, 0));
+
+	//	Vector screenPos2 = CAMERA->ScreenToWorldPoint(Vector(WINSIZEX, WINSIZEY));
 	FillRect(screenPos.x, screenPos.y, screenPos.x + WINSIZEX, screenPos.y + WINSIZEY, Color(255, 255, 255, 1.f));
+	CAMERA->SetScale(scale);
+	//FillRect(screenPos.x, screenPos.y, screenPos2.x, screenPos2.y, Color(255, 255, 255, 1.f));
 }
 
 void CRenderManager::EndDraw()
@@ -215,6 +222,7 @@ void CRenderManager::SetTextParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT paragr
 
 void CRenderManager::Text(wstring str, float startX, float startY, float endX, float endY)
 {
+
 	Vector start = CAMERA->WorldToScreenPoint(Vector(startX, startY));
 	startX = start.x;
 	startY = start.y;
@@ -229,6 +237,7 @@ void CRenderManager::Text(wstring str, float startX, float startY, float endX, f
 
 void CRenderManager::Text(wstring str, float startX, float startY, float endX, float endY, Color color, float fontSize)
 {
+
 	Vector start = CAMERA->WorldToScreenPoint(Vector(startX, startY));
 	startX = start.x;
 	startY = start.y;
@@ -277,6 +286,7 @@ void CRenderManager::Text(wstring str, float startX, float startY, float endX, f
 
 void CRenderManager::Line(Vector startPoint, Vector endPoint)
 {
+
 	startPoint = CAMERA->WorldToScreenPoint(startPoint);
 	endPoint = CAMERA->WorldToScreenPoint(endPoint);
 
@@ -288,6 +298,7 @@ void CRenderManager::Line(Vector startPoint, Vector endPoint)
 
 void CRenderManager::Line(Vector startPoint, Vector endPoint, Color color, float strokeWidth)
 {
+
 	startPoint = CAMERA->WorldToScreenPoint(startPoint);
 	endPoint = CAMERA->WorldToScreenPoint(endPoint);
 
@@ -304,6 +315,7 @@ void CRenderManager::Line(Vector startPoint, Vector endPoint, Color color, float
 
 void CRenderManager::FrameRect(float startX, float startY, float endX, float endY)
 {
+
 	Vector start = CAMERA->WorldToScreenPoint(Vector(startX, startY));
 	startX = start.x;
 	startY = start.y;
@@ -317,6 +329,7 @@ void CRenderManager::FrameRect(float startX, float startY, float endX, float end
 
 void CRenderManager::FrameRect(float startX, float startY, float endX, float endY, Color color, float strokeWidth)
 {
+
 	Vector start = CAMERA->WorldToScreenPoint(Vector(startX, startY));
 	startX = start.x;
 	startY = start.y;
@@ -336,6 +349,8 @@ void CRenderManager::FrameRect(float startX, float startY, float endX, float end
 
 void CRenderManager::FillRect(float startX, float startY, float endX, float endY)
 {
+
+
 	Vector start = CAMERA->WorldToScreenPoint(Vector(startX, startY));
 	startX = start.x;
 	startY = start.y;
@@ -349,6 +364,8 @@ void CRenderManager::FillRect(float startX, float startY, float endX, float endY
 
 void CRenderManager::FillRect(float startX, float startY, float endX, float endY, Color color)
 {
+
+
 	Vector start = CAMERA->WorldToScreenPoint(Vector(startX, startY));
 	startX = start.x;
 	startY = start.y;
@@ -368,6 +385,8 @@ void CRenderManager::FillRect(float startX, float startY, float endX, float endY
 
 void CRenderManager::FrameEllipse(float startX, float startY, float endX, float endY)
 {
+
+
 	Vector start = CAMERA->WorldToScreenPoint(Vector(startX, startY));
 	startX = start.x;
 	startY = start.y;
@@ -386,6 +405,8 @@ void CRenderManager::FrameEllipse(float startX, float startY, float endX, float 
 
 void CRenderManager::FrameEllipse(float startX, float startY, float endX, float endY, Color color, float strokeWidth)
 {
+
+
 	Vector start = CAMERA->WorldToScreenPoint(Vector(startX, startY));
 	startX = start.x;
 	startY = start.y;
@@ -410,6 +431,8 @@ void CRenderManager::FrameEllipse(float startX, float startY, float endX, float 
 
 void CRenderManager::FillEllipse(float startX, float startY, float endX, float endY)
 {
+
+
 	Vector start = CAMERA->WorldToScreenPoint(Vector(startX, startY));
 	startX = start.x;
 	startY = start.y;
@@ -428,6 +451,8 @@ void CRenderManager::FillEllipse(float startX, float startY, float endX, float e
 
 void CRenderManager::FillEllipse(float startX, float startY, float endX, float endY, Color color)
 {
+
+
 	Vector start = CAMERA->WorldToScreenPoint(Vector(startX, startY));
 	startX = start.x;
 	startY = start.y;
@@ -452,9 +477,12 @@ void CRenderManager::FillEllipse(float startX, float startY, float endX, float e
 
 void CRenderManager::FrameCircle(float pointX, float pointY, float radius)
 {
+
+
 	Vector point = CAMERA->WorldToScreenPoint(Vector(pointX, pointY));
 	pointX = point.x;
 	pointY = point.y;
+	radius *= CAMERA->GetScale();
 
 	D2D1_ELLIPSE ellipse = { pointX, pointY, radius, radius };
 	m_pRenderTarget->DrawEllipse(ellipse, m_pDefaultBrush, 1.f);
@@ -462,9 +490,11 @@ void CRenderManager::FrameCircle(float pointX, float pointY, float radius)
 
 void CRenderManager::FrameCircle(float pointX, float pointY, float radius, Color color, float strokeWidth)
 {
+
 	Vector point = CAMERA->WorldToScreenPoint(Vector(pointX, pointY));
 	pointX = point.x;
 	pointY = point.y;
+	radius *= CAMERA->GetScale();
 
 	D2D1_ELLIPSE ellipse = { pointX, pointY, radius, radius };
 
@@ -478,9 +508,12 @@ void CRenderManager::FrameCircle(float pointX, float pointY, float radius, Color
 
 void CRenderManager::FillCircle(float pointX, float pointY, float radius)
 {
+
+
 	Vector point = CAMERA->WorldToScreenPoint(Vector(pointX, pointY));
 	pointX = point.x;
 	pointY = point.y;
+	radius *= CAMERA->GetScale();
 
 	D2D1_ELLIPSE ellipse = { pointX, pointY, radius, radius };
 	m_pRenderTarget->FillEllipse(ellipse, m_pDefaultBrush);
@@ -488,9 +521,12 @@ void CRenderManager::FillCircle(float pointX, float pointY, float radius)
 
 void CRenderManager::FillCircle(float pointX, float pointY, float radius, Color color)
 {
+
+
 	Vector point = CAMERA->WorldToScreenPoint(Vector(pointX, pointY));
 	pointX = point.x;
 	pointY = point.y;
+	radius *= CAMERA->GetScale();
 
 	D2D1_ELLIPSE ellipse = { pointX, pointY, radius, radius };
 
@@ -504,6 +540,8 @@ void CRenderManager::FillCircle(float pointX, float pointY, float radius, Color 
 
 void CRenderManager::Image(CImage* pImg, float startX, float startY, float endX, float endY, float alpha)
 {
+
+
 	Vector start = CAMERA->WorldToScreenPoint(Vector(startX, startY));
 	startX = start.x;
 	startY = start.y;
@@ -511,12 +549,15 @@ void CRenderManager::Image(CImage* pImg, float startX, float startY, float endX,
 	endX = end.x;
 	endY = end.y;
 
+
 	D2D1_RECT_F imgRect = { startX, startY, endX, endY };
 	m_pRenderTarget->DrawBitmap(pImg->GetImage(), imgRect);
 }
 
 void CRenderManager::FrameImage(CImage* pImg, float dstX, float dstY, float dstW, float dstH, float srcX, float srcY, float srcW, float srcH, float alpha)
 {
+
+
 	Vector dstStart = CAMERA->WorldToScreenPoint(Vector(dstX, dstY));
 	dstX = dstStart.x;
 	dstY = dstStart.y;
