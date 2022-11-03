@@ -49,7 +49,7 @@
     <Filter Include="GameObject\Common">
       <UniqueIdentifier>{9e45e506-939f-4c97-8f87-6146ebb42d5f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Stage01">
+    <Filter Include="GameObject\Player">
       <UniqueIdentifier>{f2ad0501-d505-4b88-af0d-880a4673ef5b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -163,13 +163,13 @@
       <Filter>GameObject\Common</Filter>
     </ClInclude>
     <ClInclude Include="CMissile.h">
-      <Filter>GameObject\Stage01</Filter>
+      <Filter>GameObject\Player</Filter>
     </ClInclude>
     <ClInclude Include="CMonster.h">
-      <Filter>GameObject\Stage01</Filter>
+      <Filter>GameObject\Player</Filter>
     </ClInclude>
     <ClInclude Include="CPlayer.h">
-      <Filter>GameObject\Stage01</Filter>
+      <Filter>GameObject\Player</Filter>
     </ClInclude>
     <ClInclude Include="CTilePanel.h">
       <Filter>Engine\Asset\UI</Filter>
@@ -191,6 +191,12 @@
     </ClInclude>
     <ClInclude Include="CWallTile.h">
       <Filter>Engine\Asset\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="CAttack.h">
+      <Filter>GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameManager.h">
+      <Filter>Engine\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -285,13 +291,13 @@
       <Filter>GameObject\Common</Filter>
     </ClCompile>
     <ClCompile Include="CMissile.cpp">
-      <Filter>GameObject\Stage01</Filter>
+      <Filter>GameObject\Player</Filter>
     </ClCompile>
     <ClCompile Include="CMonster.cpp">
-      <Filter>GameObject\Stage01</Filter>
+      <Filter>GameObject\Player</Filter>
     </ClCompile>
     <ClCompile Include="CPlayer.cpp">
-      <Filter>GameObject\Stage01</Filter>
+      <Filter>GameObject\Player</Filter>
     </ClCompile>
     <ClCompile Include="CTileButton.cpp">
       <Filter>Engine\Asset\UI</Filter>
@@ -313,6 +319,12 @@
     </ClCompile>
     <ClCompile Include="CWallTile.cpp">
       <Filter>Engine\Asset\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="CAttack.cpp">
+      <Filter>GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameManager.cpp">
+      <Filter>Engine\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

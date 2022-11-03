@@ -12,6 +12,7 @@
 #include "CAnimator.h"
 
 #include "CMissile.h"
+#include "CAttack.h"
 
 CPlayer::CPlayer()
 {
@@ -26,6 +27,9 @@ CPlayer::CPlayer()
 	m_pRunImage = nullptr;
 	m_pJumpImage = nullptr;
 	m_pDownImage = nullptr;
+	m_pAttackImage  = nullptr;
+	m_pAttack2Image = nullptr;
+	m_pCriticalImage = nullptr;
 
 	m_vecMoveDir = Vector(0, 0);
 	m_vecLookDir = Vector(0, -1);
@@ -44,6 +48,10 @@ void CPlayer::Init()
 	m_pJumpImage = RESOURCE->LoadImg(L"Gail_Jump", L"Image\\Gail_Jump.png");
 	m_pDownImage = RESOURCE->LoadImg(L"Gail_Down", L"Image\\Gail_Down.png");
 
+	m_pAttackImage = RESOURCE->LoadImg(L"Gail_Attack", L"Image\\Gail_Attack.png");
+	m_pAttack2Image = RESOURCE->LoadImg(L"Gail_Attack2", L"Image\\Gail_Attack2.png");
+	m_pCriticalImage = RESOURCE->LoadImg(L"Gail_Critical", L"Image\\Gail_Critical.png");
+
 	m_pAnimator = new CAnimator;
 	m_pAnimator->CreateAnimation(L"Gail_Standing_Right", m_pIdleImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 6);
 	m_pAnimator->CreateAnimation(L"Gail_Standing_Left", m_pIdleImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.2f, 6);
@@ -58,6 +66,13 @@ void CPlayer::Init()
 	m_pAnimator->CreateAnimation(L"Gail_Down_Right", m_pDownImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
 	m_pAnimator->CreateAnimation(L"Gail_Down_Left", m_pDownImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
 
+	m_pAnimator->CreateAnimation(L"Gail_Attack_Right", m_pAttackImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
+	m_pAnimator->CreateAnimation(L"Gail_Attack_Left", m_pAttackImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
+	m_pAnimator->CreateAnimation(L"Gail_Attack2_Right", m_pAttack2Image, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
+	m_pAnimator->CreateAnimation(L"Gail_Attack2_Left", m_pAttack2Image, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
+
+
+
 	m_pAnimator->Play(L"Gail_Standing_Right", false);
 	AddComponent(m_pAnimator);
 
@@ -67,6 +82,19 @@ void CPlayer::Init()
 
 void CPlayer::Update()
 {
+	if (BUTTONUP('X') /*&& 무기를 가지고 있을 때*/)
+	{
+		if (!GetGround())
+			m_behavior = Behavior::Attack;
+		else
+			m_behavior = Behavior::Attack2;
+
+		CAttack* pAttack = new CAttack();
+		pAttack->SetPos(m_vecPos);
+		ADDOBJECT(pAttack);
+	}
+
+
 
 	if (!GetGround())
 	{
@@ -87,14 +115,14 @@ void CPlayer::Update()
 	}
 
 	//점프
-	if (BUTTONSTAY(VK_DOWN) && BUTTONDOWN('X') && GetPlatform() != 0)//하향점프
+	if (BUTTONSTAY(VK_DOWN) && BUTTONDOWN('Z') && GetPlatform() != 0)//하향점프
 	{
 		m_behavior = Behavior::Jump;
 		this->SetGround(0);
 		this->SetPlatform(0);
 		this->SetGravity(1);
 	}
-	else if (BUTTONDOWN('X') && GetGround())
+	else if (BUTTONDOWN('Z') && GetGround())
 	{
 		m_behavior = Behavior::Jump;
 		m_vecPos.y--;
@@ -190,6 +218,10 @@ void CPlayer::AnimatorUpdate()
 	case Behavior::Fall: str += L"_Fall";
 		break;
 	case Behavior::Down: str += L"_Down";
+		break;
+	case Behavior::Attack: str += L"_Attack";
+		break;
+	case Behavior::Attack2: str += L"_Attack2";
 		break;
 	default: str += L"_Standing";
 	}

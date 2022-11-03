@@ -19,6 +19,9 @@ private:
 	CImage* m_pRunImage;
 	CImage* m_pJumpImage;
 	CImage* m_pDownImage;
+	CImage* m_pAttackImage;
+	CImage* m_pAttack2Image;
+	CImage* m_pCriticalImage;
 
 
 

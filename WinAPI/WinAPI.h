@@ -77,6 +77,7 @@ enum class Behavior
 	Fall,
 	Down,
 	Attack,
+	Attack2,
 	Critical,
 
 	Size,
