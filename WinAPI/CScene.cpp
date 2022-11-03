@@ -5,6 +5,8 @@
 #include "CGameObject.h"
 #include "CTile.h"
 #include "CGroundTile.h"
+#include "CPlatformTile.h"
+#include "CWallTile.h"
 
 CScene::CScene()
 {
@@ -182,6 +184,22 @@ void CScene::LoadTile(const wstring& strPath)
 		else if (TypeTile::Ground == loadTile.GetType())
 		{
 			CGroundTile* newTile = new CGroundTile;
+			newTile->SetTilePos(loadTile.GetTilePosX(), loadTile.GetTilePosY());
+			newTile->SetTileIndex(loadTile.GetTileIndex());
+
+			AddGameObject(newTile);
+		}
+		else if (TypeTile::Platform == loadTile.GetType())
+		{
+			CPlatformTile* newTile = new CPlatformTile;
+			newTile->SetTilePos(loadTile.GetTilePosX(), loadTile.GetTilePosY());
+			newTile->SetTileIndex(loadTile.GetTileIndex());
+
+			AddGameObject(newTile);
+		}
+		else if (TypeTile::Wall == loadTile.GetType())
+		{
+			CWallTile* newTile = new CWallTile;
 			newTile->SetTilePos(loadTile.GetTilePosX(), loadTile.GetTilePosY());
 			newTile->SetTileIndex(loadTile.GetTileIndex());
 

@@ -30,7 +30,7 @@ CTile::~CTile()
 
 void CTile::Init()
 {
-	m_pImage = RESOURCE->LoadImg(L"Tile", L"Image\\Tile.png");
+	m_pImage = RESOURCE->LoadImg(L"Tile", L"Image\\Tile_Village.png");
 	m_uiImageXCount = m_pImage->GetWidth() / TILESIZE;
 	m_uiImageYCount = m_pImage->GetHeight() / TILESIZE;
 }
@@ -58,6 +58,26 @@ void CTile::Render()
 				m_vecPos.x + m_vecScale.x,
 				m_vecPos.y + m_vecScale.y,
 				Color(255, 0, 0, 1), 5
+			);
+		}
+		else if (m_type == TypeTile::Platform)
+		{
+			RENDER->FrameEllipse(
+				m_vecPos.x,
+				m_vecPos.y,
+				m_vecPos.x + m_vecScale.x,
+				m_vecPos.y + m_vecScale.y,
+				Color(0, 255, 0, 1), 5
+			);
+		}
+		else if (m_type == TypeTile::Wall)
+		{
+			RENDER->FrameEllipse(
+				m_vecPos.x,
+				m_vecPos.y,
+				m_vecPos.x + m_vecScale.x,
+				m_vecPos.y + m_vecScale.y,
+				Color(0, 0, 255, 1), 5
 			);
 		}
 	}
@@ -128,17 +148,17 @@ TypeTile CTile::GetType()
 
 int CTile::GetTilePosX()
 {
-    return m_uiTilePosX;
+	return m_uiTilePosX;
 }
 
 int CTile::GetTilePosY()
 {
-    return m_uiTilePosY;
+	return m_uiTilePosY;
 }
 
 int CTile::GetTileIndex()
 {
-    return m_uiTileIndex;
+	return m_uiTileIndex;
 }
 
 bool CTile::GetLineRender()
