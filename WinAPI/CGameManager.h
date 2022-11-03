@@ -2,6 +2,26 @@
 #include "framework.h"
 
 class CCore;
+class CImage;
+
+
+enum ItemType
+{
+	Food,
+	Weapon,
+	Quest,
+
+	Size
+};
+
+struct Item
+{
+	CImage* img;	//아이템 이미지
+	ItemType type;	//아이템 종류
+	int price;		//아이템 가격
+	int num;		//아이템 갯수
+};
+
 
 class CGameManager : public SingleTon<CGameManager>
 {
@@ -19,9 +39,14 @@ private:
 
 
 private :
+	//플레이어 정보
 	Vector m_vecPlayerPos;
 	Vector m_vecplayerDir;
+	int gold;
+	int hp;
 
+	unordered_map<string, Item> m_vecInventoryItem; //인벤토리에 들어있는 아이템
+	unordered_map<string, Item> m_vecSetItem; //착용한 아이템
 
 public :
 
@@ -31,11 +56,21 @@ public :
 	float GetAttackTime() { return m_fAttackTime; }
 	void SetAttackTime(float time) { m_fAttackTime = time; }
 
+
+public :
 	Vector GetPlayerPos() { return m_vecPlayerPos; }
 	void SetPlayerPos(Vector pos) { m_vecPlayerPos = pos; }
 
 	Vector GetPlayerDir() { return m_vecplayerDir; }
 	void SetPlayerDir(Vector dir) { m_vecplayerDir = dir; }
+
+	int GetGold() { return gold; }
+	void SetGold(int gold) { this->gold = gold; }
+
+	int GetHp() { return hp; }
+	void SetHp(int hp) { this->hp = hp; }
+
+
 
 private :
 	void Init();

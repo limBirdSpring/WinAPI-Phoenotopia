@@ -1,6 +1,8 @@
 #pragma once
 #include "CScene.h"
 
+class CImage;
+
 class CSceneTitle : public CScene
 {
 public:
@@ -8,6 +10,9 @@ public:
 	virtual ~CSceneTitle();
 
 private:
+
+	CImage* pLoad_Screen;
+
 	void Init()		override;
 	void Enter()	override;
 	void Update()	override;

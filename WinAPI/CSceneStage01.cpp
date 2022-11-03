@@ -16,6 +16,7 @@
 #include "CPanel.h"
 #include "CResourceManager.h"
 #include "CImage.h"
+#include "CImageObject.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -52,6 +53,9 @@ void CSceneStage01::Enter()
 	LoadTile(GETPATH + L"Tile\\Stage01.tile");
 
 	m_pVillageImage = RESOURCE->LoadImg(L"Village", L"Image\\Village.png");
+	CImageObject* pVillage = new CImageObject;
+	pVillage->SetImage(m_pVillageImage);
+	AddGameObject(pVillage);
 
 }
 
@@ -66,12 +70,6 @@ void CSceneStage01::Update()
 
 void CSceneStage01::Render()
 {
-	RENDER->Image(
-		m_pVillageImage,
-		-m_pVillageImage->GetWidth() * 0.5f,
-		-m_pVillageImage->GetHeight() * 0.5f,
-		+m_pVillageImage->GetWidth() * 0.5f,
-		+m_pVillageImage->GetHeight() * 0.5f);
 }
 
 void CSceneStage01::Exit()

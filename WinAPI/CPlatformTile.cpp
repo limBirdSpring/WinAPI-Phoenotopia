@@ -69,11 +69,13 @@ void CPlatformTile::OnCollisionExit(CCollider* pOther)
 {
 	if (pOther->GetObjName() == L"플레이어")
 	{
-		if (pOther->GetOwner()->GetGround() != 0)
+		if (pOther->GetOwner()->GetPlatform() != 0)
 		{
 			int platform = pOther->GetOwner()->GetPlatform();
 			pOther->GetOwner()->SetPlatform(--platform);
-
+		}
+		if (pOther->GetOwner()->GetGround() != 0)
+		{
 			int ground = pOther->GetOwner()->GetGround();
 			pOther->GetOwner()->SetGround(--ground);
 		}

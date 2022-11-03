@@ -20,7 +20,7 @@
 CPlayer::CPlayer()
 {
 	m_vecPos = Vector(0, 0);
-	m_vecScale = Vector(20, 34);
+	m_vecScale = Vector(20, 32);
 	m_layer = Layer::Player;
 	m_strName = L"플레이어";
 	m_fSpeed = 100;
@@ -232,12 +232,11 @@ void CPlayer::Update()
 		CreateMissile();
 	}
 
+	m_vecPos.x += (m_fSpeed * DT) * m_vecMoveDir.x;
 
 	//게임매니저에게 플레이어 정보 전달
 	GAME->SetPlayerPos(m_vecPos);
 	GAME->SetPlayerDir(m_vecMoveDir);
-
-	m_vecPos.x += (m_fSpeed * DT) * m_vecMoveDir.x;
 
 	AnimatorUpdate();
 

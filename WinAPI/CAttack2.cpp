@@ -34,6 +34,7 @@ void  CAttack2::Update()
 	else if (GAME->GetPlayerDir().x == 1)
 		this->SetPos(pos.x + 7, pos.y + 5);
 
+
 	m_fTime += DT;
 
 	if (m_fTime > 0.66)
