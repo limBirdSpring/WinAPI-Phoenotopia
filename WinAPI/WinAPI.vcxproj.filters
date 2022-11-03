@@ -186,7 +186,10 @@
     <ClInclude Include="CGravity.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
-    <ClInclude Include="CPlatforrmTile.h">
+    <ClInclude Include="CPlatformTile.h">
+      <Filter>Engine\Asset\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="CWallTile.h">
       <Filter>Engine\Asset\Tile</Filter>
     </ClInclude>
   </ItemGroup>
@@ -306,6 +309,9 @@
       <Filter>Engine\Component</Filter>
     </ClCompile>
     <ClCompile Include="CPlatformTile.cpp">
+      <Filter>Engine\Asset\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="CWallTile.cpp">
       <Filter>Engine\Asset\Tile</Filter>
     </ClCompile>
   </ItemGroup>
