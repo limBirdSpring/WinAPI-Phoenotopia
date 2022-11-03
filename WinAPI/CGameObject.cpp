@@ -3,6 +3,7 @@
 
 #include "CComponent.h"
 #include "CCollider.h"
+#include "CGravity.h"
 
 CGameObject::CGameObject()
 {
@@ -13,6 +14,7 @@ CGameObject::CGameObject()
 	m_bSafeToDelete = false;
 
 	m_pCollider = nullptr;
+	m_pGravity = nullptr;
 }
 
 CGameObject::~CGameObject()
@@ -73,7 +75,7 @@ void CGameObject::SetName(wstring name)
 
 bool CGameObject::GetReserveDelete()
 {
-    return m_bReservedDelete;
+	return m_bReservedDelete;
 }
 
 void CGameObject::AddComponent(CComponent* component)
@@ -113,6 +115,43 @@ void CGameObject::AddCollider(ColliderType type, Vector scale, Vector offsetPos)
 	m_pCollider->SetScale(scale);
 	m_pCollider->SetOffsetPos(offsetPos);
 	AddComponent(m_pCollider);
+}
+
+void CGameObject::AddGravity(float velocity)
+{
+	m_pGravity = new CGravity();
+	m_pGravity->SetVelocity(velocity);
+	AddComponent(m_pGravity);
+}
+
+void CGameObject::SetGravity(float velocity)
+{
+	m_pGravity->m_fVelocity = velocity;
+}
+
+float CGameObject::GetGravity()
+{
+	return m_pGravity->m_fVelocity;
+}
+
+void  CGameObject::SetGround(int ground)
+{
+	m_pGravity->m_ground = ground;
+};
+
+int  CGameObject::GetGround()
+{
+	return m_pGravity->m_ground;
+}
+
+void CGameObject::SetPlatform(int platform)
+{
+	m_pGravity->m_platform = platform;
+}
+
+int CGameObject::GetPlatform()
+{
+	return m_pGravity->m_platform;
 }
 
 void CGameObject::RemoveCollider()

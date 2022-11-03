@@ -6,6 +6,7 @@ class CCollisionManager;
 class CScene;
 class CComponent;
 class CCollider;
+class CGravity;
 enum class ColliderType;
 
 // 게임오브젝트 : 
@@ -28,6 +29,8 @@ protected:
 	Layer m_layer;		// 게임오브젝트의 레이어
 	wstring m_strName;	// 게임오브젝트의 이름
 
+	float m_fSpeed;
+
 public:
 	Vector GetPos();
 	void SetPos(Vector pos);
@@ -39,6 +42,10 @@ public:
 	void SetLayer(Layer layer);
 	wstring GetName();
 	void SetName(wstring name);
+
+	void SetGravity(float velocity);
+	float GetGravity();
+
 
 private:
 	bool m_bReservedDelete;		// 게임오브젝트가 삭제예정인지 여부
@@ -61,15 +68,25 @@ protected:
 	// 충돌 컴포넌트
 private:
 	CCollider* m_pCollider;
+	CGravity* m_pGravity;
 
 protected:
 	CCollider* GetCollider();
 	void AddCollider(ColliderType type, Vector scale, Vector offsetPos);
+
+	void AddGravity(float velocity);
+
+
 	void RemoveCollider();
 
 	virtual void OnCollisionEnter(CCollider* pOtherCollider) {};	// 충돌체크를 확인하는 오브젝트는 재정의하여 사용
 	virtual void OnCollisionStay(CCollider* pOtherCollider) {};	// 충돌체크를 확인하는 오브젝트는 재정의하여 사용
 	virtual void OnCollisionExit(CCollider* pOtherCollider) {};	// 충돌체크를 확인하는 오브젝트는 재정의하여 사용
+public:
+	void SetGround(int ground);
+	int GetGround();
+	void SetPlatform(int platform);
+	int GetPlatform();
 
 protected:
 	// 게임오브젝트 부모 전용 함수들 :
