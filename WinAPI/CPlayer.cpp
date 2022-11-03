@@ -7,12 +7,14 @@
 #include "CRenderManager.h"
 #include "CEventManager.h"
 #include "CResourceManager.h"
+#include "CGameManager.h"
 #include "CCollider.h"
 #include "CImage.h"
 #include "CAnimator.h"
 
 #include "CMissile.h"
 #include "CAttack.h"
+#include "CAttack2.h"
 
 CPlayer::CPlayer()
 {
@@ -66,8 +68,8 @@ void CPlayer::Init()
 	m_pAnimator->CreateAnimation(L"Gail_Down_Right", m_pDownImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
 	m_pAnimator->CreateAnimation(L"Gail_Down_Left", m_pDownImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
 
-	m_pAnimator->CreateAnimation(L"Gail_Attack_Right", m_pAttackImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
-	m_pAnimator->CreateAnimation(L"Gail_Attack_Left", m_pAttackImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
+	m_pAnimator->CreateAnimation(L"Gail_Attack_Right", m_pAttackImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.08f, 7, false);
+	m_pAnimator->CreateAnimation(L"Gail_Attack_Left", m_pAttackImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.08f, 7, false);
 	m_pAnimator->CreateAnimation(L"Gail_Attack2_Right", m_pAttack2Image, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
 	m_pAnimator->CreateAnimation(L"Gail_Attack2_Left", m_pAttack2Image, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
 
@@ -82,49 +84,84 @@ void CPlayer::Init()
 
 void CPlayer::Update()
 {
-	if (BUTTONUP('X') /*&& 무기를 가지고 있을 때*/)
-	{
-		if (!GetGround())
-			m_behavior = Behavior::Attack;
-		else
-			m_behavior = Behavior::Attack2;
 
-		CAttack* pAttack = new CAttack();
-		pAttack->SetPos(m_vecPos);
-		ADDOBJECT(pAttack);
+
+
+	//공격
+	if (BUTTONUP('X') /*&& 무기를 가지고 있을 때*/ && !GAME->GetAttack())
+	{
+		GAME->SetAttack(true);
+
+		if (GetGround())//일반공격
+		{
+			m_behavior = Behavior::Attack2;
+			CAttack* pAttack = new CAttack();
+
+			if (m_vecMoveDir.x == -1)
+				pAttack->SetPos(m_vecPos.x - 10, m_vecPos.y + 7);
+			else if (m_vecMoveDir.x == 1)
+				pAttack->SetPos(m_vecPos.x + 10, m_vecPos.y + 7);
+			pAttack->SetPos(m_vecPos);
+			ADDOBJECT(pAttack);
+		}
+		else//공중공격
+		{
+			m_behavior = Behavior::Attack;
+			CAttack2* pAttack2 = new CAttack2();
+
+			if (m_vecMoveDir.x == -1)
+				pAttack2->SetPos(m_vecPos.x - 7, m_vecPos.y + 5);
+			else if (m_vecMoveDir.x == 1)
+				pAttack2->SetPos(m_vecPos.x + 7, m_vecPos.y + 5);
+			pAttack2->SetPos(m_vecPos);
+			ADDOBJECT(pAttack2);
+		}
+
+		
 	}
 
-
+	
 
 	if (!GetGround())
 	{
-		if (GetGravity() > 100)
-			m_behavior = Behavior::Fall;
-		else
-			m_behavior = Behavior::Jump;
+		if (!GAME->GetAttack())
+		{
+			if (GetGravity() > 100)
+				m_behavior = Behavior::Fall;
+			else
+				m_behavior = Behavior::Jump;
+		}
 	}
 	//앉기
 	else if (BUTTONSTAY(VK_DOWN) && GetGround())
 	{
-		m_behavior = Behavior::Down;
+		if (!GAME->GetAttack())
+		{
+			m_behavior = Behavior::Down;
+		}
 	}
-
 	else
 	{
-		m_behavior = Behavior::Idle;
+		if (!GAME->GetAttack())
+		{
+			m_behavior = Behavior::Idle;
+		}
 	}
 
 	//점프
 	if (BUTTONSTAY(VK_DOWN) && BUTTONDOWN('Z') && GetPlatform() != 0)//하향점프
 	{
-		m_behavior = Behavior::Jump;
+		if (!GAME->GetAttack())
+			m_behavior = Behavior::Jump;
+
 		this->SetGround(0);
 		this->SetPlatform(0);
 		this->SetGravity(1);
 	}
 	else if (BUTTONDOWN('Z') && GetGround())
 	{
-		m_behavior = Behavior::Jump;
+		if (!GAME->GetAttack())
+			m_behavior = Behavior::Jump;
 		m_vecPos.y--;
 		SetGravity(-300);
 	}
@@ -135,14 +172,14 @@ void CPlayer::Update()
 	if (BUTTONSTAY(VK_LEFT))
 	{
 		m_vecPos.x -= m_fSpeed * DT;
-		if (GetGround())
+		if (GetGround() && !GAME->GetAttack())
 			m_behavior = Behavior::Walk;
 		m_vecMoveDir.x = -1;
 	}
 	else if (BUTTONSTAY(VK_RIGHT))
 	{
 		m_vecPos.x += m_fSpeed * DT;
-		if (GetGround())
+		if (GetGround() && !GAME->GetAttack())
 			m_behavior = Behavior::Walk;
 		m_vecMoveDir.x = +1;
 	}
@@ -151,13 +188,15 @@ void CPlayer::Update()
 	if (BUTTONSTAY(VK_LEFT) && BUTTONSTAY(VK_SHIFT) && GetGround())
 	{
 		m_vecPos.x -= (m_fSpeed + 50) * DT;
-		m_behavior = Behavior::Run;
+		if (!GAME->GetAttack())
+			m_behavior = Behavior::Run;
 		m_vecMoveDir.x = -1;
 	}
 	else if (BUTTONSTAY(VK_RIGHT) && BUTTONSTAY(VK_SHIFT) && GetGround())
 	{
 		m_vecPos.x += (m_fSpeed + 50) * DT;
-		m_behavior = Behavior::Run;
+		if (!GAME->GetAttack())
+			m_behavior = Behavior::Run;
 		m_vecMoveDir.x = +1;
 	}
 
@@ -189,7 +228,14 @@ void CPlayer::Update()
 		CreateMissile();
 	}
 
+
+	//게임매니저에게 플레이어 정보 전달
+	GAME->SetPlayerPos(m_vecPos);
+	GAME->SetPlayerDir(m_vecMoveDir);
+
+
 	AnimatorUpdate();
+
 }
 
 void CPlayer::Render()

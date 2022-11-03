@@ -4,7 +4,11 @@
 
 CGameManager::CGameManager()
 {
+	 m_bTalk = false;
+	 m_bAttack = false;
 
+
+	 m_vecPlayerPos = {0,0};
 }
 CGameManager::~CGameManager()
 {

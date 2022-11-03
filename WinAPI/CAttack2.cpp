@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "CAttack.h"
+#include "CAttack2.h"
 
 #include "CRenderManager.h"
 #include "CTimeManager.h"
@@ -7,32 +7,32 @@
 #include "CCollider.h"
 #include "CGameManager.h"
 
-CAttack::CAttack()
+CAttack2::CAttack2()
 {
-	m_vecScale = Vector(30, 18);
+	m_vecScale = Vector(30, 30);
 	m_fTime = 0;
 	m_layer = Layer::Missile;
 	m_strName = L"공격";
 }
 
-CAttack::~CAttack()
+CAttack2::~CAttack2()
 {
 }
 
-void CAttack::Init()
+void CAttack2::Init()
 {
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
-	
+
 }
 
-void  CAttack::Update()
+void  CAttack2::Update()
 {
 	Vector pos = GAME->GetPlayerPos();
 
 	if (GAME->GetPlayerDir().x == -1)
-		this->SetPos(pos.x - 10, pos.y + 7);
+		this->SetPos(pos.x - 7, pos.y + 5);
 	else if (GAME->GetPlayerDir().x == 1)
-		this->SetPos(pos.x + 10, pos.y + 7);
+		this->SetPos(pos.x + 7, pos.y + 5);
 
 	m_fTime += DT;
 
@@ -43,18 +43,18 @@ void  CAttack::Update()
 	}
 }
 
-void  CAttack::Render()
+void  CAttack2::Render()
 {
 
 }
 
-void  CAttack::Release()
+void  CAttack2::Release()
 {
 }
 
-void  CAttack::OnCollisionEnter(CCollider* pOtherCollider)
+void  CAttack2::OnCollisionEnter(CCollider* pOtherCollider)
 {
 	Logger::Debug(L"미사일이 충돌체와 부딪혀 사라집니다.");
-	
+
 }
 

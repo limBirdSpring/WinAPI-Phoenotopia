@@ -19,6 +19,7 @@ private:
 
 private :
 	Vector m_vecPlayerPos;
+	Vector m_vecplayerDir;
 
 
 public :
@@ -27,6 +28,9 @@ public :
 
 	bool GetAttack() { return m_bAttack; }
 	void SetAttack(bool attack) { m_bAttack = attack; }
+
+	Vector GetPlayerDir() { return m_vecplayerDir; }
+	void SetPlayerDir(Vector dir) { m_vecplayerDir = dir; }
 
 private :
 	void Init();

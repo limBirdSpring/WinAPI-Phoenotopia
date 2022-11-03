@@ -198,6 +198,9 @@
     <ClInclude Include="CGameManager.h">
       <Filter>Engine\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="CAttack2.h">
+      <Filter>GameObject\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -325,6 +328,9 @@
     </ClCompile>
     <ClCompile Include="CGameManager.cpp">
       <Filter>Engine\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CAttack2.cpp">
+      <Filter>GameObject\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
