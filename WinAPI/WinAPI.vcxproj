@@ -161,6 +161,7 @@
     <ClInclude Include="CLineMove.h" />
     <ClInclude Include="CMissile.h" />
     <ClInclude Include="CMonster.h" />
+    <ClInclude Include="CSlug.h" />
     <ClInclude Include="CPanel.h" />
     <ClInclude Include="CPathManager.h" />
     <ClInclude Include="CPlatformTile.h" />
@@ -214,6 +215,7 @@
     <ClCompile Include="CLineMove.cpp" />
     <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CMonster.cpp" />
+    <ClCompile Include="CSlug.cpp" />
     <ClCompile Include="CPanel.cpp" />
     <ClCompile Include="CPathManager.cpp" />
     <ClCompile Include="CPlatformTile.cpp" />

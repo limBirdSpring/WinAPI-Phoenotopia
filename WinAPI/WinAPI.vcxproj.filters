@@ -52,6 +52,12 @@
     <Filter Include="GameObject\Player">
       <UniqueIdentifier>{f2ad0501-d505-4b88-af0d-880a4673ef5b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Monster">
+      <UniqueIdentifier>{4d217d04-c6fa-4c44-87f4-b7af74037b2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Boss">
+      <UniqueIdentifier>{2357ccbf-af01-4d5b-a86e-f1923eec3ff9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -165,9 +171,6 @@
     <ClInclude Include="CMissile.h">
       <Filter>GameObject\Player</Filter>
     </ClInclude>
-    <ClInclude Include="CMonster.h">
-      <Filter>GameObject\Player</Filter>
-    </ClInclude>
     <ClInclude Include="CPlayer.h">
       <Filter>GameObject\Player</Filter>
     </ClInclude>
@@ -206,6 +209,12 @@
     </ClInclude>
     <ClInclude Include="CCritical.h">
       <Filter>GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CSlug.h">
+      <Filter>GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>GameObject\Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -302,9 +311,6 @@
     <ClCompile Include="CMissile.cpp">
       <Filter>GameObject\Player</Filter>
     </ClCompile>
-    <ClCompile Include="CMonster.cpp">
-      <Filter>GameObject\Player</Filter>
-    </ClCompile>
     <ClCompile Include="CPlayer.cpp">
       <Filter>GameObject\Player</Filter>
     </ClCompile>
@@ -343,6 +349,12 @@
     </ClCompile>
     <ClCompile Include="CCritical.cpp">
       <Filter>GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CSlug.cpp">
+      <Filter>GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>GameObject\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

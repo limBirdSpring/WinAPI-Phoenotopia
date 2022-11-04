@@ -12,6 +12,8 @@ CCameraManager::CCameraManager()
 	m_pTargetObj = nullptr;
 	m_fTimeToTarget = 0;
 
+	m_vecMapSize = Vector(0, 0);
+
 	m_fTargetBright = 1.f;
 	m_fCurBright = 1.f;
 	m_fTimeToBright = 0.f;

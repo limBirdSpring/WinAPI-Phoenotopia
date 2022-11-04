@@ -8,7 +8,9 @@ CGameManager::CGameManager()
 	 m_bAttack = false;
 	 m_bDamage = false;
 	 m_fAttackTime = 0;
-
+	 m_fDamageTime = 0;
+	 hp = 30;
+	 gold = 100;
 
 	 m_vecPlayerPos = {0,0};
 }

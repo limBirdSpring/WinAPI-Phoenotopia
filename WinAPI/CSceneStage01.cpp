@@ -10,7 +10,7 @@
 #include "CPathManager.h"
 
 #include "CPlayer.h"
-#include "CMonster.h"
+#include "CSlug.h"
 #include "CCameraController.h"
 #include "CButton.h"
 #include "CPanel.h"
@@ -34,9 +34,9 @@ void CSceneStage01::Init()
 	pPlayer->SetPos(200, WINSIZEY * 0.5f);
 	AddGameObject(pPlayer);
 
-	CMonster* pMonster = new CMonster();
-	pMonster->SetPos(300, WINSIZEY * 0.5f);
-	AddGameObject(pMonster);
+	CSlug* pSlug = new CSlug();
+	pSlug->SetPos(300, WINSIZEY * 0.5f-10);
+	AddGameObject(pSlug);
 
 	CCameraController* pCamController = new CCameraController;
 	AddGameObject(pCamController);
@@ -65,6 +65,13 @@ void CSceneStage01::Update()
 	{
 		CAMERA->FadeOut(0.25f);
 		DELAYCHANGESCENE(GroupScene::Title, 0.25f);
+	}
+
+	if (BUTTONDOWN(VK_F1))
+	{
+		CSlug* pSlug = new CSlug();
+		pSlug->SetPos(300, WINSIZEY * 0.5f);
+		AddGameObject(pSlug);
 	}
 }
 

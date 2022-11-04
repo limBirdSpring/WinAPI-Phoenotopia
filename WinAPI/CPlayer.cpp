@@ -20,7 +20,7 @@
 CPlayer::CPlayer()
 {
 	m_vecPos = Vector(0, 0);
-	m_vecScale = Vector(20, 32);
+	m_vecScale = Vector(18, 32);
 	m_layer = Layer::Player;
 	m_strName = L"플레이어";
 	m_fSpeed = 100;
@@ -97,23 +97,91 @@ void CPlayer::Init()
 
 void CPlayer::Update()
 {
-
-
+	
 	m_fSpeed = 100;
 	m_vecMoveDir.x = 0;
+	
+	
+	/*
+	m_behavior = Behavior::Idle;
+	
+	switch (m_behavior)
+	{
+	case Behavior::Idle:
+		if (BUTTONSTAY(VK_LEFT))
+		{
+			m_behavior = Behavior::Walk;
+			m_vecMoveDir.x = -1;
+		}
+		else if (BUTTONSTAY(VK_RIGHT))
+		{
+			m_behavior = Behavior::Walk;
+			m_vecMoveDir.x = 1;
+		}
+		break;
+	case Behavior::Walk:
+		if (BUTTONSTAY(VK_SHIFT))
+		{
+			m_behavior = Behavior::Run;
+		}
+		break;
+	case Behavior::Run: 
+		m_fSpeed += 100;
+	//case Behavior::Jump:
+	//
+	//	
+	//case Behavior::Fall:
+	//	
+	//case Behavior::Down:
+	//	
+	//case Behavior::Attack: 
+	//
+	//case Behavior::Attack2:
+	//	
+	//case Behavior::Critical: 
+	//	
+	//case Behavior::AttackReady:
+	//
+	//case Behavior::CriticalReady: 
+	//
+	//case Behavior::Damage:
+
+	//default: 
+
+	}
+
+
+	m_vecPos.x += (m_fSpeed * DT) * m_vecMoveDir.x;
+
+
+	AnimatorUpdate();
+
+	//게임매니저에게 플레이어 정보 전달
+	GAME->SetPlayerPos(m_vecPos);
+	GAME->SetPlayerDir(m_vecLookDir);
+	*/
+	
+
+
+
+
+	
 
 	//데미지
 	if (GAME->GetDamage() == true)
 	{
-		if (GAME->GetAttackTime() < 0.2)
+		if (GAME->GetDamageTime() < 0.2)
 		{
 			m_behavior = Behavior::Damage;
-			GAME->SetAttackTime(GAME->GetAttackTime() + DT);
+			GAME->SetDamageTime(GAME->GetDamageTime() + DT);
 			m_vecPos.x += -1 * 200 * DT * m_vecLookDir.x;
+
+			GAME->SetAttackTime(0);
+			GAME->SetAttack(false);
 		}
 		else
 		{
-			GAME->SetAttackTime(0);
+			GAME->SetDamageTime(0);
 			GAME->SetDamage(false);
 		}
 	}
@@ -130,7 +198,7 @@ void CPlayer::Update()
 		m_behavior = Behavior::CriticalReady;
 
 	//공격
-	if (BUTTONUP('X') /*&& 무기를 가지고 있을 때*/)
+	if (BUTTONUP('X') && GAME->GetAttack())//&& 무기를 가지고 있을 때
 	{
 		if (GAME->GetAttackTime() > 2.5)//크리티컬 공격
 		{
@@ -225,7 +293,7 @@ void CPlayer::Update()
 			m_behavior = Behavior::Walk;
 		m_vecMoveDir.x = -1;
 	}
-	else if (BUTTONSTAY(VK_RIGHT))
+	else if (BUTTONSTAY(VK_RIGHT) && !GAME->GetDamage())
 	{
 		if (GetGround() && !GAME->GetAttack())
 			m_behavior = Behavior::Walk;
@@ -262,7 +330,7 @@ void CPlayer::Update()
 	//게임매니저에게 플레이어 정보 전달
 	GAME->SetPlayerPos(m_vecPos);
 	GAME->SetPlayerDir(m_vecLookDir);
-
+	
 
 }
 
@@ -347,11 +415,11 @@ void CPlayer::CreateMissile()
 
 void CPlayer::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetObjName() == L"몬스터" && !GAME->GetDamage())
+	if (pOtherCollider->GetObjName() == L"Slug" && !GAME->GetDamage())
 	{
-		Logger::Debug(L"몬스터가 플레이어와 충돌진입");
-		GAME->SetAttackTime(0);
+		Logger::Debug(L"Slug가 플레이어와 충돌진입");
 		m_behavior = Behavior::Damage;
+		GAME->SetHp(-5);
 		GAME->SetDamage(true);
 	}
 }

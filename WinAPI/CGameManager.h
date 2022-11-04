@@ -38,6 +38,7 @@ private:
 	bool m_bDamage;
 
 	float m_fAttackTime;
+	float m_fDamageTime;
 
 
 private :
@@ -61,6 +62,9 @@ public :
 	float GetAttackTime() { return m_fAttackTime; }
 	void SetAttackTime(float time) { m_fAttackTime = time; }
 
+	float GetDamageTime() { return m_fDamageTime; }
+	void SetDamageTime(float time) { m_fDamageTime = time; }
+
 
 public :
 	Vector GetPlayerPos() { return m_vecPlayerPos; }
@@ -70,10 +74,10 @@ public :
 	void SetPlayerDir(Vector dir) { m_vecplayerDir = dir; }
 
 	int GetGold() { return gold; }
-	void SetGold(int gold) { this->gold = gold; }
+	void SetGold(int gold) { this->gold += gold; }
 
 	int GetHp() { return hp; }
-	void SetHp(int hp) { this->hp = hp; }
+	void SetHp(int hp) { this->hp += hp; }
 
 
 

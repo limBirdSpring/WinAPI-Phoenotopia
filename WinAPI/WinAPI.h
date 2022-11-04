@@ -83,5 +83,13 @@ enum class Behavior
 	Critical,
 	Damage,
 
-	Size,
+	Size
+};
+
+enum class MonsterBehavior
+{
+	Idle,
+	Walk,
+
+	Size
 };

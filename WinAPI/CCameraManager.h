@@ -26,6 +26,11 @@ private:
 	float			m_fTimeToZoom;		//카메라가 줌 하는데 남은시간
 	float			m_fTargetScale;		//카메라의 목표 스케일
 
+
+	Vector			m_vecMapSize;		//맵의 사이즈
+
+
+
 public:
 	Vector			GetLookAt();
 	Vector			GetTargetPos();
@@ -34,6 +39,9 @@ public:
 	// 오브젝트를 지정할 경우 목표위치는 목표 오브젝트의 위치로 지정됨
 	void SetTargetPos(Vector targetPos, float timeToTarget = 0);	// 카메라의 목표 위치 지정
 	void SetTargetObj(CGameObject* pTargetObj);						// 카메라의 목표 오브젝트 지정
+
+	void SetMapSize(Vector size) { m_vecMapSize = size; }
+
 
 	Vector WorldToScreenPoint(Vector worldPoint);	// 게임위치->화면위치
 	Vector ScreenToWorldPoint(Vector screenPoint);	// 화면위치->게임위치
