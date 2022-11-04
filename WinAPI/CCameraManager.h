@@ -40,7 +40,7 @@ public:
 	void SetTargetPos(Vector targetPos, float timeToTarget = 0);	// 카메라의 목표 위치 지정
 	void SetTargetObj(CGameObject* pTargetObj);						// 카메라의 목표 오브젝트 지정
 
-	void SetMapSize(Vector size) { m_vecMapSize = size; }
+	void SetMapSize(Vector size);
 
 
 	Vector WorldToScreenPoint(Vector worldPoint);	// 게임위치->화면위치

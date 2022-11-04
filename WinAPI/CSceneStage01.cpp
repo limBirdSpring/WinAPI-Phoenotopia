@@ -47,16 +47,19 @@ void CSceneStage01::Init()
 
 void CSceneStage01::Enter()
 {
-	CAMERA->ZoomInOut(2);
-	CAMERA->SetTargetObj(pPlayer);
-	CAMERA->FadeIn(0.25f);
-	LoadTile(GETPATH + L"Tile\\Stage01.tile");
+	//백그라운드 이미지 (루프) 클래스 구현 
 
-	m_pVillageImage = RESOURCE->LoadImg(L"Village", L"Image\\Village.png");
+	m_pVillageImage = RESOURCE->LoadImg(L"Panselo", L"Image\\Panselo.png");
 	CImageObject* pVillage = new CImageObject;
 	pVillage->SetImage(m_pVillageImage);
 	AddGameObject(pVillage);
 
+	CAMERA->SetMapSize(Vector(m_pVillageImage->GetWidth(), m_pVillageImage->GetHeight()));
+	CAMERA->ZoomInOut(2);
+	CAMERA->SetTargetObj(pPlayer);
+	
+	CAMERA->FadeIn(0.25f);
+	LoadTile(GETPATH + L"Tile\\Stage01.tile");
 }
 
 void CSceneStage01::Update()

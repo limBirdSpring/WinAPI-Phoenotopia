@@ -25,6 +25,7 @@
 #include <cassert>
 #include <queue>
 #include <stack>
+#include <algorithm>
 
 using namespace std;
 
@@ -47,6 +48,7 @@ using namespace FMOD;
 #include "SingleTon.h"
 #include "Struct.h"
 #include "Logger.h"
+#include "Function.h"
 
 // Engine 1.0
 #include "WinAPI.h"

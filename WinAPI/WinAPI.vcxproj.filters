@@ -216,6 +216,9 @@
     <ClInclude Include="CMonster.h">
       <Filter>GameObject\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="Function.h">
+      <Filter>Util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">

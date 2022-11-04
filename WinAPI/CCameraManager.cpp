@@ -53,6 +53,12 @@ void CCameraManager::SetTargetObj(CGameObject* pTargetObj)
 	m_pTargetObj = pTargetObj;
 }
 
+void CCameraManager::SetMapSize(Vector size)
+{
+
+	m_vecMapSize = size;
+}
+
 Vector CCameraManager::WorldToScreenPoint(Vector worldPoint)
 {
 
@@ -158,10 +164,18 @@ void CCameraManager::MoveToTarget()
 {
 	m_fTimeToTarget -= DT;
 
+	Vector zoom = Vector(WINSIZEX * 0.5 / m_fCameraScale, WINSIZEY * 0.5 / m_fCameraScale);
+
+	// 목표위치까지 남은 시간이 없을 경우 목적지로 현재위치 고정
 	if (m_fTimeToTarget <= 0)
 	{
-		// 목표위치까지 남은 시간이 없을 경우 목적지로 현재위치 고정
-		m_vecLookAt = m_vecTargetPos;
+		if (m_vecMapSize.x > 0)//맵이 지정됐을 경우
+		{
+			m_vecLookAt.x = clamp(m_vecTargetPos.x, zoom.x, m_vecMapSize.x - zoom.x);
+			m_vecLookAt.y = clamp(m_vecTargetPos.y, zoom.y, m_vecMapSize.y - zoom.y);
+		}
+		else
+			m_vecLookAt = m_vecTargetPos;
 	}
 	else
 	{
@@ -170,7 +184,8 @@ void CCameraManager::MoveToTarget()
 		// 이동거리 = 속력 * 시간
 		// 속력 = (도착지 - 출발지) / 소요시간
 		// 시간 = 프레임단위시간
-		m_vecLookAt += (m_vecTargetPos - m_vecLookAt) / m_fTimeToTarget * DT;
+		m_vecLookAt.x += (clamp(m_vecTargetPos.x, zoom.x, m_vecMapSize.x - zoom.x) - m_vecLookAt.x) / m_fTimeToTarget * DT;
+		m_vecLookAt.y += (clamp(m_vecTargetPos.y, zoom.y, m_vecMapSize.y - zoom.y) - m_vecLookAt.y) / m_fTimeToTarget * DT;
 	}
 }
 
