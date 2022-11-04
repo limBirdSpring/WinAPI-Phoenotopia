@@ -23,7 +23,7 @@ private:
 	CImage* m_pAttack2Image;
 	CImage* m_pCriticalImage;
 	CImage* m_pAttackReadyImage;
-
+	CImage* m_pDamageImage;
 
 
 

@@ -81,6 +81,7 @@ enum class Behavior
 	Attack2,
 	CriticalReady,
 	Critical,
+	Damage,
 
 	Size,
 };

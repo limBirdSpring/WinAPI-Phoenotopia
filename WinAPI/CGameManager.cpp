@@ -6,6 +6,7 @@ CGameManager::CGameManager()
 {
 	 m_bTalk = false;
 	 m_bAttack = false;
+	 m_bDamage = false;
 	 m_fAttackTime = 0;
 
 

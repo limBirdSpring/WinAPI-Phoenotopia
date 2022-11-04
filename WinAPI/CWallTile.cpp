@@ -53,7 +53,7 @@ void CWallTile::OnCollisionEnter(CCollider* pOther)
 void CWallTile::OnCollisionStay(CCollider* pOther)
 {
 	
-	// 땅타일과 충돌했을 경우 처리
+	
 }
 
 void CWallTile::OnCollisionExit(CCollider* pOther)

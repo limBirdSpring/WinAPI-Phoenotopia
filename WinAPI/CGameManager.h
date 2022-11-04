@@ -35,6 +35,8 @@ public:
 private:
 	bool m_bTalk;
 	bool m_bAttack;
+	bool m_bDamage;
+
 	float m_fAttackTime;
 
 
@@ -52,6 +54,9 @@ public :
 
 	bool GetAttack() { return m_bAttack; }
 	void SetAttack(bool attack) { m_bAttack = attack; }
+
+	bool GetDamage() { return m_bDamage; }
+	void SetDamage(bool damage) { m_bDamage = damage; }
 
 	float GetAttackTime() { return m_fAttackTime; }
 	void SetAttackTime(float time) { m_fAttackTime = time; }
