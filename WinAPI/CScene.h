@@ -7,6 +7,8 @@ class CCollisionManager;
 class CUIManager;
 class CGameObject;
 class CSound;
+class CImage;
+class CImageObject;
 
 class CScene
 {
@@ -52,6 +54,18 @@ private :
 
 public:
 	void LoadTile(const wstring& strPath);
+
+protected :
+	CImage* pMiddleImage;
+	CImageObject* pImagePrev;
+	CImageObject* pImageNext;
+	CImageObject* pImageMiddle;
+
+public :
+	void LoadMiddleground(CImage* img); //중간 배경 업로드
+	void LoadBackground(CImage* img); //뒤 배경 업로드
+
+	void GroundRender();
 
 protected:
 	list<CGameObject*>& GetLayerObject(Layer layer);

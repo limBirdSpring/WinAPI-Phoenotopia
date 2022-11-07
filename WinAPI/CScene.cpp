@@ -7,11 +7,21 @@
 #include "CGroundTile.h"
 #include "CPlatformTile.h"
 #include "CWallTile.h"
+#include "CImageObject.h"
+#include "CImage.h"
+#include "CResourceManager.h"
+#include "CEventManager.h"
+
+#include "CGameManager.h"
 
 CScene::CScene()
 {
 	m_iTileSizeX = 0;
 	m_iTileSizeY = 0;
+
+	pImagePrev = nullptr;
+	pImageNext=nullptr;
+	pImageMiddle=nullptr;
 }
 
 CScene::~CScene()
@@ -93,16 +103,23 @@ void CScene::SceneRender()
 	// 씬 내에 모든 게임오브젝트 표현갱신
 	for (int layer = 0; layer < (int)Layer::Size; layer++)
 	{
-		if ((int)Layer::Tile == layer)
+		if ((int)Layer::MiddleGround == layer)
+		{
+			GroundRender();
+			continue;
+		}
+		else if ((int)Layer::Tile == layer)
 		{
 			TileRender();
 			continue;
 		}
+
 		for (CGameObject* pGameObject : m_listObj[layer])
 		{
 			pGameObject->GameObjectRender();
 		}
 	}
+
 
 	// 상속한 자식 표현갱신
 	Render();
@@ -209,6 +226,78 @@ void CScene::LoadTile(const wstring& strPath)
 
 	fclose(pFile);
 }
+
+void CScene::LoadMiddleground(CImage* img)
+{
+	pMiddleImage = img;
+
+	pImageMiddle = new CImageObject;
+	pImageMiddle->SetImage(img);
+	pImageMiddle->SetSpeed(0);
+	pImageMiddle->SetPos(pImageMiddle->GetPos().x - pMiddleImage->GetWidth(), 0);
+	AddGameObject(pImageMiddle);
+
+
+	pImagePrev = new CImageObject;
+	pImagePrev->SetImage(img);
+	pImagePrev->SetSpeed(0);
+	pImagePrev->SetPos(pImageMiddle->GetPos().x - pMiddleImage->GetWidth() + 1, 0);
+	AddGameObject(pImagePrev);
+
+	
+	pImageNext = new CImageObject;
+	pImageNext->SetImage(img);
+	pImageNext->SetSpeed(0);
+	pImageNext->SetPos(pImageMiddle->GetPos().x + pMiddleImage->GetWidth() - 1, 0);
+	AddGameObject(pImageNext);
+
+
+}
+void CScene::LoadBackground(CImage* img)
+{
+	
+}
+
+void CScene::GroundRender()
+{
+
+	if (pMiddleImage != nullptr)
+	{
+		
+		pImageMiddle->SetPos((CAMERA->GetLookAt().x - (pMiddleImage->GetWidth() * 0.5))/3, 0);
+		pImagePrev->SetPos(pImageMiddle->GetPos().x - pMiddleImage->GetWidth()+1, 0);
+		pImageNext->SetPos(pImageMiddle->GetPos().x + pMiddleImage->GetWidth()-1, 0);
+
+		Vector startCameraPos = Vector(CAMERA->GetLookAt().x - (WINSIZEX * 0.5), CAMERA->GetLookAt().y - (WINSIZEY * 0.5));
+		Vector endCameraPos = Vector(CAMERA->GetLookAt().x + (WINSIZEX * 0.5), CAMERA->GetLookAt().y + (WINSIZEY * 0.5));
+
+		if (pImagePrev->GetPos().x + pMiddleImage->GetWidth() < startCameraPos.x)
+		{
+			pImagePrev->SetPos(pImageNext->GetPos().x + pMiddleImage->GetWidth(), 0);
+
+			CImageObject* temp = new CImageObject;
+			temp = pImageNext;
+			pImageNext = pImagePrev;
+			pImagePrev = pImageMiddle;
+			pImageMiddle = temp;
+
+			//delete temp;
+		}
+		else if (pImageNext->GetPos().x > endCameraPos.x)
+		{
+			pImageNext->SetPos(pImagePrev->GetPos().x - pMiddleImage->GetWidth(), 0);
+
+			CImageObject* temp = new CImageObject;
+			temp = pImagePrev;
+			pImagePrev = pImageNext;
+			pImageNext = pImageMiddle;
+			pImageMiddle = temp;
+
+			//delete temp;
+		}
+	}
+}
+
 
 list<CGameObject*>& CScene::GetLayerObject(Layer layer)
 {

@@ -29,8 +29,8 @@ void CSceneTitle::Enter()
 	CAMERA->FadeIn(0.25f);
 	CAMERA->ZoomInOut(1);
 
-	pLoad_BGM = RESOURCE->FindSound(L"Title");
-	SOUND->Play(pLoad_BGM, 1.f, true);
+	//pLoad_BGM = RESOURCE->FindSound(L"Title");
+	//SOUND->Play(pLoad_BGM, 1.f, true);
 	
 	pLoad_Screen = RESOURCE->LoadImg(L"Load_Screen", L"Image\\Load_Screen.png");
 	CAMERA->SetMapSize(Vector(0, 0));
@@ -44,18 +44,18 @@ void CSceneTitle::Update()
 	}
 	if (BUTTONDOWN(VK_SPACE))
 	{
-		SOUND->FadeOut(pLoad_BGM, 3.f, 0);
+		//SOUND->FadeOut(pLoad_BGM, 3.f, 0);
 		CAMERA->FadeOut(0.25f);
-		DELAYCHANGESCENE(GroupScene::Stage01, 2.f);
+		DELAYCHANGESCENE(GroupScene::Stage01, 0.25f);
 	}
-	if (BUTTONDOWN(VK_F2))
-	{
-		SOUND->FadeOut(pLoad_BGM, 2, 0);
-	}
-	if (BUTTONDOWN(VK_F3))
-	{
-		SOUND->FadeIn(pLoad_BGM, 2, 1, true);
-	}
+	//if (BUTTONDOWN(VK_F2))
+	//{
+	//	SOUND->FadeOut(pLoad_BGM, 2, 0);
+	//}
+	//if (BUTTONDOWN(VK_F3))
+	//{
+	//	SOUND->FadeIn(pLoad_BGM, 2, 1, true);
+	//}
 }
 
 void CSceneTitle::Render()
