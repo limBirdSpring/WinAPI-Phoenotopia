@@ -91,7 +91,7 @@ void CPlayer::Init()
 	m_pAnimator->Play(L"Gail_Standing_Right", false);
 	AddComponent(m_pAnimator);
 
-	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
+	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 5, m_vecScale.y - 8), Vector(0, 4));
 	AddGravity(1);
 }
 

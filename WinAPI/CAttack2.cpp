@@ -23,12 +23,18 @@ CAttack2::~CAttack2()
 
 void CAttack2::Init()
 {
-	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
+	
 
 }
 
 void  CAttack2::Update()
 {
+	if (m_fTime > 0.3)
+	{
+		RemoveCollider();
+		AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
+	}
+
 	Vector pos = GAME->GetPlayerPos();
 
 	if (GAME->GetPlayerDir().x == -1)

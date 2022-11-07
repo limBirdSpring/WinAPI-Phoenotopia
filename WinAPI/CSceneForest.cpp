@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "CSceneStage01.h"
+#include "CSceneForest.h"
 
 #include "WinAPI.h"
 #include "CInputManager.h"
@@ -19,24 +19,24 @@
 #include "CImageObject.h"
 #include "CSoundManager.h"
 
-CSceneStage01::CSceneStage01()
+CSceneForest::CSceneForest()
 {
 	pPlayer = nullptr;
-	m_pVillageImage = nullptr;
+	m_pImage = nullptr;
 }
 
-CSceneStage01::~CSceneStage01()
+CSceneForest::~CSceneForest()
 {
 }
 
-void CSceneStage01::Init()
+void CSceneForest::Init()
 {
 	pPlayer = new CPlayer();
 	pPlayer->SetPos(200, WINSIZEY * 0.5f);
 	AddGameObject(pPlayer);
 
 	CSlug* pSlug = new CSlug();
-	pSlug->SetPos(300, WINSIZEY * 0.5f-10);
+	pSlug->SetPos(300, WINSIZEY * 0.5f - 10);
 	AddGameObject(pSlug);
 
 	CCameraController* pCamController = new CCameraController;
@@ -46,18 +46,18 @@ void CSceneStage01::Init()
 
 }
 
-void CSceneStage01::Enter()
+void CSceneForest::Enter()
 {
 	//백그라운드 이미지 (루프) 클래스 구현 
 
 	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
 	//SOUND->Play(pLoad_BGM, 1, true);
 
-	m_pVillageImage = RESOURCE->LoadImg(L"Panselo_Back", L"Image\\Panselo_Back.png");
-	LoadBackground(m_pVillageImage);
+	m_pImage = RESOURCE->LoadImg(L"Forest_Back", L"Image\\Forest_Back.png");
+	LoadBackground(m_pImage);
 
-	m_pVillageImage = RESOURCE->LoadImg(L"Panselo_Middle", L"Image\\Panselo_Middle.png");
-	LoadMiddleground(m_pVillageImage);
+	m_pImage = RESOURCE->LoadImg(L"Forest_Middle", L"Image\\Forest_Middle.png");
+	LoadMiddleground(m_pImage);
 
 	//m_pVillageImage = RESOURCE->LoadImg(L"Cloud", L"Image\\Cloud.png");
 	//CImageObject* pVillage2 = new CImageObject;
@@ -65,20 +65,20 @@ void CSceneStage01::Enter()
 	//pVillage2->SetImage(m_pVillageImage);
 	//AddGameObject(pVillage2);
 
-	m_pVillageImage = RESOURCE->LoadImg(L"Panselo", L"Image\\Panselo.png");
-	CImageObject* pVillage = new CImageObject;
-	pVillage->SetImage(m_pVillageImage);
-	AddGameObject(pVillage);
+	m_pImage = RESOURCE->LoadImg(L"Forest", L"Image\\Forest.png");
+	CImageObject* pForest = new CImageObject;
+	pForest->SetImage(m_pImage);
+	AddGameObject(pForest);
 
-	CAMERA->SetMapSize(Vector(m_pVillageImage->GetWidth(), m_pVillageImage->GetHeight()));
+	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));
 	CAMERA->ZoomInOut(2);
 	CAMERA->SetTargetObj(pPlayer);
-	
+
 	CAMERA->FadeIn(0.25f);
-	LoadTile(GETPATH + L"Tile\\Stage01.tile");
+	LoadTile(GETPATH + L"Tile\\Forest.tile");
 }
 
-void CSceneStage01::Update()
+void CSceneForest::Update()
 {
 	if (BUTTONDOWN(VK_ESCAPE))
 	{
@@ -92,21 +92,16 @@ void CSceneStage01::Update()
 		pSlug->SetPos(300, WINSIZEY * 0.5f);
 		AddGameObject(pSlug);
 	}
-
-	if (BUTTONDOWN(VK_F2))
-	{
-		DELAYCHANGESCENE(GroupScene::Forest, 0.25f);
-	}
 }
 
-void CSceneStage01::Render()
+void CSceneForest::Render()
 {
 }
 
-void CSceneStage01::Exit()
+void CSceneForest::Exit()
 {
 }
 
-void CSceneStage01::Release()
+void CSceneForest::Release()
 {
 }

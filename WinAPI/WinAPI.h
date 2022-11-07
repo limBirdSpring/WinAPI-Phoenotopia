@@ -31,6 +31,8 @@ enum class GroupScene
 
 	Stage01,
 
+	Forest,
+
 	Size,
 };
 
@@ -44,6 +46,7 @@ enum class Layer
 	BackGround,
 	MiddleGround,
 	Tile,
+	Things,
 	Player,
 	Missile,
 	Monster,

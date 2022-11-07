@@ -61,6 +61,9 @@
     <Filter Include="GameObject\Monster\Monster Status">
       <UniqueIdentifier>{776bed23-05fc-4490-8029-8999befcb623}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Things">
+      <UniqueIdentifier>{e658d30d-464a-4c54-91e4-b05463ff1430}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -228,6 +231,12 @@
     <ClInclude Include="CStatusFollow.h">
       <Filter>GameObject\Monster\Monster Status</Filter>
     </ClInclude>
+    <ClInclude Include="CSceneForest.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CThings.h">
+      <Filter>GameObject\Things</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -373,6 +382,12 @@
     </ClCompile>
     <ClCompile Include="CStatusFollow.cpp">
       <Filter>GameObject\Monster\Monster Status</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneForest.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CThings.cpp">
+      <Filter>GameObject\Things</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
