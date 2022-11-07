@@ -299,25 +299,22 @@ void CScene::MiddleGroundRender()
 		{
 			pImagePrev->SetPos(pImageNext->GetPos().x + pMiddleImage->GetWidth(), 0);
 
-			CImageObject* temp = new CImageObject;
+			CImageObject* temp;
 			temp = pImageNext;
 			pImageNext = pImagePrev;
 			pImagePrev = pImageMiddle;
 			pImageMiddle = temp;
-
-			//delete temp;
 		}
 		else if (pImageNext->GetPos().x > endCameraPos.x)
 		{
 			pImageNext->SetPos(pImagePrev->GetPos().x - pMiddleImage->GetWidth(), 0);
 
-			CImageObject* temp = new CImageObject;
+			CImageObject* temp;
 			temp = pImagePrev;
 			pImagePrev = pImageNext;
 			pImageNext = pImageMiddle;
 			pImageMiddle = temp;
 
-			//delete temp;
 		}
 	}
 }
@@ -338,25 +335,25 @@ void CScene::BackGroundRender()
 		{
 			pBImagePrev->SetPos(pBImageNext->GetPos().x + pBackImage->GetWidth(), 0);
 
-			CImageObject* temp = new CImageObject;
+			CImageObject* temp;
 			temp = pBImageNext;
 			pBImageNext = pBImagePrev;
 			pBImagePrev = pBImageMiddle;
 			pBImageMiddle = temp;
 
-			//delete temp;
+
 		}
 		else if (pBImageNext->GetPos().x > endCameraPos.x)
 		{
 			pBImageNext->SetPos(pBImagePrev->GetPos().x - pBackImage->GetWidth(), 0);
 
-			CImageObject* temp = new CImageObject;
+			CImageObject* temp;
 			temp = pBImagePrev;
 			pBImagePrev = pBImageNext;
 			pBImageNext = pBImageMiddle;
 			pBImageMiddle = temp;
 
-			//delete temp;
+
 		}
 	}
 }

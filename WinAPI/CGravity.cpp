@@ -30,8 +30,8 @@ void CGravity::PhysicsUpdate()
 		GetOwner()->SetPos(GetOwner()->GetPos().x, GetOwner()->GetPos().y + DT * m_fVelocity);
 		m_fVelocity += 450 * DT;
 
-		if (m_fVelocity > 1000)
-			m_fVelocity = 1000;
+		if (m_fVelocity > 500)
+			m_fVelocity = 500;
 	}
 
 }

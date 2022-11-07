@@ -46,8 +46,10 @@ void CPlatformTile::OnCollisionEnter(CCollider* pOther)
 	if (pOther->GetObjName() == L"플레이어")
 	{
 		if (0 < pOther->GetOwner()->GetGravity() &&
-			((pOther->GetOwner()->GetPos().y) + (pOther->GetOwner()->GetScale().y * 0.5) <= this->GetPos().y - (this->GetScale().y * 0.5) + 10))//플레이어가 바닥보다 높은 위치에 있어야함
+			((pOther->GetOwner()->GetPos().y) + (pOther->GetOwner()->GetScale().y * 0.5) < this->GetPos().y + this->GetScale().y*0.5))//플레이어가 바닥보다 높은 위치에 있어야함
 		{
+			pOther->GetOwner()->SetPos(pOther->GetOwner()->GetPos().x, this->GetPos().y - (this->GetScale().y) + 3);
+
 			int platform = pOther->GetOwner()->GetPlatform();
 			pOther->GetOwner()->SetPlatform(++platform);
 

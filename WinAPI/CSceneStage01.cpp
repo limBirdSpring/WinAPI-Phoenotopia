@@ -59,6 +59,12 @@ void CSceneStage01::Enter()
 	m_pVillageImage = RESOURCE->LoadImg(L"Panselo_Middle", L"Image\\Panselo_Middle.png");
 	LoadMiddleground(m_pVillageImage);
 
+	//m_pVillageImage = RESOURCE->LoadImg(L"Cloud", L"Image\\Cloud.png");
+	//CImageObject* pVillage2 = new CImageObject;
+	//pVillage2->SetSpeed(1);
+	//pVillage2->SetImage(m_pVillageImage);
+	//AddGameObject(pVillage2);
+
 	m_pVillageImage = RESOURCE->LoadImg(L"Panselo", L"Image\\Panselo.png");
 	CImageObject* pVillage = new CImageObject;
 	pVillage->SetImage(m_pVillageImage);

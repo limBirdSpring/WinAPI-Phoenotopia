@@ -29,7 +29,7 @@ void CTimeManager::Update()
 	chrono::duration<float> elapsed = curTime - prevTime;
 
 	m_fDT = elapsed.count();
-	if (m_fDT > 0.1f) m_fDT = 0.1f;
+	if (m_fDT > 0.01f) m_fDT = 0.01f;
 	prevTime = curTime;
 
 	// 1초가 걸릴때까지 반복한 횟수가 초당프레임수
