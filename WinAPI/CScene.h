@@ -61,11 +61,17 @@ protected :
 	CImageObject* pImageNext;
 	CImageObject* pImageMiddle;
 
+	CImage* pBackImage;
+	CImageObject* pBImagePrev;
+	CImageObject* pBImageNext;
+	CImageObject* pBImageMiddle;
+
 public :
 	void LoadMiddleground(CImage* img); //중간 배경 업로드
 	void LoadBackground(CImage* img); //뒤 배경 업로드
 
-	void GroundRender();
+	void MiddleGroundRender();
+	void BackGroundRender();
 
 protected:
 	list<CGameObject*>& GetLayerObject(Layer layer);

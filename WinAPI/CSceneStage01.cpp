@@ -54,6 +54,9 @@ void CSceneStage01::Enter()
 	//SOUND->Play(pLoad_BGM, 1, true);
 
 	m_pVillageImage = RESOURCE->LoadImg(L"Panselo_Back", L"Image\\Panselo_Back.png");
+	LoadBackground(m_pVillageImage);
+
+	m_pVillageImage = RESOURCE->LoadImg(L"Panselo_Middle", L"Image\\Panselo_Middle.png");
 	LoadMiddleground(m_pVillageImage);
 
 	m_pVillageImage = RESOURCE->LoadImg(L"Panselo", L"Image\\Panselo.png");

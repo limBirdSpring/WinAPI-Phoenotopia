@@ -41,6 +41,7 @@ enum class GroupScene
 enum class Layer
 {
 	Default,
+	BackGround,
 	MiddleGround,
 	Tile,
 	Player,

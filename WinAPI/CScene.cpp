@@ -22,7 +22,12 @@ CScene::CScene()
 	pImagePrev = nullptr;
 	pImageNext=nullptr;
 	pImageMiddle=nullptr;
+
+	pBImagePrev = nullptr;
+	pBImageNext = nullptr;
+	pBImageMiddle = nullptr;
 }
+
 
 CScene::~CScene()
 {
@@ -105,7 +110,12 @@ void CScene::SceneRender()
 	{
 		if ((int)Layer::MiddleGround == layer)
 		{
-			GroundRender();
+			MiddleGroundRender();
+			continue;
+		}
+		else if ((int)Layer::BackGround == layer)
+		{
+			BackGroundRender();
 			continue;
 		}
 		else if ((int)Layer::Tile == layer)
@@ -233,40 +243,54 @@ void CScene::LoadMiddleground(CImage* img)
 
 	pImageMiddle = new CImageObject;
 	pImageMiddle->SetImage(img);
-	pImageMiddle->SetSpeed(0);
 	pImageMiddle->SetPos(pImageMiddle->GetPos().x - pMiddleImage->GetWidth(), 0);
 	AddGameObject(pImageMiddle);
 
 
 	pImagePrev = new CImageObject;
 	pImagePrev->SetImage(img);
-	pImagePrev->SetSpeed(0);
-	pImagePrev->SetPos(pImageMiddle->GetPos().x - pMiddleImage->GetWidth() + 1, 0);
+	pImagePrev->SetPos(pImageMiddle->GetPos().x - pMiddleImage->GetWidth()+2, 0);
 	AddGameObject(pImagePrev);
 
 	
 	pImageNext = new CImageObject;
 	pImageNext->SetImage(img);
-	pImageNext->SetSpeed(0);
-	pImageNext->SetPos(pImageMiddle->GetPos().x + pMiddleImage->GetWidth() - 1, 0);
+	pImageNext->SetPos(pImageMiddle->GetPos().x + pMiddleImage->GetWidth()-2, 0);
 	AddGameObject(pImageNext);
 
 
 }
 void CScene::LoadBackground(CImage* img)
 {
-	
+	pBackImage = img;
+
+	pBImageMiddle = new CImageObject;
+	pBImageMiddle->SetImage(img);
+	pBImageMiddle->SetPos(pBImageMiddle->GetPos().x - pBackImage->GetWidth(), 0);
+	AddGameObject(pBImageMiddle);
+
+
+	pBImagePrev = new CImageObject;
+	pBImagePrev->SetImage(img);
+	pBImagePrev->SetPos(pBImageMiddle->GetPos().x - pBackImage->GetWidth() + 2, 0);
+	AddGameObject(pBImagePrev);
+
+
+	pBImageNext = new CImageObject;
+	pBImageNext->SetImage(img);
+	pBImageNext->SetPos(pBImageMiddle->GetPos().x + pBackImage->GetWidth() - 2, 0);
+	AddGameObject(pBImageNext);
 }
 
-void CScene::GroundRender()
+void CScene::MiddleGroundRender()
 {
 
 	if (pMiddleImage != nullptr)
 	{
 		
-		pImageMiddle->SetPos((CAMERA->GetLookAt().x - (pMiddleImage->GetWidth() * 0.5))/3, 0);
-		pImagePrev->SetPos(pImageMiddle->GetPos().x - pMiddleImage->GetWidth()+1, 0);
-		pImageNext->SetPos(pImageMiddle->GetPos().x + pMiddleImage->GetWidth()-1, 0);
+		pImageMiddle->SetPos((CAMERA->GetLookAt().x - (pMiddleImage->GetWidth() * 0.5))/2.5, 0);
+		pImagePrev->SetPos(pImageMiddle->GetPos().x - pMiddleImage->GetWidth()+2, 0);
+		pImageNext->SetPos(pImageMiddle->GetPos().x + pMiddleImage->GetWidth()-2, 0);
 
 		Vector startCameraPos = Vector(CAMERA->GetLookAt().x - (WINSIZEX * 0.5), CAMERA->GetLookAt().y - (WINSIZEY * 0.5));
 		Vector endCameraPos = Vector(CAMERA->GetLookAt().x + (WINSIZEX * 0.5), CAMERA->GetLookAt().y + (WINSIZEY * 0.5));
@@ -292,6 +316,45 @@ void CScene::GroundRender()
 			pImagePrev = pImageNext;
 			pImageNext = pImageMiddle;
 			pImageMiddle = temp;
+
+			//delete temp;
+		}
+	}
+}
+
+void CScene::BackGroundRender()
+{
+	if (pBackImage != nullptr)
+	{
+
+		pBImageMiddle->SetPos((CAMERA->GetLookAt().x - (pBackImage->GetWidth() * 0.5)) / 3, 0);
+		pBImagePrev->SetPos(pBImageMiddle->GetPos().x - pBackImage->GetWidth() + 2, 0);
+		pBImageNext->SetPos(pBImageMiddle->GetPos().x + pBackImage->GetWidth() - 2, 0);
+
+		Vector startCameraPos = Vector(CAMERA->GetLookAt().x - (WINSIZEX * 0.5), CAMERA->GetLookAt().y - (WINSIZEY * 0.5));
+		Vector endCameraPos = Vector(CAMERA->GetLookAt().x + (WINSIZEX * 0.5), CAMERA->GetLookAt().y + (WINSIZEY * 0.5));
+
+		if (pBImagePrev->GetPos().x + pBackImage->GetWidth() < startCameraPos.x)
+		{
+			pBImagePrev->SetPos(pBImageNext->GetPos().x + pBackImage->GetWidth(), 0);
+
+			CImageObject* temp = new CImageObject;
+			temp = pBImageNext;
+			pBImageNext = pBImagePrev;
+			pBImagePrev = pBImageMiddle;
+			pBImageMiddle = temp;
+
+			//delete temp;
+		}
+		else if (pBImageNext->GetPos().x > endCameraPos.x)
+		{
+			pBImageNext->SetPos(pBImagePrev->GetPos().x - pBackImage->GetWidth(), 0);
+
+			CImageObject* temp = new CImageObject;
+			temp = pBImagePrev;
+			pBImagePrev = pBImageNext;
+			pBImageNext = pBImageMiddle;
+			pBImageMiddle = temp;
 
 			//delete temp;
 		}
