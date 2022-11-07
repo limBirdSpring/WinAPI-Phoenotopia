@@ -21,7 +21,6 @@ CAttack::~CAttack()
 
 void CAttack::Init()
 {
-	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(-10, 0));
 }
 
 void  CAttack::Update()

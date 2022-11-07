@@ -6,6 +6,7 @@ class CEventManager;
 class CCollisionManager;
 class CUIManager;
 class CGameObject;
+class CSound;
 
 class CScene
 {
@@ -16,6 +17,8 @@ class CScene
 protected:
 	list<CGameObject*> m_listObj[(int)Layer::Size];
 
+	CSound* pLoad_BGM;//씬 배경음악
+
 public:
 	CScene();
 	virtual ~CScene();
@@ -24,7 +27,7 @@ protected:
 	UINT m_iTileSizeX;
 	UINT m_iTileSizeY;
 
-private:
+private :
 	// 씬 부모 전용 함수들 :
 	// 씬에 있는 모든 게임오브젝트들을 갱신
 	void SceneInit();

@@ -33,10 +33,10 @@ void CCore::Init()
 	EVENT->Init();
 	COLLISION->Init();
 	PATH->Init();
+	SOUND->Init();
 	RESOURCE->Init();
 	CAMERA->Init();
 	UI->Init();
-	SOUND->Init();
 	GAME->Init();
 
 	SCENE->Init();

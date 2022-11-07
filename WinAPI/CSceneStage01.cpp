@@ -17,6 +17,7 @@
 #include "CResourceManager.h"
 #include "CImage.h"
 #include "CImageObject.h"
+#include "CSoundManager.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -49,14 +50,13 @@ void CSceneStage01::Enter()
 {
 	//백그라운드 이미지 (루프) 클래스 구현 
 
-
-
+	pLoad_BGM = RESOURCE->FindSound(L"Panselo");
+	SOUND->Play(pLoad_BGM, 1, true);
 
 	m_pVillageImage = RESOURCE->LoadImg(L"Panselo_Back", L"Image\\Panselo_Back.png");
 	CImageObject* pVillageBack = new CImageObject;
 	pVillageBack->SetImage(m_pVillageImage);
 	pVillageBack->SetSpeed(0);
-	pVillageBack->SetDir(Vector(1, 0));
 	AddGameObject(pVillageBack);
 
 	m_pVillageImage = RESOURCE->LoadImg(L"Panselo", L"Image\\Panselo.png");

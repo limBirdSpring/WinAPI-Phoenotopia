@@ -29,7 +29,7 @@ void CSceneTitle::Enter()
 	CAMERA->FadeIn(0.25f);
 	CAMERA->ZoomInOut(1);
 
-	pLoad_BGM = RESOURCE->LoadSound(L"Title", L"Sound\\Title.mp3");
+	pLoad_BGM = RESOURCE->FindSound(L"Title");
 	SOUND->Play(pLoad_BGM, 1.f, true);
 	
 	pLoad_Screen = RESOURCE->LoadImg(L"Load_Screen", L"Image\\Load_Screen.png");
@@ -44,8 +44,9 @@ void CSceneTitle::Update()
 	}
 	if (BUTTONDOWN(VK_SPACE))
 	{
+		SOUND->FadeOut(pLoad_BGM, 3.f, 0);
 		CAMERA->FadeOut(0.25f);
-		DELAYCHANGESCENE(GroupScene::Stage01, 0.25f);
+		DELAYCHANGESCENE(GroupScene::Stage01, 2.f);
 	}
 	if (BUTTONDOWN(VK_F2))
 	{
@@ -59,7 +60,6 @@ void CSceneTitle::Update()
 
 void CSceneTitle::Render()
 {
-
 
 	RENDER->Text(L"press space to start",
 		WINSIZEX * 0.5f - 100,

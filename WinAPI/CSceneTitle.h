@@ -13,7 +13,7 @@ public:
 private:
 
 	CImage* pLoad_Screen;
-	CSound* pLoad_BGM;
+
 
 	void Init()		override;
 	void Enter()	override;

@@ -27,6 +27,8 @@ public:
 private:
 	void Init();
 	void Release();
+
+
 };
 
 #define RESOURCE	CResourceManager::GetInstance()
