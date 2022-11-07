@@ -7,6 +7,8 @@
 #include "CCollider.h"
 #include "CGameManager.h"
 
+//공중공격
+
 CAttack2::CAttack2()
 {
 	m_vecScale = Vector(30, 30);

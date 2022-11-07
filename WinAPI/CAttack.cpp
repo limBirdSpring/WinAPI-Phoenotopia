@@ -9,7 +9,7 @@
 
 CAttack::CAttack()
 {
-	m_vecScale = Vector(30, 18);
+	m_vecScale = Vector(2, 18);
 	m_fTime = 0;
 	m_layer = Layer::Missile;
 	m_strName = L"АјАн";
@@ -21,12 +21,18 @@ CAttack::~CAttack()
 
 void CAttack::Init()
 {
-	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
-	
+	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(-10, 0));
 }
 
 void  CAttack::Update()
 {
+	if (m_fTime > 0.2)
+	{
+		m_vecScale.x = 30;
+		RemoveCollider();
+		AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
+	}
+
 	Vector pos = GAME->GetPlayerPos();
 
 	if (GAME->GetPlayerDir().x == -1)

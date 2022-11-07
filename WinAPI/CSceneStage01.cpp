@@ -49,6 +49,13 @@ void CSceneStage01::Enter()
 {
 	//백그라운드 이미지 (루프) 클래스 구현 
 
+	m_pVillageImage = RESOURCE->LoadImg(L"Panselo_Back", L"Image\\Panselo_Back.png");
+	CImageObject* pVillageBack = new CImageObject;
+	pVillageBack->SetImage(m_pVillageImage);
+	pVillageBack->SetSpeed(0);
+	pVillageBack->SetDir(Vector(1, 0));
+	AddGameObject(pVillageBack);
+
 	m_pVillageImage = RESOURCE->LoadImg(L"Panselo", L"Image\\Panselo.png");
 	CImageObject* pVillage = new CImageObject;
 	pVillage->SetImage(m_pVillageImage);

@@ -12,9 +12,15 @@ public:
 private:
 	CImage* m_pImage;
 
+	float m_fSpeed;
+
 public:
 	CImage* GetIamge();
 	void SetImage(CImage* pImage);
+
+	void SetSpeed(float speed) { m_fSpeed = speed; }
+	float GetSpeed() { return m_fSpeed; }
+
 
 private:
 	void Init() override;

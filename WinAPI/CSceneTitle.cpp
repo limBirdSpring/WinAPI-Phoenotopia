@@ -19,7 +19,7 @@ CSceneTitle::~CSceneTitle()
 
 void CSceneTitle::Init()
 {
-	pLoad_Screen = RESOURCE->LoadImg(L"Load_Screen", L"Image\\Load_Screen.png");
+	
 	
 }
 
@@ -27,6 +27,8 @@ void CSceneTitle::Enter()
 {
 	CAMERA->FadeIn(0.25f);
 	CAMERA->ZoomInOut(1);
+	pLoad_Screen = RESOURCE->LoadImg(L"Load_Screen", L"Image\\Load_Screen.png");
+	CAMERA->SetMapSize(Vector(0, 0));
 }
 
 void CSceneTitle::Update()
