@@ -2,6 +2,7 @@
 #include "CScene.h"
 
 class CImage;
+class CSound;
 
 class CSceneTitle : public CScene
 {
@@ -12,6 +13,7 @@ public:
 private:
 
 	CImage* pLoad_Screen;
+	CSound* pLoad_BGM;
 
 	void Init()		override;
 	void Enter()	override;

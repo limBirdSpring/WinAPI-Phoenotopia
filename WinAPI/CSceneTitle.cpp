@@ -8,6 +8,7 @@
 #include "CCameraManager.h"
 #include "CImage.h"
 #include "CResourceManager.h"
+#include "CSoundManager.h"
 
 CSceneTitle::CSceneTitle()
 {
@@ -27,6 +28,10 @@ void CSceneTitle::Enter()
 {
 	CAMERA->FadeIn(0.25f);
 	CAMERA->ZoomInOut(1);
+
+	pLoad_BGM = RESOURCE->LoadSound(L"Title", L"Sound\\Title.mp3");
+	SOUND->Play(pLoad_BGM, 1.f, true);
+	
 	pLoad_Screen = RESOURCE->LoadImg(L"Load_Screen", L"Image\\Load_Screen.png");
 	CAMERA->SetMapSize(Vector(0, 0));
 }
@@ -41,6 +46,14 @@ void CSceneTitle::Update()
 	{
 		CAMERA->FadeOut(0.25f);
 		DELAYCHANGESCENE(GroupScene::Stage01, 0.25f);
+	}
+	if (BUTTONDOWN(VK_F2))
+	{
+		SOUND->FadeOut(pLoad_BGM, 2, 0);
+	}
+	if (BUTTONDOWN(VK_F3))
+	{
+		SOUND->FadeIn(pLoad_BGM, 2, 1, true);
 	}
 }
 
@@ -60,6 +73,7 @@ void CSceneTitle::Render()
 
 void CSceneTitle::Exit()
 {
+	
 }
 
 void CSceneTitle::Release()

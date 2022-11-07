@@ -14,6 +14,13 @@ private:
 private:
 	FMOD::System* m_pSystem;	// 사운드 시스템
 
+	float m_fStartVolume;
+	float m_fEndVolume;
+	float m_fTime;
+	float m_fFadeSpeed;
+	float m_fFadeTime;
+	CSound* pFadeSound;
+
 public:
 	System* GetSystem();
 
@@ -21,6 +28,8 @@ public:
 	void Stop(CSound* pSound);
 	void Pause(CSound* pSound);
 	void Resume(CSound* pSound);
+	void FadeOut(CSound* pSound, float time, float volume);
+	void FadeIn(CSound* pSound, float time, float volume = 1.f, bool loop = false);
 
 private:
 	void Init();

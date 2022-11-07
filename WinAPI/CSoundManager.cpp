@@ -2,10 +2,17 @@
 #include "CSoundManager.h"
 
 #include "CSound.h"
+#include "CTimeManager.h"
 
 CSoundManager::CSoundManager()
 {
 	m_pSystem = nullptr;
+	m_fStartVolume = 0;
+	m_fEndVolume =0;
+	m_fFadeSpeed = 0;
+	m_fFadeTime = 0;
+	m_fTime = 0;
+	pFadeSound = nullptr;
 }
 
 CSoundManager::~CSoundManager()
@@ -72,6 +79,29 @@ void CSoundManager::Resume(CSound* pSound)
 	assert(FMOD_OK == result && L"Resume failed");
 }
 
+void CSoundManager::FadeOut(CSound* pSound, float time, float volume)
+{
+	if (!pSound->IsPlaying())
+		return;
+
+	pSound->m_pChannel->getVolume(&m_fStartVolume); //원래 볼륨 얻기
+
+	m_fFadeSpeed = (m_fStartVolume - volume) / (time / DT);
+	
+	m_fEndVolume = volume;
+	pFadeSound = pSound;
+	m_fFadeTime = time;
+	m_fTime = 0;
+
+	
+}
+
+void CSoundManager::FadeIn(CSound* pSound, float time, float volume, bool loop)
+{
+	Play(pSound, 0.1f, loop);
+	FadeOut(pSound, time, volume);
+}
+
 void CSoundManager::Init()
 {
 	// 사운드 시스템 생성
@@ -87,6 +117,27 @@ void CSoundManager::Update()
 {
 	FMOD_RESULT result = m_pSystem->update();
 	assert(FMOD_OK == result && L"Update sound system falied");
+
+	if (pFadeSound != nullptr)//페이드
+	{
+		m_fStartVolume -= m_fFadeSpeed;
+		pFadeSound->m_pChannel->setVolume(m_fStartVolume);
+		
+		m_fTime += DT;
+
+		if (m_fStartVolume <= 0)
+		{
+			pFadeSound->m_pChannel->stop();
+			pFadeSound = nullptr;
+		}
+
+		if (m_fTime > m_fFadeTime)
+		{
+			m_fFadeTime = 0;
+			pFadeSound = nullptr;
+		}
+	}
+
 }
 
 void CSoundManager::Release()
