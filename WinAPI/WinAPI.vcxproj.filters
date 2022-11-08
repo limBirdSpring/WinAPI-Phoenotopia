@@ -237,6 +237,12 @@
     <ClInclude Include="CThings.h">
       <Filter>GameObject\Things</Filter>
     </ClInclude>
+    <ClInclude Include="CDoor.h">
+      <Filter>GameObject\Things</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneGailRoom.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -388,6 +394,12 @@
     </ClCompile>
     <ClCompile Include="CThings.cpp">
       <Filter>GameObject\Things</Filter>
+    </ClCompile>
+    <ClCompile Include="CDoor.cpp">
+      <Filter>GameObject\Things</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneGailRoom.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

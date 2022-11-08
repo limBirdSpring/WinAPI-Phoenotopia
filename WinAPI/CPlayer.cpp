@@ -392,25 +392,6 @@ void CPlayer::CreateMissile()
 	pMissile->SetDir(Vector(1, 0));
 	ADDOBJECT(pMissile);
 
-	CMissile* pMissile1 = new CMissile();
-	pMissile1->SetPos(m_vecPos);
-	pMissile1->SetDir(Vector(1, -1));
-	ADDOBJECT(pMissile1);
-
-	CMissile* pMissile2 = new CMissile();
-	pMissile2->SetPos(m_vecPos);
-	pMissile2->SetDir(Vector(1, 1));
-	ADDOBJECT(pMissile2);
-
-	CMissile* pMissile3 = new CMissile();
-	pMissile3->SetPos(m_vecPos);
-	pMissile3->SetDir(Vector(3, 1));
-	ADDOBJECT(pMissile3);
-
-	CMissile* pMissile4 = new CMissile();
-	pMissile4->SetPos(m_vecPos);
-	pMissile4->SetDir(Vector(3, -1));
-	ADDOBJECT(pMissile4);
 }
 
 void CPlayer::OnCollisionEnter(CCollider* pOtherCollider)

@@ -14,8 +14,6 @@ public :
 
 	int m_damageHp; //플레이어가 맞았을 때 얼마나 데미지를 입는지
 
-	CAnimator* m_pAnimator;
-	CImage* m_pMoveImage;
 
 	virtual void Init() override =0;
 	virtual void Update() override = 0;

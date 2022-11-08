@@ -43,8 +43,8 @@ public:
 	void SetMapSize(Vector size);
 
 
-	Vector WorldToScreenPoint(Vector worldPoint);	// 게임위치->화면위치
-	Vector ScreenToWorldPoint(Vector screenPoint);	// 화면위치->게임위치
+	Vector WorldToScreenPoint(Vector worldPoint, bool zoom = true);	// 게임위치->화면위치
+	Vector ScreenToWorldPoint(Vector screenPoint, bool zoom = true);	// 화면위치->게임위치
 
 	void ZoomInOut(float scale, float duration = 0);
 

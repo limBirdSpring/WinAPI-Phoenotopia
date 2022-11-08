@@ -20,11 +20,11 @@ CSlug::~CSlug()
 
 void CSlug::Init()
 {
-	m_pMoveImage = RESOURCE->LoadImg(L"Slug", L"Image\\Slug.png");
+	m_pImage = RESOURCE->LoadImg(L"Slug", L"Image\\Slug.png");
 
 	m_pAnimator = new CAnimator;
 
-	m_pAnimator->CreateAnimation(L"Slug_Move", m_pMoveImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 8);
+	m_pAnimator->CreateAnimation(L"Slug_Move", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 8);
 
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x-1, m_vecScale.y - 1), Vector(0, 8));
 	AddLineMove(m_vecPos, Vector(m_vecPos.x + 100, m_vecPos.y), 10);

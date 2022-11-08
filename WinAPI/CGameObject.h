@@ -9,6 +9,8 @@ class CCollider;
 class CGravity;
 class CLineMove;
 enum class ColliderType;
+class CImage;
+class CAnimator;
 
 // 게임오브젝트 : 
 // 씬 내에 존재하는 물체, ex) 캐릭터, 미사일, 몬스터, 아이템, 등
@@ -30,6 +32,9 @@ protected:
 	Layer m_layer;		// 게임오브젝트의 레이어
 	wstring m_strName;	// 게임오브젝트의 이름
 	Vector m_vecMoveDir; //게임오브젝트의 방향
+
+	CImage* m_pImage;
+	CAnimator* m_pAnimator;
 
 	float m_fSpeed;
 

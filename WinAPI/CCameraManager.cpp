@@ -59,19 +59,24 @@ void CCameraManager::SetMapSize(Vector size)
 	m_vecMapSize = size;
 }
 
-Vector CCameraManager::WorldToScreenPoint(Vector worldPoint)
+Vector CCameraManager::WorldToScreenPoint(Vector worldPoint, bool zoom)
 {
 
 	worldPoint = worldPoint - (m_vecLookAt - Vector(WINSIZEX * 0.5f, WINSIZEY * 0.5f));
-	Zoom(worldPoint);
-
+	if (zoom)
+	{
+		Zoom(worldPoint);
+	}
 	return worldPoint;
 }
 
 
-Vector CCameraManager::ScreenToWorldPoint(Vector screenPoint)
+Vector CCameraManager::ScreenToWorldPoint(Vector screenPoint, bool zoom)
 {
-	Zoom(screenPoint);
+	if (zoom)
+	{
+		Zoom(screenPoint);
+	}
 	screenPoint = screenPoint + (m_vecLookAt - Vector(WINSIZEX * 0.5f, WINSIZEY * 0.5f));
 
 	return screenPoint;

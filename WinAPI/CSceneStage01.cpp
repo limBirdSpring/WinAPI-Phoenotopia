@@ -18,6 +18,9 @@
 #include "CImage.h"
 #include "CImageObject.h"
 #include "CSoundManager.h"
+#include "CDoor.h"
+#include "CUIManager.h"
+#include "CButton.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -39,11 +42,14 @@ void CSceneStage01::Init()
 	pSlug->SetPos(300, WINSIZEY * 0.5f-10);
 	AddGameObject(pSlug);
 
-	CCameraController* pCamController = new CCameraController;
-	AddGameObject(pCamController);
+	CButton* pButton = new CButton;
+	pButton->SetPos(500, 500);
+	pButton->SetScale(100, 100);
+	AddGameObject(pButton);
 
-
-
+	CDoor* pDoor = new CDoor;
+	pDoor->SetPos(CAMERA->WorldToScreenPoint(Vector(480,300)));
+	AddGameObject(pDoor);
 }
 
 void CSceneStage01::Enter()
@@ -71,7 +77,7 @@ void CSceneStage01::Enter()
 	AddGameObject(pVillage);
 
 	CAMERA->SetMapSize(Vector(m_pVillageImage->GetWidth(), m_pVillageImage->GetHeight()));
-	CAMERA->ZoomInOut(2);
+	CAMERA->ZoomInOut(1);
 	CAMERA->SetTargetObj(pPlayer);
 	
 	CAMERA->FadeIn(0.25f);
@@ -96,6 +102,11 @@ void CSceneStage01::Update()
 	if (BUTTONDOWN(VK_F2))
 	{
 		DELAYCHANGESCENE(GroupScene::Forest, 0.25f);
+	}
+
+	if (BUTTONDOWN(VK_F3))
+	{
+		CAMERA->ZoomInOut(2,3);
 	}
 }
 

@@ -29,6 +29,8 @@ enum class GroupScene
 
 	TileTool,
 
+	GailRoom,
+
 	Stage01,
 
 	Forest,

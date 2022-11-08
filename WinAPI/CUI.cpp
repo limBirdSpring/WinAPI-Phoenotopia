@@ -69,6 +69,7 @@ void CUI::GameObjectInit()
 	{
 		pUI->GameObjectInit();
 	}
+	
 }
 
 void CUI::GameObjectUpdate()
@@ -77,13 +78,16 @@ void CUI::GameObjectUpdate()
 
 	// 자식 UI의 위치는 부모를 기준으로 설정
 	// 부모 UI가 위치 이동이 있을 경우 자식도 같이 이동
+	
 	m_vecAbsolutePos = m_vecPos;
 
 	if (nullptr != GetParentUI())
 		m_vecAbsolutePos += GetParentUI()->m_vecAbsolutePos;
 
 	if (m_bScreenFixed)
-		m_vecRenderPos = CAMERA->ScreenToWorldPoint(m_vecAbsolutePos);
+	{
+		m_vecRenderPos = Vector(CAMERA->GetLookAt().x - WINSIZEX * 0.5 + m_vecAbsolutePos.x, CAMERA->GetLookAt().y - WINSIZEY * 0.5 + m_vecAbsolutePos.y);
+	}
 	else
 		m_vecRenderPos = m_vecAbsolutePos;
 

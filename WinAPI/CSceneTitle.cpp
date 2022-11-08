@@ -48,6 +48,12 @@ void CSceneTitle::Update()
 		CAMERA->FadeOut(0.25f);
 		DELAYCHANGESCENE(GroupScene::Stage01, 0.25f);
 	}
+	if (BUTTONDOWN(VK_F2))
+	{
+		//SOUND->FadeOut(pLoad_BGM, 3.f, 0);
+		CAMERA->FadeOut(0.25f);
+		DELAYCHANGESCENE(GroupScene::GailRoom, 0.25f);
+	}
 	//if (BUTTONDOWN(VK_F2))
 	//{
 	//	SOUND->FadeOut(pLoad_BGM, 2, 0);

@@ -11,8 +11,6 @@ public:
 	virtual ~CPlayer();
 
 private:
-	CAnimator* m_pAnimator;
-
 
 	CImage* m_pIdleImage;
 	CImage* m_pMoveImage;

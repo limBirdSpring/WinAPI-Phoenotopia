@@ -151,6 +151,7 @@
     <ClInclude Include="CComponent.h" />
     <ClInclude Include="CCore.h" />
     <ClInclude Include="CCritical.h" />
+    <ClInclude Include="CDoor.h" />
     <ClInclude Include="CEventManager.h" />
     <ClInclude Include="CGameManager.h" />
     <ClInclude Include="CGameObject.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="CMonster.h" />
     <ClInclude Include="CMonsterStatus.h" />
     <ClInclude Include="CSceneForest.h" />
+    <ClInclude Include="CSceneGailRoom.h" />
     <ClInclude Include="CSlug.h" />
     <ClInclude Include="CPanel.h" />
     <ClInclude Include="CPathManager.h" />
@@ -210,6 +212,7 @@
     <ClCompile Include="CComponent.cpp" />
     <ClCompile Include="CCore.cpp" />
     <ClCompile Include="CCritical.cpp" />
+    <ClCompile Include="CDoor.cpp" />
     <ClCompile Include="CEventManager.cpp" />
     <ClCompile Include="CGameManager.cpp" />
     <ClCompile Include="CGameObject.cpp" />
@@ -222,6 +225,7 @@
     <ClCompile Include="CMonster.cpp" />
     <ClCompile Include="CMonsterStatus.cpp" />
     <ClCompile Include="CSceneForest.cpp" />
+    <ClCompile Include="CSceneGailRoom.cpp" />
     <ClCompile Include="CSlug.cpp" />
     <ClCompile Include="CPanel.cpp" />
     <ClCompile Include="CPathManager.cpp" />

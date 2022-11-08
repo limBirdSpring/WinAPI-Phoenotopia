@@ -6,6 +6,7 @@
 #include "CSceneTileTool.h"
 #include "CSceneStage01.h"
 #include "CSceneForest.h"
+#include "CSceneGailRoom.h"
 
 CSceneManager::CSceneManager()
 {
@@ -28,6 +29,8 @@ void CSceneManager::Init()
 	m_mapScene.insert(make_pair(GroupScene::Stage01, pSceneStage01));
 	CScene* pForest = new CSceneForest();
 	m_mapScene.insert(make_pair(GroupScene::Forest, pForest));
+	CScene* pGailRoom = new CSceneGailRoom();
+	m_mapScene.insert(make_pair(GroupScene::GailRoom, pGailRoom));
 
 	// 게임씬 자료구조를 순회하며 씬을 초기화
 	for (pair<GroupScene, CScene*> scene : m_mapScene)
