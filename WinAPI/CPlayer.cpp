@@ -186,142 +186,144 @@ void CPlayer::Update()
 		}
 	}
 
-	//공격 준비
-	if (BUTTONSTAY('X') && !GAME->GetAttack() && !GAME->GetDamage())
+	if (!GAME->GetTalk())
 	{
-		m_behavior = Behavior::AttackReady;
-		GAME->SetAttack(true);
-	}
-	if (GAME->GetAttack() == true)//얼마나 공격준비를 했는지 시간 더하기
-		GAME->SetAttackTime(GAME->GetAttackTime() + DT);
-	if (GAME->GetAttackTime() > 2.5 && GAME->GetAttack())
-		m_behavior = Behavior::CriticalReady;
-
-	//공격
-	if (BUTTONUP('X') && GAME->GetAttack())//&& 무기를 가지고 있을 때
-	{
-		if (GAME->GetAttackTime() > 2.5)//크리티컬 공격
+		//공격 준비
+		if (BUTTONSTAY('X') && !GAME->GetAttack() && !GAME->GetDamage())
 		{
-			m_behavior = Behavior::Critical;
-			CCritical* pCritical = new CCritical;
-			if (m_vecMoveDir.x == -1)
-				pCritical->SetPos(m_vecPos.x, m_vecPos.y);
-			else if (m_vecMoveDir.x == 1)
-				pCritical->SetPos(m_vecPos.x, m_vecPos.y);
-			pCritical->SetPos(m_vecPos);
-			ADDOBJECT(pCritical);
+			m_behavior = Behavior::AttackReady;
+			GAME->SetAttack(true);
 		}
-		else if (GetGround())//일반공격
-		{
-			m_behavior = Behavior::Attack2;
-			CAttack* pAttack = new CAttack();
+		if (GAME->GetAttack() == true)//얼마나 공격준비를 했는지 시간 더하기
+			GAME->SetAttackTime(GAME->GetAttackTime() + DT);
+		if (GAME->GetAttackTime() > 2.5 && GAME->GetAttack())
+			m_behavior = Behavior::CriticalReady;
 
-			if (m_vecMoveDir.x == -1)
-				pAttack->SetPos(m_vecPos.x - 10, m_vecPos.y + 7);
-			else if (m_vecMoveDir.x == 1)
-				pAttack->SetPos(m_vecPos.x + 10, m_vecPos.y + 7);
-			pAttack->SetPos(m_vecPos);
-			ADDOBJECT(pAttack);
+		//공격
+		if (BUTTONUP('X') && GAME->GetAttack())//&& 무기를 가지고 있을 때
+		{
+			if (GAME->GetAttackTime() > 2.5)//크리티컬 공격
+			{
+				m_behavior = Behavior::Critical;
+				CCritical* pCritical = new CCritical;
+				if (m_vecMoveDir.x == -1)
+					pCritical->SetPos(m_vecPos.x, m_vecPos.y);
+				else if (m_vecMoveDir.x == 1)
+					pCritical->SetPos(m_vecPos.x, m_vecPos.y);
+				pCritical->SetPos(m_vecPos);
+				ADDOBJECT(pCritical);
+			}
+			else if (GetGround())//일반공격
+			{
+				m_behavior = Behavior::Attack2;
+				CAttack* pAttack = new CAttack();
+
+				if (m_vecMoveDir.x == -1)
+					pAttack->SetPos(m_vecPos.x - 10, m_vecPos.y + 7);
+				else if (m_vecMoveDir.x == 1)
+					pAttack->SetPos(m_vecPos.x + 10, m_vecPos.y + 7);
+				pAttack->SetPos(m_vecPos);
+				ADDOBJECT(pAttack);
+			}
+			else//공중공격
+			{
+				m_behavior = Behavior::Attack;
+				CAttack2* pAttack2 = new CAttack2();
+
+				if (m_vecMoveDir.x == -1)
+					pAttack2->SetPos(m_vecPos.x - 7, m_vecPos.y + 5);
+				else if (m_vecMoveDir.x == 1)
+					pAttack2->SetPos(m_vecPos.x + 7, m_vecPos.y + 5);
+				pAttack2->SetPos(m_vecPos);
+				ADDOBJECT(pAttack2);
+			}
+			GAME->SetAttackTime(0);
 		}
-		else//공중공격
-		{
-			m_behavior = Behavior::Attack;
-			CAttack2* pAttack2 = new CAttack2();
 
-			if (m_vecMoveDir.x == -1)
-				pAttack2->SetPos(m_vecPos.x - 7, m_vecPos.y + 5);
-			else if (m_vecMoveDir.x == 1)
-				pAttack2->SetPos(m_vecPos.x + 7, m_vecPos.y + 5);
-			pAttack2->SetPos(m_vecPos);
-			ADDOBJECT(pAttack2);
+
+		//떨어지기
+		if (!GetGround() && !GAME->GetDamage())
+		{
+			if (!GAME->GetAttack())
+			{
+				if (GetGravity() > 100)
+					m_behavior = Behavior::Fall;
+				else
+					m_behavior = Behavior::Jump;
+			}
 		}
-		GAME->SetAttackTime(0);
-	}
-
-	
-	//떨어지기
-	if (!GetGround() && !GAME->GetDamage())
-	{
-		if (!GAME->GetAttack())
+		//앉기
+		else if (BUTTONSTAY(VK_DOWN) && GetGround() && !GAME->GetDamage())
 		{
-			if (GetGravity() > 100)
-				m_behavior = Behavior::Fall;
-			else
+			if (!GAME->GetAttack())
+			{
+				m_behavior = Behavior::Down;
+			}
+		}
+		else
+		{
+			if (!GAME->GetAttack() && !GAME->GetDamage())
+			{
+				m_behavior = Behavior::Idle;
+			}
+		}
+
+		//점프
+		if (BUTTONSTAY(VK_DOWN) && BUTTONDOWN('Z') && GetPlatform() != 0 && !GAME->GetDamage())//하향점프
+		{
+			if (!GAME->GetAttack())
 				m_behavior = Behavior::Jump;
+
+			this->SetGround(0);
+			this->SetPlatform(0);
+			this->SetGravity(1);
 		}
-	}
-	//앉기
-	else if (BUTTONSTAY(VK_DOWN) && GetGround() && !GAME->GetDamage())
-	{
-		if (!GAME->GetAttack())
+		else if (BUTTONDOWN('Z') && GetGround() && !GAME->GetDamage())
 		{
-			m_behavior = Behavior::Down;
+			if (!GAME->GetAttack())
+				m_behavior = Behavior::Jump;
+			m_vecPos.y--;
+			SetGravity(-300);
 		}
-	}
-	else
-	{
-		if (!GAME->GetAttack() && !GAME->GetDamage())
+
+
+
+		//걷기
+		if (BUTTONSTAY(VK_LEFT) && !GAME->GetDamage())
 		{
-			m_behavior = Behavior::Idle;
+			if (GetGround() && !GAME->GetAttack())
+				m_behavior = Behavior::Walk;
+			m_vecMoveDir.x = -1;
+		}
+		else if (BUTTONSTAY(VK_RIGHT) && !GAME->GetDamage())
+		{
+			if (GetGround() && !GAME->GetAttack())
+				m_behavior = Behavior::Walk;
+			m_vecMoveDir.x = +1;
+		}
+
+		//뛰기
+		if (BUTTONSTAY(VK_LEFT) && BUTTONSTAY(VK_SHIFT) && GetGround() && !GAME->GetDamage())
+		{
+			if (!GAME->GetAttack())
+				m_behavior = Behavior::Run;
+			m_vecMoveDir.x = -1;
+			m_fSpeed += 100;
+		}
+		else if (BUTTONSTAY(VK_RIGHT) && BUTTONSTAY(VK_SHIFT) && GetGround() && !GAME->GetDamage())
+		{
+			if (!GAME->GetAttack())
+				m_behavior = Behavior::Run;
+			m_vecMoveDir.x = +1;
+			m_fSpeed += 100;
+		}
+
+
+		if (BUTTONDOWN(VK_SPACE))
+		{
+			CreateMissile();
 		}
 	}
-
-	//점프
-	if (BUTTONSTAY(VK_DOWN) && BUTTONDOWN('Z') && GetPlatform() != 0 && !GAME->GetDamage())//하향점프
-	{
-		if (!GAME->GetAttack())
-			m_behavior = Behavior::Jump;
-
-		this->SetGround(0);
-		this->SetPlatform(0);
-		this->SetGravity(1);
-	}
-	else if (BUTTONDOWN('Z') && GetGround() && !GAME->GetDamage())
-	{
-		if (!GAME->GetAttack())
-			m_behavior = Behavior::Jump;
-		m_vecPos.y--;
-		SetGravity(-300);
-	}
-
-
-
-	//걷기
-	if (BUTTONSTAY(VK_LEFT) && !GAME->GetDamage())
-	{
-		if (GetGround() && !GAME->GetAttack())
-			m_behavior = Behavior::Walk;
-		m_vecMoveDir.x = -1;
-	}
-	else if (BUTTONSTAY(VK_RIGHT) && !GAME->GetDamage())
-	{
-		if (GetGround() && !GAME->GetAttack())
-			m_behavior = Behavior::Walk;
-		m_vecMoveDir.x = +1;
-	}
-
-	//뛰기
-	if (BUTTONSTAY(VK_LEFT) && BUTTONSTAY(VK_SHIFT) && GetGround() && !GAME->GetDamage())
-	{
-		if (!GAME->GetAttack())
-			m_behavior = Behavior::Run;
-		m_vecMoveDir.x = -1;
-		m_fSpeed += 100;
-	}
-	else if (BUTTONSTAY(VK_RIGHT) && BUTTONSTAY(VK_SHIFT) && GetGround() && !GAME->GetDamage())
-	{
-		if (!GAME->GetAttack())
-			m_behavior = Behavior::Run;
-		m_vecMoveDir.x = +1;
-		m_fSpeed += 100;
-	}
-
-
-	if (BUTTONDOWN(VK_SPACE))
-	{
-		CreateMissile();
-	}
-
 	m_vecPos.x += (m_fSpeed * DT) * m_vecMoveDir.x;
 
 

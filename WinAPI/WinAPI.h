@@ -53,6 +53,7 @@ enum class Layer
 	MiddleGround,
 	Tile,
 	Things,
+	NPC,
 	Player,
 	Missile,
 	Monster,

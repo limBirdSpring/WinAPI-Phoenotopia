@@ -22,6 +22,7 @@
 #include "CDoor.h"
 #include "CUIManager.h"
 #include "CButton.h"
+#include "CCarol.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -64,6 +65,10 @@ void CSceneStage01::Init()
 	pGailRoomDoor->SetScene(GroupScene::GailRoom);
 	pGailRoomDoor->SetPlayerStartPos(Vector(306, 272));
 	AddGameObject(pGailRoomDoor);
+
+	CCarol* pCarol = new CCarol;
+	pCarol->SetPos(960, 489);
+	AddGameObject(pCarol);
 }
 
 void CSceneStage01::Enter()

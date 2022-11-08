@@ -59,24 +59,24 @@ void CRenderManager::Init()
 
 	// 텍스트 포맷 생성
 	hResult = m_pWriteFactory->CreateTextFormat(
-		L"굴림",
+		L"둥근모꼴",
 		NULL,
 		DWRITE_FONT_WEIGHT_NORMAL,
 		DWRITE_FONT_STYLE_NORMAL,
 		DWRITE_FONT_STRETCH_NORMAL,
-		10.f,
+		25.f,
 		L"ko",
 		&m_pDefaultTextFormat);
 	assert(S_OK == hResult && "TextFormat Create Failed");
 
-	hResult = m_pDefaultTextFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
+	hResult = m_pDefaultTextFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_LEADING);
 	assert(S_OK == hResult && "TextFormat SetAlignment Failed");
 
 	hResult = m_pDefaultTextFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
 	assert(S_OK == hResult && "TextFormat SetParagraphAlignment Failed");
 
 	// 브러쉬 생성
-	hResult = m_pRenderTarget->CreateSolidColorBrush(D2D1::ColorF(0.f, 0.f, 0.f), &m_pDefaultBrush);
+	hResult = m_pRenderTarget->CreateSolidColorBrush(D2D1::ColorF(255.f, 255.f, 255.f), &m_pDefaultBrush);
 	assert(S_OK == hResult && "SolidColorBrush Create Failed");
 
 	// 텍스트 포맷 생성

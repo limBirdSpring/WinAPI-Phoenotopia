@@ -246,6 +246,12 @@
     <ClInclude Include="CSceneGailRoom.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="CNPC.h">
+      <Filter>GameObject\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="CCarol.h">
+      <Filter>GameObject\NPC</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -403,6 +409,12 @@
     </ClCompile>
     <ClCompile Include="CSceneGailRoom.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CNPC.cpp">
+      <Filter>GameObject\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="CCarol.cpp">
+      <Filter>GameObject\NPC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

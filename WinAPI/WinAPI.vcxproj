@@ -146,6 +146,7 @@
     <ClInclude Include="CButton.h" />
     <ClInclude Include="CCameraController.h" />
     <ClInclude Include="CCameraManager.h" />
+    <ClInclude Include="CCarol.h" />
     <ClInclude Include="CCollider.h" />
     <ClInclude Include="CCollisionManager.h" />
     <ClInclude Include="CComponent.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="CMissile.h" />
     <ClInclude Include="CMonster.h" />
     <ClInclude Include="CMonsterStatus.h" />
+    <ClInclude Include="CNPC.h" />
     <ClInclude Include="CSceneForest.h" />
     <ClInclude Include="CSceneGailRoom.h" />
     <ClInclude Include="CSlug.h" />
@@ -207,6 +209,7 @@
     <ClCompile Include="CButton.cpp" />
     <ClCompile Include="CCameraController.cpp" />
     <ClCompile Include="CCameraManager.cpp" />
+    <ClCompile Include="CCarol.cpp" />
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CCollisionManager.cpp" />
     <ClCompile Include="CComponent.cpp" />
@@ -224,6 +227,7 @@
     <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CMonster.cpp" />
     <ClCompile Include="CMonsterStatus.cpp" />
+    <ClCompile Include="CNPC.cpp" />
     <ClCompile Include="CSceneForest.cpp" />
     <ClCompile Include="CSceneGailRoom.cpp" />
     <ClCompile Include="CSlug.cpp" />

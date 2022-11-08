@@ -62,6 +62,9 @@ public :
 	bool GetDamage() { return m_bDamage; }
 	void SetDamage(bool damage) { m_bDamage = damage; }
 
+	bool GetTalk() { return m_bTalk; }
+	void SetTalk(bool talk) { m_bTalk = talk; }
+
 	float GetAttackTime() { return m_fAttackTime; }
 	void SetAttackTime(float time) { m_fAttackTime = time; }
 
