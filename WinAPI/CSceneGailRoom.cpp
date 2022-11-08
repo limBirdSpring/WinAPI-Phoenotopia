@@ -18,6 +18,8 @@
 #include "CImage.h"
 #include "CImageObject.h"
 #include "CSoundManager.h"
+#include "CGameManager.h"
+#include "CDoor.h"
 
 CSceneGailRoom::CSceneGailRoom()
 {
@@ -31,17 +33,8 @@ CSceneGailRoom::~CSceneGailRoom()
 
 void CSceneGailRoom::Init()
 {
-
-
-
-
-}
-
-void CSceneGailRoom::Enter()
-{
-
-	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
-	//SOUND->Play(pLoad_BGM, 1, true);
+	pPlayer = new CPlayer();
+	AddGameObject(pPlayer);
 
 	m_pImage = RESOURCE->LoadImg(L"Panselo_Back", L"Image\\Panselo_Back.png");
 	LoadBackground(m_pImage);
@@ -54,14 +47,27 @@ void CSceneGailRoom::Enter()
 	pForest->SetImage(m_pImage);
 	AddGameObject(pForest);
 
+	CDoor* pDoor = new CDoor;
+	pDoor->SetPos(306, 278);
+	pDoor->SetScene(GroupScene::Stage01);
+	pDoor->SetImage(false);
+	pDoor->SetPlayerStartPos(Vector(320, 488));
+	AddGameObject(pDoor);
+}
+
+void CSceneGailRoom::Enter()
+{
+	CAMERA->FadeIn(0.25f);
+
+	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
+	//SOUND->Play(pLoad_BGM, 1, true);
+
+	
 	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));
 	CAMERA->ZoomInOut(3);
 	CAMERA->SetTargetPos(Vector(m_pImage->GetWidth() * 0.5, m_pImage->GetHeight() * 0.5));
 
-	pPlayer = new CPlayer();
-	pPlayer->SetPos(Vector(m_pImage->GetWidth() * 0.5, m_pImage->GetHeight() * 0.5));
-	AddGameObject(pPlayer);
-
+	pPlayer->SetPos(GAME->GetPlayerStartPos());
 
 	CAMERA->FadeIn(0.25f);
 	LoadTile(GETPATH + L"Tile\\GailRoom.tile");

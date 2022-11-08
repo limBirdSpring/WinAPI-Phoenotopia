@@ -5,16 +5,20 @@
 #include "CResourceManager.h"
 #include "CAnimation.h"
 #include "CInputManager.h"
+#include "CEventManager.h"
+#include "CGameManager.h"
+#include "CCameraManager.h"
 
 CDoor::CDoor()
 {
 	m_pImage = nullptr;
 	m_pAnimator = nullptr;
 	haveImage = true;
+	isOpen = false;
 
 	m_strName = L"문";
 	m_vecPlayerStartPos = Vector(0,0);
-	m_pScene = nullptr;
+	m_pScene = GroupScene::Title;
 	m_vecScale = Vector(30, 30);
 }
 
@@ -60,9 +64,28 @@ void CDoor::OnCollisionStay(CCollider* pOtherCollider)
 {
 	if (pOtherCollider->GetObjName() == L"플레이어")
 	{
-		if (haveImage == true && BUTTONDOWN('X'))
+		if (haveImage == true)
 		{
-			m_pAnimator->Play(L"Door_Opened");
+			if (BUTTONDOWN('X'))
+			{
+				m_pAnimator->Play(L"Door_Opened");
+				isOpen = true;
+			}
+			if (BUTTONDOWN(VK_UP) && isOpen)
+			{
+				GAME->SetPlayerStartPos(m_vecPlayerStartPos);
+				CAMERA->FadeOut(0.25f);
+				DELAYCHANGESCENE(m_pScene, 0.25f);
+			}
+		}
+		else
+		{
+			if (BUTTONDOWN(VK_UP))
+			{
+				GAME->SetPlayerStartPos(m_vecPlayerStartPos);
+				CAMERA->FadeOut(0.25f);
+				DELAYCHANGESCENE(m_pScene, 0.25f);
+			}
 		}
 	}
 }

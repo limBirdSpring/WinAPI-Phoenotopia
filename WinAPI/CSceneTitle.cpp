@@ -9,6 +9,7 @@
 #include "CImage.h"
 #include "CResourceManager.h"
 #include "CSoundManager.h"
+#include "CGameManager.h"
 
 CSceneTitle::CSceneTitle()
 {
@@ -46,7 +47,8 @@ void CSceneTitle::Update()
 	{
 		//SOUND->FadeOut(pLoad_BGM, 3.f, 0);
 		CAMERA->FadeOut(0.25f);
-		DELAYCHANGESCENE(GroupScene::Stage01, 0.25f);
+		DELAYCHANGESCENE(GroupScene::GailRoom, 0.25f);
+		GAME->SetPlayerStartPos(Vector(378, 270));
 	}
 	if (BUTTONDOWN(VK_F2))
 	{

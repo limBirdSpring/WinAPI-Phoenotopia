@@ -17,12 +17,15 @@ private:
 
 	
 	bool haveImage = true;
+	bool isOpen;
 
 	Vector m_vecPlayerStartPos; //씬으로 갔을 경우 플레이어 위치
-	CScene* m_pScene; //문을 통해 갈 수 있는 씬
+	GroupScene m_pScene; //문을 통해 갈 수 있는 씬
 
 public :
 	void SetImage(bool img) { haveImage = img; }
+	void SetScene(GroupScene scene) { m_pScene = scene; }
+	void SetPlayerStartPos(Vector pos) { m_vecPlayerStartPos = pos; }
 
 private:
 	void Init() override;

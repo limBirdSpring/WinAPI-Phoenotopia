@@ -51,6 +51,9 @@ private :
 	unordered_map<string, Item> m_vecInventoryItem; //인벤토리에 들어있는 아이템
 	unordered_map<string, Item> m_vecSetItem; //착용한 아이템
 
+
+	Vector m_vecStartPos; //맵으로 워프했을 경우 플레이어의 초기 위치
+
 public :
 
 	bool GetAttack() { return m_bAttack; }
@@ -78,6 +81,9 @@ public :
 
 	int GetHp() { return hp; }
 	void SetHp(int hp) { this->hp += hp; }
+
+	Vector GetPlayerStartPos() { return m_vecStartPos; }
+	void SetPlayerStartPos(Vector pos) { m_vecStartPos = pos; }
 
 
 

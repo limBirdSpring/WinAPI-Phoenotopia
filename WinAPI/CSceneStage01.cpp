@@ -8,6 +8,7 @@
 #include "CEventManager.h"
 #include "CCameraManager.h"
 #include "CPathManager.h"
+#include "CGameManager.h"
 
 #include "CPlayer.h"
 #include "CSlug.h"
@@ -35,7 +36,6 @@ CSceneStage01::~CSceneStage01()
 void CSceneStage01::Init()
 {
 	pPlayer = new CPlayer();
-	pPlayer->SetPos(200, WINSIZEY * 0.5f);
 	AddGameObject(pPlayer);
 
 	CSlug* pSlug = new CSlug();
@@ -48,7 +48,9 @@ void CSceneStage01::Init()
 	AddGameObject(pButton);
 
 	CDoor* pDoor = new CDoor;
-	pDoor->SetPos(CAMERA->WorldToScreenPoint(Vector(480,300)));
+	pDoor->SetPos(320, 489);
+	pDoor->SetScene(GroupScene::GailRoom);
+	pDoor->SetPlayerStartPos(Vector (306, 272));
 	AddGameObject(pDoor);
 }
 
@@ -76,9 +78,12 @@ void CSceneStage01::Enter()
 	pVillage->SetImage(m_pVillageImage);
 	AddGameObject(pVillage);
 
+	pPlayer->SetPos(GAME->GetPlayerStartPos());
+
 	CAMERA->SetMapSize(Vector(m_pVillageImage->GetWidth(), m_pVillageImage->GetHeight()));
-	CAMERA->ZoomInOut(1);
+	CAMERA->ZoomInOut(2);
 	CAMERA->SetTargetObj(pPlayer);
+
 	
 	CAMERA->FadeIn(0.25f);
 	LoadTile(GETPATH + L"Tile\\Stage01.tile");

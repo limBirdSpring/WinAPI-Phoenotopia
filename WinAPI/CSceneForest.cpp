@@ -8,6 +8,7 @@
 #include "CEventManager.h"
 #include "CCameraManager.h"
 #include "CPathManager.h"
+#include "CGameManager.h"
 
 #include "CPlayer.h"
 #include "CSlug.h"
@@ -32,7 +33,6 @@ CSceneForest::~CSceneForest()
 void CSceneForest::Init()
 {
 	pPlayer = new CPlayer();
-	pPlayer->SetPos(200, WINSIZEY * 0.5f);
 	AddGameObject(pPlayer);
 
 	CSlug* pSlug = new CSlug();
@@ -69,6 +69,8 @@ void CSceneForest::Enter()
 	CImageObject* pForest = new CImageObject;
 	pForest->SetImage(m_pImage);
 	AddGameObject(pForest);
+
+	pPlayer->SetPos(GAME->GetPlayerStartPos());
 
 	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));
 	CAMERA->ZoomInOut(2);
