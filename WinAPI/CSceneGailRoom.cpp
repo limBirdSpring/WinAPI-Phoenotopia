@@ -51,7 +51,7 @@ void CSceneGailRoom::Init()
 	pDoor->SetPos(306, 278);
 	pDoor->SetScene(GroupScene::Stage01);
 	pDoor->SetImage(false);
-	pDoor->SetPlayerStartPos(Vector(320, 488));
+	pDoor->SetPlayerStartPos(Vector(1300, 488));
 	AddGameObject(pDoor);
 }
 
@@ -68,6 +68,8 @@ void CSceneGailRoom::Enter()
 	CAMERA->SetTargetPos(Vector(m_pImage->GetWidth() * 0.5, m_pImage->GetHeight() * 0.5));
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
+	pPlayer->SetGravity(1);
+	pPlayer->SetGround(0);
 
 	CAMERA->FadeIn(0.25f);
 	LoadTile(GETPATH + L"Tile\\GailRoom.tile");

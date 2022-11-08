@@ -52,6 +52,18 @@ void CSceneStage01::Init()
 	pDoor->SetScene(GroupScene::GailRoom);
 	pDoor->SetPlayerStartPos(Vector (306, 272));
 	AddGameObject(pDoor);
+
+	CDoor* pStoreDoor = new CDoor;
+	pStoreDoor->SetPos(845, 489);
+	pStoreDoor->SetScene(GroupScene::GailRoom);
+	pStoreDoor->SetPlayerStartPos(Vector(306, 272));
+	AddGameObject(pStoreDoor);
+
+	CDoor* pGailRoomDoor = new CDoor;
+	pGailRoomDoor->SetPos(1300, 489);
+	pGailRoomDoor->SetScene(GroupScene::GailRoom);
+	pGailRoomDoor->SetPlayerStartPos(Vector(306, 272));
+	AddGameObject(pGailRoomDoor);
 }
 
 void CSceneStage01::Enter()
@@ -79,6 +91,8 @@ void CSceneStage01::Enter()
 	AddGameObject(pVillage);
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
+	pPlayer->SetGravity(1);
+	pPlayer->SetGround(0);
 
 	CAMERA->SetMapSize(Vector(m_pVillageImage->GetWidth(), m_pVillageImage->GetHeight()));
 	CAMERA->ZoomInOut(2);

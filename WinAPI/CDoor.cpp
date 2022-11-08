@@ -76,6 +76,7 @@ void CDoor::OnCollisionStay(CCollider* pOtherCollider)
 				GAME->SetPlayerStartPos(m_vecPlayerStartPos);
 				CAMERA->FadeOut(0.25f);
 				DELAYCHANGESCENE(m_pScene, 0.25f);
+
 			}
 		}
 		else
@@ -85,6 +86,7 @@ void CDoor::OnCollisionStay(CCollider* pOtherCollider)
 				GAME->SetPlayerStartPos(m_vecPlayerStartPos);
 				CAMERA->FadeOut(0.25f);
 				DELAYCHANGESCENE(m_pScene, 0.25f);
+
 			}
 		}
 	}

@@ -97,7 +97,7 @@ void CPlayer::Init()
 
 void CPlayer::Update()
 {
-	
+
 	m_fSpeed = 100;
 	m_vecMoveDir.x = 0;
 	
@@ -159,8 +159,8 @@ void CPlayer::Update()
 	//게임매니저에게 플레이어 정보 전달
 	GAME->SetPlayerPos(m_vecPos);
 	GAME->SetPlayerDir(m_vecLookDir);
-	*/
 	
+	*/
 
 
 
@@ -402,6 +402,11 @@ void CPlayer::OnCollisionEnter(CCollider* pOtherCollider)
 		m_behavior = Behavior::Damage;
 		GAME->SetHp(-5);
 		GAME->SetDamage(true);
+	}
+
+	if (pOtherCollider->GetObjName() == L"벽")
+	{
+		m_vecMoveDir.x = 0;
 	}
 }
 

@@ -64,6 +64,9 @@
     <Filter Include="GameObject\Things">
       <UniqueIdentifier>{e658d30d-464a-4c54-91e4-b05463ff1430}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\NPC">
+      <UniqueIdentifier>{bed43207-c81d-457a-a709-6f41ee536b9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">

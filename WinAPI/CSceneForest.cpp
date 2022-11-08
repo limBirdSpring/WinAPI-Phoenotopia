@@ -71,6 +71,8 @@ void CSceneForest::Enter()
 	AddGameObject(pForest);
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
+	pPlayer->SetGravity(1);
+	pPlayer->SetGround(0);
 
 	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));
 	CAMERA->ZoomInOut(2);

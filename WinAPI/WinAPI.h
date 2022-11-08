@@ -31,9 +31,13 @@ enum class GroupScene
 
 	GailRoom,
 
+	Store,
+
 	Stage01,
 
 	Forest,
+
+	BossMap,
 
 	Size,
 };
