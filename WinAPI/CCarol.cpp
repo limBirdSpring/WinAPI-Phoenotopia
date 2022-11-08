@@ -50,6 +50,22 @@ void CCarol::Update()
 			Talk();
 		}
 	}
+
+	if (m_choose != 0)
+	{
+		if (BUTTONDOWN(VK_UP))
+		{
+			m_choosing--;
+		}
+		if (BUTTONDOWN(VK_DOWN))
+		{
+			m_choosing++;
+		}
+		if (m_choosing <= 0)
+			m_choosing = 1;
+		else if (m_choosing > m_choose)
+			m_choosing = m_choose;
+	}
 }
 
 void CCarol::Render()
@@ -60,6 +76,11 @@ void CCarol::Render()
 		RENDER->Image(m_pTalkBox, m_vecPos.x - 130, m_vecPos.y - 130, m_vecPos.x + 70, m_vecPos.y - 30);
 		RENDER->Text(m_strDialogue, m_vecPos.x - 130 + 10, m_vecPos.y - 130, m_vecPos.x + 70 - 10, m_vecPos.y - 30);
 		
+		if (m_choose != 0)
+		{
+			RENDER->Image(m_pChoose, m_vecPos.x - 120, m_vecPos.y - 86 + (m_choosing * 8), m_vecPos.x - 120+m_pChoose->GetWidth(), m_vecPos.y - 86 + (m_choosing * 8)+m_pChoose->GetHeight());
+		}
+
 	}
 }
 
@@ -98,10 +119,20 @@ void CCarol::Talk()
 		m_strDialogue = L"그건 벌써 다 팔렸는데?";
 		break;
 	case 3:
-		m_strDialogue = L"대신 신선한 계란이 들어왔어.";
+		m_strDialogue = L"대신 신선한 계란이 들어왔어. \n\n 계란주세요. \n 계란은 싫어요.";
+		m_choose = 2;
 		break;
 	case 4:
-		m_strDialogue = L"";
+		if (m_choosing == 1)
+		{
+			m_strDialogue = L"싫어.";
+		}
+		else
+		{
+			m_strDialogue = L"그래? 아쉽구나.";
+		}
+		m_choose = 0;
+		m_choosing = 1;
 		break;
 	case 5:
 		m_strDialogue = L"딸기케이크 말고도 먹을 만한게 많으니 얼마든지 골라보렴";
