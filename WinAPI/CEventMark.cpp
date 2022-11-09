@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "CCarol.h"
+#include "CEventMark.h"
 
 #include "WinAPI.h"
 #include "CInputManager.h"
@@ -14,67 +14,39 @@
 #include "CCameraManager.h"
 
 
-CCarol::CCarol()
+CEventMark::CEventMark()
 {
 	m_vecScale = Vector(18, 32);
 	m_strDialogue = L"";
+	m_strSetDialogue = L"";
 	talk = 0;
 }
 
-CCarol::~CCarol()
+CEventMark::~CEventMark()
 {
 }
 
-void CCarol::Init()
+void CEventMark::Init()
 {
-	
-	m_pImage = RESOURCE->LoadImg(L"Carol_Idle", L"Image\\Carol_Idle.png");
-	
+	m_pImage = RESOURCE->LoadImg(L"UI_!", L"Image\\UI_!.png");
+
 	m_pAnimator = new CAnimator;
-	m_pAnimator->CreateAnimation(L"Carol_Idle_Right", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.5, 4);
-	m_pAnimator->CreateAnimation(L"Carol_Idle_Left", m_pImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.5, 4);
-	
-	m_pAnimator->Play(L"Carol_Idle_Right");
+	m_pAnimator->CreateAnimation(L"UI_!", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1, 6);
 	AddComponent(m_pAnimator);
-	
+
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 0.1, m_vecScale.y - 0.1), Vector(0, 4));
 }
 
-void CCarol::Update()
+void CEventMark::Update()
 {
-	if (talk > 0)
-	{
-		if (BUTTONDOWN('X'))
-		{
-			talk++;
-			Talk();
-		}
-	}
-
-	if (m_choose != 0)
-	{
-		if (BUTTONDOWN(VK_UP))
-		{
-			m_choosing--;
-		}
-		if (BUTTONDOWN(VK_DOWN))
-		{
-			m_choosing++;
-		}
-		if (m_choosing <= 0)
-			m_choosing = 1;
-		else if (m_choosing > m_choose)
-			m_choosing = m_choose;
-	}
 }
 
-void CCarol::Render()
+void CEventMark::Render()
 {
 	if (m_strDialogue != L"")
 	{
-		if (m_strDialogue.length() > 20)
+		if (m_strDialogue.length() > 25)
 		{
-			//RENDER->FillRect(m_vecPos.x - 130, m_vecPos.y - 100, m_vecPos.x + 70, m_vecPos.y - 50, Color(100, 100, 100, 255));
 			RENDER->Image(m_pTalkBox, m_vecPos.x - 130, m_vecPos.y - 130, m_vecPos.x + 70, m_vecPos.y - 30);
 			RENDER->Text(m_strDialogue, m_vecPos.x - 130 + 10, m_vecPos.y - 130, m_vecPos.x + 70 - 10, m_vecPos.y - 30);
 
@@ -96,28 +68,31 @@ void CCarol::Render()
 	}
 }
 
-void CCarol::Release()
+void CEventMark::Release()
 {
 }
 
-void CCarol::OnCollisionStay(CCollider* pOtherCollider)
+void CEventMark::OnCollisionStay(CCollider* pOtherCollider)
 {
 	if (pOtherCollider->GetObjName() == L"플레이어")
 	{
+		m_pAnimator->Play(L"UI_!");
+		
 		if (BUTTONDOWN('X'))
 		{
-			CAMERA->ZoomInOut(3, 1);
-
 			talk++;
 			GAME->SetTalk(true);
 			Talk();
-			pOtherCollider->GetOwner()->SetPos(m_vecPos.x + 30, m_vecPos.y);
-			pOtherCollider->GetOwner()->SetDir(Vector(0, 0));
 		}
 	}
 }
 
-void CCarol::Talk()
+void CEventMark::OnCollisionExit(CCollider* pOtherCollider)
+{
+	m_pAnimator->Stop();
+}
+
+void CEventMark::Talk()
 {
 	switch (talk)
 	{
@@ -125,32 +100,10 @@ void CCarol::Talk()
 		m_strDialogue = L"";
 		break;
 	case 1:
-		m_strDialogue = L"뭐? 딸기케이크?";
+		m_strDialogue = m_strSetDialogue;
 		break;
-	case 2:
-		m_strDialogue = L"그건 벌써 다 팔렸는데?";
-		break;
-	case 3:
-		m_strDialogue = L"대신 신선한 계란이 들어왔어. \n\n 계란주세요. \n 계란은 싫어요.";
-		m_choose = 2;
-		break;
-	case 4:
-		if (m_choosing == 1)
-		{
-			m_strDialogue = L"싫어.";
-		}
-		else
-		{
-			m_strDialogue = L"그래? 아쉽구나.";
-		}
-		m_choose = 0;
-		m_choosing = 1;
-		break;
-	case 5:
-		m_strDialogue = L"딸기케이크 말고도 먹을 만한게 많으니 얼마든지 골라보렴";
-		break;
-	default :
-		CAMERA->ZoomInOut(2, 1.5);
+	
+	default:
 		m_strDialogue = L"";
 		GAME->SetTalk(false);
 		talk = 0;

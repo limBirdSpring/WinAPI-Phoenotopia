@@ -20,6 +20,7 @@
 #include "CSoundManager.h"
 #include "CGameManager.h"
 #include "CDoor.h"
+#include "CEventMark.h"
 
 CSceneGailRoom::CSceneGailRoom()
 {
@@ -53,6 +54,17 @@ void CSceneGailRoom::Init()
 	pDoor->SetImage(false);
 	pDoor->SetPlayerStartPos(Vector(1300, 488));
 	AddGameObject(pDoor);
+
+	CEventMark* pClothes = new CEventMark;
+	pClothes->SetPos(334, 278);
+	pClothes->m_strSetDialogue = L"도복이다. 맞다. 태권도학원 가야하는데..";
+	AddGameObject(pClothes);
+
+	CEventMark* pBed = new CEventMark;
+	pBed->SetPos(377, 278);
+	pBed->m_strSetDialogue = L"아직 잘 시간은 아니다.";
+	AddGameObject(pBed);
+
 }
 
 void CSceneGailRoom::Enter()

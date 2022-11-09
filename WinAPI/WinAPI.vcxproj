@@ -154,6 +154,7 @@
     <ClInclude Include="CCritical.h" />
     <ClInclude Include="CDoor.h" />
     <ClInclude Include="CEventManager.h" />
+    <ClInclude Include="CEventMark.h" />
     <ClInclude Include="CGameManager.h" />
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CGravity.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="CNPC.h" />
     <ClInclude Include="CSceneForest.h" />
     <ClInclude Include="CSceneGailRoom.h" />
+    <ClInclude Include="CSceneStore.h" />
     <ClInclude Include="CSlug.h" />
     <ClInclude Include="CPanel.h" />
     <ClInclude Include="CPathManager.h" />
@@ -217,6 +219,7 @@
     <ClCompile Include="CCritical.cpp" />
     <ClCompile Include="CDoor.cpp" />
     <ClCompile Include="CEventManager.cpp" />
+    <ClCompile Include="CEventMark.cpp" />
     <ClCompile Include="CGameManager.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CGravity.cpp" />
@@ -230,6 +233,7 @@
     <ClCompile Include="CNPC.cpp" />
     <ClCompile Include="CSceneForest.cpp" />
     <ClCompile Include="CSceneGailRoom.cpp" />
+    <ClCompile Include="CSceneStore.cpp" />
     <ClCompile Include="CSlug.cpp" />
     <ClCompile Include="CPanel.cpp" />
     <ClCompile Include="CPathManager.cpp" />

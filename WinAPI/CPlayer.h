@@ -24,10 +24,16 @@ private:
 	CImage* m_pDamageImage;
 
 
+	float m_fJumpTime;
+	bool isThingCollision;
+
 
 	Vector m_vecLookDir;
 	Behavior m_behavior;
-
+	Behavior m_behaviorSave;
+public:
+	void SetBehavior(Behavior behavior) { m_behavior = behavior; m_behaviorSave = behavior; }
+	Behavior GetBehavoir() { return m_behavior; }
 
 
 private:
@@ -35,7 +41,8 @@ private:
 	void Update() override;
 	void Render() override;
 	void Release() override;
-
+	
+	void BehaviorAction();
 	void AnimatorUpdate();
 	void CreateMissile();
 

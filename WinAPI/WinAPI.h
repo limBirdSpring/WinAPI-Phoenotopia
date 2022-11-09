@@ -86,6 +86,7 @@ enum class Behavior
 	Walk,
 	Run,
 	Jump,
+	DownJump,
 	Fall,
 	Down,
 	AttackReady,

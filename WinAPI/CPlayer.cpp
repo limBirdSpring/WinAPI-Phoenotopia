@@ -36,6 +36,9 @@ CPlayer::CPlayer()
 	m_pAttackReadyImage = nullptr;
 	m_pDamageImage = nullptr;
 
+	m_fJumpTime = 0;
+	isThingCollision = false;
+
 	m_vecMoveDir = Vector(0, 0);
 	m_vecLookDir = Vector(0, -1);
 	m_behavior = Behavior::Idle;
@@ -73,10 +76,10 @@ void CPlayer::Init()
 	m_pAnimator->CreateAnimation(L"Gail_Down_Right", m_pDownImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
 	m_pAnimator->CreateAnimation(L"Gail_Down_Left", m_pDownImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
 
-	m_pAnimator->CreateAnimation(L"Gail_Attack_Right", m_pAttackImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.08f, 7, false);
-	m_pAnimator->CreateAnimation(L"Gail_Attack_Left", m_pAttackImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.08f, 7, false);
-	m_pAnimator->CreateAnimation(L"Gail_Attack2_Right", m_pAttack2Image, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.08f, 5, false);
-	m_pAnimator->CreateAnimation(L"Gail_Attack2_Left", m_pAttack2Image, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.08f, 5, false);
+	m_pAnimator->CreateAnimation(L"Gail_Attack2_Right", m_pAttackImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.08f, 7, false);
+	m_pAnimator->CreateAnimation(L"Gail_Attack2_Left", m_pAttackImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.08f, 7, false);
+	m_pAnimator->CreateAnimation(L"Gail_Attack_Right", m_pAttack2Image, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.08f, 5, false);
+	m_pAnimator->CreateAnimation(L"Gail_Attack_Left", m_pAttack2Image, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.08f, 5, false);
 	m_pAnimator->CreateAnimation(L"Gail_AttackReady_Right", m_pAttackReadyImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 12);
 	m_pAnimator->CreateAnimation(L"Gail_AttackReady_Left", m_pAttackReadyImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.1f, 12);
 	m_pAnimator->CreateAnimation(L"Gail_Critical_Right", m_pCriticalImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 10, false);
@@ -99,59 +102,137 @@ void CPlayer::Update()
 {
 
 	m_fSpeed = 100;
-	m_vecMoveDir.x = 0;
-	
-	
-	/*
-	m_behavior = Behavior::Idle;
-	
-	switch (m_behavior)
+
+
+
+	if (GetGround() == 0)
 	{
-	case Behavior::Idle:
-		if (BUTTONSTAY(VK_LEFT))
-		{
-			m_behavior = Behavior::Walk;
-			m_vecMoveDir.x = -1;
-		}
-		else if (BUTTONSTAY(VK_RIGHT))
-		{
-			m_behavior = Behavior::Walk;
-			m_vecMoveDir.x = 1;
-		}
-		break;
-	case Behavior::Walk:
-		if (BUTTONSTAY(VK_SHIFT))
-		{
-			m_behavior = Behavior::Run;
-		}
-		break;
-	case Behavior::Run: 
-		m_fSpeed += 100;
-	//case Behavior::Jump:
-	//
-	//	
-	//case Behavior::Fall:
-	//	
-	//case Behavior::Down:
-	//	
-	//case Behavior::Attack: 
-	//
-	//case Behavior::Attack2:
-	//	
-	//case Behavior::Critical: 
-	//	
-	//case Behavior::AttackReady:
-	//
-	//case Behavior::CriticalReady: 
-	//
-	//case Behavior::Damage:
-
-	//default: 
-
+		m_behavior = Behavior::Fall;
+		if (m_behaviorSave != Behavior::Jump && 
+			m_behaviorSave != Behavior::Attack && m_behaviorSave != Behavior::Attack2 && m_behaviorSave != Behavior::Critical && m_behaviorSave != Behavior::CriticalReady)
+			m_behaviorSave = m_behavior;
+	}
+	else
+	{
+		m_behavior = Behavior::Idle;
+		if (m_behaviorSave != Behavior::Attack && m_behaviorSave != Behavior::Attack2 && m_behaviorSave != Behavior::Critical && m_behaviorSave != Behavior::CriticalReady)
+			m_behaviorSave = m_behavior;
+		
 	}
 
+	//공격준비
+	if (BUTTONSTAY('X') && !isThingCollision)
+	{
+		m_behavior = Behavior::AttackReady;
+		if (GAME->GetAttackTime() > 2.5)
+			m_behavior = Behavior::CriticalReady;
+		m_behaviorSave = m_behavior;
+	}
+	//공격
+	if (BUTTONUP('X'))
+	{
+		if (GAME->GetAttackTime() > 2.5)
+			m_behavior = Behavior::Critical;
+		else if (GetGround() == 0)
+			m_behavior = Behavior::Attack2;
+		else
+			m_behavior = Behavior::Attack;
 
-	m_vecPos.x += (m_fSpeed * DT) * m_vecMoveDir.x;
+		GAME->SetAttackTime(0);
+		m_behaviorSave = m_behavior;
+	}
+
+	//걷기
+	if (BUTTONSTAY(VK_LEFT))
+	{
+		m_vecMoveDir.x = -1;
+		m_behavior = Behavior::Walk;
+	}
+	else if (BUTTONSTAY(VK_RIGHT))
+	{
+		m_vecMoveDir.x = 1;
+		m_behavior = Behavior::Walk;
+	}
+
+	//뛰기
+	if (BUTTONSTAY(VK_LEFT) && BUTTONSTAY(VK_SHIFT))
+	{
+		m_vecMoveDir.x = -1;
+		m_behavior = Behavior::Run;
+		
+	}
+	else if (BUTTONSTAY(VK_RIGHT) && BUTTONSTAY(VK_SHIFT))
+	{
+		m_vecMoveDir.x = 1;
+		m_behavior = Behavior::Run;
+		
+	}
+
+	//앉기
+	else if (BUTTONSTAY(VK_DOWN))
+	{
+		m_behavior = Behavior::Down;
+		
+	}
+
+	//점프
+	if (BUTTONSTAY(VK_DOWN) && BUTTONDOWN('Z') &&GetPlatform()!=0)//하향점프
+	{
+		m_behavior = Behavior::DownJump;
+		m_behaviorSave = Behavior::Fall;
+	}
+	else if (BUTTONDOWN('Z') && GetGround() !=0)
+	{
+		m_behavior = Behavior::Jump;
+		m_behaviorSave = m_behavior;
+	}
+	//if (BUTTONSTAY('Z'))
+	//{
+	//	m_vecPos.y--;
+	//	m_fJumpTime += DT;
+	//	SetGravity(-m_fJumpTime);
+	//}
+	
+
+	//데미지
+	if (GAME->GetDamage() == true)
+	{
+		if (GAME->GetDamageTime() < 0.2)
+		{
+			m_behavior = Behavior::Damage;
+			m_behaviorSave = m_behavior;
+		}
+		else
+		{
+			GAME->SetDamageTime(0);
+			GAME->SetDamage(false);
+		}
+	}
+
+	if (GAME->GetTalk())
+	{
+		m_behavior = Behavior::Idle;
+		m_behaviorSave = Behavior::Idle;
+	}
+
+	BehaviorAction();//행동에 따른 액션
+
+	//모션 불러오기
+
+	if (m_behaviorSave == Behavior::Jump || m_behaviorSave == Behavior::Fall)
+	{
+		m_behavior = m_behaviorSave;
+	}
+
+	if (GAME->GetAttack())
+	{
+		m_behavior = m_behaviorSave;
+	}
+
+	if (m_behaviorSave == Behavior::Damage)
+	{
+		m_behavior = m_behaviorSave;
+	}
 
 
 	AnimatorUpdate();
@@ -159,11 +240,11 @@ void CPlayer::Update()
 	//게임매니저에게 플레이어 정보 전달
 	GAME->SetPlayerPos(m_vecPos);
 	GAME->SetPlayerDir(m_vecLookDir);
-	
-	*/
 
 
 
+
+	/*
 
 	
 
@@ -283,7 +364,7 @@ void CPlayer::Update()
 			if (!GAME->GetAttack())
 				m_behavior = Behavior::Jump;
 			m_vecPos.y--;
-			SetGravity(-300);
+			SetGravity(-260);
 		}
 
 
@@ -333,7 +414,7 @@ void CPlayer::Update()
 	GAME->SetPlayerPos(m_vecPos);
 	GAME->SetPlayerDir(m_vecLookDir);
 	
-
+	*/
 }
 
 void CPlayer::Render()
@@ -342,6 +423,85 @@ void CPlayer::Render()
 
 void CPlayer::Release()
 {
+}
+
+void CPlayer::BehaviorAction()
+{
+	switch (m_behavior)
+	{
+	case Behavior::Idle:
+		m_vecMoveDir = Vector(0, 0);
+		break;
+	case Behavior::Walk:
+		m_vecPos.x += (m_fSpeed * DT) * m_vecMoveDir.x;
+		break;
+	case Behavior::Run:
+		m_fSpeed += 100;
+		m_vecPos.x += (m_fSpeed * DT) * m_vecMoveDir.x;
+		break;
+	case Behavior::Jump:
+	{
+		m_vecPos.y--;
+		SetGravity(-260);
+		break;
+	}
+	case Behavior::DownJump:
+		this->SetGround(0);
+		this->SetPlatform(0);
+		this->SetGravity(1);
+		break;
+	case Behavior::Fall:
+		break;
+
+	case Behavior::Down:
+		break;
+	case Behavior::AttackReady:
+		GAME->SetAttack(true);
+		GAME->SetAttackTime(GAME->GetAttackTime() + DT);
+		break;
+	case Behavior::Attack:
+	{
+		CAttack* pAttack = new CAttack();
+		if (m_vecMoveDir.x == -1)
+			pAttack->SetPos(m_vecPos.x - 10, m_vecPos.y + 7);
+		else if (m_vecMoveDir.x == 1)
+			pAttack->SetPos(m_vecPos.x + 10, m_vecPos.y + 7);
+		pAttack->SetPos(m_vecPos);
+		ADDOBJECT(pAttack);
+		break;
+	}
+	case Behavior::Attack2:
+	{
+		CAttack2* pAttack2 = new CAttack2();
+
+		if (m_vecMoveDir.x == -1)
+			pAttack2->SetPos(m_vecPos.x - 7, m_vecPos.y + 5);
+		else if (m_vecMoveDir.x == 1)
+			pAttack2->SetPos(m_vecPos.x + 7, m_vecPos.y + 5);
+		pAttack2->SetPos(m_vecPos);
+		ADDOBJECT(pAttack2);
+		break;
+	}
+	case Behavior::Critical:
+	{
+		CCritical* pCritical = new CCritical;
+		if (m_vecMoveDir.x == -1)
+			pCritical->SetPos(m_vecPos.x, m_vecPos.y);
+		else if (m_vecMoveDir.x == 1)
+			pCritical->SetPos(m_vecPos.x, m_vecPos.y);
+		pCritical->SetPos(m_vecPos);
+		ADDOBJECT(pCritical);
+		break;
+	}
+	case Behavior::CriticalReady:
+		break;
+	case Behavior::Damage:
+		GAME->SetDamageTime(GAME->GetDamageTime() + DT);
+		m_vecPos.x += -1 * 200 * DT * m_vecLookDir.x;
+		break;
+	default:
+		break;
+	}
 }
 
 void CPlayer::AnimatorUpdate()
@@ -410,14 +570,22 @@ void CPlayer::OnCollisionEnter(CCollider* pOtherCollider)
 	{
 		m_vecMoveDir.x = 0;
 	}
+
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Things || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC)
+	{
+		isThingCollision = true;
+	}
 }
 
 void CPlayer::OnCollisionStay(CCollider* pOtherCollider)
 {
-
+	
 }
 
 void CPlayer::OnCollisionExit(CCollider* pOtherCollider)
 {
-
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Things || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC)
+	{
+		isThingCollision = false;
+	}
 }

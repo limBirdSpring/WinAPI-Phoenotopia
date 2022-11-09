@@ -22,6 +22,7 @@ protected:
 	int m_choosing; //선택된 선택지
 	CImage* m_pChoose;//선택지이미지
 
+
 private:
 	virtual void Init() override = 0;
 	virtual void Update() override = 0;

@@ -38,7 +38,7 @@ protected:
 
 	float m_fSpeed;
 
-public:
+public :
 	Vector GetPos();
 	void SetPos(Vector pos);
 	void SetPos(float x, float y);

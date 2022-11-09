@@ -252,6 +252,12 @@
     <ClInclude Include="CCarol.h">
       <Filter>GameObject\NPC</Filter>
     </ClInclude>
+    <ClInclude Include="CEventMark.h">
+      <Filter>GameObject\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneStore.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -415,6 +421,12 @@
     </ClCompile>
     <ClCompile Include="CCarol.cpp">
       <Filter>GameObject\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="CEventMark.cpp">
+      <Filter>GameObject\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneStore.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

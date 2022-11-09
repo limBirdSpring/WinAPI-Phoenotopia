@@ -23,6 +23,7 @@
 #include "CUIManager.h"
 #include "CButton.h"
 #include "CCarol.h"
+#include "CEventMark.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -42,11 +43,6 @@ void CSceneStage01::Init()
 	CSlug* pSlug = new CSlug();
 	pSlug->SetPos(300, WINSIZEY * 0.5f-10);
 	AddGameObject(pSlug);
-
-	CButton* pButton = new CButton;
-	pButton->SetPos(500, 500);
-	pButton->SetScale(100, 100);
-	AddGameObject(pButton);
 
 	CDoor* pDoor = new CDoor;
 	pDoor->SetPos(320, 489);
@@ -69,6 +65,11 @@ void CSceneStage01::Init()
 	CCarol* pCarol = new CCarol;
 	pCarol->SetPos(960, 489);
 	AddGameObject(pCarol);
+
+	CEventMark* pMilestone = new CEventMark;
+	pMilestone->SetPos(1457, 489);
+	pMilestone->m_strSetDialogue = L"평범한 표지판이다.";
+	AddGameObject(pMilestone);
 }
 
 void CSceneStage01::Enter()
