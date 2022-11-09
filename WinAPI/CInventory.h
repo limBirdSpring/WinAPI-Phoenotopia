@@ -4,15 +4,14 @@
 class CPlayer;
 class CImage;
 
-class CSceneStore :
+class CInventory :
 	public CScene
 {
 public:
-	CSceneStore();
-	virtual ~CSceneStore();
+	CInventory();
+	virtual ~CInventory();
 
 private:
-	CPlayer* pPlayer;
 	CImage* m_pImage;
 
 private:

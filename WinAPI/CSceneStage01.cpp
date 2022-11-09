@@ -47,23 +47,23 @@ void CSceneStage01::Init()
 	CDoor* pDoor = new CDoor;
 	pDoor->SetPos(320, 489);
 	pDoor->SetScene(GroupScene::GailRoom);
-	pDoor->SetPlayerStartPos(Vector (306, 272));
+	pDoor->SetPlayerStartPos(Vector (306, 398));
 	AddGameObject(pDoor);
 
 	CDoor* pStoreDoor = new CDoor;
 	pStoreDoor->SetPos(845, 489);
-	pStoreDoor->SetScene(GroupScene::GailRoom);
-	pStoreDoor->SetPlayerStartPos(Vector(306, 272));
+	pStoreDoor->SetScene(GroupScene::Store);
+	pStoreDoor->SetPlayerStartPos(Vector(323, 398));
 	AddGameObject(pStoreDoor);
 
 	CDoor* pGailRoomDoor = new CDoor;
 	pGailRoomDoor->SetPos(1300, 489);
 	pGailRoomDoor->SetScene(GroupScene::GailRoom);
-	pGailRoomDoor->SetPlayerStartPos(Vector(306, 272));
+	pGailRoomDoor->SetPlayerStartPos(Vector(306, 398));
 	AddGameObject(pGailRoomDoor);
 
 	CCarol* pCarol = new CCarol;
-	pCarol->SetPos(960, 489);
+	pCarol->SetPos(625, 489);
 	AddGameObject(pCarol);
 
 	CEventMark* pMilestone = new CEventMark;

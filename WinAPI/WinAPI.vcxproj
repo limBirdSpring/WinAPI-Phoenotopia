@@ -161,7 +161,9 @@
     <ClInclude Include="CGroundTile.h" />
     <ClInclude Include="CImageObject.h" />
     <ClInclude Include="CInputManager.h" />
+    <ClInclude Include="CInventory.h" />
     <ClInclude Include="CLineMove.h" />
+    <ClInclude Include="CLisa.h" />
     <ClInclude Include="CMissile.h" />
     <ClInclude Include="CMonster.h" />
     <ClInclude Include="CMonsterStatus.h" />
@@ -226,7 +228,9 @@
     <ClCompile Include="CGroundTile.cpp" />
     <ClCompile Include="CImageObject.cpp" />
     <ClCompile Include="CInputManager.cpp" />
+    <ClCompile Include="CInventory.cpp" />
     <ClCompile Include="CLineMove.cpp" />
+    <ClCompile Include="CLisa.cpp" />
     <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CMonster.cpp" />
     <ClCompile Include="CMonsterStatus.cpp" />

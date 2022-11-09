@@ -49,19 +49,19 @@ void CSceneGailRoom::Init()
 	AddGameObject(pForest);
 
 	CDoor* pDoor = new CDoor;
-	pDoor->SetPos(306, 278);
+	pDoor->SetPos(306, 400);
 	pDoor->SetScene(GroupScene::Stage01);
 	pDoor->SetImage(false);
 	pDoor->SetPlayerStartPos(Vector(1300, 488));
 	AddGameObject(pDoor);
 
 	CEventMark* pClothes = new CEventMark;
-	pClothes->SetPos(334, 278);
+	pClothes->SetPos(334, 400);
 	pClothes->m_strSetDialogue = L"도복이다. 맞다. 태권도학원 가야하는데..";
 	AddGameObject(pClothes);
 
 	CEventMark* pBed = new CEventMark;
-	pBed->SetPos(377, 278);
+	pBed->SetPos(377, 400);
 	pBed->m_strSetDialogue = L"아직 잘 시간은 아니다.";
 	AddGameObject(pBed);
 
@@ -77,7 +77,7 @@ void CSceneGailRoom::Enter()
 	
 	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));
 	CAMERA->ZoomInOut(3);
-	CAMERA->SetTargetPos(Vector(m_pImage->GetWidth() * 0.5, m_pImage->GetHeight() * 0.5));
+	CAMERA->SetTargetPos(Vector(m_pImage->GetWidth() * 0.5, m_pImage->GetHeight()));
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
 	pPlayer->SetGravity(1);

@@ -256,7 +256,13 @@
       <Filter>GameObject\NPC</Filter>
     </ClInclude>
     <ClInclude Include="CSceneStore.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CLisa.h">
+      <Filter>GameObject\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="CInventory.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -426,7 +432,13 @@
       <Filter>GameObject\NPC</Filter>
     </ClCompile>
     <ClCompile Include="CSceneStore.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CLisa.cpp">
+      <Filter>GameObject\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="CInventory.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
