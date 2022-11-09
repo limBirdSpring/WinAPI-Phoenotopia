@@ -95,6 +95,16 @@ void CSceneGailRoom::Update()
 		DELAYCHANGESCENE(GroupScene::Title, 0.25f);
 	}
 
+	if (BUTTONDOWN('I'))
+	{
+		GAME->SetCurScene(GroupScene::GailRoom);
+		CHANGESCENE(GroupScene::Inventory);
+	}
+
+	if (BUTTONDOWN('J'))
+	{
+		GAME->m_vInventoryItem.push_back(GAME->m_vItem[1]);
+	}
 }
 
 void CSceneGailRoom::Render()

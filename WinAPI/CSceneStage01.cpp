@@ -117,6 +117,12 @@ void CSceneStage01::Update()
 		DELAYCHANGESCENE(GroupScene::Title, 0.25f);
 	}
 
+	if (BUTTONDOWN('I'))
+	{
+		GAME->SetCurScene(GroupScene::Stage01);
+		CHANGESCENE(GroupScene::Inventory);
+	}
+
 	if (BUTTONDOWN(VK_F1))
 	{
 		CSlug* pSlug = new CSlug();
@@ -133,6 +139,8 @@ void CSceneStage01::Update()
 	{
 		CAMERA->ZoomInOut(2,3);
 	}
+
+
 }
 
 void CSceneStage01::Render()

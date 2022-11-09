@@ -16,10 +16,11 @@ enum ItemType
 
 struct Item
 {
+	wstring name;	//아이템 이름
 	CImage* img;	//아이템 이미지
 	ItemType type;	//아이템 종류
-	int price;		//아이템 가격
-	int num;		//아이템 갯수
+	int price = 0;		//아이템 가격
+	int num = 1;		//아이템 갯수
 };
 
 
@@ -40,6 +41,7 @@ private:
 	float m_fAttackTime;
 	float m_fDamageTime;
 
+	GroupScene m_curScene;
 
 private :
 	//플레이어 정보
@@ -48,13 +50,14 @@ private :
 	int gold;
 	int hp;
 
-	unordered_map<string, Item> m_vecInventoryItem; //인벤토리에 들어있는 아이템
-	unordered_map<string, Item> m_vecSetItem; //착용한 아이템
-
-
+	
+	
 	Vector m_vecStartPos; //맵으로 워프했을 경우 플레이어의 초기 위치
 
 public :
+	vector<Item> m_vItem;//아이템 종류
+	vector<Item> m_vInventoryItem; //인벤토리에 들어있는 아이템
+	vector<Item> m_vSetItem; //착용한 아이템
 
 	bool GetAttack() { return m_bAttack; }
 	void SetAttack(bool attack) { m_bAttack = attack; }
@@ -70,6 +73,9 @@ public :
 
 	float GetDamageTime() { return m_fDamageTime; }
 	void SetDamageTime(float time) { m_fDamageTime = time; }
+
+	GroupScene GetCurScene() { return m_curScene; }
+	void SetCurScene(GroupScene scene) { m_curScene = scene; }
 
 
 public :

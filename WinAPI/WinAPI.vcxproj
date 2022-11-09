@@ -171,6 +171,7 @@
     <ClInclude Include="CSceneForest.h" />
     <ClInclude Include="CSceneGailRoom.h" />
     <ClInclude Include="CSceneStore.h" />
+    <ClInclude Include="CSelect.h" />
     <ClInclude Include="CSlug.h" />
     <ClInclude Include="CPanel.h" />
     <ClInclude Include="CPathManager.h" />
@@ -238,6 +239,7 @@
     <ClCompile Include="CSceneForest.cpp" />
     <ClCompile Include="CSceneGailRoom.cpp" />
     <ClCompile Include="CSceneStore.cpp" />
+    <ClCompile Include="CSelect.cpp" />
     <ClCompile Include="CSlug.cpp" />
     <ClCompile Include="CPanel.cpp" />
     <ClCompile Include="CPathManager.cpp" />

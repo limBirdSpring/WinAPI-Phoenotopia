@@ -3,6 +3,7 @@
 
 class CPlayer;
 class CImage;
+class CSelect;
 
 class CInventory :
 	public CScene
@@ -13,6 +14,11 @@ public:
 
 private:
 	CImage* m_pImage;
+	CSelect* m_pSelect;
+
+	int selectItem;
+
+
 
 private:
 	void Init()		override;

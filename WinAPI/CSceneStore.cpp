@@ -90,6 +90,12 @@ void CSceneStore::Update()
 		DELAYCHANGESCENE(GroupScene::Title, 0.25f);
 	}
 
+	if (BUTTONDOWN('I'))
+	{
+		GAME->SetCurScene(GroupScene::Store);
+		CHANGESCENE(GroupScene::Inventory);
+	}
+
 }
 
 void CSceneStore::Render()

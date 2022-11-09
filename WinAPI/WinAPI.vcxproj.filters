@@ -264,6 +264,9 @@
     <ClInclude Include="CInventory.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="CSelect.h">
+      <Filter>GameObject\Things</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -439,6 +442,9 @@
     </ClCompile>
     <ClCompile Include="CInventory.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CSelect.cpp">
+      <Filter>GameObject\Things</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

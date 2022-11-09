@@ -39,6 +39,8 @@ enum class GroupScene
 
 	BossMap,
 
+	Inventory,
+
 	Size,
 };
 
