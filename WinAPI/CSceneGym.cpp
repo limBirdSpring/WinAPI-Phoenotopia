@@ -22,6 +22,7 @@
 #include "CDoor.h"
 #include "CEventMark.h"
 #include "CWarp.h"
+#include "CTeacher.h"
 
 CSceneGym::CSceneGym()
 {
@@ -55,6 +56,10 @@ void CSceneGym::Init()
 	pDoor->SetScene(GroupScene::Stage01);
 	pDoor->SetPlayerStartPos(Vector(320, 488));
 	AddGameObject(pDoor);
+
+	CTeacher* pTeacher = new CTeacher;
+	pTeacher->SetPos(162, 417);
+	AddGameObject(pTeacher);
 
 
 	CSlug* pSlug = new CSlug();

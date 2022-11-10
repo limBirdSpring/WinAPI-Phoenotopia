@@ -20,6 +20,7 @@ protected:
 	list<CGameObject*> m_listObj[(int)Layer::Size];
 
 	CSound* pLoad_BGM;//¾À ¹è°æÀ½¾Ç
+	CImage* m_pDoor = RESOURCE->LoadImg(L"InDoor", L"Image\\InDoor.png");
 
 public:
 	CScene();

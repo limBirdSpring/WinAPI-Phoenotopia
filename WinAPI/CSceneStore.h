@@ -15,6 +15,7 @@ private:
 	CPlayer* pPlayer;
 	CImage* m_pImage;
 
+
 private:
 	void Init()		override;
 	void Enter()	override;

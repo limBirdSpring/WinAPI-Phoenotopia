@@ -29,6 +29,7 @@ CSceneStore::CSceneStore()
 {
 	pPlayer = nullptr;
 	m_pImage = nullptr;
+	
 }
 
 CSceneStore::~CSceneStore()
@@ -118,6 +119,7 @@ void CSceneStore::Update()
 
 void CSceneStore::Render()
 {
+	RENDER->Image(m_pDoor, 305, 380, 305 + m_pDoor->GetWidth(), 380 + m_pDoor->GetHeight());
 }
 
 void CSceneStore::Exit()

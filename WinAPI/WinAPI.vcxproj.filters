@@ -282,6 +282,9 @@
     <ClInclude Include="CWarp.h">
       <Filter>GameObject\Things</Filter>
     </ClInclude>
+    <ClInclude Include="CTeacher.h">
+      <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -472,6 +475,9 @@
     </ClCompile>
     <ClCompile Include="CWarp.cpp">
       <Filter>GameObject\Things</Filter>
+    </ClCompile>
+    <ClCompile Include="CTeacher.cpp">
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

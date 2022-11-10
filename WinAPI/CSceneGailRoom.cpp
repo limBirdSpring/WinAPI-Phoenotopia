@@ -114,6 +114,7 @@ void CSceneGailRoom::Update()
 
 void CSceneGailRoom::Render()
 {
+	RENDER->Image(m_pDoor, 289, 380, 289 + m_pDoor->GetWidth(), 380 + m_pDoor->GetHeight());
 }
 
 void CSceneGailRoom::Exit()
