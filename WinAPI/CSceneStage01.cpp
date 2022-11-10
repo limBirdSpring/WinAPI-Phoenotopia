@@ -44,11 +44,11 @@ void CSceneStage01::Init()
 	pSlug->SetPos(300, WINSIZEY * 0.5f-10);
 	AddGameObject(pSlug);
 
-	CDoor* pDoor = new CDoor;
-	pDoor->SetPos(320, 489);
-	pDoor->SetScene(GroupScene::GailRoom);
-	pDoor->SetPlayerStartPos(Vector (306, 398));
-	AddGameObject(pDoor);
+	CDoor* pGymDoor = new CDoor;
+	pGymDoor->SetPos(320, 489);
+	pGymDoor->SetScene(GroupScene::Gym);
+	pGymDoor->SetPlayerStartPos(Vector (18, 415));
+	AddGameObject(pGymDoor);
 
 	CDoor* pStoreDoor = new CDoor;
 	pStoreDoor->SetPos(845, 489);

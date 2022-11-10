@@ -121,8 +121,10 @@ void CBuyEvent::Talk()
 	case 1:
 		m_strDialogue = to_wstring(item.price) + L"G에 " + item.name + L"을(를) 살까?  \n\n 네. \n 아니요.";
 		m_choose = 2;
+		m_choosing = 1;
 		break;
 	case 2:
+	{
 		if (m_choosing == 1)
 		{
 			if (GAME->GetGold() < item.price)
@@ -150,6 +152,7 @@ void CBuyEvent::Talk()
 		m_choose = 0;
 		m_choosing = 1;
 		break;
+	}
 	default:
 		m_strDialogue = L"";
 		GAME->SetTalk(false);

@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "CSceneGailRoom.h"
+#include "CSceneGym.h"
 
 #include "WinAPI.h"
 #include "CInputManager.h"
@@ -21,18 +21,19 @@
 #include "CGameManager.h"
 #include "CDoor.h"
 #include "CEventMark.h"
+#include "CWarp.h"
 
-CSceneGailRoom::CSceneGailRoom()
+CSceneGym::CSceneGym()
 {
 	pPlayer = nullptr;
 	m_pImage = nullptr;
 }
 
-CSceneGailRoom::~CSceneGailRoom()
+CSceneGym::~CSceneGym()
 {
 }
 
-void CSceneGailRoom::Init()
+void CSceneGym::Init()
 {
 	pPlayer = new CPlayer();
 	AddGameObject(pPlayer);
@@ -43,51 +44,53 @@ void CSceneGailRoom::Init()
 	m_pImage = RESOURCE->LoadImg(L"Panselo_Middle", L"Image\\Panselo_Middle.png");
 	LoadMiddleground(m_pImage);
 
-	m_pImage = RESOURCE->LoadImg(L"GailRoom", L"Image\\GailRoom.png");
+	m_pImage = RESOURCE->LoadImg(L"Gym", L"Image\\Gym.png");
 	CImageObject* pForest = new CImageObject;
 	pForest->SetImage(m_pImage);
 	AddGameObject(pForest);
 
-	CDoor* pDoor = new CDoor;
-	pDoor->SetPos(306, 400);
+	CWarp* pDoor = new CWarp;
+	pDoor->SetPos(0, 359);
+	pDoor->SetScale(10, 150);
 	pDoor->SetScene(GroupScene::Stage01);
-	pDoor->SetImage(false);
-	pDoor->SetPlayerStartPos(Vector(1300, 488));
+	pDoor->SetPlayerStartPos(Vector(320, 488));
 	AddGameObject(pDoor);
 
-	CEventMark* pClothes = new CEventMark;
-	pClothes->SetPos(334, 400);
-	pClothes->m_strSetDialogue = L"도복이다. 맞다. 태권도학원 가야하는데..";
-	AddGameObject(pClothes);
 
-	CEventMark* pBed = new CEventMark;
-	pBed->SetPos(377, 400);
-	pBed->m_strSetDialogue = L"아직 잘 시간은 아니다.";
-	AddGameObject(pBed);
+	CSlug* pSlug = new CSlug();
+	pSlug->SetPos(370, 452);
+	AddGameObject(pSlug);
+
+
+	CEventMark* pClothes = new CEventMark;
+	pClothes->SetPos(171, 272);
+	pClothes->SetScale(50, 50);
+	pClothes->m_strSetDialogue = L"초급자용 태권도 도복이 들어있는 사물함.";
+	AddGameObject(pClothes);
 
 }
 
-void CSceneGailRoom::Enter()
+void CSceneGym::Enter()
 {
 	CAMERA->FadeIn(0.25f);
 
 	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
 	//SOUND->Play(pLoad_BGM, 1, true);
 
-	
+
 	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));
-	CAMERA->ZoomInOut(3);
-	CAMERA->SetTargetPos(Vector(m_pImage->GetWidth() * 0.5, m_pImage->GetHeight()));
+	CAMERA->ZoomInOut(2);
+	CAMERA->SetTargetObj(pPlayer);
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
 	pPlayer->SetGravity(1);
 	pPlayer->SetGround(0);
 
 	CAMERA->FadeIn(0.25f);
-	LoadTile(GETPATH + L"Tile\\GailRoom.tile");
+	LoadTile(GETPATH + L"Tile\\Gym.tile");
 }
 
-void CSceneGailRoom::Update()
+void CSceneGym::Update()
 {
 	if (BUTTONDOWN(VK_ESCAPE))
 	{
@@ -97,7 +100,7 @@ void CSceneGailRoom::Update()
 
 	if (BUTTONDOWN('I'))
 	{
-		GAME->SetCurScene(GroupScene::GailRoom);
+		GAME->SetCurScene(GroupScene::Gym);
 		GAME->SetPlayerStartPos(pPlayer->GetPos());
 		CHANGESCENE(GroupScene::Inventory);
 	}
@@ -107,19 +110,17 @@ void CSceneGailRoom::Update()
 		GAME->PushBackInvenItem(GAME->m_vItem[0]);
 		GAME->PushBackInvenItem(GAME->m_vItem[1]);
 		GAME->PushBackInvenItem(L"개구리 뒷다리");
-		GAME->PushBackInvenItem(L"젬");
-		GAME->PushBackInvenItem(L"도시락");
 	}
 }
 
-void CSceneGailRoom::Render()
+void CSceneGym::Render()
 {
 }
 
-void CSceneGailRoom::Exit()
+void CSceneGym::Exit()
 {
 }
 
-void CSceneGailRoom::Release()
+void CSceneGym::Release()
 {
 }

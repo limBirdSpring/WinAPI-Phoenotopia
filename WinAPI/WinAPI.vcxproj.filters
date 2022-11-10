@@ -276,6 +276,12 @@
     <ClInclude Include="CBuyEvent.h">
       <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
+    <ClInclude Include="CSceneGym.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CWarp.h">
+      <Filter>GameObject\Things</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -460,6 +466,12 @@
     </ClCompile>
     <ClCompile Include="CBuyEvent.cpp">
       <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneGym.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CWarp.cpp">
+      <Filter>GameObject\Things</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -23,6 +23,7 @@
 #include "CCarol.h"
 #include "CLisa.h"
 #include "CBuyEvent.h"
+#include "CEventMark.h"
 
 CSceneStore::CSceneStore()
 {
@@ -65,6 +66,16 @@ void CSceneStore::Init()
 	pEgg->item = GAME->FindItem(L"페로 알");
 	pEgg->SetPos(279, 390);
 	AddGameObject(pEgg);
+
+	CBuyEvent* pMilk = new CBuyEvent;
+	pMilk->item = GAME->FindItem(L"우유");
+	pMilk->SetPos(207, 390);
+	AddGameObject(pMilk);
+
+	CEventMark* pCake = new CEventMark;
+	pCake->SetPos(243, 390);
+	pCake->m_strSetDialogue = L"딸기케이크는 다 팔리고 없다.";
+	AddGameObject(pCake);
 
 }
 

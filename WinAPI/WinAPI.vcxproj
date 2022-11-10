@@ -172,6 +172,7 @@
     <ClInclude Include="CNPC.h" />
     <ClInclude Include="CSceneForest.h" />
     <ClInclude Include="CSceneGailRoom.h" />
+    <ClInclude Include="CSceneGym.h" />
     <ClInclude Include="CSceneStore.h" />
     <ClInclude Include="CSelect.h" />
     <ClInclude Include="CSlug.h" />
@@ -199,6 +200,7 @@
     <ClInclude Include="CUI.h" />
     <ClInclude Include="CUIManager.h" />
     <ClInclude Include="CWallTile.h" />
+    <ClInclude Include="CWarp.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="Logger.h" />
@@ -242,6 +244,7 @@
     <ClCompile Include="CNPC.cpp" />
     <ClCompile Include="CSceneForest.cpp" />
     <ClCompile Include="CSceneGailRoom.cpp" />
+    <ClCompile Include="CSceneGym.cpp" />
     <ClCompile Include="CSceneStore.cpp" />
     <ClCompile Include="CSelect.cpp" />
     <ClCompile Include="CSlug.cpp" />
@@ -269,6 +272,7 @@
     <ClCompile Include="CUI.cpp" />
     <ClCompile Include="CUIManager.cpp" />
     <ClCompile Include="CWallTile.cpp" />
+    <ClCompile Include="CWarp.cpp" />
     <ClCompile Include="WinAPI.cpp" />
   </ItemGroup>
   <ItemGroup>

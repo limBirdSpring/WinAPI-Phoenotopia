@@ -136,16 +136,44 @@ void CGameManager::Init()
 	Item frog;
 	frog.name = L"개구리 뒷다리";
 	frog.img = RESOURCE->LoadImg(L"Item_Frog", L"Image\\Item_Frog.png");
-	frog.price = 30;
+	frog.price = 0;
 	frog.type = ItemType::Food;
 	frog.text = L"개구리를 잡아서 얻은 개구리 뒷다리. Hp를 4 회복시켜준다.";
 	frog.hp = 4;
 	m_vItem.push_back(frog);
+
+	//아이템
+	Item milk;
+	milk.name = L"우유";
+	milk.img = RESOURCE->LoadImg(L"Item_Milk", L"Image\\Item_Milk.png");
+	milk.price = 45;
+	milk.type = ItemType::Food;
+	milk.text = L"개구리를 잡아서 얻은 개구리 뒷다리. Hp를 5 회복시켜준다.";
+	milk.hp = 5;
+	m_vItem.push_back(milk);
+
+	//아이템
+	Item mill;
+	mill.name = L"도시락";
+	mill.img = RESOURCE->LoadImg(L"Item_Mill", L"Image\\Item_Mill.png");
+	mill.price = 100;
+	mill.type = ItemType::Food;
+	mill.text = L"고기반찬이 들어있는 맛있는 특제 도시락. Hp를 20 회복시켜준다.";
+	mill.hp = 20;
+	m_vItem.push_back(mill);
+
+	//퀘스트
+	Item zem;
+	zem.name = L"젬";
+	zem.img = RESOURCE->LoadImg(L"Item_Zem", L"Image\\Item_Zem.png");
+	zem.type = ItemType::Quest;
+	zem.text = L"반짝거리는 젬이다. 문을 여는 데에 쓸 수 있을 것 같다.";
+	m_vItem.push_back(zem);
 }
 
 void CGameManager::Update()
 {
-
+	hp = clamp(hp, 0, 30);
 }
 void CGameManager::Render()
 {

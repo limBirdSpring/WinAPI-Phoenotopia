@@ -33,6 +33,8 @@ enum class GroupScene
 
 	Store,
 
+	Gym,
+
 	Stage01,
 
 	Forest,

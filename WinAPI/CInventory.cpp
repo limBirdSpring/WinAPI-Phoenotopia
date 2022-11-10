@@ -96,7 +96,7 @@ void CInventory::Update()
 
 	m_pSelect->SetPos(160 + (90 * (selectItem % 4)), 190 + (90 * (selectItem / 4)));
 
-	if (BUTTONDOWN('X') && selectItem < GAME->m_vInventoryItem.size())
+	if (BUTTONDOWN('X') && selectItem < GAME->m_vInventoryItem.size() && GAME->m_vInventoryItem[selectItem].type != ItemType::Quest)
 	{
 		m_pMiniWindow = new CMiniWindow;
 		m_pMiniWindow->SetPos(160 + (90 * (selectItem % 4)), 190 + (90 * (selectItem / 4)));
