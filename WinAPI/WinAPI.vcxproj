@@ -144,6 +144,7 @@
     <ClInclude Include="CAttack.h" />
     <ClInclude Include="CAttack2.h" />
     <ClInclude Include="CButton.h" />
+    <ClInclude Include="CBuyEvent.h" />
     <ClInclude Include="CCameraController.h" />
     <ClInclude Include="CCameraManager.h" />
     <ClInclude Include="CCarol.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="CAttack.cpp" />
     <ClCompile Include="CAttack2.cpp" />
     <ClCompile Include="CButton.cpp" />
+    <ClCompile Include="CBuyEvent.cpp" />
     <ClCompile Include="CCameraController.cpp" />
     <ClCompile Include="CCameraManager.cpp" />
     <ClCompile Include="CCarol.cpp" />

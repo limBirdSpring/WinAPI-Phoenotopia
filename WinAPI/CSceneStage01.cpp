@@ -120,6 +120,7 @@ void CSceneStage01::Update()
 	if (BUTTONDOWN('I'))
 	{
 		GAME->SetCurScene(GroupScene::Stage01);
+		GAME->SetPlayerStartPos(pPlayer->GetPos());
 		CHANGESCENE(GroupScene::Inventory);
 	}
 

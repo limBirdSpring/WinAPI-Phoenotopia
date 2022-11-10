@@ -64,11 +64,11 @@
     <Filter Include="GameObject\Things">
       <UniqueIdentifier>{e658d30d-464a-4c54-91e4-b05463ff1430}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\NPC">
-      <UniqueIdentifier>{bed43207-c81d-457a-a709-6f41ee536b9a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObject\Iventory_UI">
       <UniqueIdentifier>{0dc48191-2c69-4833-b3c2-b6191bca4248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\NPC %28talk%29">
+      <UniqueIdentifier>{bed43207-c81d-457a-a709-6f41ee536b9a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -250,19 +250,19 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="CNPC.h">
-      <Filter>GameObject\NPC</Filter>
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
     <ClInclude Include="CCarol.h">
-      <Filter>GameObject\NPC</Filter>
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
     <ClInclude Include="CEventMark.h">
-      <Filter>GameObject\NPC</Filter>
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
     <ClInclude Include="CSceneStore.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="CLisa.h">
-      <Filter>GameObject\NPC</Filter>
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
     <ClInclude Include="CInventory.h">
       <Filter>Scene</Filter>
@@ -272,6 +272,9 @@
     </ClInclude>
     <ClInclude Include="CMiniWindow.h">
       <Filter>GameObject\Iventory_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuyEvent.h">
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -432,19 +435,19 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="CNPC.cpp">
-      <Filter>GameObject\NPC</Filter>
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClCompile>
     <ClCompile Include="CCarol.cpp">
-      <Filter>GameObject\NPC</Filter>
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClCompile>
     <ClCompile Include="CEventMark.cpp">
-      <Filter>GameObject\NPC</Filter>
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClCompile>
     <ClCompile Include="CSceneStore.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="CLisa.cpp">
-      <Filter>GameObject\NPC</Filter>
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClCompile>
     <ClCompile Include="CInventory.cpp">
       <Filter>Scene</Filter>
@@ -454,6 +457,9 @@
     </ClCompile>
     <ClCompile Include="CMiniWindow.cpp">
       <Filter>GameObject\Iventory_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuyEvent.cpp">
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

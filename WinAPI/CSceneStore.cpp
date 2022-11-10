@@ -22,6 +22,7 @@
 #include "CDoor.h"
 #include "CCarol.h"
 #include "CLisa.h"
+#include "CBuyEvent.h"
 
 CSceneStore::CSceneStore()
 {
@@ -60,6 +61,11 @@ void CSceneStore::Init()
 	pLisa->SetPos(376, 400);
 	AddGameObject(pLisa);
 
+	CBuyEvent* pEgg = new CBuyEvent;
+	pEgg->item = GAME->FindItem(L"Æä·Î ¾Ë");
+	pEgg->SetPos(279, 390);
+	AddGameObject(pEgg);
+
 }
 
 void CSceneStore::Enter()
@@ -93,6 +99,7 @@ void CSceneStore::Update()
 	if (BUTTONDOWN('I'))
 	{
 		GAME->SetCurScene(GroupScene::Store);
+		GAME->SetPlayerStartPos(pPlayer->GetPos());
 		CHANGESCENE(GroupScene::Inventory);
 	}
 

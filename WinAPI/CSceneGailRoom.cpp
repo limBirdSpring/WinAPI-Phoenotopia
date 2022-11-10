@@ -98,6 +98,7 @@ void CSceneGailRoom::Update()
 	if (BUTTONDOWN('I'))
 	{
 		GAME->SetCurScene(GroupScene::GailRoom);
+		GAME->SetPlayerStartPos(pPlayer->GetPos());
 		CHANGESCENE(GroupScene::Inventory);
 	}
 

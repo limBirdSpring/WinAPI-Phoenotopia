@@ -28,6 +28,8 @@ CGameManager::~CGameManager()
 
 void CGameManager::PushBackInvenItem(const Item item)
 {
+	if (m_vInventoryItem.size() > 12)
+		return;
 	for (int i = 0; i < m_vInventoryItem.size(); i++)
 	{
 		if (m_vInventoryItem[i].name == item.name)
@@ -59,6 +61,8 @@ void CGameManager::EraseInvenItem(const Item item)
 
 void CGameManager::PushBackInvenItem(const wstring name)
 {
+	if (m_vInventoryItem.size() > 12)
+		return;
 	for (int i = 0; i < m_vInventoryItem.size(); i++)
 	{
 		if (m_vInventoryItem[i].name == name)
@@ -94,6 +98,18 @@ void CGameManager::EraseInvenItem(const wstring name)
 		}
 
 	}
+}
+
+Item CGameManager::FindItem(const wstring name)
+{
+	for (int i = 0; i < m_vItem.size(); i++)
+	{
+		if (m_vItem[i].name == name)
+		{
+			return m_vItem[i];
+		}
+	}
+	
 }
 
 void CGameManager::Init()

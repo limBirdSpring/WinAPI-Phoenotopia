@@ -117,6 +117,15 @@ void CInventory::Render()
 			160 + (90 * (i%4)) + GAME->m_vInventoryItem[i].img->GetWidth(),
 			190 + (90 * (i/4)) + GAME->m_vInventoryItem[i].img->GetHeight()
 		);
+
+		if (GAME->m_vInventoryItem[i].num > 1)
+		{
+			RENDER->Text(to_wstring(GAME->m_vInventoryItem[i].num),
+				160 + (90 * (i % 4)) + 60,
+				190 + (90 * (i / 4)) + 20,
+				160 + (90 * (i % 4)) + 60 + GAME->m_vInventoryItem[i].img->GetWidth(),
+				190 + (90 * (i / 4)) + 20 + GAME->m_vInventoryItem[i].img->GetHeight());
+		}
 	}
 
 	for (int i = 0; i < GAME->m_vSetItem.size(); i++)
