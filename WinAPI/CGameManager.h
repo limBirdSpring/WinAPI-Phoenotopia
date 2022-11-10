@@ -45,14 +45,14 @@ private:
 
 	GroupScene m_curScene;
 
+	bool UIRender;
+
 private :
 	//플레이어 정보
 	Vector m_vecPlayerPos;
 	Vector m_vecplayerDir;
 	int gold;
 	int hp;
-
-	
 	
 	Vector m_vecStartPos; //맵으로 워프했을 경우 플레이어의 초기 위치
 
@@ -79,6 +79,9 @@ public :
 	GroupScene GetCurScene() { return m_curScene; }
 	void SetCurScene(GroupScene scene) { m_curScene = scene; }
 
+	bool GetUIRender() { return UIRender; }
+	void SetUIRender(bool render) { UIRender = render; }
+
 
 public :
 	Vector GetPlayerPos() { return m_vecPlayerPos; }
@@ -103,7 +106,12 @@ public :
 	void EraseInvenItem(const wstring name);
 
 private :
+	CImage* m_pUIImage; //UI이미지
+
+
+private :
 	void Init();
+	void Render();
 	void Update();
 	void Release();
 

@@ -118,6 +118,8 @@ void CRenderManager::BeginDraw()
 
 void CRenderManager::EndDraw()
 {
+	
+
 	m_pRenderTarget->EndDraw();
 }
 

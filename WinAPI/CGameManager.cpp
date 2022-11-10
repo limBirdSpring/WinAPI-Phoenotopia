@@ -2,6 +2,9 @@
 #include "CGameManager.h"
 #include "CResourceManager.h"
 
+#include "CCameraManager.h"
+#include "CImage.h"
+
 CGameManager::CGameManager()
 {
 	 m_bTalk = false;
@@ -11,6 +14,9 @@ CGameManager::CGameManager()
 	 m_fDamageTime = 0;
 	 hp = 30;
 	 gold = 100;
+	 m_pUIImage = RESOURCE->LoadImg(L"UI_HpGold", L"Image\\UI_HpGold.png");
+	 
+	 UIRender = false;
 
 	 m_vecPlayerPos = {0,0};
 }
@@ -120,9 +126,42 @@ void CGameManager::Init()
 	frog.hp = 4;
 	m_vItem.push_back(frog);
 }
+
 void CGameManager::Update()
 {
 
+}
+void CGameManager::Render()
+{
+	if (UIRender == true)
+	{
+		// UI Ãâ·Â
+		float scale = CAMERA->GetScale();
+		CAMERA->SetScale(1);
+		
+		
+		Vector start = CAMERA->ScreenToWorldPoint(Vector(0,0));
+		RENDER->Image(m_pUIImage, start.x, start.y, start.x + m_pUIImage->GetWidth(), start.y + m_pUIImage->GetHeight());
+		RENDER->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
+		RENDER->SetTextFormat(L"µÕ±Ù¸ð²Ã",
+			DWRITE_FONT_WEIGHT_NORMAL,
+			DWRITE_FONT_STYLE_NORMAL,
+			DWRITE_FONT_STRETCH_NORMAL,
+			30.f,
+			L"ko");
+		RENDER->Text(to_wstring(hp), start.x + 19, start.y + 18, start.x + 66, start.y + 49);//HP
+		RENDER->Text(to_wstring(gold), start.x + 1143, start.y + 24, start.x + 1235, start.y + 49);//Gold
+		RENDER->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_LEADING);
+		RENDER->SetTextFormat(L"µÕ±Ù¸ð²Ã",
+			DWRITE_FONT_WEIGHT_NORMAL,
+			DWRITE_FONT_STYLE_NORMAL,
+			DWRITE_FONT_STRETCH_NORMAL,
+			25.f,
+			L"ko");
+		CAMERA->SetScale(scale);
+
+		
+	}
 }
 void CGameManager::Release()
 {

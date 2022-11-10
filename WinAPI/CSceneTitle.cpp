@@ -27,6 +27,7 @@ void CSceneTitle::Init()
 
 void CSceneTitle::Enter()
 {
+	GAME->SetUIRender(false);
 	CAMERA->FadeIn(0.25f);
 	CAMERA->ZoomInOut(1);
 
@@ -49,6 +50,7 @@ void CSceneTitle::Update()
 		CAMERA->FadeOut(0.25f);
 		DELAYCHANGESCENE(GroupScene::GailRoom, 0.25f);
 		GAME->SetPlayerStartPos(Vector(378, 398));
+		GAME->SetUIRender(true);
 	}
 	if (BUTTONDOWN(VK_F2))
 	{

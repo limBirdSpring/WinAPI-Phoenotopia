@@ -73,6 +73,7 @@ void CCore::Render()
 	wstring frame = to_wstring(FPS);
 	RENDER->Text(frame, framePos.x - 50, framePos.y - 10, framePos.x + 50, framePos.y + 10, Color(0, 0, 0, 1.f), 15);
 
+	GAME->Render();
 	RENDER->EndDraw();
 }
 
