@@ -103,7 +103,9 @@ void CSceneGailRoom::Update()
 
 	if (BUTTONDOWN('J'))
 	{
-		GAME->m_vInventoryItem.push_back(GAME->m_vItem[1]);
+		GAME->PushBackInvenItem(GAME->m_vItem[0]);
+		GAME->PushBackInvenItem(GAME->m_vItem[1]);
+		GAME->PushBackInvenItem(L"개구리 뒷다리");
 	}
 }
 

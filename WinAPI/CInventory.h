@@ -4,6 +4,7 @@
 class CPlayer;
 class CImage;
 class CSelect;
+class CMiniWindow;
 
 class CInventory :
 	public CScene
@@ -15,6 +16,7 @@ public:
 private:
 	CImage* m_pImage;
 	CSelect* m_pSelect;
+	CMiniWindow* m_pMiniWindow;
 
 	int selectItem;
 

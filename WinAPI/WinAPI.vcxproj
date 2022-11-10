@@ -164,6 +164,7 @@
     <ClInclude Include="CInventory.h" />
     <ClInclude Include="CLineMove.h" />
     <ClInclude Include="CLisa.h" />
+    <ClInclude Include="CMiniWindow.h" />
     <ClInclude Include="CMissile.h" />
     <ClInclude Include="CMonster.h" />
     <ClInclude Include="CMonsterStatus.h" />
@@ -232,6 +233,7 @@
     <ClCompile Include="CInventory.cpp" />
     <ClCompile Include="CLineMove.cpp" />
     <ClCompile Include="CLisa.cpp" />
+    <ClCompile Include="CMiniWindow.cpp" />
     <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CMonster.cpp" />
     <ClCompile Include="CMonsterStatus.cpp" />

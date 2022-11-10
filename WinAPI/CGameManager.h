@@ -17,10 +17,12 @@ enum ItemType
 struct Item
 {
 	wstring name;	//아이템 이름
+	wstring text;	//아이템 설명
 	CImage* img;	//아이템 이미지
 	ItemType type;	//아이템 종류
 	int price = 0;		//아이템 가격
 	int num = 1;		//아이템 갯수
+	int hp = 0;		//아이템 효과
 };
 
 
@@ -94,7 +96,11 @@ public :
 	Vector GetPlayerStartPos() { return m_vecStartPos; }
 	void SetPlayerStartPos(Vector pos) { m_vecStartPos = pos; }
 
-
+public :
+	void PushBackInvenItem(const Item item);
+	void EraseInvenItem(const Item item);
+	void PushBackInvenItem(const wstring name);
+	void EraseInvenItem(const wstring name);
 
 private :
 	void Init();

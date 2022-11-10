@@ -10,12 +10,15 @@
 #include "CRenderManager.h"
 #include "CImage.h"
 #include "CSelect.h"
+#include "CMiniWindow.h"
+#include "CGameObject.h"
 
 CInventory::CInventory()
 {
 	m_pImage = nullptr;
 	selectItem = 0;
 	m_pSelect = nullptr;
+	m_pMiniWindow = nullptr;
 }
 
 CInventory::~CInventory()
@@ -46,6 +49,27 @@ void CInventory::Enter()
 
 void CInventory::Update()
 {
+	
+
+	if (m_pMiniWindow != nullptr) //¾ÆÀÌÅÛ ÀåÂø ¹× ¸Ô±â
+	{
+		if (m_pMiniWindow->GetReserveDelete()&&m_pMiniWindow->select == 0)
+		{
+			if (GAME->m_vInventoryItem[selectItem].type == ItemType::Weapon)
+			{
+				GAME->m_vSetItem.push_back(GAME->m_vInventoryItem[selectItem]);
+			}
+			else if (GAME->m_vInventoryItem[selectItem].type == ItemType::Food)
+			{
+				GAME->SetHp(GAME->m_vInventoryItem[selectItem].hp);
+			}
+			GAME->EraseInvenItem(GAME->m_vInventoryItem[selectItem]);
+
+			m_pMiniWindow = nullptr;
+		}	
+		return;
+	}
+
 	if (BUTTONDOWN(VK_ESCAPE))
 	{
 		CHANGESCENE(GAME->GetCurScene());
@@ -53,26 +77,36 @@ void CInventory::Update()
 
 	if (BUTTONDOWN(VK_LEFT))
 	{
-
+		selectItem--;
 	}
 	else if (BUTTONDOWN(VK_RIGHT))
 	{
-
+		selectItem++;
 	}
 	else if (BUTTONDOWN(VK_UP))
 	{
-
+		selectItem-=4;
 	}
 	else if (BUTTONDOWN(VK_DOWN))
 	{
+		selectItem += 4;
+	}
 
+	selectItem = clamp(selectItem, 0, 11);
+
+	m_pSelect->SetPos(160 + (90 * (selectItem % 4)), 190 + (90 * (selectItem / 4)));
+
+	if (BUTTONDOWN('X') && selectItem < GAME->m_vInventoryItem.size())
+	{
+		m_pMiniWindow = new CMiniWindow;
+		m_pMiniWindow->SetPos(160 + (90 * (selectItem % 4)), 190 + (90 * (selectItem / 4)));
+		m_pMiniWindow->selectItem = this->selectItem;
+		AddGameObject(m_pMiniWindow);
 	}
 }
 
 void CInventory::Render()
 {
-
-	//RENDER->Image(GAME->m_vInventoryItem[1].img, 168, 195, 168 + GAME->m_vInventoryItem[1].img->GetWidth(), 195 + GAME->m_vInventoryItem[1].img->GetHeight());
 
 	for (int i = 0; i< GAME->m_vInventoryItem.size(); i++)
 	{
@@ -83,6 +117,23 @@ void CInventory::Render()
 			160 + (90 * (i%4)) + GAME->m_vInventoryItem[i].img->GetWidth(),
 			190 + (90 * (i/4)) + GAME->m_vInventoryItem[i].img->GetHeight()
 		);
+	}
+
+	for (int i = 0; i < GAME->m_vSetItem.size(); i++)
+	{
+		RENDER->Image(
+			GAME->m_vSetItem[i].img,
+			576 + (90 * (i % 2)),
+			190 + (90 * (i / 2)),
+			576 + (90 * (i % 2)) + GAME->m_vSetItem[i].img->GetWidth(),
+			190 + (90 * (i / 2)) + GAME->m_vSetItem[i].img->GetHeight()
+		);
+	}
+
+	if (selectItem < GAME->m_vInventoryItem.size())
+	{
+		RENDER->Text(GAME->m_vInventoryItem[selectItem].name, 157, 521, 605, 559);
+		RENDER->Text(GAME->m_vInventoryItem[selectItem].text, 148, 577, 996, 684);
 	}
 }
 
