@@ -163,6 +163,7 @@
     <ClInclude Include="CImageObject.h" />
     <ClInclude Include="CInputManager.h" />
     <ClInclude Include="CInventory.h" />
+    <ClInclude Include="CItem.h" />
     <ClInclude Include="CLineMove.h" />
     <ClInclude Include="CLisa.h" />
     <ClInclude Include="CMiniWindow.h" />
@@ -253,6 +254,7 @@
     <ClCompile Include="CImageObject.cpp" />
     <ClCompile Include="CInputManager.cpp" />
     <ClCompile Include="CInventory.cpp" />
+    <ClCompile Include="CItem.cpp" />
     <ClCompile Include="CLineMove.cpp" />
     <ClCompile Include="CLisa.cpp" />
     <ClCompile Include="CMiniWindow.cpp" />

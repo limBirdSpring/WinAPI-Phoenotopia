@@ -339,6 +339,9 @@
     <ClInclude Include="CSceneField.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="CItem.h">
+      <Filter>GameObject\Things</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -583,6 +586,9 @@
     </ClCompile>
     <ClCompile Include="CSceneField.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CItem.cpp">
+      <Filter>GameObject\Things</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -23,6 +23,7 @@
 #include "CEventMark.h"
 #include "CWarp.h"
 #include "CTeacher.h"
+#include "CItem.h"
 
 CSceneField::CSceneField()
 {
@@ -58,8 +59,10 @@ void CSceneField::Init()
 	pDoor->SetPlayerStartDir(Vector(-1, 0));
 	AddGameObject(pDoor);
 
-
-
+	CItem* pMill = new CItem;
+	pMill->SetPos(338, 84);
+	pMill->SetItem(L"µµ½Ã¶ô");
+	AddGameObject(pMill);
 
 	CSlug* pSlug = new CSlug();
 	pSlug->SetPos(370, 452);
