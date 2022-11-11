@@ -57,6 +57,7 @@ void CSceneStore::Init()
 	pDoor->SetScene(GroupScene::Stage01);
 	pDoor->SetImage(false);
 	pDoor->SetPlayerStartPos(Vector(845, 488));
+	pDoor->SetPlayerStartDir(pPlayer->GetDir());
 	AddGameObject(pDoor);
 
 	CLisa* pLisa = new CLisa(pPlayer);
@@ -93,6 +94,7 @@ void CSceneStore::Enter()
 	CAMERA->SetTargetObj(pPlayer);
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
+	pPlayer->SetDir(GAME->GetPlayerStartDir());
 	pPlayer->SetGravity(1);
 	pPlayer->SetGround(0);
 

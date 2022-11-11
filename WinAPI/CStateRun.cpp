@@ -15,6 +15,11 @@ void CStateRun::Update()
 {
 	//TODO : 방향 틀 때 속도 줄어들며 멈춤, 체력바가 다 닳으면 점차 속도가 줄며 walk로 이동
 
+	GAME->SetMp(-0.2);
+
+	if (GAME->GetMp() < 1)
+		pPlayer->m_behavior = Behavior::Walk;
+
 	pPlayer->m_fSpeed = 200;
 
 	if (pPlayer->GetGround() == 0)

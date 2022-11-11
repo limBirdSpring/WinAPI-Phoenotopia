@@ -18,6 +18,9 @@ private :
 protected:
 	wstring m_strDialogue;
 	int talk; //대화순서
+
+	int changeTalkTopic; // 다음 대화로 넘어가기
+
 	CImage* m_pTalkBox;
 	int m_choose;//선택지유무
 	int m_choosing; //선택된 선택지

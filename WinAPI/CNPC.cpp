@@ -17,6 +17,8 @@ CNPC::CNPC()
 	m_choose =0;//선택지
 	m_choosing = 1;
 	m_pChoose = RESOURCE->LoadImg(L"Choose", L"Image\\Choose.png");//선택지
+
+	changeTalkTopic = 0;
 }
 
 CNPC::~CNPC()

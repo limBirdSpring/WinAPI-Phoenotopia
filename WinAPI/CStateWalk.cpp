@@ -17,7 +17,9 @@ void CStateWalk::Init()
 
 void CStateWalk::Update()
 {
-	pPlayer->m_fSpeed = 100;
+	if (pPlayer->m_fSpeed > 100)
+		pPlayer->m_fSpeed -= 0.1;
+
 
 	if (pPlayer->GetGround() == 0)
 		pPlayer->m_behavior = Behavior::Fall;

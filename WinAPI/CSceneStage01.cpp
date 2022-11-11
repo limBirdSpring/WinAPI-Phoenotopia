@@ -48,18 +48,21 @@ void CSceneStage01::Init()
 	pGymDoor->SetPos(320, 489);
 	pGymDoor->SetScene(GroupScene::Gym);
 	pGymDoor->SetPlayerStartPos(Vector (18, 415));
+	pGymDoor->SetPlayerStartDir(Vector(1, 0));
 	AddGameObject(pGymDoor);
 
 	CDoor* pStoreDoor = new CDoor;
 	pStoreDoor->SetPos(845, 489);
 	pStoreDoor->SetScene(GroupScene::Store);
 	pStoreDoor->SetPlayerStartPos(Vector(323, 398));
+	pStoreDoor->SetPlayerStartDir(pPlayer->GetDir());
 	AddGameObject(pStoreDoor);
 
 	CDoor* pGailRoomDoor = new CDoor;
 	pGailRoomDoor->SetPos(1300, 489);
 	pGailRoomDoor->SetScene(GroupScene::GailRoom);
 	pGailRoomDoor->SetPlayerStartPos(Vector(306, 398));
+	pGailRoomDoor->SetPlayerStartDir(pPlayer->GetDir());
 	AddGameObject(pGailRoomDoor);
 
 	CCarol* pCarol = new CCarol(pPlayer);
@@ -97,6 +100,7 @@ void CSceneStage01::Enter()
 	AddGameObject(pVillage);
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
+	pPlayer->SetDir(GAME->GetPlayerStartDir());
 	pPlayer->SetGravity(1);
 	pPlayer->SetGround(0);
 

@@ -53,6 +53,7 @@ void CSceneGailRoom::Init()
 	pDoor->SetScene(GroupScene::Stage01);
 	pDoor->SetImage(false);
 	pDoor->SetPlayerStartPos(Vector(1300, 488));
+	pDoor->SetPlayerStartDir(pPlayer->GetDir());
 	AddGameObject(pDoor);
 
 	CEventMark* pClothes = new CEventMark(pPlayer);
@@ -80,6 +81,7 @@ void CSceneGailRoom::Enter()
 	CAMERA->SetTargetPos(Vector(m_pImage->GetWidth() * 0.5, m_pImage->GetHeight()));
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
+	pPlayer->SetDir(GAME->GetPlayerStartDir());
 	pPlayer->SetGravity(1);
 	pPlayer->SetGround(0);
 

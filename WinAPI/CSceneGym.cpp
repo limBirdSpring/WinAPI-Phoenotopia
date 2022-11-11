@@ -88,6 +88,7 @@ void CSceneGym::Enter()
 	CAMERA->SetTargetObj(pPlayer);
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
+	pPlayer->SetDir(GAME->GetPlayerStartDir());
 	pPlayer->SetGravity(1);
 	pPlayer->SetGround(0);
 

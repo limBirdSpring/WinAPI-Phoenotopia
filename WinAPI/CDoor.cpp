@@ -18,6 +18,7 @@ CDoor::CDoor()
 
 	m_strName = L"¹®";
 	m_vecPlayerStartPos = Vector(0,0);
+	m_vecPlayerStartDir = Vector(0, 0);
 	m_pScene = GroupScene::Title;
 	m_vecScale = Vector(30, 30);
 }
@@ -83,6 +84,7 @@ void CDoor::OnCollisionStay(CCollider* pOtherCollider)
 			if (BUTTONDOWN(VK_UP) && isOpen)
 			{
 				GAME->SetPlayerStartPos(m_vecPlayerStartPos);
+				GAME->SetPlayerStartDir(m_vecPlayerStartDir);
 				CAMERA->FadeOut(0.25f);
 				DELAYCHANGESCENE(m_pScene, 0.25f);
 
@@ -93,6 +95,7 @@ void CDoor::OnCollisionStay(CCollider* pOtherCollider)
 			if (BUTTONDOWN(VK_UP))
 			{
 				GAME->SetPlayerStartPos(m_vecPlayerStartPos);
+				GAME->SetPlayerStartDir(m_vecPlayerStartDir);
 				CAMERA->FadeOut(0.25f);
 				DELAYCHANGESCENE(m_pScene, 0.25f);
 

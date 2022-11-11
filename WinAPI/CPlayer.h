@@ -73,6 +73,7 @@ private:
 	unordered_map<Behavior, CPlayerState*> m_mapPlayerState;
 
 	Vector m_vecLookDir;
+public :
 	Behavior m_behavior;
 
 

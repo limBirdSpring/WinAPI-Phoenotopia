@@ -48,8 +48,10 @@ private :
 	Vector m_vecplayerDir;
 	int gold;
 	int hp;
+	float mp;
 	
 	Vector m_vecStartPos; //맵으로 워프했을 경우 플레이어의 초기 위치 
+	Vector m_vecStartDir; //맵으로 워프했을 경우 플레이어의 초기 방향
 
 public :
 	vector<Item> m_vItem;//아이템 종류
@@ -79,8 +81,14 @@ public :
 	int GetHp() { return hp; }
 	void SetHp(int hp) { this->hp += hp; }
 
+	float GetMp() { return mp; }
+	void SetMp(float mp) { this->mp += mp; }
+
 	Vector GetPlayerStartPos() { return m_vecStartPos; }
 	void SetPlayerStartPos(Vector pos) { m_vecStartPos = pos; }
+
+	Vector GetPlayerStartDir() { return m_vecStartDir; }
+	void SetPlayerStartDir(Vector Dir) { m_vecStartDir = Dir; }
 
 public :
 	void PushBackInvenItem(const Item item);
@@ -90,9 +98,12 @@ public :
 	Item FindItem(const wstring name);
 	bool isItemSetting(const wstring name);
 
+//UI이미지
 private :
 	CImage* m_pUIImage; //UI이미지
-
+	CImage* m_pUIHeart; //하트 이미지
+	CImage* m_pUIMp; //Mp이미지
+	float m_fHeartScale;
 
 private :
 	void Init();

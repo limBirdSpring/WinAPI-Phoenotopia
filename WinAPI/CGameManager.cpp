@@ -7,11 +7,16 @@
 
 CGameManager::CGameManager()
 {
+
 	 m_bTalk = false;
-	 hp = 30;
+	 hp = 25;
+	 mp = 300;
 	 gold = 100;
 	 m_pUIImage = RESOURCE->LoadImg(L"UI_HpGold", L"Image\\UI_HpGold.png");
-	 
+	 m_pUIHeart = RESOURCE->LoadImg(L"UI_Heart", L"Image\\UI_Heart.png");
+	 m_pUIMp = RESOURCE->LoadImg(L"UI_Mp", L"Image\\UI_Mp.png");
+	 m_fHeartScale = 50;
+
 	 UIRender = false;
 
 	 m_vecPlayerPos = {0,0};
@@ -181,7 +186,13 @@ void CGameManager::Init()
 
 void CGameManager::Update()
 {
-	hp = clamp(hp, 0, 30);
+	hp = clamp(hp, 0, 25);
+	m_fHeartScale = hp * 2;
+
+	if (mp != 300) mp += 0.1;
+
+	mp = clamp(mp, 0.f, 300.f);
+	
 }
 void CGameManager::Render()
 {
@@ -194,6 +205,19 @@ void CGameManager::Render()
 		
 		Vector start = CAMERA->ScreenToWorldPoint(Vector(0,0));
 		RENDER->Image(m_pUIImage, start.x, start.y, start.x + m_pUIImage->GetWidth(), start.y + m_pUIImage->GetHeight());
+		RENDER->Image(m_pUIHeart, start.x+43 - m_fHeartScale, start.y+35 - m_fHeartScale, start.x + 43 + m_fHeartScale, start.y+35 + m_fHeartScale);
+		RENDER->Image(m_pUIMp, start.x + 145, start.y + 29, start.x + 145 + (mp/2), start.y + 41);
+		
+		if (isItemSetting(L"¹æ¸ÁÀÌ"))
+		{
+			RENDER->Image
+			(FindItem(L"¹æ¸ÁÀÌ").img, 
+				start.x +116 - FindItem(L"¹æ¸ÁÀÌ").img->GetWidth() *0.5, 
+				start.y + 35 - FindItem(L"¹æ¸ÁÀÌ").img->GetHeight() * 0.5, 
+				start.x + 116 + FindItem(L"¹æ¸ÁÀÌ").img->GetWidth() * 0.5, 
+				start.y + 35 + FindItem(L"¹æ¸ÁÀÌ").img->GetHeight() * 0.5);
+		}
+
 		RENDER->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
 		RENDER->SetTextFormat(L"µÕ±Ù¸ð²Ã",
 			DWRITE_FONT_WEIGHT_NORMAL,

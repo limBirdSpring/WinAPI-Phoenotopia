@@ -108,7 +108,7 @@ void CCarol::OnCollisionStay(CCollider* pOtherCollider)
 	{
 		if (BUTTONDOWN('X'))
 		{
-			CAMERA->ZoomInOut(3, 1);
+			CAMERA->ZoomInOut(2.5, 1);
 
 			talk++;
 			GAME->SetTalk(true);
@@ -122,41 +122,74 @@ void CCarol::OnCollisionStay(CCollider* pOtherCollider)
 
 void CCarol::Talk()
 {
-	switch (talk)
+	if (changeTalkTopic == 0)
 	{
-	case 0:
-		m_strDialogue = L"";
-		break;
-	case 1:
-		m_strDialogue = L"뭐? 딸기케이크?";
-		break;
-	case 2:
-		m_strDialogue = L"그건 벌써 다 팔렸는데?";
-		break;
-	case 3:
-		m_strDialogue = L"대신 신선한 계란이 들어왔어. \n\n 계란주세요. \n 계란은 싫어요.";
-		m_choose = 2;
-		break;
-	case 4:
-		if (m_choosing == 1)
+		switch (talk)
 		{
-			m_strDialogue = L"싫어.";
+		case 0:
+			m_strDialogue = L"";
+			break;
+		case 1:
+			m_strDialogue = L"오. 게일 안녕.";
+			break;
+		case 2:
+			m_strDialogue = L"오늘은 매점에 신선한 페로 알이 들어왔다나봐.";
+			break;
+		default:
+			CAMERA->ZoomInOut(2, 1.5);
+			m_strDialogue = L"";
+			GAME->SetTalk(false);
+			changeTalkTopic++;
+			talk = 0;
+			break;
 		}
-		else
+	}
+	else if (changeTalkTopic == 1)
+	{
+		switch (talk)
 		{
-			m_strDialogue = L"그래? 아쉽구나.";
+		case 0:
+			m_strDialogue = L"";
+			break;
+		case 1:
+			m_strDialogue = L"그거 아니? Z키를 누르면 점프를 할 수 있어.";
+			break;
+		case 2:
+			m_strDialogue = L"↓키를 누르면 앉을 수 있지.";
+			break;
+		case 3:
+			m_strDialogue = L"앉은 상태에서 Z키를 누르면 하향 점프를 할 수 있어.";
+			break;
+
+		default:
+			CAMERA->ZoomInOut(2, 1.5);
+			m_strDialogue = L"";
+			GAME->SetTalk(false);
+			changeTalkTopic++;
+			talk = 0;
+			break;
 		}
-		m_choose = 0;
-		m_choosing = 1;
-		break;
-	case 5:
-		m_strDialogue = L"딸기케이크 말고도 먹을 만한게 많으니 얼마든지 골라보렴";
-		break;
-	default :
-		CAMERA->ZoomInOut(2, 1.5);
-		m_strDialogue = L"";
-		GAME->SetTalk(false);
-		talk = 0;
-		break;
+	}
+	else if (changeTalkTopic == 2)
+	{
+		switch (talk)
+		{
+		case 0:
+			m_strDialogue = L"";
+			break;
+		case 1:
+			m_strDialogue = L"뭐? 더 높이 뛰는 방법은 없냐구?";
+			break;
+		case 2:
+			m_strDialogue = L"Z키를 길게 눌러봐.";
+			break;
+		default:
+			CAMERA->ZoomInOut(2, 1.5);
+			m_strDialogue = L"";
+			GAME->SetTalk(false);
+			changeTalkTopic = 0;
+			talk = 0;
+			break;
+		}
 	}
 }
