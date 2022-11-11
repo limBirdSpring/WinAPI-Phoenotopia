@@ -3,12 +3,12 @@
 
 class CPlayer;
 
-class CStateCritical :
+class CStateTalk :
     public CPlayerState
 {
 public:
-    CStateCritical(CPlayer* player) { pPlayer = player; }
-    virtual ~CStateCritical();
+    CStateTalk(CPlayer* player);
+    virtual ~CStateTalk();
 private:
 
 

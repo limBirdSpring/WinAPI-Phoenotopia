@@ -9,7 +9,7 @@ class CStateIdle;
 class CStateRun;
 class CStateJump;
 class CStateDown;
-class CStateAttckReady;
+class CStateAttackReady;
 class CStateAttack;
 class CStateDownJump;
 class CStateAttack2;
@@ -17,6 +17,9 @@ class CStateCriticalReady;
 class CStateCritical;
 class CStateDamage;
 class CStateFall;
+class CNPC;
+class CTeacher;
+class CStateTalk;
 
 			 
 class CPlayer : public CGameObject
@@ -27,7 +30,7 @@ class CPlayer : public CGameObject
 	friend CStateRun;
 	friend CStateJump;
 	friend CStateDown;
-	friend CStateAttckReady;
+	friend CStateAttackReady;
 	friend CStateAttack;
 	friend CStateDownJump;
 	friend CStateAttack2;
@@ -35,6 +38,9 @@ class CPlayer : public CGameObject
 	friend CStateCritical;
 	friend CStateDamage;
 	friend CStateFall;
+	friend CStateTalk;
+	friend CNPC;
+	friend CTeacher;
 
 public:
 	CPlayer();
@@ -54,17 +60,17 @@ private:
 	CImage* m_pDamageImage;
 
 
-	float m_fJumpTime;
 	bool isThingCollision;
 
 	unordered_map<Behavior, CPlayerState*> m_mapPlayerState;
 
-
 	Vector m_vecLookDir;
 	Behavior m_behavior;
-	Behavior m_behaviorSave;
+
+	Vector m_vecPlayerGoalPos; //플레이어의 목표지점, (0,0)일 경우 변경하지 않음
+
 public:
-	void SetBehavior(Behavior behavior) { m_behavior = behavior; m_behaviorSave = behavior; }
+	void SetBehavior(Behavior behavior) { m_behavior = behavior; }
 	Behavior GetBehavoir() { return m_behavior; }
 
 
@@ -74,7 +80,6 @@ private:
 	void Render() override;
 	void Release() override;
 	
-	void BehaviorAction();
 	void AnimatorUpdate();
 	void CreateMissile();
 

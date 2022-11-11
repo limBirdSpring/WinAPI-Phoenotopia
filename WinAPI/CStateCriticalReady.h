@@ -10,7 +10,7 @@ public:
     CStateCriticalReady(CPlayer* player) { pPlayer = player; }
     virtual ~CStateCriticalReady();
 private:
-    CPlayer* pPlayer;
+
 
 private:
     void Init() override;

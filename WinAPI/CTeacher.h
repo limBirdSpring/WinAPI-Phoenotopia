@@ -1,11 +1,13 @@
 #pragma once
 #include "CNPC.h"
 
+class CPlayer;
+
 class CTeacher :
 	public CNPC
 {
 public:
-	CTeacher();
+	CTeacher(CPlayer* player);
 	virtual ~CTeacher();
 
 private:

@@ -29,13 +29,17 @@ void CStateIdle::Update()
 		pPlayer->m_vecMoveDir.x = 1;
 		pPlayer->m_behavior = Behavior::Walk;
 	}
-	else if (BUTTONDOWN('Z'))
+	else if (BUTTONSTAY('Z'))
 	{
 		pPlayer->m_behavior = Behavior::Jump;
 	}
 	else if (BUTTONDOWN(VK_DOWN))
 	{
 		pPlayer->m_behavior = Behavior::Down;
+	}
+	else if (BUTTONDOWN('X'))
+	{
+		pPlayer->m_behavior = Behavior::AttackReady;
 	}
 }
 

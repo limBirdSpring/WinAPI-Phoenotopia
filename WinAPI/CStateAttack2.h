@@ -11,7 +11,7 @@ public:
     CStateAttack2(CPlayer* player) { pPlayer = player; }
     virtual ~CStateAttack2();
 private:
-    CPlayer* pPlayer;
+
 
 private:
     void Init() override;

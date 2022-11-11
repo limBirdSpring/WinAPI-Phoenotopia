@@ -74,6 +74,12 @@ void CStateJump::Update()
 			pPlayer->m_behavior = Behavior::Walk;
 		}
 	}
+
+	if (BUTTONDOWN('X'))
+	{
+		coolTime = 0;
+		pPlayer->m_behavior = Behavior::AttackReady;
+	}
 }
 
 void CStateJump::Render()

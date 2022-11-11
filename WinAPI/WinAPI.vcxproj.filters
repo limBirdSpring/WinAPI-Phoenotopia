@@ -330,6 +330,9 @@
     <ClInclude Include="CStateFall.h">
       <Filter>GameObject\Player\PlayerState</Filter>
     </ClInclude>
+    <ClInclude Include="CStateTalk.h">
+      <Filter>GameObject\Player\PlayerState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -564,6 +567,9 @@
       <Filter>GameObject\Player\PlayerState</Filter>
     </ClCompile>
     <ClCompile Include="CStateFall.cpp">
+      <Filter>GameObject\Player\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="CStateTalk.cpp">
       <Filter>GameObject\Player\PlayerState</Filter>
     </ClCompile>
   </ItemGroup>

@@ -12,10 +12,12 @@
 #include "CImage.h"
 #include "CAnimator.h"
 #include "CCameraManager.h"
+#include "CPlayer.h"
 
 
-CTeacher::CTeacher()
+CTeacher::CTeacher(CPlayer* player)
 {
+	pPlayer = player;
 	m_vecScale = Vector(18, 32);
 	m_strDialogue = L"";
 	talk = 0;
@@ -111,8 +113,8 @@ void CTeacher::OnCollisionStay(CCollider* pOtherCollider)
 			talk++;
 			GAME->SetTalk(true);
 			Talk();
-			pOtherCollider->GetOwner()->SetPos(m_vecPos.x - 30, m_vecPos.y);
-			pOtherCollider->GetOwner()->SetDir(Vector(0, 0));
+			pPlayer->m_behavior = Behavior::Talk;
+			
 		}
 	}
 }

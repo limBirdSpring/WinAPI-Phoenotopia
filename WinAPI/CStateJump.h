@@ -10,8 +10,7 @@ public:
     CStateJump(CPlayer* player) { pPlayer = player; }
     virtual ~CStateJump();
 private:
-    CPlayer* pPlayer;
-    float coolTime;
+
     bool farJump;
 
 private:

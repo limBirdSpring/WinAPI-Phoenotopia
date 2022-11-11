@@ -38,7 +38,6 @@ void  CCritical::Update()
 
 	if (m_fTime > 1)
 	{
-		GAME->SetAttack(false);
 		DELETEOBJECT(this);
 	}
 }

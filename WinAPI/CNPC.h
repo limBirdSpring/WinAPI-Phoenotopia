@@ -3,6 +3,7 @@
 #include "framework.h"
 
 class CImage;
+class CPlayer;
 
 class CNPC :
 	public CGameObject
@@ -21,6 +22,8 @@ protected:
 	int m_choose;//선택지유무
 	int m_choosing; //선택된 선택지
 	CImage* m_pChoose;//선택지이미지
+
+	CPlayer* pPlayer;
 
 
 private:

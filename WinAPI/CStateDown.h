@@ -11,7 +11,7 @@ public:
     CStateDown(CPlayer* player) { pPlayer = player; }
     virtual ~CStateDown();
 private:
-    CPlayer* pPlayer;
+
 
 private:
     void Init() override;

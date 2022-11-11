@@ -10,8 +10,7 @@ public:
     CStateDownJump(CPlayer* player) { pPlayer = player; }
     virtual ~CStateDownJump();
 private:
-    CPlayer* pPlayer;
-    float coolTime;
+
 
 private:
     void Init() override;

@@ -203,6 +203,7 @@
     <ClInclude Include="CStateFall.h" />
     <ClInclude Include="CStateJump.h" />
     <ClInclude Include="CStateRun.h" />
+    <ClInclude Include="CStateTalk.h" />
     <ClInclude Include="CStateWalk.h" />
     <ClInclude Include="CStatusFollow.h" />
     <ClInclude Include="CStateIdle.h" />
@@ -290,6 +291,7 @@
     <ClCompile Include="CStateFall.cpp" />
     <ClCompile Include="CStateJump.cpp" />
     <ClCompile Include="CStateRun.cpp" />
+    <ClCompile Include="CStateTalk.cpp" />
     <ClCompile Include="CStateWalk.cpp" />
     <ClCompile Include="CStatusFollow.cpp" />
     <ClCompile Include="CStateIdle.cpp" />

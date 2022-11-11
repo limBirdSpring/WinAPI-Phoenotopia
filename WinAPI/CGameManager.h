@@ -37,11 +37,6 @@ public:
 
 private:
 	bool m_bTalk;
-	bool m_bAttack;
-	bool m_bDamage;
-
-	float m_fAttackTime;
-	float m_fDamageTime;
 
 	GroupScene m_curScene;
 
@@ -61,20 +56,8 @@ public :
 	vector<Item> m_vInventoryItem; //인벤토리에 들어있는 아이템
 	vector<Item> m_vSetItem; //착용한 아이템
 
-	bool GetAttack() { return m_bAttack; }
-	void SetAttack(bool attack) { m_bAttack = attack; }
-
-	bool GetDamage() { return m_bDamage; }
-	void SetDamage(bool damage) { m_bDamage = damage; }
-
 	bool GetTalk() { return m_bTalk; }
 	void SetTalk(bool talk) { m_bTalk = talk; }
-
-	float GetAttackTime() { return m_fAttackTime; }
-	void SetAttackTime(float time) { m_fAttackTime = time; }
-
-	float GetDamageTime() { return m_fDamageTime; }
-	void SetDamageTime(float time) { m_fDamageTime = time; }
 
 	GroupScene GetCurScene() { return m_curScene; }
 	void SetCurScene(GroupScene scene) { m_curScene = scene; }

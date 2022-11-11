@@ -99,6 +99,7 @@ enum class Behavior
 	CriticalReady,
 	Critical,
 	Damage,
+	Talk,
 
 	Size
 };

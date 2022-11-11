@@ -30,6 +30,7 @@
 #include "CStateDamage.h"
 #include "CStateCriticalReady.h"
 #include "CStateFall.h"
+#include "CStateTalk.h"
 
 CPlayer::CPlayer()
 {
@@ -50,8 +51,9 @@ CPlayer::CPlayer()
 	m_pAttackReadyImage = nullptr;
 	m_pDamageImage = nullptr;
 
-	m_fJumpTime = 0;
 	isThingCollision = false;
+
+	m_vecPlayerGoalPos = Vector(0, 0);
 
 	m_vecMoveDir = Vector(0, 0);
 	m_vecLookDir = Vector(0, -1);
@@ -122,6 +124,7 @@ void CPlayer::Init()
 	m_mapPlayerState.insert(make_pair(Behavior::CriticalReady, new CStateCriticalReady(this)));
 	m_mapPlayerState.insert(make_pair(Behavior::Damage, new CStateDamage(this)));
 	m_mapPlayerState.insert(make_pair(Behavior::Fall, new CStateFall(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Talk, new CStateTalk(this)));
 
 
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 5, m_vecScale.y - 8), Vector(0, 4));
@@ -133,323 +136,12 @@ void CPlayer::Update()
 
 	m_mapPlayerState.find(m_behavior)->second->Update();
 
-
-	/*
-	//---------------------------------------------
-	m_fSpeed = 100;
-
-
-
-	if (GetGround() == 0)
-	{
-		m_behavior = Behavior::Fall;
-		if (m_behaviorSave != Behavior::Jump && 
-			m_behaviorSave != Behavior::Attack && m_behaviorSave != Behavior::Attack2 && m_behaviorSave != Behavior::Critical && m_behaviorSave != Behavior::CriticalReady)
-			m_behaviorSave = m_behavior;
-	}
-	else
-	{
-		m_behavior = Behavior::Idle;
-		if (m_behaviorSave != Behavior::Attack && m_behaviorSave != Behavior::Attack2 && m_behaviorSave != Behavior::Critical && m_behaviorSave != Behavior::CriticalReady)
-			m_behaviorSave = m_behavior;
-		
-	}
-
-	//공격준비
-	if (BUTTONSTAY('X') && !isThingCollision)
-	{
-		m_behavior = Behavior::AttackReady;
-		if (GAME->GetAttackTime() > 2.5)
-			m_behavior = Behavior::CriticalReady;
-		m_behaviorSave = m_behavior;
-	}
-	//공격
-	if (BUTTONUP('X'))
-	{
-		if (GAME->GetAttackTime() > 2.5)
-			m_behavior = Behavior::Critical;
-		else if (GetGround() == 0)
-			m_behavior = Behavior::Attack2;
-		else
-			m_behavior = Behavior::Attack;
-
-		GAME->SetAttackTime(0);
-		m_behaviorSave = m_behavior;
-	}
-
-	//걷기
-	if (BUTTONSTAY(VK_LEFT))
-	{
-		m_vecMoveDir.x = -1;
-		m_behavior = Behavior::Walk;
-	}
-	else if (BUTTONSTAY(VK_RIGHT))
-	{
-		m_vecMoveDir.x = 1;
-		m_behavior = Behavior::Walk;
-	}
-
-	//뛰기
-	if (BUTTONSTAY(VK_LEFT) && BUTTONSTAY(VK_SHIFT))
-	{
-		m_vecMoveDir.x = -1;
-		m_behavior = Behavior::Run;
-		
-	}
-	else if (BUTTONSTAY(VK_RIGHT) && BUTTONSTAY(VK_SHIFT))
-	{
-		m_vecMoveDir.x = 1;
-		m_behavior = Behavior::Run;
-		
-	}
-
-	//앉기
-	else if (BUTTONSTAY(VK_DOWN))
-	{
-		m_behavior = Behavior::Down;
-		
-	}
-
-	//점프
-	if (BUTTONSTAY(VK_DOWN) && BUTTONDOWN('Z') &&GetPlatform()!=0)//하향점프
-	{
-		m_behavior = Behavior::DownJump;
-		m_behaviorSave = Behavior::Fall;
-	}
-	else if (BUTTONDOWN('Z') && GetGround() !=0)
-	{
-		m_behavior = Behavior::Jump;
-		m_behaviorSave = m_behavior;
-	}
-	//if (BUTTONSTAY('Z'))
-	//{
-	//	m_vecPos.y--;
-	//	m_fJumpTime += DT;
-	//	SetGravity(-m_fJumpTime);
-	//}
-	
-
-	//데미지
-	if (GAME->GetDamage() == true)
-	{
-		if (GAME->GetDamageTime() < 0.2)
-		{
-			m_behavior = Behavior::Damage;
-			m_behaviorSave = m_behavior;
-		}
-		else
-		{
-			GAME->SetDamageTime(0);
-			GAME->SetDamage(false);
-		}
-	}
-
-	if (GAME->GetTalk())
-	{
-		m_behavior = Behavior::Idle;
-		m_behaviorSave = Behavior::Idle;
-	}
-
-	BehaviorAction();//행동에 따른 액션
-
-	//모션 불러오기
-
-	if (m_behaviorSave == Behavior::Jump || m_behaviorSave == Behavior::Fall)
-	{
-		m_behavior = m_behaviorSave;
-	}
-
-	if (GAME->GetAttack())
-	{
-		m_behavior = m_behaviorSave;
-	}
-
-	if (m_behaviorSave == Behavior::Damage)
-	{
-		m_behavior = m_behaviorSave;
-	}
-	*/
-
 	AnimatorUpdate();
 
 	//게임매니저에게 플레이어 정보 전달
 	GAME->SetPlayerPos(m_vecPos);
 	GAME->SetPlayerDir(m_vecLookDir);
 
-
-
-
-	/*
-
-	
-
-	//데미지
-	if (GAME->GetDamage() == true)
-	{
-		if (GAME->GetDamageTime() < 0.2)
-		{
-			m_behavior = Behavior::Damage;
-			GAME->SetDamageTime(GAME->GetDamageTime() + DT);
-			m_vecPos.x += -1 * 200 * DT * m_vecLookDir.x;
-
-			GAME->SetAttackTime(0);
-			GAME->SetAttack(false);
-		}
-		else
-		{
-			GAME->SetDamageTime(0);
-			GAME->SetDamage(false);
-		}
-	}
-
-	if (!GAME->GetTalk())
-	{
-		//공격 준비
-		if (BUTTONSTAY('X') && !GAME->GetAttack() && !GAME->GetDamage())
-		{
-			m_behavior = Behavior::AttackReady;
-			GAME->SetAttack(true);
-		}
-		if (GAME->GetAttack() == true)//얼마나 공격준비를 했는지 시간 더하기
-			GAME->SetAttackTime(GAME->GetAttackTime() + DT);
-		if (GAME->GetAttackTime() > 2.5 && GAME->GetAttack())
-			m_behavior = Behavior::CriticalReady;
-
-		//공격
-		if (BUTTONUP('X') && GAME->GetAttack())//&& 무기를 가지고 있을 때
-		{
-			if (GAME->GetAttackTime() > 2.5)//크리티컬 공격
-			{
-				m_behavior = Behavior::Critical;
-				CCritical* pCritical = new CCritical;
-				if (m_vecMoveDir.x == -1)
-					pCritical->SetPos(m_vecPos.x, m_vecPos.y);
-				else if (m_vecMoveDir.x == 1)
-					pCritical->SetPos(m_vecPos.x, m_vecPos.y);
-				pCritical->SetPos(m_vecPos);
-				ADDOBJECT(pCritical);
-			}
-			else if (GetGround())//일반공격
-			{
-				m_behavior = Behavior::Attack2;
-				CAttack* pAttack = new CAttack();
-
-				if (m_vecMoveDir.x == -1)
-					pAttack->SetPos(m_vecPos.x - 10, m_vecPos.y + 7);
-				else if (m_vecMoveDir.x == 1)
-					pAttack->SetPos(m_vecPos.x + 10, m_vecPos.y + 7);
-				pAttack->SetPos(m_vecPos);
-				ADDOBJECT(pAttack);
-			}
-			else//공중공격
-			{
-				m_behavior = Behavior::Attack;
-				CAttack2* pAttack2 = new CAttack2();
-
-				if (m_vecMoveDir.x == -1)
-					pAttack2->SetPos(m_vecPos.x - 7, m_vecPos.y + 5);
-				else if (m_vecMoveDir.x == 1)
-					pAttack2->SetPos(m_vecPos.x + 7, m_vecPos.y + 5);
-				pAttack2->SetPos(m_vecPos);
-				ADDOBJECT(pAttack2);
-			}
-			GAME->SetAttackTime(0);
-		}
-
-
-		//떨어지기
-		if (!GetGround() && !GAME->GetDamage())
-		{
-			if (!GAME->GetAttack())
-			{
-				if (GetGravity() > 100)
-					m_behavior = Behavior::Fall;
-				else
-					m_behavior = Behavior::Jump;
-			}
-		}
-		//앉기
-		else if (BUTTONSTAY(VK_DOWN) && GetGround() && !GAME->GetDamage())
-		{
-			if (!GAME->GetAttack())
-			{
-				m_behavior = Behavior::Down;
-			}
-		}
-		else
-		{
-			if (!GAME->GetAttack() && !GAME->GetDamage())
-			{
-				m_behavior = Behavior::Idle;
-			}
-		}
-
-		//점프
-		if (BUTTONSTAY(VK_DOWN) && BUTTONDOWN('Z') && GetPlatform() != 0 && !GAME->GetDamage())//하향점프
-		{
-			if (!GAME->GetAttack())
-				m_behavior = Behavior::Jump;
-
-			this->SetGround(0);
-			this->SetPlatform(0);
-			this->SetGravity(1);
-		}
-		else if (BUTTONDOWN('Z') && GetGround() && !GAME->GetDamage())
-		{
-			if (!GAME->GetAttack())
-				m_behavior = Behavior::Jump;
-			m_vecPos.y--;
-			SetGravity(-260);
-		}
-
-
-
-		//걷기
-		if (BUTTONSTAY(VK_LEFT) && !GAME->GetDamage())
-		{
-			if (GetGround() && !GAME->GetAttack())
-				m_behavior = Behavior::Walk;
-			m_vecMoveDir.x = -1;
-		}
-		else if (BUTTONSTAY(VK_RIGHT) && !GAME->GetDamage())
-		{
-			if (GetGround() && !GAME->GetAttack())
-				m_behavior = Behavior::Walk;
-			m_vecMoveDir.x = +1;
-		}
-
-		//뛰기
-		if (BUTTONSTAY(VK_LEFT) && BUTTONSTAY(VK_SHIFT) && GetGround() && !GAME->GetDamage())
-		{
-			if (!GAME->GetAttack())
-				m_behavior = Behavior::Run;
-			m_vecMoveDir.x = -1;
-			m_fSpeed += 100;
-		}
-		else if (BUTTONSTAY(VK_RIGHT) && BUTTONSTAY(VK_SHIFT) && GetGround() && !GAME->GetDamage())
-		{
-			if (!GAME->GetAttack())
-				m_behavior = Behavior::Run;
-			m_vecMoveDir.x = +1;
-			m_fSpeed += 100;
-		}
-
-
-		if (BUTTONDOWN(VK_SPACE))
-		{
-			CreateMissile();
-		}
-	}
-	m_vecPos.x += (m_fSpeed * DT) * m_vecMoveDir.x;
-
-
-	AnimatorUpdate();
-
-	//게임매니저에게 플레이어 정보 전달
-	GAME->SetPlayerPos(m_vecPos);
-	GAME->SetPlayerDir(m_vecLookDir);
-	
-	*/
 }
 
 void CPlayer::Render()
@@ -460,84 +152,7 @@ void CPlayer::Release()
 {
 }
 
-void CPlayer::BehaviorAction()
-{
-	switch (m_behavior)
-	{
-	case Behavior::Idle:
-		m_vecMoveDir = Vector(0, 0);
-		break;
-	case Behavior::Walk:
-		m_vecPos.x += (m_fSpeed * DT) * m_vecMoveDir.x;
-		break;
-	case Behavior::Run:
-		m_fSpeed += 100;
-		m_vecPos.x += (m_fSpeed * DT) * m_vecMoveDir.x;
-		break;
-	case Behavior::Jump:
-	{
-		m_vecPos.y--;
-		SetGravity(-260);
-		break;
-	}
-	case Behavior::DownJump:
-		this->SetGround(0);
-		this->SetPlatform(0);
-		this->SetGravity(1);
-		break;
-	case Behavior::Fall:
-		break;
 
-	case Behavior::Down:
-		break;
-	case Behavior::AttackReady:
-		GAME->SetAttack(true);
-		GAME->SetAttackTime(GAME->GetAttackTime() + DT);
-		break;
-	case Behavior::Attack:
-	{
-		CAttack* pAttack = new CAttack();
-		if (m_vecMoveDir.x == -1)
-			pAttack->SetPos(m_vecPos.x - 10, m_vecPos.y + 7);
-		else if (m_vecMoveDir.x == 1)
-			pAttack->SetPos(m_vecPos.x + 10, m_vecPos.y + 7);
-		pAttack->SetPos(m_vecPos);
-		ADDOBJECT(pAttack);
-		break;
-	}
-	case Behavior::Attack2:
-	{
-		CAttack2* pAttack2 = new CAttack2();
-
-		if (m_vecMoveDir.x == -1)
-			pAttack2->SetPos(m_vecPos.x - 7, m_vecPos.y + 5);
-		else if (m_vecMoveDir.x == 1)
-			pAttack2->SetPos(m_vecPos.x + 7, m_vecPos.y + 5);
-		pAttack2->SetPos(m_vecPos);
-		ADDOBJECT(pAttack2);
-		break;
-	}
-	case Behavior::Critical:
-	{
-		CCritical* pCritical = new CCritical;
-		if (m_vecMoveDir.x == -1)
-			pCritical->SetPos(m_vecPos.x, m_vecPos.y);
-		else if (m_vecMoveDir.x == 1)
-			pCritical->SetPos(m_vecPos.x, m_vecPos.y);
-		pCritical->SetPos(m_vecPos);
-		ADDOBJECT(pCritical);
-		break;
-	}
-	case Behavior::CriticalReady:
-		break;
-	case Behavior::Damage:
-		GAME->SetDamageTime(GAME->GetDamageTime() + DT);
-		m_vecPos.x += -1 * 200 * DT * m_vecLookDir.x;
-		break;
-	default:
-		break;
-	}
-}
 
 void CPlayer::AnimatorUpdate()
 {
@@ -593,12 +208,11 @@ void CPlayer::CreateMissile()
 
 void CPlayer::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetObjName() == L"Slug" && !GAME->GetDamage())
+	if (pOtherCollider->GetObjName() == L"Slug" && m_behavior != Behavior::Damage)
 	{
 		Logger::Debug(L"Slug가 플레이어와 충돌진입");
 		m_behavior = Behavior::Damage;
 		GAME->SetHp(-5);
-		GAME->SetDamage(true);
 	}
 
 	if (pOtherCollider->GetObjName() == L"벽")

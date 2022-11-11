@@ -9,8 +9,7 @@ public:
     CStateFall(CPlayer* player) { pPlayer = player; }
     virtual ~CStateFall();
 private:
-    CPlayer* pPlayer;
-    float coolTime;
+
 
 private:
     void Init() override;

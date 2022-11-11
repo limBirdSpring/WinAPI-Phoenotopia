@@ -10,7 +10,7 @@ public:
     CStateAttack(CPlayer* player) { pPlayer = player; }
     virtual ~CStateAttack();
 private:
-    CPlayer* pPlayer;
+
 
 private:
     void Init() override;

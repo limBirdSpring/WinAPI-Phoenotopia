@@ -5,10 +5,10 @@ class CPlayer;
 class CPlayerState
 {
 	friend CPlayer;
-private :
+protected :
 
 	CPlayer* pPlayer;
-
+	float coolTime;
 public :
 	CPlayerState();
 	virtual ~CPlayerState();

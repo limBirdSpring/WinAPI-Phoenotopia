@@ -10,7 +10,7 @@ public:
     CStateDamage(CPlayer* player) { pPlayer = player; }
     virtual ~CStateDamage();
 private:
-    CPlayer* pPlayer;
+
 
 private:
     void Init() override;

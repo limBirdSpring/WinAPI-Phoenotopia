@@ -10,7 +10,7 @@ public:
     CStateWalk(CPlayer* player);
     virtual ~CStateWalk();
 private:
-    CPlayer* pPlayer;
+
 
 private:
     void Init() override;

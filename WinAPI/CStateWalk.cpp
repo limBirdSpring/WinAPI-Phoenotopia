@@ -51,6 +51,11 @@ void CStateWalk::Update()
 	{
 		pPlayer->m_behavior = Behavior::Down;
 	}
+
+	else if (BUTTONDOWN('X'))
+	{
+		pPlayer->m_behavior = Behavior::AttackReady;
+	}
 	
 
 

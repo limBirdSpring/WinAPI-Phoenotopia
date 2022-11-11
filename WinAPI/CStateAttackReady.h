@@ -11,7 +11,6 @@ public:
     CStateAttackReady(CPlayer* player) { pPlayer = player; }
     virtual ~CStateAttackReady();
 private:
-    CPlayer* pPlayer;
 
 private:
     void Init() override;

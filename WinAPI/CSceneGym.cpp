@@ -57,7 +57,7 @@ void CSceneGym::Init()
 	pDoor->SetPlayerStartPos(Vector(320, 488));
 	AddGameObject(pDoor);
 
-	CTeacher* pTeacher = new CTeacher;
+	CTeacher* pTeacher = new CTeacher(pPlayer);
 	pTeacher->SetPos(162, 417);
 	AddGameObject(pTeacher);
 
