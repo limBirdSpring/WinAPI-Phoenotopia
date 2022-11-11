@@ -60,9 +60,14 @@ void CSceneField::Init()
 	AddGameObject(pDoor);
 
 	CItem* pMill = new CItem;
-	pMill->SetPos(338, 84);
+	pMill->SetPos(334, 73);
 	pMill->SetItem(L"µµ½Ã¶ô");
 	AddGameObject(pMill);
+
+	CItem* pZem = new CItem;
+	pZem->SetPos(598, 425);
+	pZem->SetItem(L"Áª");
+	AddGameObject(pZem);
 
 	CSlug* pSlug = new CSlug();
 	pSlug->SetPos(370, 452);

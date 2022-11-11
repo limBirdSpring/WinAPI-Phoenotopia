@@ -12,10 +12,14 @@ void CStateFall::Init()
 
 void CStateFall::Update()
 {
+	//TODO : 너무 높은곳에서 떨어졌을 경우 플레이어 잠시 멈춤
+
 	pPlayer->m_fSpeed = 100;
 
 	if (pPlayer->GetGround())
+	{
 		pPlayer->m_behavior = Behavior::Idle;
+	}
 
 	if (BUTTONSTAY(VK_LEFT))
 	{

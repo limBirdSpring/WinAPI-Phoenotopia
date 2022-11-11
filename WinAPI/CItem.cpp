@@ -5,7 +5,8 @@
 
 CItem::CItem()
 {
-	m_vecScale = Vector(10, 10);
+	m_vecScale = Vector(12, 12);
+	m_strName = L"아이템";
 }
 
 CItem::~CItem()
@@ -15,7 +16,7 @@ CItem::~CItem()
 void CItem::Init()
 {
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
-	//AddGravity(1);
+	AddGravity(0);
 }
 
 void CItem::Update()
@@ -24,7 +25,7 @@ void CItem::Update()
 
 void CItem::Render()
 {
-	RENDER->Image(item.img, m_vecPos.x - 25, m_vecPos.y - 25, m_vecPos.x + 25, m_vecPos.y + 25);
+	RENDER->Image(item.img, m_vecPos.x - 20, m_vecPos.y - 20, m_vecPos.x + 20, m_vecPos.y + 20);
 }
 
 void CItem::Release()
@@ -35,6 +36,10 @@ void CItem::OnCollisionEnter(CCollider* pOtherCollider)
 {
 	if (pOtherCollider->GetObjName() == L"플레이어")
 	{
+		//if (GAME->GetPlayerDir().x==-1) 
+		//	m_vecPos.x--;
+		//else
+		//	m_vecPos.x++;
 		GAME->PushBackInvenItem(item);
 		DELETEOBJECT(this);
 	}

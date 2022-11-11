@@ -43,12 +43,13 @@ void CPlatformTile::Release()
 
 void CPlatformTile::OnCollisionEnter(CCollider* pOther)
 {
-	if (pOther->GetObjName() == L"플레이어")
+	if (pOther->GetObjName() == L"플레이어" || pOther->GetObjName() == L"아이템")
 	{
 		if (0 < pOther->GetOwner()->GetGravity() &&
 			((pOther->GetOwner()->GetPos().y) + (pOther->GetOwner()->GetScale().y * 0.5) < this->GetPos().y + this->GetScale().y*0.5))//플레이어가 바닥보다 높은 위치에 있어야함
 		{
-			pOther->GetOwner()->SetPos(pOther->GetOwner()->GetPos().x, this->GetPos().y - (this->GetScale().y) + 3);
+			if (pOther->GetObjName() == L"플레이어")
+				pOther->GetOwner()->SetPos(pOther->GetOwner()->GetPos().x, this->GetPos().y - (this->GetScale().y) + 3);
 
 			int platform = pOther->GetOwner()->GetPlatform();
 			pOther->GetOwner()->SetPlatform(++platform);
@@ -69,7 +70,7 @@ void CPlatformTile::OnCollisionStay(CCollider* pOther)
 
 void CPlatformTile::OnCollisionExit(CCollider* pOther)
 {
-	if (pOther->GetObjName() == L"플레이어")
+	if (pOther->GetObjName() == L"플레이어" || pOther->GetObjName() == L"아이템")
 	{
 		if (pOther->GetOwner()->GetPlatform() != 0)
 		{
