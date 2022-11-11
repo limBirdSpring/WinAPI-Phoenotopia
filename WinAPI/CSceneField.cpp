@@ -52,13 +52,21 @@ void CSceneField::Init()
 	pForest->SetImage(m_pImage);
 	AddGameObject(pForest);
 
-	CWarp* pDoor = new CWarp;
-	pDoor->SetPos(0, 400);
-	pDoor->SetScale(10, 500);
-	pDoor->SetScene(GroupScene::Stage01);
-	pDoor->SetPlayerStartPos(Vector(1773, 488));
-	pDoor->SetPlayerStartDir(Vector(-1, 0));
-	AddGameObject(pDoor);
+	CWarp* pVillageDoor = new CWarp;
+	pVillageDoor->SetPos(0, 400);
+	pVillageDoor->SetScale(10, 500);
+	pVillageDoor->SetScene(GroupScene::Stage01);
+	pVillageDoor->SetPlayerStartPos(Vector(1773, 488));
+	pVillageDoor->SetPlayerStartDir(Vector(-1, 0));
+	AddGameObject(pVillageDoor);
+
+	CWarp* pForestDoor = new CWarp;
+	pForestDoor->SetPos(1100, 400);
+	pForestDoor->SetScale(10, 500);
+	pForestDoor->SetScene(GroupScene::Forest);
+	pForestDoor->SetPlayerStartPos(Vector(18, 772));
+	pForestDoor->SetPlayerStartDir(Vector(1, 0));
+	AddGameObject(pForestDoor);
 
 	CItem* pMill = new CItem;
 	pMill->SetPos(334, 73);
