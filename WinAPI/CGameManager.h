@@ -49,7 +49,7 @@ private :
 	int gold;
 	int hp;
 	
-	Vector m_vecStartPos; //맵으로 워프했을 경우 플레이어의 초기 위치
+	Vector m_vecStartPos; //맵으로 워프했을 경우 플레이어의 초기 위치 
 
 public :
 	vector<Item> m_vItem;//아이템 종류

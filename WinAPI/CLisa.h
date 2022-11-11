@@ -6,7 +6,7 @@ class CLisa :
 	public CNPC
 {
 public:
-	CLisa();
+	CLisa(CPlayer* player);
 	virtual ~CLisa();
 
 private:

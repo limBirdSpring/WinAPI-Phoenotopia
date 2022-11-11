@@ -53,7 +53,7 @@ CPlayer::CPlayer()
 
 	isThingCollision = false;
 
-	m_vecPlayerGoalPos = Vector(0, 0);
+
 
 	m_vecMoveDir = Vector(0, 0);
 	m_vecLookDir = Vector(0, -1);

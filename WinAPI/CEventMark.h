@@ -5,7 +5,7 @@ class CEventMark :
 	public CNPC
 {
 public:
-	CEventMark();
+	CEventMark(CPlayer* player);
 	virtual ~CEventMark();
 
 	wstring m_strSetDialogue;

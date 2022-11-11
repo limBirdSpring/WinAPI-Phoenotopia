@@ -6,7 +6,7 @@ class CBuyEvent :
 	public CNPC
 {
 public:
-	CBuyEvent();
+	CBuyEvent(CPlayer* player);
 	virtual ~CBuyEvent();
 
 public:

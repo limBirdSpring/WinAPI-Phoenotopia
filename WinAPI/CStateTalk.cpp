@@ -14,12 +14,17 @@ CStateTalk::~CStateTalk()
 
 void CStateTalk::Init()
 {
+	
 }
 
 void CStateTalk::Update()
 {
+
+
 	if (!GAME->GetTalk())
+	{
 		pPlayer->m_behavior = Behavior::Idle;
+	}
 }
 
 void CStateTalk::Render()

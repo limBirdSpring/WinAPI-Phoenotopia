@@ -62,11 +62,11 @@ void CSceneStage01::Init()
 	pGailRoomDoor->SetPlayerStartPos(Vector(306, 398));
 	AddGameObject(pGailRoomDoor);
 
-	CCarol* pCarol = new CCarol;
+	CCarol* pCarol = new CCarol(pPlayer);
 	pCarol->SetPos(625, 489);
 	AddGameObject(pCarol);
 
-	CEventMark* pMilestone = new CEventMark;
+	CEventMark* pMilestone = new CEventMark(pPlayer);
 	pMilestone->SetPos(1457, 489);
 	pMilestone->m_strSetDialogue = L"평범한 표지판이다.";
 	AddGameObject(pMilestone);

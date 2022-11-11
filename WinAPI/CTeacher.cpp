@@ -113,6 +113,8 @@ void CTeacher::OnCollisionStay(CCollider* pOtherCollider)
 			talk++;
 			GAME->SetTalk(true);
 			Talk();
+			pPlayer->m_vecPos.x = this->m_vecPos.x - 30;
+			pPlayer->m_vecMoveDir.x = 1;
 			pPlayer->m_behavior = Behavior::Talk;
 			
 		}

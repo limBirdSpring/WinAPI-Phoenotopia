@@ -67,7 +67,7 @@ void CSceneGym::Init()
 	AddGameObject(pSlug);
 
 
-	CEventMark* pClothes = new CEventMark;
+	CEventMark* pClothes = new CEventMark(pPlayer);
 	pClothes->SetPos(171, 272);
 	pClothes->SetScale(50, 50);
 	pClothes->m_strSetDialogue = L"초급자용 태권도 도복이 들어있는 사물함.";

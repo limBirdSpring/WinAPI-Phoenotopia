@@ -12,10 +12,11 @@
 #include "CImage.h"
 #include "CAnimator.h"
 #include "CCameraManager.h"
+#include "CPlayer.h"
 
-
-CEventMark::CEventMark()
+CEventMark::CEventMark(CPlayer* player)
 {
+	pPlayer = player;
 	m_vecScale = Vector(18, 32);
 	m_strDialogue = L"";
 	m_strSetDialogue = L"";
@@ -81,6 +82,7 @@ void CEventMark::OnCollisionStay(CCollider* pOtherCollider)
 		if (BUTTONDOWN('X'))
 		{
 			talk++;
+			pPlayer->m_behavior = Behavior::Talk;
 			GAME->SetTalk(true);
 			Talk();
 		}

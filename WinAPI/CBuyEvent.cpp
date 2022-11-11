@@ -12,10 +12,12 @@
 #include "CImage.h"
 #include "CAnimator.h"
 #include "CCameraManager.h"
+#include "CPlayer.h"
 
 
-CBuyEvent::CBuyEvent()
+CBuyEvent::CBuyEvent(CPlayer* player)
 {
+	pPlayer = player;
 	m_vecScale = Vector(18, 32);
 	m_strDialogue = L"";
 	talk = 0;
@@ -100,6 +102,7 @@ void CBuyEvent::OnCollisionStay(CCollider* pOtherCollider)
 		{
 			talk++;
 			GAME->SetTalk(true);
+			pPlayer->m_behavior = Behavior::Talk;
 			Talk();
 		}
 	}

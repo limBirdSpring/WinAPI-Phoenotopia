@@ -59,21 +59,21 @@ void CSceneStore::Init()
 	pDoor->SetPlayerStartPos(Vector(845, 488));
 	AddGameObject(pDoor);
 
-	CLisa* pLisa = new CLisa;
-	pLisa->SetPos(376, 400);
+	CLisa* pLisa = new CLisa(pPlayer);
+	pLisa->SetPos(385, 400);
 	AddGameObject(pLisa);
 
-	CBuyEvent* pEgg = new CBuyEvent;
+	CBuyEvent* pEgg = new CBuyEvent(pPlayer);
 	pEgg->item = GAME->FindItem(L"페로 알");
 	pEgg->SetPos(279, 390);
 	AddGameObject(pEgg);
 
-	CBuyEvent* pMilk = new CBuyEvent;
+	CBuyEvent* pMilk = new CBuyEvent(pPlayer);
 	pMilk->item = GAME->FindItem(L"우유");
 	pMilk->SetPos(207, 390);
 	AddGameObject(pMilk);
 
-	CEventMark* pCake = new CEventMark;
+	CEventMark* pCake = new CEventMark(pPlayer);
 	pCake->SetPos(243, 390);
 	pCake->m_strSetDialogue = L"딸기케이크는 다 팔리고 없다.";
 	AddGameObject(pCake);

@@ -20,6 +20,10 @@ class CStateFall;
 class CNPC;
 class CTeacher;
 class CStateTalk;
+class CEventMark;
+class CCarol;
+class CLisa;
+class CBuyEvent;
 
 			 
 class CPlayer : public CGameObject
@@ -41,6 +45,10 @@ class CPlayer : public CGameObject
 	friend CStateTalk;
 	friend CNPC;
 	friend CTeacher;
+	friend CEventMark;
+	friend CCarol;
+	friend CLisa;
+	friend CBuyEvent;
 
 public:
 	CPlayer();
@@ -67,7 +75,7 @@ private:
 	Vector m_vecLookDir;
 	Behavior m_behavior;
 
-	Vector m_vecPlayerGoalPos; //플레이어의 목표지점, (0,0)일 경우 변경하지 않음
+
 
 public:
 	void SetBehavior(Behavior behavior) { m_behavior = behavior; }

@@ -5,7 +5,7 @@ class CCarol :
 	public CNPC
 {
 public:
-	CCarol();
+	CCarol(CPlayer* player);
 	virtual ~CCarol();
 
 private:

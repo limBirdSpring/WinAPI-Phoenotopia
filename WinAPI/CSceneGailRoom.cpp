@@ -55,12 +55,12 @@ void CSceneGailRoom::Init()
 	pDoor->SetPlayerStartPos(Vector(1300, 488));
 	AddGameObject(pDoor);
 
-	CEventMark* pClothes = new CEventMark;
+	CEventMark* pClothes = new CEventMark(pPlayer);
 	pClothes->SetPos(334, 400);
 	pClothes->m_strSetDialogue = L"도복이다. 맞다. 태권도학원 가야하는데..";
 	AddGameObject(pClothes);
 
-	CEventMark* pBed = new CEventMark;
+	CEventMark* pBed = new CEventMark(pPlayer);
 	pBed->SetPos(377, 400);
 	pBed->m_strSetDialogue = L"아직 잘 시간은 아니다.";
 	AddGameObject(pBed);
