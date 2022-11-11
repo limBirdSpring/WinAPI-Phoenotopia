@@ -24,6 +24,7 @@
 #include "CWarp.h"
 #include "CTeacher.h"
 #include "CItem.h"
+#include "CBox.h"
 
 CSceneField::CSceneField()
 {
@@ -69,6 +70,10 @@ void CSceneField::Init()
 	pZem->SetItem(L"Áª");
 	AddGameObject(pZem);
 
+	CBox* pBox = new CBox;
+	pBox->SetPos(300,496);
+	AddGameObject(pBox);
+
 	CSlug* pSlug = new CSlug();
 	pSlug->SetPos(370, 452);
 	AddGameObject(pSlug);
@@ -92,6 +97,7 @@ void CSceneField::Enter()
 	pPlayer->SetDir(GAME->GetPlayerStartDir());
 	pPlayer->SetGravity(1);
 	pPlayer->SetGround(0);
+	pPlayer->SetPlatform(0);
 
 	CAMERA->FadeIn(0.25f);
 	LoadTile(GETPATH + L"Tile\\Field.tile");

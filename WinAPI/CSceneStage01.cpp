@@ -116,6 +116,7 @@ void CSceneStage01::Enter()
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
 	pPlayer->SetDir(GAME->GetPlayerStartDir());
 	pPlayer->SetGravity(1);
+	pPlayer->SetPlatform(0);
 	pPlayer->SetGround(0);
 
 	CAMERA->SetMapSize(Vector(m_pVillageImage->GetWidth(), m_pVillageImage->GetHeight()));

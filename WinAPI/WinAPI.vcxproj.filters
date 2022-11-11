@@ -342,6 +342,9 @@
     <ClInclude Include="CItem.h">
       <Filter>GameObject\Things</Filter>
     </ClInclude>
+    <ClInclude Include="CBox.h">
+      <Filter>GameObject\Things</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -588,6 +591,9 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="CItem.cpp">
+      <Filter>GameObject\Things</Filter>
+    </ClCompile>
+    <ClCompile Include="CBox.cpp">
       <Filter>GameObject\Things</Filter>
     </ClCompile>
   </ItemGroup>

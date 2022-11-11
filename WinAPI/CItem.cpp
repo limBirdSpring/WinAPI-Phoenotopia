@@ -16,7 +16,7 @@ CItem::~CItem()
 void CItem::Init()
 {
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
-	AddGravity(0);
+	AddGravity(1);
 }
 
 void CItem::Update()

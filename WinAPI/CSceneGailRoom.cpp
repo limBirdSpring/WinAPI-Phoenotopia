@@ -83,6 +83,7 @@ void CSceneGailRoom::Enter()
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
 	pPlayer->SetDir(GAME->GetPlayerStartDir());
 	pPlayer->SetGravity(1);
+	pPlayer->SetPlatform(0);
 	pPlayer->SetGround(0);
 
 	CAMERA->FadeIn(0.25f);
