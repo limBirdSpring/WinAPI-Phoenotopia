@@ -17,6 +17,20 @@
 #include "CAttack2.h"
 #include "CCritical.h"
 
+#include "CStateIdle.h"
+#include "CStateWalk.h"
+#include "CStateDown.h"
+#include "CStateRun.h"
+#include "CStateJump.h"
+#include "CStateDownJump.h"
+#include "CStateAttack.h"
+#include "CStateAttack2.h"
+#include "CStateAttackReady.h"
+#include "CStateCritical.h"
+#include "CStateDamage.h"
+#include "CStateCriticalReady.h"
+#include "CStateFall.h"
+
 CPlayer::CPlayer()
 {
 	m_vecPos = Vector(0, 0);
@@ -50,6 +64,7 @@ CPlayer::~CPlayer()
 
 void CPlayer::Init()
 {
+#pragma region 이미지
 	m_pIdleImage = RESOURCE->LoadImg(L"Gail_Standing", L"Image\\Gail_Standing.png");
 	m_pMoveImage = RESOURCE->LoadImg(L"Gail_Walking", L"Image\\Gail_Walking.png");
 	m_pRunImage = RESOURCE->LoadImg(L"Gail_Run", L"Image\\Gail_Run.png");
@@ -89,10 +104,25 @@ void CPlayer::Init()
 	m_pAnimator->CreateAnimation(L"Gail_Damage_Right", m_pDamageImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.05f, 4, false);
 	m_pAnimator->CreateAnimation(L"Gail_Damage_Left", m_pDamageImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.05f, 4, false);
 
-
+#pragma endregion 이미지
 
 	m_pAnimator->Play(L"Gail_Standing_Right", false);
 	AddComponent(m_pAnimator);
+
+	m_mapPlayerState.insert(make_pair(Behavior::Idle, new CStateIdle(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Walk, new CStateWalk(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Run, new CStateRun(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Jump, new CStateJump(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Down, new CStateDown(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::DownJump, new CStateDownJump(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Attack, new CStateAttack(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Attack2, new CStateAttack2(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::AttackReady, new CStateAttackReady(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Critical, new CStateCritical(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::CriticalReady, new CStateCriticalReady(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Damage, new CStateDamage(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Fall, new CStateFall(this)));
+
 
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 5, m_vecScale.y - 8), Vector(0, 4));
 	AddGravity(1);
@@ -101,6 +131,11 @@ void CPlayer::Init()
 void CPlayer::Update()
 {
 
+	m_mapPlayerState.find(m_behavior)->second->Update();
+
+
+	/*
+	//---------------------------------------------
 	m_fSpeed = 100;
 
 
@@ -233,7 +268,7 @@ void CPlayer::Update()
 	{
 		m_behavior = m_behaviorSave;
 	}
-
+	*/
 
 	AnimatorUpdate();
 

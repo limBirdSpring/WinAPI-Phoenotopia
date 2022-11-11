@@ -148,7 +148,7 @@ void CGameManager::Init()
 	milk.img = RESOURCE->LoadImg(L"Item_Milk", L"Image\\Item_Milk.png");
 	milk.price = 45;
 	milk.type = ItemType::Food;
-	milk.text = L"개구리를 잡아서 얻은 개구리 뒷다리. Hp를 5 회복시켜준다.";
+	milk.text = L"목장에서 갓 짜낸 신선한 우유. Hp를 5 회복시켜준다.";
 	milk.hp = 5;
 	m_vItem.push_back(milk);
 

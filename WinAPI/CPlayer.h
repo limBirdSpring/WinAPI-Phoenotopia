@@ -3,9 +3,39 @@
 
 class CImage;
 class CAnimator;
+class CPlayerState;
+class CStateWalk;
+class CStateIdle;
+class CStateRun;
+class CStateJump;
+class CStateDown;
+class CStateAttckReady;
+class CStateAttack;
+class CStateDownJump;
+class CStateAttack2;
+class CStateCriticalReady;
+class CStateCritical;
+class CStateDamage;
+class CStateFall;
 
+			 
 class CPlayer : public CGameObject
-{
+{			
+	friend CPlayerState;
+	friend CStateWalk;
+	friend CStateIdle;
+	friend CStateRun;
+	friend CStateJump;
+	friend CStateDown;
+	friend CStateAttckReady;
+	friend CStateAttack;
+	friend CStateDownJump;
+	friend CStateAttack2;
+	friend CStateCriticalReady;
+	friend CStateCritical;
+	friend CStateDamage;
+	friend CStateFall;
+
 public:
 	CPlayer();
 	virtual ~CPlayer();
@@ -26,6 +56,8 @@ private:
 
 	float m_fJumpTime;
 	bool isThingCollision;
+
+	unordered_map<Behavior, CPlayerState*> m_mapPlayerState;
 
 
 	Vector m_vecLookDir;
