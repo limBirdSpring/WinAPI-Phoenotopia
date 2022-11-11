@@ -45,16 +45,14 @@ void CWallTile::Release()
 
 void CWallTile::OnCollisionEnter(CCollider* pOther)
 {
-	if (pOther->GetObjName() == L"플레이어" || pOther->GetObjName() == L"아이템")
-	{
+	
 		pOther->GetOwner()->SetGravity(1);
-	}
+	
 }
 
 void CWallTile::OnCollisionStay(CCollider* pOther)
 {
-	if (pOther->GetObjName() == L"플레이어" || pOther->GetObjName() == L"아이템")
-	{
+	
 		// 플레이어가 충돌 중일 경우 밀어내기 연산
 		CPlayer* pPlayer = static_cast<CPlayer*>(pOther->GetOwner());
 
@@ -106,7 +104,7 @@ void CWallTile::OnCollisionStay(CCollider* pOther)
 		}
 		break;
 		}
-	}
+	
 	
 }
 

@@ -58,6 +58,7 @@ enum class Layer
 	BackGround,
 	MiddleGround,
 	Tile,
+	Door,
 	Things,
 	NPC,
 	Player,

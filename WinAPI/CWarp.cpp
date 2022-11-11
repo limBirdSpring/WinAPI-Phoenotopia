@@ -15,6 +15,8 @@ CWarp::CWarp()
 	m_vecPlayerStartPos = Vector(0, 0);
 	m_pScene = GroupScene::Title;
 	m_vecScale = Vector(30, 30);
+	m_layer = Layer::Door;
+
 }
 
 CWarp::~CWarp()

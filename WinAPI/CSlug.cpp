@@ -6,6 +6,7 @@
 #include "CEventManager.h"
 #include "CResourceManager.h"
 #include "CAnimator.h"
+#include "CGravity.h"
 
 CSlug::CSlug()
 {
@@ -31,6 +32,7 @@ void CSlug::Init()
 
 	m_pAnimator->Play(L"Slug_Move", false);
 	AddComponent(m_pAnimator);
+	AddGravity(1);
 }
 
 void CSlug::Update()

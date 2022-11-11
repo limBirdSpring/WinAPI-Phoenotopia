@@ -15,6 +15,7 @@ CDoor::CDoor()
 	m_pAnimator = nullptr;
 	haveImage = true;
 	isOpen = false;
+	m_layer = Layer::Door;
 
 	m_strName = L"¹®";
 	m_vecPlayerStartPos = Vector(0,0);

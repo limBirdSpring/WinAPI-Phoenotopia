@@ -43,11 +43,10 @@ void CGroundTile::Release()
 
 void CGroundTile::OnCollisionEnter(CCollider* pOther)
 {
-	if (pOther->GetObjName() == L"플레이어" || pOther->GetObjName() == L"아이템")
-	{
+	
 		int ground = pOther->GetOwner()->GetGround();
 		pOther->GetOwner()->SetGround(++ground);
-	}
+
 }
 
 void CGroundTile::OnCollisionStay(CCollider* pOther)
@@ -58,9 +57,8 @@ void CGroundTile::OnCollisionStay(CCollider* pOther)
 
 void CGroundTile::OnCollisionExit(CCollider* pOther)
 {
-	if (pOther->GetObjName() == L"플레이어" || pOther->GetObjName() == L"아이템")
-	{
+	
 		int ground = pOther->GetOwner()->GetGround();
 		pOther->GetOwner()->SetGround(--ground);
-	}
+	
 }

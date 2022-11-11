@@ -1,5 +1,5 @@
 #pragma once
-#include "CThings.h"
+#include "CGameObject.h"
 #include "framework.h"
 #include "CAnimator.h"
 
@@ -7,7 +7,7 @@ class CImage;
 class CScene;
 
 class CDoor :
-	public CThings
+	public CGameObject
 {
 public:
 	CDoor();
