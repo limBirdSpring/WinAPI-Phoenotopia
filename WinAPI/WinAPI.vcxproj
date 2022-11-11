@@ -190,6 +190,7 @@
     <ClInclude Include="CSceneTileTool.h" />
     <ClInclude Include="CSceneTitle.h" />
     <ClInclude Include="CImage.h" />
+    <ClInclude Include="CSoldier.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CSoundManager.h" />
     <ClInclude Include="CStateAttack.h" />
@@ -278,6 +279,7 @@
     <ClCompile Include="CSceneTileTool.cpp" />
     <ClCompile Include="CSceneTitle.cpp" />
     <ClCompile Include="CImage.cpp" />
+    <ClCompile Include="CSoldier.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CSoundManager.cpp" />
     <ClCompile Include="CStateAttack.cpp" />

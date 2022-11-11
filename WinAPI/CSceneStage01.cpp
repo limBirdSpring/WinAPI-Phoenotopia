@@ -24,6 +24,7 @@
 #include "CButton.h"
 #include "CCarol.h"
 #include "CEventMark.h"
+#include "CSoldier.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -68,6 +69,10 @@ void CSceneStage01::Init()
 	CCarol* pCarol = new CCarol(pPlayer);
 	pCarol->SetPos(625, 489);
 	AddGameObject(pCarol);
+
+	CSoldier* pSoldier = new CSoldier(pPlayer);
+	pSoldier->SetPos(1632, 489);
+	AddGameObject(pSoldier);
 
 	CEventMark* pMilestone = new CEventMark(pPlayer);
 	pMilestone->SetPos(1457, 489);

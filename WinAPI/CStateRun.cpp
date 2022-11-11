@@ -20,7 +20,9 @@ void CStateRun::Update()
 	if (GAME->GetMp() < 1)
 		pPlayer->m_behavior = Behavior::Walk;
 
-	pPlayer->m_fSpeed = 200;
+	
+	if (pPlayer->m_fSpeed < 200)
+		pPlayer->m_fSpeed += 0.2;
 
 	if (pPlayer->GetGround() == 0)
 		pPlayer->m_behavior = Behavior::Fall;
