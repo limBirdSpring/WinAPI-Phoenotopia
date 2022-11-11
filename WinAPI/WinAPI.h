@@ -41,6 +41,8 @@ enum class GroupScene
 
 	BossMap,
 
+	Field,
+
 	Inventory,
 
 	Size,

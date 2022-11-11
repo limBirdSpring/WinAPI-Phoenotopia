@@ -17,11 +17,13 @@ private:
 
 
 	Vector m_vecPlayerStartPos; //씬으로 갔을 경우 플레이어 위치
+	Vector m_vecPlayerStartDir; //씬으로 갔을 경우 플레이어 방향
 	GroupScene m_pScene; //문을 통해 갈 수 있는 씬
 
 public:
 	void SetScene(GroupScene scene) { m_pScene = scene; }
 	void SetPlayerStartPos(Vector pos) { m_vecPlayerStartPos = pos; }
+	void SetPlayerStartDir(Vector dir) { m_vecPlayerStartDir = dir; }
 
 private:
 	void Init() override;

@@ -45,6 +45,7 @@ void CWarp::OnCollisionEnter(CCollider* pOtherCollider)
 	{
 
 		GAME->SetPlayerStartPos(m_vecPlayerStartPos);
+		GAME->SetPlayerStartDir(m_vecPlayerStartDir);
 		CAMERA->FadeOut(0.25f);
 		DELAYCHANGESCENE(m_pScene, 0.25f);
 

@@ -10,6 +10,7 @@
 #include "CSceneStore.h"
 #include "CInventory.h"
 #include "CSceneGym.h"
+#include "CSceneField.h"
 
 CSceneManager::CSceneManager()
 {
@@ -38,6 +39,8 @@ void CSceneManager::Init()
 	m_mapScene.insert(make_pair(GroupScene::Store, pStore));
 	CScene* pGym = new CSceneGym();
 	m_mapScene.insert(make_pair(GroupScene::Gym, pGym));
+	CScene* pField = new CSceneField();
+	m_mapScene.insert(make_pair(GroupScene::Field, pField));
 	CScene* pInventory = new CInventory();
 	m_mapScene.insert(make_pair(GroupScene::Inventory, pInventory));
 

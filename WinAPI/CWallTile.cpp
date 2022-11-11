@@ -47,7 +47,7 @@ void CWallTile::OnCollisionEnter(CCollider* pOther)
 {
 	if (pOther->GetObjName() == L"플레이어")
 	{
-		
+		pOther->GetOwner()->SetGravity(1);
 	}
 }
 

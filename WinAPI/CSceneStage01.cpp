@@ -25,6 +25,7 @@
 #include "CCarol.h"
 #include "CEventMark.h"
 #include "CSoldier.h"
+#include "CWarp.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -44,6 +45,14 @@ void CSceneStage01::Init()
 	CSlug* pSlug = new CSlug();
 	pSlug->SetPos(300, WINSIZEY * 0.5f-10);
 	AddGameObject(pSlug);
+
+	CWarp* pFieldDoor = new CWarp;
+	pFieldDoor->SetPos(1793, 489);
+	pFieldDoor->SetScale(20, 150);
+	pFieldDoor->SetScene(GroupScene::Field);
+	pFieldDoor->SetPlayerStartPos(Vector(32, 488));
+	pFieldDoor->SetPlayerStartDir(Vector(1, 0));
+	AddGameObject(pFieldDoor);
 
 	CDoor* pGymDoor = new CDoor;
 	pGymDoor->SetPos(320, 489);

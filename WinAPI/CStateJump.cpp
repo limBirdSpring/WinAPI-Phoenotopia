@@ -21,7 +21,7 @@ void CStateJump::Update()
 
 		if (BUTTONSTAY(VK_SHIFT))
 		{
-			pPlayer->m_fSpeed = 150;
+			pPlayer->m_fSpeed = 200;
 			if (BUTTONSTAY(VK_LEFT))
 			{
 				pPlayer->m_vecMoveDir.x = -1;

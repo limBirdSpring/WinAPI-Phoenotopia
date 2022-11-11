@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "CSceneGym.h"
+#include "CSceneField.h"
 
 #include "WinAPI.h"
 #include "CInputManager.h"
@@ -24,43 +24,41 @@
 #include "CWarp.h"
 #include "CTeacher.h"
 
-CSceneGym::CSceneGym()
+CSceneField::CSceneField()
 {
 	pPlayer = nullptr;
 	m_pImage = nullptr;
 }
 
-CSceneGym::~CSceneGym()
+CSceneField::~CSceneField()
 {
 }
 
-void CSceneGym::Init()
+void CSceneField::Init()
 {
 	pPlayer = new CPlayer();
 	AddGameObject(pPlayer);
 
-	m_pImage = RESOURCE->LoadImg(L"Panselo_Back", L"Image\\Panselo_Back.png");
+	m_pImage = RESOURCE->LoadImg(L"Field_Back", L"Image\\Field_Back.png");
 	LoadBackground(m_pImage);
 
-	m_pImage = RESOURCE->LoadImg(L"Panselo_Middle", L"Image\\Panselo_Middle.png");
+	m_pImage = RESOURCE->LoadImg(L"Field_Middle", L"Image\\Field_Middle.png");
 	LoadMiddleground(m_pImage);
 
-	m_pImage = RESOURCE->LoadImg(L"Gym", L"Image\\Gym.png");
+	m_pImage = RESOURCE->LoadImg(L"Field", L"Image\\Field.png");
 	CImageObject* pForest = new CImageObject;
 	pForest->SetImage(m_pImage);
 	AddGameObject(pForest);
 
 	CWarp* pDoor = new CWarp;
-	pDoor->SetPos(0, 359);
-	pDoor->SetScale(10, 150);
+	pDoor->SetPos(0, 400);
+	pDoor->SetScale(10, 500);
 	pDoor->SetScene(GroupScene::Stage01);
-	pDoor->SetPlayerStartPos(Vector(320, 488));
-	pDoor->SetPlayerStartDir(pPlayer->GetDir());
+	pDoor->SetPlayerStartPos(Vector(1773, 488));
+	pDoor->SetPlayerStartDir(Vector(-1, 0));
 	AddGameObject(pDoor);
 
-	CTeacher* pTeacher = new CTeacher(pPlayer);
-	pTeacher->SetPos(162, 417);
-	AddGameObject(pTeacher);
+
 
 
 	CSlug* pSlug = new CSlug();
@@ -68,15 +66,9 @@ void CSceneGym::Init()
 	AddGameObject(pSlug);
 
 
-	CEventMark* pClothes = new CEventMark(pPlayer);
-	pClothes->SetPos(171, 272);
-	pClothes->SetScale(50, 50);
-	pClothes->m_strSetDialogue = L"초급자용 태권도 도복이 들어있는 사물함.";
-	AddGameObject(pClothes);
-
 }
 
-void CSceneGym::Enter()
+void CSceneField::Enter()
 {
 	CAMERA->FadeIn(0.25f);
 
@@ -94,10 +86,10 @@ void CSceneGym::Enter()
 	pPlayer->SetGround(0);
 
 	CAMERA->FadeIn(0.25f);
-	LoadTile(GETPATH + L"Tile\\Gym.tile");
+	LoadTile(GETPATH + L"Tile\\Field.tile");
 }
 
-void CSceneGym::Update()
+void CSceneField::Update()
 {
 	if (BUTTONDOWN(VK_ESCAPE))
 	{
@@ -107,27 +99,21 @@ void CSceneGym::Update()
 
 	if (BUTTONDOWN('I'))
 	{
-		GAME->SetCurScene(GroupScene::Gym);
+		GAME->SetCurScene(GroupScene::Field);
 		GAME->SetPlayerStartPos(pPlayer->GetPos());
 		CHANGESCENE(GroupScene::Inventory);
 	}
 
-	if (BUTTONDOWN('J'))
-	{
-		GAME->PushBackInvenItem(GAME->m_vItem[0]);
-		GAME->PushBackInvenItem(GAME->m_vItem[1]);
-		GAME->PushBackInvenItem(L"개구리 뒷다리");
-	}
 }
 
-void CSceneGym::Render()
+void CSceneField::Render()
 {
 }
 
-void CSceneGym::Exit()
+void CSceneField::Exit()
 {
 }
 
-void CSceneGym::Release()
+void CSceneField::Release()
 {
 }

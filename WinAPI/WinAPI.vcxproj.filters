@@ -336,6 +336,9 @@
     <ClInclude Include="CSoldier.h">
       <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
+    <ClInclude Include="CSceneField.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -577,6 +580,9 @@
     </ClCompile>
     <ClCompile Include="CSoldier.cpp">
       <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneField.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -171,6 +171,7 @@
     <ClInclude Include="CMonsterStatus.h" />
     <ClInclude Include="CNPC.h" />
     <ClInclude Include="CPlayerState.h" />
+    <ClInclude Include="CSceneField.h" />
     <ClInclude Include="CSceneForest.h" />
     <ClInclude Include="CSceneGailRoom.h" />
     <ClInclude Include="CSceneGym.h" />
@@ -260,6 +261,7 @@
     <ClCompile Include="CMonsterStatus.cpp" />
     <ClCompile Include="CNPC.cpp" />
     <ClCompile Include="CPlayerState.cpp" />
+    <ClCompile Include="CSceneField.cpp" />
     <ClCompile Include="CSceneForest.cpp" />
     <ClCompile Include="CSceneGailRoom.cpp" />
     <ClCompile Include="CSceneGym.cpp" />
