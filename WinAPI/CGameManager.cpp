@@ -108,6 +108,18 @@ Item CGameManager::FindItem(const wstring name)
 	
 }
 
+bool CGameManager::isItemSetting(const wstring name)
+{
+	for (int i = 0; i < m_vSetItem.size(); i++)
+	{
+		if (m_vItem[i].name == name)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 void CGameManager::Init()
 {
 	//¹«±â

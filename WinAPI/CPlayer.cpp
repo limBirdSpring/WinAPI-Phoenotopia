@@ -188,7 +188,6 @@ void CPlayer::AnimatorUpdate()
 	default: str += L"_Standing";
 	}
 
-
 	if (m_vecLookDir.x > 0) str += L"_Right";
 	else if (m_vecLookDir.x <= 0) str += L"_Left";
 

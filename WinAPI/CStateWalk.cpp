@@ -52,7 +52,7 @@ void CStateWalk::Update()
 		pPlayer->m_behavior = Behavior::Down;
 	}
 
-	else if (BUTTONDOWN('X'))
+	else if (BUTTONDOWN('X') && !pPlayer->isThingCollision && GAME->isItemSetting(L"¹æ¸ÁÀÌ"))
 	{
 		pPlayer->m_behavior = Behavior::AttackReady;
 	}

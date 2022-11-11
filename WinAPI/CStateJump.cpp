@@ -75,7 +75,7 @@ void CStateJump::Update()
 		}
 	}
 
-	if (BUTTONDOWN('X'))
+	if (BUTTONDOWN('X') && !pPlayer->isThingCollision &&GAME->isItemSetting(L"¹æ¸ÁÀÌ"))
 	{
 		coolTime = 0;
 		pPlayer->m_behavior = Behavior::AttackReady;

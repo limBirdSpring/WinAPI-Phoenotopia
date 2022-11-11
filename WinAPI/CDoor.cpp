@@ -37,6 +37,7 @@ void CDoor::Init()
 		m_pAnimator = new CAnimator;
 		m_pAnimator->CreateAnimation(L"Door", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1, 1, false);
 		m_pAnimator->CreateAnimation(L"Door_Opened", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1, 5, false);
+		m_pAnimator->CreateAnimation(L"Door_Closed", m_pImage, Vector(600, 0), Vector(100, 100), Vector(-150, 0), 0.1, 5, false);
 
 		m_pAnimator->Play(L"Door");
 		AddComponent(m_pAnimator);
@@ -68,8 +69,16 @@ void CDoor::OnCollisionStay(CCollider* pOtherCollider)
 		{
 			if (BUTTONDOWN('X'))
 			{
-				m_pAnimator->Play(L"Door_Opened");
-				isOpen = true;
+				if (!isOpen)
+				{
+					m_pAnimator->Play(L"Door_Opened");
+					isOpen = true;
+				}
+				else
+				{
+					m_pAnimator->Play(L"Door_Closed");
+					isOpen = false;
+				}
 			}
 			if (BUTTONDOWN(VK_UP) && isOpen)
 			{
