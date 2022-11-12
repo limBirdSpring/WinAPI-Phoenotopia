@@ -44,12 +44,14 @@ void CPlatformTile::Release()
 void CPlatformTile::OnCollisionEnter(CCollider* pOther)
 {
 	
-		if (0 < pOther->GetOwner()->GetGravity() &&
-			((pOther->GetOwner()->GetPos().y) + (pOther->GetOwner()->GetScale().y * 0.5) < this->GetPos().y + this->GetScale().y*0.5))//플레이어가 바닥보다 높은 위치에 있어야함
-		{
-			if (pOther->GetObjName() == L"플레이어")
-				pOther->GetOwner()->SetPos(pOther->GetOwner()->GetPos().x, this->GetPos().y - (this->GetScale().y) + 3);
+	//스케일이 아닌 콜리터 위치로 연산해야함.
+	if (0 < pOther->GetOwner()->GetGravity() &&
+		((pOther->GetOwner()->GetColliderPos().y) + (pOther->GetOwner()->GetScale().y * 0.5) < this->GetPos().y  + this->GetScale().y * 0.5))
+	{
+		pOther->GetOwner()->SetPos(pOther->GetOwner()->GetPos().x, 
+			this->GetPos().y - ((pOther->GetOwner()->GetColliderPos().y - pOther->GetOwner()->GetPos().y) + pOther->GetOwner()->GetScale().y * 0.5)+1);
 
+		
 			int platform = pOther->GetOwner()->GetPlatform();
 			pOther->GetOwner()->SetPlatform(++platform);
 
@@ -57,7 +59,7 @@ void CPlatformTile::OnCollisionEnter(CCollider* pOther)
 			pOther->GetOwner()->SetGround(++ground);
 
 			pOther->GetOwner()->SetGravity(1);
-		}
+	}
 	
 }
 

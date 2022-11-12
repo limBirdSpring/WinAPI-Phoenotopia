@@ -71,12 +71,12 @@ void CSceneField::Init()
 	AddGameObject(pForestDoor);
 
 	CItem* pMill = new CItem;
-	pMill->SetPos(334, 73);
+	pMill->SetPos(334, 70);
 	pMill->SetItem(L"µµ½Ã¶ô");
 	AddGameObject(pMill);
 
 	CItem* pZem = new CItem;
-	pZem->SetPos(598, 425);
+	pZem->SetPos(598, 420);
 	pZem->SetItem(L"Áª");
 	AddGameObject(pZem);
 
@@ -85,14 +85,17 @@ void CSceneField::Init()
 	AddGameObject(pBox);
 
 	CSlug* pSlug = new CSlug();
+	pSlug->SetStartXToEndX(85, 1027);
 	pSlug->SetPos(370, 452);
 	AddGameObject(pSlug);
 
 	CTurtle* pTurtle = new CTurtle;
+	pTurtle->SetStartXToEndX(85, 1027);
 	pTurtle->SetPos(370, 452);
 	AddGameObject(pTurtle);
 
 	CFrog* pFrog = new CFrog;
+	pFrog->SetStartXToEndX(85, 1027);
 	pFrog->SetPos(350, 452);
 	AddGameObject(pFrog);
 

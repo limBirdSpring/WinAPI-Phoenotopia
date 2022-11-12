@@ -1,5 +1,6 @@
 #pragma once
 #include "WinAPI.h"
+#include "CCollider.h"
 
 class CEventManager;
 class CCollisionManager;
@@ -86,6 +87,7 @@ protected:
 	CCollider* GetCollider();
 	void AddCollider(ColliderType type, Vector scale, Vector offsetPos);
 	void RemoveCollider();
+	
 
 	virtual void OnCollisionEnter(CCollider* pOtherCollider) {};	// 충돌체크를 확인하는 오브젝트는 재정의하여 사용
 	virtual void OnCollisionStay(CCollider* pOtherCollider) {};	// 충돌체크를 확인하는 오브젝트는 재정의하여 사용
@@ -95,7 +97,10 @@ protected:
 	void AddLineMove(Vector start, Vector end, float speed = 50);
 
 
+
+
 public:
+	Vector GetColliderPos() { return m_pCollider->GetPos(); }
 	void SetGround(int ground);
 	int GetGround();
 	void SetPlatform(int platform);

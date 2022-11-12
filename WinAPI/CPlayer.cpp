@@ -35,7 +35,7 @@
 CPlayer::CPlayer()
 {
 	m_vecPos = Vector(0, 0);
-	m_vecScale = Vector(18, 32);
+	m_vecScale = Vector(14, 24);
 	m_layer = Layer::Player;
 	m_strName = L"플레이어";
 	m_fSpeed = 100;
@@ -127,7 +127,7 @@ void CPlayer::Init()
 	m_mapPlayerState.insert(make_pair(Behavior::Talk, new CStateTalk(this)));
 
 
-	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 5, m_vecScale.y - 8), Vector(0, 4));
+	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 4));
 	AddGravity(1);
 }
 

@@ -37,7 +37,10 @@ void CSlug::Init()
 
 void CSlug::Update()
 {
-	
+	if (m_vecPos.x > m_endX)
+		m_vecPos.x--;
+	else if (m_vecPos.x < m_startX)
+		m_vecPos.x++;
 }
 
 void CSlug::Render()

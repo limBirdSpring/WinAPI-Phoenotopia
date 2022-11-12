@@ -5,7 +5,7 @@
 
 CItem::CItem()
 {
-	m_vecScale = Vector(12, 12);
+	m_vecScale = Vector(13, 13);
 	m_strName = L"æ∆¿Ã≈€";
 }
 

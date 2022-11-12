@@ -56,6 +56,13 @@ void CFrog::Init()
 
 void CFrog::Update()
 {
+
+	if (m_vecPos.x > m_endX)
+		m_vecPos.x--;
+	else if (m_vecPos.x < m_startX)
+		m_vecPos.x++;
+
+
 	m_mapMonsterState.find(m_behavior)->second->Update();
 
 	int random = rand() % 500;
