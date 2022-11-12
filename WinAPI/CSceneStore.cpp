@@ -24,6 +24,7 @@
 #include "CLisa.h"
 #include "CBuyEvent.h"
 #include "CEventMark.h"
+#include "CBigBox.h"
 
 CSceneStore::CSceneStore()
 {
@@ -78,6 +79,10 @@ void CSceneStore::Init()
 	pCake->SetPos(243, 390);
 	pCake->m_strSetDialogue = L"딸기케이크는 다 팔리고 없다.";
 	AddGameObject(pCake);
+
+	CBigBox* pBigBox = new CBigBox;
+	pBigBox->SetPos(261, 300);
+	AddGameObject(pBigBox);
 
 }
 

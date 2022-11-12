@@ -8,7 +8,7 @@
 
 CBigBox::CBigBox()
 {
-	m_vecScale = Vector(15, 15);
+	m_vecScale = Vector(30, 30);
 	m_strName = L"¹Ú½º";
 	m_hp = 12;
 }
@@ -19,7 +19,7 @@ CBigBox::~CBigBox()
 
 void CBigBox::Init()
 {
-	m_pImage = RESOURCE->LoadImg(L"BigBox", L"Image\"BigBox.png");
+	m_pImage = RESOURCE->LoadImg(L"BigBox", L"Image\\BigBox.png");
 
 	m_pAnimator = new CAnimator;
 	m_pAnimator->CreateAnimation(L"BigBox", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.3, 1, false);
@@ -37,7 +37,7 @@ void CBigBox::Init()
 
 void CBigBox::Update()
 {
-	if (m_hp < 0)
+	if (m_hp <= 0)
 	{
 		DELETEOBJECT(this);
 	}
@@ -85,11 +85,6 @@ void CBigBox::OnCollisionEnter(CCollider* pOtherCollider)
 
 			isGroundPlus = true;
 		}
-
-		else if (GAME->GetPlayerDir().x == -1)
-			m_vecPos.x--;
-		else
-			m_vecPos.x++;
 
 
 

@@ -58,7 +58,7 @@ void  CAttack::Release()
 
 void  CAttack::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster)
+	
 		pOtherCollider->GetOwner()->SetHp(-3);
 	DELETEOBJECT(this);
 }

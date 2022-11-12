@@ -53,7 +53,7 @@ void  CCritical::Release()
 
 void  CCritical::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster)
+	
 		pOtherCollider->GetOwner()->SetHp(-7);
 	DELETEOBJECT(this);
 

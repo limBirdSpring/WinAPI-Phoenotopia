@@ -26,6 +26,7 @@
 #include "CEventMark.h"
 #include "CSoldier.h"
 #include "CWarp.h"
+#include "CBigBox.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -84,6 +85,9 @@ void CSceneStage01::Init()
 	pMilestone->SetPos(1457, 489);
 	pMilestone->m_strSetDialogue = L"평범한 표지판이다.";
 	AddGameObject(pMilestone);
+
+
+
 }
 
 void CSceneStage01::Enter()
