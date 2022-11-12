@@ -53,6 +53,14 @@ void CTurtle::Init()
 
 void CTurtle::Update()
 {
+	if (m_hp <= 0)
+	{
+		if (m_behavior == MonsterBehavior::Idle)
+		{
+			DELETEOBJECT(this);
+		}
+	}
+
 	if (m_vecPos.x > m_endX)
 		m_vecPos.x--;
 	else if (m_vecPos.x < m_startX)
@@ -60,11 +68,15 @@ void CTurtle::Update()
 
 	m_mapMonsterState.find(m_behavior)->second->Update();
 
-	if (GAME->GetPlayerPos().x < m_vecPos.x + 80 && GAME->GetPlayerPos().x > m_vecPos.x - 80)
-		m_behavior = MonsterBehavior::Follow;
-	else
+	if (m_behavior != MonsterBehavior::Damage)
 	{
-		m_behavior = MonsterBehavior::Idle;
+
+		if (GAME->GetPlayerPos().x < m_vecPos.x + 80 && GAME->GetPlayerPos().x > m_vecPos.x - 80)
+			m_behavior = MonsterBehavior::Follow;
+		else
+		{
+			m_behavior = MonsterBehavior::Idle;
+		}
 	}
 
 	AnimatorUpdate();

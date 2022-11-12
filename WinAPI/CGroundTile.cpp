@@ -43,10 +43,8 @@ void CGroundTile::Release()
 
 void CGroundTile::OnCollisionEnter(CCollider* pOther)
 {
-	
 		int ground = pOther->GetOwner()->GetGround();
 		pOther->GetOwner()->SetGround(++ground);
-
 }
 
 void CGroundTile::OnCollisionStay(CCollider* pOther)

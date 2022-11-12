@@ -99,6 +99,17 @@ void CSceneField::Init()
 	pFrog->SetPos(350, 452);
 	AddGameObject(pFrog);
 
+	CFrog* pFrog2 = new CFrog;
+	pFrog2->SetStartXToEndX(85, 1027);
+	pFrog2->SetPos(500, 452);
+	AddGameObject(pFrog2);
+
+	CFrog* pFrog3 = new CFrog;
+	pFrog3->SetStartXToEndX(85, 1027);
+	pFrog3->SetPos(630, 452);
+	AddGameObject(pFrog3);
+
+
 }
 
 void CSceneField::Enter()

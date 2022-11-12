@@ -53,7 +53,9 @@ void  CCritical::Release()
 
 void  CCritical::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	Logger::Debug(L"미사일이 충돌체와 부딪혀 사라집니다.");
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster)
+		pOtherCollider->GetOwner()->SetHp(-7);
+	DELETEOBJECT(this);
 
 }
 

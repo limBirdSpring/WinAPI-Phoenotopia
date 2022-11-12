@@ -19,7 +19,16 @@ void CStateCriticalReady::Update()
 		coolTime = 0;
 		pPlayer->m_behavior = Behavior::Critical;
 	}
-
+	if (BUTTONSTAY(VK_LEFT))
+	{
+		pPlayer->m_vecMoveDir.x = -1;
+		
+	}
+	else if (BUTTONSTAY(VK_RIGHT))
+	{
+		pPlayer->m_vecMoveDir.x = 1;
+		
+	}
 
 	coolTime += DT;
 }

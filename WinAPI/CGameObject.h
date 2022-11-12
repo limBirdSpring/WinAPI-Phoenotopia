@@ -39,7 +39,12 @@ protected:
 
 	float m_fSpeed;
 
+	int m_hp; //몬스터의 hp
+
 public :
+
+	void SetHp(int hp) { this->m_hp += hp; }
+
 	Vector GetPos();
 	void SetPos(Vector pos);
 	void SetPos(float x, float y);

@@ -70,10 +70,13 @@ void CFrog::Update()
 	{
 		if (m_behavior == MonsterBehavior::Idle)
 		{
-			CItem* item = new CItem;
-			item->SetPos(this->GetPos());
-			item->SetItem(L"개구리 뒷다리");
-			ADDOBJECT(item);
+			if (rand() % 3 == 0)
+			{
+				CItem* item = new CItem;
+				item->SetPos(this->GetPos());
+				item->SetItem(L"개구리 뒷다리");
+				ADDOBJECT(item);
+			}
 			DELETEOBJECT(this);
 		}
 	}
@@ -110,7 +113,6 @@ void CFrog::OnCollisionEnter(CCollider* pOtherCollider)
 			m_vecMoveDir.x = -1;
 		else
 			m_vecMoveDir.x = 1;
-		m_hp -= 5;
 		m_behavior = MonsterBehavior::Damage;
 	}
 	else if (pOtherCollider->GetObjName() == L"플레이어")

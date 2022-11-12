@@ -8,6 +8,8 @@
 CGameManager::CGameManager()
 {
 
+	srand(time(NULL));
+
 	 m_bTalk = false;
 	 hp = 25;
 	 mp = 300;

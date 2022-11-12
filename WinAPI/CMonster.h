@@ -26,7 +26,7 @@ protected :
 
 public:
 
-	int m_hp; //몬스터의 hp
+	
 
 	void SetStartXToEndX(float x, float x2) { m_startX = x; m_endX = x2; }
 	float GetStartX() { return m_startX; }

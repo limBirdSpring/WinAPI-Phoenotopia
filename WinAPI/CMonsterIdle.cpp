@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "CMonsterIdle.h"
+#include "CMonster.h"
 
 CMonsterIdle::~CMonsterIdle()
 {
