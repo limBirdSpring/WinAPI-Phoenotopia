@@ -59,6 +59,5 @@ void  CAttack::Release()
 void  CAttack::OnCollisionEnter(CCollider* pOtherCollider)
 {
 	Logger::Debug(L"미사일이 충돌체와 부딪혀 사라집니다.");
-	
 }
 

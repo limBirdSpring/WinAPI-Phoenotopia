@@ -56,7 +56,7 @@ void CSlug::OnCollisionEnter(CCollider* pOtherCollider)
 {
 	if (pOtherCollider->GetObjName() == L"플레이어")
 	{
-		Logger::Debug(L"몬스터가 플레이어와 충돌진입");
+		GAME->SetHp(-m_damageHp);
 	}
 	else if (pOtherCollider->GetObjName() == L"공격")
 	{

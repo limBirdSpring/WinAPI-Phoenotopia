@@ -11,6 +11,7 @@
 #include "CMonster.h"
 #include "CMonsterIdle.h"
 #include "CMonsterMove.h"
+#include "CMonsterDamage.h"
 
 CTurtle::CTurtle()
 {
@@ -18,6 +19,7 @@ CTurtle::CTurtle()
 	m_vecScale = Vector(15, 8);
 	m_layer = Layer::Monster;
 	m_fSpeed = 10;
+	m_hp = 5;
 	m_damageHp = 3;
 }
 
@@ -44,6 +46,7 @@ void CTurtle::Init()
 
 	m_mapMonsterState.insert(make_pair(MonsterBehavior::Idle, new CMonsterIdle(this)));
 	m_mapMonsterState.insert(make_pair(MonsterBehavior::Follow, new CMonsterFollow(this)));
+	m_mapMonsterState.insert(make_pair(MonsterBehavior::Damage, new CMonsterDamage(this)));
 
 	m_behavior = MonsterBehavior::Idle;
 }
@@ -78,14 +81,17 @@ void CTurtle::Release()
 
 void CTurtle::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetObjName() == L"플레이어")
+	if (pOtherCollider->GetObjName() == L"공격")
 	{
-		Logger::Debug(L"몬스터가 플레이어와 충돌진입");
+		if (pOtherCollider->GetPos().x > m_vecPos.x)
+			m_vecMoveDir.x = -1;
+		else
+			m_vecMoveDir.x = 1;
+		m_behavior = MonsterBehavior::Damage;
 	}
-	else if (pOtherCollider->GetObjName() == L"공격")
+	else if (pOtherCollider->GetObjName() == L"플레이어")
 	{
-		Logger::Debug(L"몬스터가 공격과 충돌진입");
-
+		GAME->SetHp(-m_damageHp);
 	}
 }
 
@@ -107,7 +113,7 @@ void CTurtle::OnCollisionExit(CCollider* pOtherCollider)
 
 void CTurtle::AnimatorUpdate()
 {
-	if (m_vecMoveDir.Length() > 0)
+	if (m_vecMoveDir.Length() > 0 && m_behavior != MonsterBehavior::Damage)
 		m_vecLookDir = m_vecMoveDir;
 
 	wstring str = L"Turtle";
@@ -116,7 +122,7 @@ void CTurtle::AnimatorUpdate()
 	{
 	case MonsterBehavior::Follow: str += L"_Move";
 		break;
-	case MonsterBehavior::Damage: str += L"_Damage";
+	case MonsterBehavior::Damage: str += L"_Idle";
 		break;
 	default: str += L"_Idle";
 	}

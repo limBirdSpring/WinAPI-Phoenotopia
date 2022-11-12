@@ -25,7 +25,7 @@ void CMonsterDamage::Update()
 		return;
 	}
 
-	monPos.x += pMonster->GetDir().x * DT * pMonster->GetSpeed();
+	monPos.x += pMonster->GetDir().x * DT * 100;
 	pMonster->SetPos(monPos.x, monPos.y);
 
 	coolTime += DT;

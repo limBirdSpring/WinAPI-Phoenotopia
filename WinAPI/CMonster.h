@@ -24,8 +24,10 @@ protected :
 	float m_endX; //벡터에 처음좌표와 마지막좌표를 저장하여 몬스터가 범위 밖으로 나가지 못하게 함
 
 
-
 public:
+
+	int m_hp; //몬스터의 hp
+
 	void SetStartXToEndX(float x, float x2) { m_startX = x; m_endX = x2; }
 	float GetStartX() { return m_startX; }
 	float GetEndX() { return  m_endX; }

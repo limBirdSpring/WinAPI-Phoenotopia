@@ -13,6 +13,7 @@
 #include "CMonsterMove.h"
 #include "CMonsterJump.h"
 #include "CMonsterDamage.h"
+#include "CItem.h"
 
 CFrog::CFrog()
 {
@@ -21,6 +22,7 @@ CFrog::CFrog()
 	m_layer = Layer::Monster;
 	m_fSpeed = 80;
 	m_damageHp = 4;
+	m_hp = 15;
 }
 
 CFrog::~CFrog()
@@ -64,6 +66,17 @@ void CFrog::Init()
 
 void CFrog::Update()
 {
+	if (m_hp <= 0)
+	{
+		if (m_behavior == MonsterBehavior::Idle)
+		{
+			CItem* item = new CItem;
+			item->SetPos(this->GetPos());
+			item->SetItem(L"개구리 뒷다리");
+			ADDOBJECT(item);
+			DELETEOBJECT(this);
+		}
+	}
 
 	if (m_vecPos.x > m_endX)
 		m_vecPos.x--;
@@ -97,7 +110,12 @@ void CFrog::OnCollisionEnter(CCollider* pOtherCollider)
 			m_vecMoveDir.x = -1;
 		else
 			m_vecMoveDir.x = 1;
+		m_hp -= 5;
 		m_behavior = MonsterBehavior::Damage;
+	}
+	else if (pOtherCollider->GetObjName() == L"플레이어")
+	{
+		GAME->SetHp(-m_damageHp);
 	}
 }
 
