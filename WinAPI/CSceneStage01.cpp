@@ -27,6 +27,7 @@
 #include "CSoldier.h"
 #include "CWarp.h"
 #include "CBigBox.h"
+#include "CBox.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -86,7 +87,25 @@ void CSceneStage01::Init()
 	pMilestone->m_strSetDialogue = L"평범한 표지판이다.";
 	AddGameObject(pMilestone);
 
+	//CBigBox* pBigBox = new CBigBox;
+	//pBigBox->SetPos(425, 488);
+	//AddGameObject(pBigBox);
 
+	CBigBox* pBigBox2 = new CBigBox;
+	pBigBox2->SetPos(425, 410);
+	AddGameObject(pBigBox2);
+
+	CBigBox* pBigBox3 = new CBigBox;
+	pBigBox3->SetPos(772, 363);
+	AddGameObject(pBigBox3);
+
+	CBigBox* pBigBox4 = new CBigBox;
+	pBigBox4->SetPos(109, 362);
+	AddGameObject(pBigBox4);
+
+	CBox* pBox = new CBox;
+	pBox->SetPos(811, 363);
+	AddGameObject(pBox);
 
 }
 

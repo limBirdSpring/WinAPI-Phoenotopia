@@ -58,8 +58,10 @@ void  CAttack::Release()
 
 void  CAttack::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetObjName() == L"¹Ú½º")
+	{
 		pOtherCollider->GetOwner()->SetHp(-3);
-	DELETEOBJECT(this);
+		DELETEOBJECT(this);
+	}
 }
 

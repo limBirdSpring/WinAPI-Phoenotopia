@@ -4,6 +4,7 @@
 #include "CCollider.h"
 #include "CGravity.h"
 #include "CImage.h"
+#include "CItem.h"
 #include "CAnimator.h"
 
 CBigBox::CBigBox()
@@ -39,6 +40,13 @@ void CBigBox::Update()
 {
 	if (m_hp <= 0)
 	{
+		if (rand() % 10 == 0)
+		{
+			CItem* item = new CItem;
+			item->SetPos(this->GetPos());
+			item->SetItem(L"페로 알");
+			ADDOBJECT(item);
+		}
 		DELETEOBJECT(this);
 	}
 	else if (m_hp <=3)
@@ -70,9 +78,9 @@ void CBigBox::Release()
 
 void CBigBox::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	
 
-	if (pOtherCollider->GetObjName() == L"플레이어")
+
+	if (pOtherCollider->GetObjName() == L"플레이어" || pOtherCollider->GetObjName() == L"박스")
 	{
 		if (0 < pOtherCollider->GetOwner()->GetGravity() &&
 			((pOtherCollider->GetOwner()->GetColliderPos().y) + (pOtherCollider->GetOwner()->GetScale().y * 0.5) < this->GetPos().y))
@@ -86,14 +94,20 @@ void CBigBox::OnCollisionEnter(CCollider* pOtherCollider)
 			isGroundPlus = true;
 		}
 
-
-
-
 	}
 }
 
 void CBigBox::OnCollisionStay(CCollider* pOtherCollider)
 {
+if (this->GetReserveDelete())
+{
+	if (pOtherCollider->GetObjName() == L"플레이어" || pOtherCollider->GetObjName() == L"박스")
+	{
+		int ground = pOtherCollider->GetOwner()->GetGround();
+		pOtherCollider->GetOwner()->SetGround(--ground);
+	}
+	
+}
 }
 
 void CBigBox::OnCollisionExit(CCollider* pOtherCollider)

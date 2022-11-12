@@ -62,10 +62,12 @@ void  CAttack2::Release()
 
 void  CAttack2::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetObjName() == L"박스")
+	{
 		pOtherCollider->GetOwner()->SetHp(-5);
-	Logger::Debug(L"미사일이 충돌체와 부딪혀 사라집니다.");
-	DELETEOBJECT(this);
+		Logger::Debug(L"미사일이 충돌체와 부딪혀 사라집니다.");
+		DELETEOBJECT(this);
+	}
 
 }
 

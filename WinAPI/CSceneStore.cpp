@@ -81,7 +81,7 @@ void CSceneStore::Init()
 	AddGameObject(pCake);
 
 	CBigBox* pBigBox = new CBigBox;
-	pBigBox->SetPos(261, 300);
+	pBigBox->SetPos(261, 310);
 	AddGameObject(pBigBox);
 
 }

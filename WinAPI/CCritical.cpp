@@ -21,12 +21,17 @@ CCritical::~CCritical()
 
 void CCritical::Init()
 {
-	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
 
 }
 
 void  CCritical::Update()
 {
+	if (m_fTime > 0.5)
+	{
+		RemoveCollider();
+		AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
+	}
+
 	Vector pos = GAME->GetPlayerPos();
 
 	if (GAME->GetPlayerDir().x == -1)
@@ -53,9 +58,10 @@ void  CCritical::Release()
 
 void  CCritical::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetObjName() == L"¹Ú½º")
+	{
 		pOtherCollider->GetOwner()->SetHp(-7);
-	DELETEOBJECT(this);
-
+		DELETEOBJECT(this);
+	}
 }
 
