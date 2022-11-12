@@ -366,6 +366,9 @@
     <ClInclude Include="CMonsterDamage.h">
       <Filter>GameObject\Monster\Monster State</Filter>
     </ClInclude>
+    <ClInclude Include="CBigBox.h">
+      <Filter>GameObject\Things</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -634,6 +637,9 @@
     </ClCompile>
     <ClCompile Include="CMonsterDamage.cpp">
       <Filter>GameObject\Monster\Monster State</Filter>
+    </ClCompile>
+    <ClCompile Include="CBigBox.cpp">
+      <Filter>GameObject\Things</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -60,18 +60,15 @@ void CSceneForest::Init()
 	pDoor->SetPlayerStartDir(Vector(-1, 0));
 	AddGameObject(pDoor);
 
-	CItem* pMill = new CItem;
-	pMill->SetPos(334, 73);
-	pMill->SetItem(L"µµ½Ã¶ô");
-	AddGameObject(pMill);
+	
 
 	CItem* pZem = new CItem;
-	pZem->SetPos(598, 425);
+	pZem->SetPos(43, 237);
 	pZem->SetItem(L"Áª");
 	AddGameObject(pZem);
 
 	CBox* pBox = new CBox;
-	pBox->SetPos(300, 496);
+	pBox->SetPos(116, 765);
 	AddGameObject(pBox);
 
 	CSlug* pSlug = new CSlug();

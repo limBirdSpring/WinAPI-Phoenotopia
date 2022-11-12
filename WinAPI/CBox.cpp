@@ -36,14 +36,29 @@ void CBox::Release()
 
 void CBox::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	//TODO: 박스 위에 올라갈 수 있게 하기 추가
+	
 
 	if (pOtherCollider->GetObjName() == L"플레이어")
 	{
-		if (GAME->GetPlayerDir().x==-1) 
+		if (0 < pOtherCollider->GetOwner()->GetGravity() &&
+			((pOtherCollider->GetOwner()->GetColliderPos().y) + (pOtherCollider->GetOwner()->GetScale().y * 0.5) < this->GetPos().y))
+		{
+			pOtherCollider->GetOwner()->SetPos(pOtherCollider->GetOwner()->GetPos().x,
+				this->GetPos().y - this->GetScale().y * 0.5 - ((pOtherCollider->GetOwner()->GetColliderPos().y - pOtherCollider->GetOwner()->GetPos().y) + pOtherCollider->GetOwner()->GetScale().y * 0.5) + 1);
+
+			int ground = pOtherCollider->GetOwner()->GetGround();
+			pOtherCollider->GetOwner()->SetGround(++ground);
+
+			isGroundPlus = true;
+		}
+
+		else if (GAME->GetPlayerDir().x==-1) 
 			m_vecPos.x--;
 		else
 			m_vecPos.x++;
+
+		
+
 
 	}
 }
@@ -54,4 +69,10 @@ void CBox::OnCollisionStay(CCollider* pOtherCollider)
 
 void CBox::OnCollisionExit(CCollider* pOtherCollider)
 {
+	if (isGroundPlus)
+	{
+		int ground = pOtherCollider->GetOwner()->GetGround();
+		pOtherCollider->GetOwner()->SetGround(--ground);
+		isGroundPlus = false;
+	}
 }

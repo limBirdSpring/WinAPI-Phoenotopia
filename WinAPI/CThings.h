@@ -3,6 +3,7 @@
 #include "framework.h"
 
 
+
 class CThings :
 public CGameObject
 {
@@ -10,7 +11,8 @@ public:
 	CThings();
 	virtual ~CThings();
 
-private:
+protected :
+
 
 private:
 	virtual void Init() override =0;

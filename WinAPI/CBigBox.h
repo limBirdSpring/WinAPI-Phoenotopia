@@ -1,15 +1,13 @@
-
 #pragma once
 #include "CThings.h"
 #include "framework.h"
 
-
-class CBox :
+class CBigBox :
 	public CThings
 {
 public:
-	CBox();
-	virtual ~CBox();
+	CBigBox();
+	virtual ~CBigBox();
 
 private:
 	bool isGroundPlus = false;

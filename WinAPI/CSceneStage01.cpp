@@ -42,9 +42,6 @@ void CSceneStage01::Init()
 	pPlayer = new CPlayer();
 	AddGameObject(pPlayer);
 
-	CSlug* pSlug = new CSlug();
-	pSlug->SetPos(300, WINSIZEY * 0.5f-10);
-	AddGameObject(pSlug);
 
 	CWarp* pFieldDoor = new CWarp;
 	pFieldDoor->SetPos(1793, 489);
