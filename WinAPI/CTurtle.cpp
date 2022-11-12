@@ -14,7 +14,7 @@
 
 CTurtle::CTurtle()
 {
-	m_strName = L"Slug";
+
 	m_vecScale = Vector(15, 8);
 	m_layer = Layer::Monster;
 	m_fSpeed = 10;
@@ -36,7 +36,7 @@ void CTurtle::Init()
 	m_pAnimator->CreateAnimation(L"Turtle_Idle_Left", m_pImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.3f, 2,false);
 	m_pAnimator->CreateAnimation(L"Turtle_Move_Left", m_pImage, Vector(300, 150), Vector(100, 100), Vector(150, 0), 0.3f, 3);
 
-	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 10));
+	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 11));
 
 	m_pAnimator->Play(L"Turtle_Idle_Right", false);
 	AddComponent(m_pAnimator);
@@ -52,7 +52,7 @@ void CTurtle::Update()
 {
 	m_mapMonsterState.find(m_behavior)->second->Update();
 
-	if (GAME->GetPlayerPos().x < m_vecPos.x + 50 && GAME->GetPlayerPos().x > m_vecPos.x - 50)
+	if (GAME->GetPlayerPos().x < m_vecPos.x + 80 && GAME->GetPlayerPos().x > m_vecPos.x - 80)
 		m_behavior = MonsterBehavior::Follow;
 	else
 	{

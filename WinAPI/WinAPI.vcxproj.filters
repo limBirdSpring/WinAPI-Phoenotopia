@@ -357,6 +357,12 @@
     <ClInclude Include="CMonsterMove.h">
       <Filter>GameObject\Monster\Monster State</Filter>
     </ClInclude>
+    <ClInclude Include="CFrog.h">
+      <Filter>GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonsterJump.h">
+      <Filter>GameObject\Monster\Monster State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -615,6 +621,12 @@
       <Filter>GameObject\Monster\Monster State</Filter>
     </ClCompile>
     <ClCompile Include="CMonsterMove.cpp">
+      <Filter>GameObject\Monster\Monster State</Filter>
+    </ClCompile>
+    <ClCompile Include="CFrog.cpp">
+      <Filter>GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonsterJump.cpp">
       <Filter>GameObject\Monster\Monster State</Filter>
     </ClCompile>
   </ItemGroup>

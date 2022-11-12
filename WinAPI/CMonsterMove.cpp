@@ -9,7 +9,7 @@ CMonsterMove::~CMonsterMove()
 void CMonsterMove::Init()
 {
 	coolTime = -1;
-	srand(time(NULL));
+	
 }
 
 void CMonsterMove::Update()

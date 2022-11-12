@@ -207,11 +207,9 @@ void CPlayer::CreateMissile()
 
 void CPlayer::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetObjName() == L"Slug" && m_behavior != Behavior::Damage)
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster && m_behavior != Behavior::Damage)
 	{
-		Logger::Debug(L"Slug가 플레이어와 충돌진입");
 		m_behavior = Behavior::Damage;
-		GAME->SetHp(-5);
 	}
 
 	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Door || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC)

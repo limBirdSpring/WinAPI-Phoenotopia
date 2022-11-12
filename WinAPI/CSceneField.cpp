@@ -26,6 +26,7 @@
 #include "CItem.h"
 #include "CBox.h"
 #include "CTurtle.h"
+#include "CFrog.h"
 
 CSceneField::CSceneField()
 {
@@ -90,6 +91,10 @@ void CSceneField::Init()
 	CTurtle* pTurtle = new CTurtle;
 	pTurtle->SetPos(370, 452);
 	AddGameObject(pTurtle);
+
+	CFrog* pFrog = new CFrog;
+	pFrog->SetPos(350, 452);
+	AddGameObject(pFrog);
 
 }
 
