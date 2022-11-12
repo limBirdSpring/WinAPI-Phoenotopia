@@ -18,7 +18,7 @@ CFrog::CFrog()
 
 	m_vecScale = Vector(20, 15);
 	m_layer = Layer::Monster;
-	m_fSpeed = 100;
+	m_fSpeed = 80;
 	m_damageHp = 4;
 }
 
@@ -28,6 +28,7 @@ CFrog::~CFrog()
 
 void CFrog::Init()
 {
+	srand(time(NULL));
 	m_pAnimator = new CAnimator;
 
 	m_pImage = RESOURCE->LoadImg(L"Frog_Idle", L"Image\\Frog_Idle.png");
@@ -37,8 +38,8 @@ void CFrog::Init()
 
 	m_pImage = RESOURCE->LoadImg(L"Frog_Jump", L"Image\\Frog_Jump.png");
 
-	m_pAnimator->CreateAnimation(L"Frog_Jump_Right", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.3f, 3);
-	m_pAnimator->CreateAnimation(L"Frog_Jump_Left", m_pImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.3f, 3);
+	m_pAnimator->CreateAnimation(L"Frog_Jump_Right", m_pImage, Vector(150, 0), Vector(100, 100), Vector(150, 0), 0.3f, 2);
+	m_pAnimator->CreateAnimation(L"Frog_Jump_Left", m_pImage, Vector(150, 150), Vector(100, 100), Vector(150, 0), 0.3f, 2);
 
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 8));
 
@@ -57,12 +58,9 @@ void CFrog::Update()
 {
 	m_mapMonsterState.find(m_behavior)->second->Update();
 
-	if (GAME->GetPlayerPos().x < m_vecPos.x + 200 && GAME->GetPlayerPos().x > m_vecPos.x - 200)
+	int random = rand() % 500;
+	if (m_behavior == MonsterBehavior::Idle && random == 1)
 		m_behavior = MonsterBehavior::Jump;
-	else
-	{
-		m_behavior = MonsterBehavior::Idle;
-	}
 
 	AnimatorUpdate();
 }
