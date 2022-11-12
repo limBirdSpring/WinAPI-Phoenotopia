@@ -90,6 +90,8 @@ public :
 	Vector GetPlayerStartDir() { return m_vecStartDir; }
 	void SetPlayerStartDir(Vector Dir) { m_vecStartDir = Dir; }
 
+
+	//TODO : æ∆¿Ã≈€¿ª PushBack«ﬂ¿ª ∂ß 'æ∆¿Ã≈€ »πµÊ' UI ∂ﬂ±‚ 
 public :
 	void PushBackInvenItem(const Item item);
 	void EraseInvenItem(const Item item);

@@ -110,7 +110,12 @@ enum class Behavior
 enum class MonsterBehavior
 {
 	Idle,
-	Walk,
+	Move,
+	Run,
+	Follow,
+	Jump,
+	Damage,
+	Attack,
 
 	Size
 };

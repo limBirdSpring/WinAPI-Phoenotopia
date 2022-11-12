@@ -108,7 +108,7 @@ void CCarol::OnCollisionStay(CCollider* pOtherCollider)
 	{
 		if (BUTTONDOWN('X'))
 		{
-			CAMERA->ZoomInOut(2.5, 1);
+			CAMERA->ZoomInOut(2.3, 0.8);
 
 			talk++;
 			GAME->SetTalk(true);
@@ -136,7 +136,7 @@ void CCarol::Talk()
 			m_strDialogue = L"오늘은 매점에 신선한 페로 알이 들어왔다나봐.";
 			break;
 		default:
-			CAMERA->ZoomInOut(2, 1.5);
+			CAMERA->ZoomInOut(2, 0.5);
 			m_strDialogue = L"";
 			GAME->SetTalk(false);
 			changeTalkTopic++;
@@ -162,7 +162,7 @@ void CCarol::Talk()
 			break;
 
 		default:
-			CAMERA->ZoomInOut(2, 1.5);
+			CAMERA->ZoomInOut(2, 0.5);
 			m_strDialogue = L"";
 			GAME->SetTalk(false);
 			changeTalkTopic++;
@@ -184,7 +184,7 @@ void CCarol::Talk()
 			m_strDialogue = L"Z키를 길게 눌러봐.";
 			break;
 		default:
-			CAMERA->ZoomInOut(2, 1.5);
+			CAMERA->ZoomInOut(2, 0.5);
 			m_strDialogue = L"";
 			GAME->SetTalk(false);
 			changeTalkTopic = 0;

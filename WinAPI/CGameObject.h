@@ -51,6 +51,8 @@ public :
 	void SetName(wstring name);
 	Vector GetDir() { return m_vecMoveDir; }
 	void SetDir(Vector dir) { m_vecMoveDir = dir; }
+	float GetSpeed() { return m_fSpeed; }
+	void SetSpeed(float speed) { m_fSpeed = speed; }
 
 	void SetGravity(float velocity);
 	float GetGravity();

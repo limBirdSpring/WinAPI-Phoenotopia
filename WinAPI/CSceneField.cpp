@@ -25,6 +25,7 @@
 #include "CTeacher.h"
 #include "CItem.h"
 #include "CBox.h"
+#include "CTurtle.h"
 
 CSceneField::CSceneField()
 {
@@ -53,16 +54,16 @@ void CSceneField::Init()
 	AddGameObject(pForest);
 
 	CWarp* pVillageDoor = new CWarp;
-	pVillageDoor->SetPos(0, 400);
-	pVillageDoor->SetScale(10, 500);
+	pVillageDoor->SetPos(0, 0);
+	pVillageDoor->SetScale(10, 1000);
 	pVillageDoor->SetScene(GroupScene::Stage01);
 	pVillageDoor->SetPlayerStartPos(Vector(1773, 488));
 	pVillageDoor->SetPlayerStartDir(Vector(-1, 0));
 	AddGameObject(pVillageDoor);
 
 	CWarp* pForestDoor = new CWarp;
-	pForestDoor->SetPos(1100, 400);
-	pForestDoor->SetScale(10, 500);
+	pForestDoor->SetPos(1100, 0);
+	pForestDoor->SetScale(10, 1000);
 	pForestDoor->SetScene(GroupScene::Forest);
 	pForestDoor->SetPlayerStartPos(Vector(18, 772));
 	pForestDoor->SetPlayerStartDir(Vector(1, 0));
@@ -86,6 +87,9 @@ void CSceneField::Init()
 	pSlug->SetPos(370, 452);
 	AddGameObject(pSlug);
 
+	CTurtle* pTurtle = new CTurtle;
+	pTurtle->SetPos(370, 452);
+	AddGameObject(pTurtle);
 
 }
 

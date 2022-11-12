@@ -170,7 +170,9 @@
     <ClInclude Include="CMiniWindow.h" />
     <ClInclude Include="CMissile.h" />
     <ClInclude Include="CMonster.h" />
-    <ClInclude Include="CMonsterStatus.h" />
+    <ClInclude Include="CMonsterIdle.h" />
+    <ClInclude Include="CMonsterMove.h" />
+    <ClInclude Include="CMonsterState.h" />
     <ClInclude Include="CNPC.h" />
     <ClInclude Include="CPlayerState.h" />
     <ClInclude Include="CSceneField.h" />
@@ -209,7 +211,7 @@
     <ClInclude Include="CStateRun.h" />
     <ClInclude Include="CStateTalk.h" />
     <ClInclude Include="CStateWalk.h" />
-    <ClInclude Include="CStatusFollow.h" />
+    <ClInclude Include="CMonsterFollow.h" />
     <ClInclude Include="CStateIdle.h" />
     <ClInclude Include="CTeacher.h" />
     <ClInclude Include="CThings.h" />
@@ -217,6 +219,7 @@
     <ClInclude Include="CTileButton.h" />
     <ClInclude Include="CTilePanel.h" />
     <ClInclude Include="CTimeManager.h" />
+    <ClInclude Include="CTurtle.h" />
     <ClInclude Include="CUI.h" />
     <ClInclude Include="CUIManager.h" />
     <ClInclude Include="CWallTile.h" />
@@ -262,7 +265,9 @@
     <ClCompile Include="CMiniWindow.cpp" />
     <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CMonster.cpp" />
-    <ClCompile Include="CMonsterStatus.cpp" />
+    <ClCompile Include="CMonsterIdle.cpp" />
+    <ClCompile Include="CMonsterMove.cpp" />
+    <ClCompile Include="CMonsterState.cpp" />
     <ClCompile Include="CNPC.cpp" />
     <ClCompile Include="CPlayerState.cpp" />
     <ClCompile Include="CSceneField.cpp" />
@@ -301,7 +306,7 @@
     <ClCompile Include="CStateRun.cpp" />
     <ClCompile Include="CStateTalk.cpp" />
     <ClCompile Include="CStateWalk.cpp" />
-    <ClCompile Include="CStatusFollow.cpp" />
+    <ClCompile Include="CMonsterFollow.cpp" />
     <ClCompile Include="CStateIdle.cpp" />
     <ClCompile Include="CTeacher.cpp" />
     <ClCompile Include="CThings.cpp" />
@@ -309,6 +314,7 @@
     <ClCompile Include="CTileButton.cpp" />
     <ClCompile Include="CTilePanel.cpp" />
     <ClCompile Include="CTimeManager.cpp" />
+    <ClCompile Include="CTurtle.cpp" />
     <ClCompile Include="CUI.cpp" />
     <ClCompile Include="CUIManager.cpp" />
     <ClCompile Include="CWallTile.cpp" />

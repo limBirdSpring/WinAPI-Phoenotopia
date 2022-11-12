@@ -37,7 +37,7 @@ void CStateJump::Update()
 
 	if (farJump == true)
 	{
-		GAME->SetMp(-0.2);
+		GAME->SetMp(-0.25);
 		pPlayer->m_vecPos.x += (pPlayer->m_fSpeed * DT) * pPlayer->m_vecMoveDir.x;
 		if (GAME->GetMp() < 1)
 			pPlayer->m_behavior = Behavior::Idle;

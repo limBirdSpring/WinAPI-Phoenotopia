@@ -58,9 +58,6 @@
     <Filter Include="GameObject\Boss">
       <UniqueIdentifier>{2357ccbf-af01-4d5b-a86e-f1923eec3ff9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Monster\Monster Status">
-      <UniqueIdentifier>{776bed23-05fc-4490-8029-8999befcb623}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObject\Things">
       <UniqueIdentifier>{e658d30d-464a-4c54-91e4-b05463ff1430}</UniqueIdentifier>
     </Filter>
@@ -75,6 +72,9 @@
     </Filter>
     <Filter Include="GameObject\Door">
       <UniqueIdentifier>{b318a28d-1448-4b5b-a4ed-6e5d9e8834f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Monster\Monster State">
+      <UniqueIdentifier>{776bed23-05fc-4490-8029-8999befcb623}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -237,11 +237,11 @@
     <ClInclude Include="Function.h">
       <Filter>Util</Filter>
     </ClInclude>
-    <ClInclude Include="CMonsterStatus.h">
-      <Filter>GameObject\Monster\Monster Status</Filter>
+    <ClInclude Include="CMonsterState.h">
+      <Filter>GameObject\Monster\Monster State</Filter>
     </ClInclude>
-    <ClInclude Include="CStatusFollow.h">
-      <Filter>GameObject\Monster\Monster Status</Filter>
+    <ClInclude Include="CMonsterFollow.h">
+      <Filter>GameObject\Monster\Monster State</Filter>
     </ClInclude>
     <ClInclude Include="CSceneForest.h">
       <Filter>Scene</Filter>
@@ -347,6 +347,15 @@
     </ClInclude>
     <ClInclude Include="CDoor.h">
       <Filter>GameObject\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="CTurtle.h">
+      <Filter>GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonsterIdle.h">
+      <Filter>GameObject\Monster\Monster State</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonsterMove.h">
+      <Filter>GameObject\Monster\Monster State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -488,11 +497,11 @@
     <ClCompile Include="CMonster.cpp">
       <Filter>GameObject\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="CMonsterStatus.cpp">
-      <Filter>GameObject\Monster\Monster Status</Filter>
+    <ClCompile Include="CMonsterState.cpp">
+      <Filter>GameObject\Monster\Monster State</Filter>
     </ClCompile>
-    <ClCompile Include="CStatusFollow.cpp">
-      <Filter>GameObject\Monster\Monster Status</Filter>
+    <ClCompile Include="CMonsterFollow.cpp">
+      <Filter>GameObject\Monster\Monster State</Filter>
     </ClCompile>
     <ClCompile Include="CSceneForest.cpp">
       <Filter>Scene</Filter>
@@ -598,6 +607,15 @@
     </ClCompile>
     <ClCompile Include="CDoor.cpp">
       <Filter>GameObject\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="CTurtle.cpp">
+      <Filter>GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonsterIdle.cpp">
+      <Filter>GameObject\Monster\Monster State</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonsterMove.cpp">
+      <Filter>GameObject\Monster\Monster State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

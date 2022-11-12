@@ -62,6 +62,7 @@ void CWallTile::OnCollisionStay(CCollider* pOther)
 		{
 		case CollisionDir::Up:
 		{
+			
 			pPlayer->SetPos(
 				pPlayer->GetPos().x,
 				GetCollider()->GetPos().y
@@ -73,6 +74,7 @@ void CWallTile::OnCollisionStay(CCollider* pOther)
 
 		case CollisionDir::Down:
 		{
+			
 			pPlayer->SetPos(
 				pPlayer->GetPos().x,
 				GetCollider()->GetPos().y
@@ -112,6 +114,7 @@ void CWallTile::OnCollisionExit(CCollider* pOther)
 {
 	if (pOther->GetObjName() == L"플레이어")
 	{
+		
 	}
 }
 

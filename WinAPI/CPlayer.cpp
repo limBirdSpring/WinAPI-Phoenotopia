@@ -214,12 +214,7 @@ void CPlayer::OnCollisionEnter(CCollider* pOtherCollider)
 		GAME->SetHp(-5);
 	}
 
-	if (pOtherCollider->GetObjName() == L"º®")
-	{
-		m_vecMoveDir.x = 0;
-	}
-
-	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Things || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC)
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Door || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC)
 	{
 		isThingCollision = true;
 	}
@@ -232,7 +227,7 @@ void CPlayer::OnCollisionStay(CCollider* pOtherCollider)
 
 void CPlayer::OnCollisionExit(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Things || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC)
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Door || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC)
 	{
 		isThingCollision = false;
 	}
