@@ -82,16 +82,24 @@ void CFrog::Update()
 	}
 
 	if (m_vecPos.x > m_endX)
+	{
 		m_vecPos.x--;
+		m_behavior = MonsterBehavior::Idle;
+	}
 	else if (m_vecPos.x < m_startX)
+	{
 		m_vecPos.x++;
+		m_behavior = MonsterBehavior::Idle;
+	}
 
 
 	m_mapMonsterState.find(m_behavior)->second->Update();
 
-	int random = rand() % 500;
-	if (m_behavior == MonsterBehavior::Idle && random == 1)
-		m_behavior = MonsterBehavior::Jump;
+
+	if (m_behavior == MonsterBehavior::Idle && GAME->GetPlayerPos().x > m_vecPos.x - 200 && GAME->GetPlayerPos().x < m_vecPos.x + 200)
+	{
+		if (rand()%500 == 1)m_behavior = MonsterBehavior::Jump;
+	}
 
 	AnimatorUpdate();
 }

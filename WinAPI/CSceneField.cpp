@@ -90,18 +90,24 @@ void CSceneField::Init()
 	AddGameObject(pSlug);
 
 	CTurtle* pTurtle = new CTurtle;
-	pTurtle->SetStartXToEndX(85, 1027);
-	pTurtle->SetPos(370, 452);
+	pTurtle->SetStartXToEndX(944, 985);
+	pTurtle->SetPos(945, 136);
 	AddGameObject(pTurtle);
+
+
+	CTurtle* pTurtle2 = new CTurtle;
+	pTurtle2->SetStartXToEndX(581, 632);
+	pTurtle2->SetPos(600,150);
+	AddGameObject(pTurtle2);
 
 	CFrog* pFrog = new CFrog;
 	pFrog->SetStartXToEndX(85, 1027);
-	pFrog->SetPos(350, 452);
+	pFrog->SetPos(1017, 200);
 	AddGameObject(pFrog);
 
 	CFrog* pFrog2 = new CFrog;
 	pFrog2->SetStartXToEndX(85, 1027);
-	pFrog2->SetPos(500, 452);
+	pFrog2->SetPos(800, 452);
 	AddGameObject(pFrog2);
 
 	CFrog* pFrog3 = new CFrog;

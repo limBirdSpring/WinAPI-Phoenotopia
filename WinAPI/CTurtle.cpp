@@ -60,11 +60,16 @@ void CTurtle::Update()
 			DELETEOBJECT(this);
 		}
 	}
-
 	if (m_vecPos.x > m_endX)
+	{
 		m_vecPos.x--;
+		m_behavior = MonsterBehavior::Idle;
+	}
 	else if (m_vecPos.x < m_startX)
+	{
 		m_vecPos.x++;
+		m_behavior = MonsterBehavior::Idle;
+	}
 
 	m_mapMonsterState.find(m_behavior)->second->Update();
 
