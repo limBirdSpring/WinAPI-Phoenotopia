@@ -12,6 +12,7 @@
 #include "CMonsterIdle.h"
 #include "CMonsterMove.h"
 #include "CMonsterJump.h"
+#include "CMonsterDamage.h"
 
 CFrog::CFrog()
 {
@@ -41,6 +42,11 @@ void CFrog::Init()
 	m_pAnimator->CreateAnimation(L"Frog_Jump_Right", m_pImage, Vector(150, 0), Vector(100, 100), Vector(150, 0), 0.3f, 2);
 	m_pAnimator->CreateAnimation(L"Frog_Jump_Left", m_pImage, Vector(150, 150), Vector(100, 100), Vector(150, 0), 0.3f, 2);
 
+	m_pImage = RESOURCE->LoadImg(L"Frog_Damage", L"Image\\Frog_Damage.png");
+
+	m_pAnimator->CreateAnimation(L"Frog_Damage_Right", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.3f, 2, false);
+	m_pAnimator->CreateAnimation(L"Frog_Damage_Left", m_pImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.3f, 2, false);
+
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 8));
 
 	m_pAnimator->Play(L"Frog_Idle_Right", false);
@@ -50,6 +56,8 @@ void CFrog::Init()
 	m_mapMonsterState.insert(make_pair(MonsterBehavior::Idle, new CMonsterIdle(this)));
 	m_mapMonsterState.insert(make_pair(MonsterBehavior::Follow, new CMonsterFollow(this)));
 	m_mapMonsterState.insert(make_pair(MonsterBehavior::Jump, new CMonsterJump(this)));
+	m_mapMonsterState.insert(make_pair(MonsterBehavior::Damage, new CMonsterDamage(this)));
+
 
 	m_behavior = MonsterBehavior::Idle;
 }
@@ -83,14 +91,13 @@ void CFrog::Release()
 
 void CFrog::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetObjName() == L"플레이어")
+	if (pOtherCollider->GetObjName() == L"공격")
 	{
-		Logger::Debug(L"몬스터가 플레이어와 충돌진입");
-	}
-	else if (pOtherCollider->GetObjName() == L"공격")
-	{
-		Logger::Debug(L"몬스터가 공격과 충돌진입");
-
+		if (pOtherCollider->GetPos().x > m_vecPos.x)
+			m_vecMoveDir.x = -1;
+		else
+			m_vecMoveDir.x = 1;
+		m_behavior = MonsterBehavior::Damage;
 	}
 }
 
@@ -112,7 +119,7 @@ void CFrog::OnCollisionExit(CCollider* pOtherCollider)
 
 void CFrog::AnimatorUpdate()
 {
-	if (m_vecMoveDir.Length() > 0)
+	if (m_vecMoveDir.Length() > 0 && m_behavior != MonsterBehavior::Damage)
 		m_vecLookDir = m_vecMoveDir;
 
 	wstring str = L"Frog";

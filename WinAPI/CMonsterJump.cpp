@@ -12,6 +12,7 @@ void CMonsterJump::Init()
 
 void CMonsterJump::Update()
 {
+	int random = rand() % 2;
 
 	Vector monPos = pMonster->GetPos();
 
@@ -32,9 +33,10 @@ void CMonsterJump::Update()
 		{
 			pMonster->SetDir(Vector(-1, 0));
 		}
-
 		pMonster->SetPos(monPos.x, --monPos.y);
-		pMonster->SetGravity(-230);
+		if (random==0) pMonster->SetGravity(-100);
+		else pMonster->SetGravity(-230);
+		
 	}
 	//몬스터 해당방향으로 점프이동
 	monPos.x += pMonster->GetDir().x * DT * pMonster->GetSpeed();

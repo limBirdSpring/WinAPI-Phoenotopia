@@ -171,6 +171,7 @@
     <ClInclude Include="CMiniWindow.h" />
     <ClInclude Include="CMissile.h" />
     <ClInclude Include="CMonster.h" />
+    <ClInclude Include="CMonsterDamage.h" />
     <ClInclude Include="CMonsterIdle.h" />
     <ClInclude Include="CMonsterJump.h" />
     <ClInclude Include="CMonsterMove.h" />
@@ -268,6 +269,7 @@
     <ClCompile Include="CMiniWindow.cpp" />
     <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CMonster.cpp" />
+    <ClCompile Include="CMonsterDamage.cpp" />
     <ClCompile Include="CMonsterIdle.cpp" />
     <ClCompile Include="CMonsterJump.cpp" />
     <ClCompile Include="CMonsterMove.cpp" />
