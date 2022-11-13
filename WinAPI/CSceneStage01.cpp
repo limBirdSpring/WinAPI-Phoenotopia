@@ -110,7 +110,13 @@ void CSceneStage01::Init()
 
 	CCoin* pCoin = new CCoin;
 	pCoin->SetPos(1165, 434);
+	pCoin->SetDir(Vector(1, 0));
 	AddGameObject(pCoin);
+
+	CCoin* pCoin2 = new CCoin;
+	pCoin2->SetPos(1200, 400);
+	pCoin2->SetDir(Vector(-1, 0));
+	AddGameObject(pCoin2);
 
 }
 

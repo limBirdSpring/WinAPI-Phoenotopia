@@ -12,6 +12,7 @@ public:
 
 private:
 	int price;
+	float jumpSpeed;
 
 public:
 	void SetPrice(int price) { this->price = price; }
