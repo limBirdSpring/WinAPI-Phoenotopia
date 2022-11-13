@@ -105,6 +105,10 @@ private :
 	CImage* m_pUIImage; //UI이미지
 	CImage* m_pUIHeart; //하트 이미지
 	CImage* m_pUIMp; //Mp이미지
+	CImage* m_pUIItemGet;
+	float coolTime;
+	float m_fUIItemGetX;
+	wstring getItemName;
 	float m_fHeartScale;
 
 private :

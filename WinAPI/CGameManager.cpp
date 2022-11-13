@@ -10,14 +10,18 @@ CGameManager::CGameManager()
 
 	srand(time(NULL));
 
-	 m_bTalk = false;
-	 hp = 25;
-	 mp = 300;
-	 gold = 100;
-	 m_pUIImage = RESOURCE->LoadImg(L"UI_HpGold", L"Image\\UI_HpGold.png");
-	 m_pUIHeart = RESOURCE->LoadImg(L"UI_Heart", L"Image\\UI_Heart.png");
-	 m_pUIMp = RESOURCE->LoadImg(L"UI_Mp", L"Image\\UI_Mp.png");
-	 m_fHeartScale = 50;
+	m_bTalk = false;
+	hp = 25;
+	mp = 300;
+	gold = 100;
+	m_pUIImage = RESOURCE->LoadImg(L"UI_HpGold", L"Image\\UI_HpGold.png");
+	m_pUIHeart = RESOURCE->LoadImg(L"UI_Heart", L"Image\\UI_Heart.png");
+	m_pUIMp = RESOURCE->LoadImg(L"UI_Mp", L"Image\\UI_Mp.png");
+	m_fHeartScale = 50;
+	m_pUIItemGet = RESOURCE->LoadImg(L"UI_ItemGet", L"Image\\UI_ItemGet.png");;
+	coolTime = 0;
+	m_fUIItemGetX = -187;
+	getItemName = L"";
 
 	 UIRender = false;
 
@@ -31,6 +35,11 @@ CGameManager::~CGameManager()
 
 void CGameManager::PushBackInvenItem(const Item item)
 {
+	if (coolTime <= 0)
+		coolTime = 3;
+		getItemName = item.name;
+
+
 	if (m_vInventoryItem.size() > 12)
 		return;
 	for (int i = 0; i < m_vInventoryItem.size(); i++)
@@ -42,6 +51,8 @@ void CGameManager::PushBackInvenItem(const Item item)
 		}
 	}
 	m_vInventoryItem.push_back(item);
+
+	
 }
 
 void CGameManager::EraseInvenItem(const Item item)
@@ -64,6 +75,10 @@ void CGameManager::EraseInvenItem(const Item item)
 
 void CGameManager::PushBackInvenItem(const wstring name)
 {
+	if (coolTime <= 0)
+		coolTime = 3;
+	getItemName = name;
+
 	if (m_vInventoryItem.size() > 12)
 		return;
 	for (int i = 0; i < m_vInventoryItem.size(); i++)
@@ -83,6 +98,8 @@ void CGameManager::PushBackInvenItem(const wstring name)
 		}
 	}
 	assert(0);
+
+	
 }
 
 void CGameManager::EraseInvenItem(const wstring name)
@@ -194,6 +211,9 @@ void CGameManager::Update()
 	if (mp != 300) mp += 0.1;
 
 	mp = clamp(mp, 0.f, 300.f);
+
+	if (coolTime <= 0)
+		m_fUIItemGetX = -187;
 	
 }
 void CGameManager::Render()
@@ -229,6 +249,7 @@ void CGameManager::Render()
 			L"ko");
 		RENDER->Text(to_wstring(hp), start.x + 19, start.y + 18, start.x + 66, start.y + 49);//HP
 		RENDER->Text(to_wstring(gold), start.x + 1143, start.y + 24, start.x + 1235, start.y + 49);//Gold
+
 		RENDER->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_LEADING);
 		RENDER->SetTextFormat(L"µÕ±Ù¸ð²Ã",
 			DWRITE_FONT_WEIGHT_NORMAL,
@@ -236,9 +257,21 @@ void CGameManager::Render()
 			DWRITE_FONT_STRETCH_NORMAL,
 			25.f,
 			L"ko");
-		CAMERA->SetScale(scale);
 
+		if (coolTime > 0)
+		{
+			if (coolTime > 2.6)
+				m_fUIItemGetX += DT*450;
+			else if (coolTime < 1.4)
+				m_fUIItemGetX -= DT*450;
+
+			RENDER->Image(m_pUIItemGet, start.x + m_fUIItemGetX, start.y + 173, start.x + m_fUIItemGetX + m_pUIItemGet->GetWidth() + 40, start.y + 173 + m_pUIItemGet->GetHeight());
+			RENDER->Text(getItemName + L" È¹µæ", start.x + 20+m_fUIItemGetX, start.y + 173, start.x + m_fUIItemGetX + 300, start.y + 213);
+			coolTime -= DT;
+		}
 		
+
+		CAMERA->SetScale(scale);
 	}
 }
 void CGameManager::Release()
