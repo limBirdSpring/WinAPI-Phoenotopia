@@ -16,6 +16,8 @@ void CStateRun::Update()
 	if (coolTime == 0)
 		dir = pPlayer->GetDir().x;
 
+	coolTime += DT;
+
 	GAME->SetMp(-0.2);
 
 	if (GAME->GetMp() < 1)
@@ -81,8 +83,6 @@ void CStateRun::Update()
 		coolTime = 0;
 		pPlayer->m_behavior = Behavior::Jump;
 	}
-
-	coolTime += DT;
 
 
 	if (pPlayer->m_fSpeed < 10)

@@ -1,8 +1,10 @@
 #pragma once
 #include "CScene.h"
+#include "CFrog.h"
 
 class CPlayer;
 class CImage;
+
 
 class CSceneField :
 	public CScene
@@ -14,6 +16,8 @@ public:
 private:
 	CPlayer* pPlayer;
 	CImage* m_pImage;
+	vector<CFrog*> m_vFrog;
+
 
 private:
 	void Init()		override;

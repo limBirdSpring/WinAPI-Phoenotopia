@@ -83,7 +83,7 @@ void CFrog::Update()
 				CCoin* coin = new CCoin;
 				coin->SetPos(this->GetPos());
 				coin->SetDir(Vector(rand() % 3 - 1, 0));
-				coin->SetPrice(rand() % 50 + 50);
+				coin->SetPrice(rand() % 50 + 10);
 				ADDOBJECT(coin);
 			}
 			DELETEOBJECT(this);

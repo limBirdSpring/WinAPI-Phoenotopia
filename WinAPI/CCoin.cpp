@@ -15,16 +15,19 @@ CCoin::~CCoin()
 
 void CCoin::Init()
 {
-	if (rand()%2 ==0)
+	if (price > 50)
 		m_pImage = RESOURCE->LoadImg(L"Coin", L"Image\\Coin.png");
 	else
 		m_pImage = RESOURCE->LoadImg(L"Coin2", L"Image\\Coin2.png");
+
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
 	AddGravity(-100);
 }
 
 void CCoin::Update()
 {
+
+
 	if (this->GetGround() ==0 && GetGravity() > 10)
 		jumpSpeed = -GetGravity();
 	
@@ -40,7 +43,6 @@ void CCoin::Update()
 		m_fSpeed = 0;
 	else
 		m_fSpeed -= m_fSpeed * 0.8 * DT;//마찰계수만큼 속도 줄이기
-
 
 }
 

@@ -17,7 +17,9 @@ void CStateWalk::Init()
 
 void CStateWalk::Update()
 {
-	if (pPlayer->m_fSpeed > 100)
+	if (pPlayer->m_fSpeed ==30)
+	{ }
+	else if (pPlayer->m_fSpeed > 100)
 		pPlayer->m_fSpeed -= 0.1;
 	else if (pPlayer->m_fSpeed < 100)
 		pPlayer->m_fSpeed += 0.1;

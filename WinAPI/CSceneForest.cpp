@@ -70,13 +70,29 @@ void CSceneForest::Init()
 	pZem->SetItem(L"Áª");
 	AddGameObject(pZem);
 
-	CBox* pBox = new CBox;
+	pBox = new CBox;
 	pBox->SetPos(116, 765);
 	AddGameObject(pBox);
 
 	CSlug* pSlug = new CSlug();
 	pSlug->SetPos(370, 452);
 	AddGameObject(pSlug);
+
+
+	m_vFrog.push_back(new CFrog);
+	m_vFrog[0]->SetStartXToEndX(66, 676);
+	m_vFrog[0]->SetPos(591, 730);
+	AddGameObject(m_vFrog[0]);
+
+	m_vFrog.push_back(new CFrog);
+	m_vFrog[1]->SetStartXToEndX(66, 676);
+	m_vFrog[1]->SetPos(494, 378);
+	AddGameObject(m_vFrog[1]);
+
+	m_vFrog.push_back(new CFrog);
+	m_vFrog[2]->SetStartXToEndX(66, 676);
+	m_vFrog[2]->SetPos(102, 393);
+	AddGameObject(m_vFrog[2]);
 
 
 }
@@ -92,6 +108,8 @@ void CSceneForest::Enter()
 	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));
 	CAMERA->ZoomInOut(2);
 	CAMERA->SetTargetObj(pPlayer);
+
+	pBox->SetPos(116, 765);
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
 	pPlayer->SetDir(GAME->GetPlayerStartDir());

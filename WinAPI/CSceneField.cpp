@@ -103,20 +103,20 @@ void CSceneField::Init()
 	pTurtle2->SetPos(600,150);
 	AddGameObject(pTurtle2);
 
-	CFrog* pFrog = new CFrog;
-	pFrog->SetStartXToEndX(85, 1027);
-	pFrog->SetPos(1017, 200);
-	AddGameObject(pFrog);
+	m_vFrog.push_back(new CFrog);
+	m_vFrog[0]->SetStartXToEndX(85, 1027);
+	m_vFrog[0]->SetPos(1017, 200);
+	AddGameObject(m_vFrog[0]);
 
-	CFrog* pFrog2 = new CFrog;
-	pFrog2->SetStartXToEndX(85, 1027);
-	pFrog2->SetPos(800, 452);
-	AddGameObject(pFrog2);
+	m_vFrog.push_back(new CFrog);
+	 m_vFrog[1]->SetStartXToEndX(85, 1027);
+	 m_vFrog[1]->SetPos(800, 452);
+	AddGameObject(m_vFrog[1]);
 
-	CFrog* pFrog3 = new CFrog;
-	pFrog3->SetStartXToEndX(85, 1027);
-	pFrog3->SetPos(630, 452);
-	AddGameObject(pFrog3);
+	m_vFrog.push_back(new CFrog);
+	m_vFrog[2]->SetStartXToEndX(85, 1027);
+	m_vFrog[2]->SetPos(630, 452);
+	AddGameObject(m_vFrog[2]);
 
 
 }

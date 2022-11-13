@@ -7,7 +7,7 @@
 
 CBox::CBox()
 {
-	m_vecScale = Vector(15, 15);
+	m_vecScale = Vector(16, 16);
 	m_strName = L"æ∆¿Ã≈€";
 }
 
