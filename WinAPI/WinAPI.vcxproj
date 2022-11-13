@@ -212,6 +212,7 @@
     <ClInclude Include="CStateDownJump.h" />
     <ClInclude Include="CStateFall.h" />
     <ClInclude Include="CStateJump.h" />
+    <ClInclude Include="CStatePush.h" />
     <ClInclude Include="CStateRun.h" />
     <ClInclude Include="CStateTalk.h" />
     <ClInclude Include="CStateWalk.h" />
@@ -311,6 +312,7 @@
     <ClCompile Include="CStateDownJump.cpp" />
     <ClCompile Include="CStateFall.cpp" />
     <ClCompile Include="CStateJump.cpp" />
+    <ClCompile Include="CStatePush.cpp" />
     <ClCompile Include="CStateRun.cpp" />
     <ClCompile Include="CStateTalk.cpp" />
     <ClCompile Include="CStateWalk.cpp" />

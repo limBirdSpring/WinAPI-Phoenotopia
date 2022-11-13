@@ -24,6 +24,7 @@ class CEventMark;
 class CCarol;
 class CLisa;
 class CBuyEvent;
+class CStatePush;
 
 			 
 class CPlayer : public CGameObject
@@ -49,6 +50,7 @@ class CPlayer : public CGameObject
 	friend CCarol;
 	friend CLisa;
 	friend CBuyEvent;
+	friend CStatePush;
 
 public:
 	CPlayer();
@@ -66,6 +68,8 @@ private:
 	CImage* m_pCriticalImage;
 	CImage* m_pAttackReadyImage;
 	CImage* m_pDamageImage;
+	CImage* m_pPushImage;
+	CImage* m_pDeadImage;
 
 
 	bool isThingCollision;

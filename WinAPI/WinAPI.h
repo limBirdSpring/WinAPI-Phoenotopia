@@ -59,8 +59,8 @@ enum class Layer
 	MiddleGround,
 	Tile,
 	Door,
-	Things,
 	NPC,
+	Things,
 	Player,
 	Missile,
 	Monster,
@@ -103,6 +103,7 @@ enum class Behavior
 	Critical,
 	Damage,
 	Talk,
+	Push,
 
 	Size
 };

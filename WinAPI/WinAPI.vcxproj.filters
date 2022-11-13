@@ -369,6 +369,9 @@
     <ClInclude Include="CBigBox.h">
       <Filter>GameObject\Things</Filter>
     </ClInclude>
+    <ClInclude Include="CStatePush.h">
+      <Filter>GameObject\Player\PlayerState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -640,6 +643,9 @@
     </ClCompile>
     <ClCompile Include="CBigBox.cpp">
       <Filter>GameObject\Things</Filter>
+    </ClCompile>
+    <ClCompile Include="CStatePush.cpp">
+      <Filter>GameObject\Player\PlayerState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

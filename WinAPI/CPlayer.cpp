@@ -31,6 +31,7 @@
 #include "CStateCriticalReady.h"
 #include "CStateFall.h"
 #include "CStateTalk.h"
+#include "CStatePush.h"
 
 CPlayer::CPlayer()
 {
@@ -50,6 +51,8 @@ CPlayer::CPlayer()
 	m_pCriticalImage = nullptr;
 	m_pAttackReadyImage = nullptr;
 	m_pDamageImage = nullptr;
+	m_pPushImage = nullptr;
+	m_pDeadImage = nullptr;
 
 	isThingCollision = false;
 
@@ -78,6 +81,7 @@ void CPlayer::Init()
 	m_pCriticalImage = RESOURCE->LoadImg(L"Gail_Critical", L"Image\\Gail_Critical.png");
 	m_pAttackReadyImage = RESOURCE->LoadImg(L"Gail_AttackReady", L"Image\\Gail_AttackReady.png");
 	m_pDamageImage = RESOURCE->LoadImg(L"Gail_Damage", L"Image\\Gail_Damage.png");
+	m_pPushImage = RESOURCE->LoadImg(L"Gail_Push", L"Image\\Gail_Push.png");
 
 	m_pAnimator = new CAnimator;
 	m_pAnimator->CreateAnimation(L"Gail_Standing_Right", m_pIdleImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 6);
@@ -92,6 +96,8 @@ void CPlayer::Init()
 	m_pAnimator->CreateAnimation(L"Gail_Fall_Left", m_pJumpImage, Vector(750, 150), Vector(100, 100), Vector(150, 0), 0.1f, 8);
 	m_pAnimator->CreateAnimation(L"Gail_Down_Right", m_pDownImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
 	m_pAnimator->CreateAnimation(L"Gail_Down_Left", m_pDownImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.15f, 4, false);
+	m_pAnimator->CreateAnimation(L"Gail_Push_Right", m_pPushImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 9);
+	m_pAnimator->CreateAnimation(L"Gail_Push_Left", m_pPushImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.1f, 9);
 
 	m_pAnimator->CreateAnimation(L"Gail_Attack2_Right", m_pAttackImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.08f, 7, false);
 	m_pAnimator->CreateAnimation(L"Gail_Attack2_Left", m_pAttackImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.08f, 7, false);
@@ -105,6 +111,7 @@ void CPlayer::Init()
 	m_pAnimator->CreateAnimation(L"Gail_CriticalReady_Left", m_pAttackReadyImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.1f, 3);
 	m_pAnimator->CreateAnimation(L"Gail_Damage_Right", m_pDamageImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.05f, 4, false);
 	m_pAnimator->CreateAnimation(L"Gail_Damage_Left", m_pDamageImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.05f, 4, false);
+
 
 #pragma endregion 이미지
 
@@ -124,6 +131,7 @@ void CPlayer::Init()
 	m_mapPlayerState.insert(make_pair(Behavior::CriticalReady, new CStateCriticalReady(this)));
 	m_mapPlayerState.insert(make_pair(Behavior::Damage, new CStateDamage(this)));
 	m_mapPlayerState.insert(make_pair(Behavior::Fall, new CStateFall(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Push, new CStatePush(this)));
 	m_mapPlayerState.insert(make_pair(Behavior::Talk, new CStateTalk(this)));
 
 
@@ -133,8 +141,10 @@ void CPlayer::Init()
 
 void CPlayer::Update()
 {
-
 	m_mapPlayerState.find(m_behavior)->second->Update();
+
+	if (this->m_fSpeed == 30)
+		m_behavior = Behavior::Push;
 
 	AnimatorUpdate();
 
@@ -185,6 +195,8 @@ void CPlayer::AnimatorUpdate()
 		break;
 	case Behavior::Damage: str += L"_Damage";
 		break;
+	case Behavior::Push: str += L"_Push";
+		break;
 	default: str += L"_Standing";
 	}
 
@@ -212,7 +224,7 @@ void CPlayer::OnCollisionEnter(CCollider* pOtherCollider)
 		m_behavior = Behavior::Damage;
 	}
 
-	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Door || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC)
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Door || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC || pOtherCollider->GetObjName() == L"박스")
 	{
 		isThingCollision = true;
 	}
@@ -225,7 +237,7 @@ void CPlayer::OnCollisionStay(CCollider* pOtherCollider)
 
 void CPlayer::OnCollisionExit(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Door || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC)
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Door || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC || pOtherCollider->GetObjName() == L"박스")
 	{
 		isThingCollision = false;
 	}

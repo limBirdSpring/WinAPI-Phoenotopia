@@ -99,23 +99,26 @@ void CBigBox::OnCollisionEnter(CCollider* pOtherCollider)
 
 void CBigBox::OnCollisionStay(CCollider* pOtherCollider)
 {
-if (this->GetReserveDelete())
-{
-	if (pOtherCollider->GetObjName() == L"플레이어" || pOtherCollider->GetObjName() == L"박스")
-	{
-		int ground = pOtherCollider->GetOwner()->GetGround();
-		pOtherCollider->GetOwner()->SetGround(--ground);
-	}
-	
-}
+	//if (!this->GetReserveDelete())
+	//{
+	//	if (pOtherCollider->GetObjName() == L"플레이어" || pOtherCollider->GetObjName() == L"박스")
+	//	{
+	//		int ground = pOtherCollider->GetOwner()->GetGround();
+	//		pOtherCollider->GetOwner()->SetGround(--ground);
+	//	}
+	//	
+	//}
 }
 
 void CBigBox::OnCollisionExit(CCollider* pOtherCollider)
 {
-	if (isGroundPlus)
+	if (pOtherCollider->GetObjName() == L"플레이어" || pOtherCollider->GetObjName() == L"박스")
 	{
-		int ground = pOtherCollider->GetOwner()->GetGround();
-		pOtherCollider->GetOwner()->SetGround(--ground);
-		isGroundPlus = false;
+		if (isGroundPlus)
+		{
+			int ground = pOtherCollider->GetOwner()->GetGround();
+			pOtherCollider->GetOwner()->SetGround(--ground);
+			isGroundPlus = false;
+		}
 	}
 }

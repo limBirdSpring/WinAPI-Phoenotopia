@@ -88,7 +88,7 @@ void CSceneStage01::Init()
 	AddGameObject(pMilestone);
 
 	//CBigBox* pBigBox = new CBigBox;
-	//pBigBox->SetPos(425, 488);
+	//pBigBox->SetPos(420, 488);
 	//AddGameObject(pBigBox);
 
 	CBigBox* pBigBox2 = new CBigBox;
