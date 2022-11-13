@@ -6,6 +6,7 @@
 #include "CEventManager.h"
 #include "CCollider.h"
 #include "CGameManager.h"
+#include "CDamageNumber.h"
 
 //공중공격
 
@@ -65,7 +66,11 @@ void  CAttack2::OnCollisionEnter(CCollider* pOtherCollider)
 	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetObjName() == L"박스")
 	{
 		pOtherCollider->GetOwner()->SetHp(-5);
-		Logger::Debug(L"미사일이 충돌체와 부딪혀 사라집니다.");
+		CDamageNumber* pNum = new CDamageNumber;
+		pNum->m_damage = 5;
+		pNum->SetPos(pOtherCollider->GetPos());
+		ADDOBJECT(pNum);
+
 		DELETEOBJECT(this);
 	}
 

@@ -6,6 +6,7 @@
 #include "CEventManager.h"
 #include "CCollider.h"
 #include "CGameManager.h"
+#include "CDamageNumber.h"
 
 CCritical::CCritical()
 {
@@ -61,6 +62,11 @@ void  CCritical::OnCollisionEnter(CCollider* pOtherCollider)
 	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetObjName() == L"¹Ú½º")
 	{
 		pOtherCollider->GetOwner()->SetHp(-7);
+
+		CDamageNumber* pNum = new CDamageNumber;
+		pNum->m_damage = 7;
+		pNum->SetPos(pOtherCollider->GetPos());
+		ADDOBJECT(pNum);
 		DELETEOBJECT(this);
 	}
 }

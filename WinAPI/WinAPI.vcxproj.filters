@@ -61,9 +61,6 @@
     <Filter Include="GameObject\Things">
       <UniqueIdentifier>{e658d30d-464a-4c54-91e4-b05463ff1430}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Iventory_UI">
-      <UniqueIdentifier>{0dc48191-2c69-4833-b3c2-b6191bca4248}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObject\NPC %28talk%29">
       <UniqueIdentifier>{bed43207-c81d-457a-a709-6f41ee536b9a}</UniqueIdentifier>
     </Filter>
@@ -75,6 +72,9 @@
     </Filter>
     <Filter Include="GameObject\Monster\Monster State">
       <UniqueIdentifier>{776bed23-05fc-4490-8029-8999befcb623}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\UI">
+      <UniqueIdentifier>{0dc48191-2c69-4833-b3c2-b6191bca4248}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -271,10 +271,10 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="CSelect.h">
-      <Filter>GameObject\Iventory_UI</Filter>
+      <Filter>GameObject\UI</Filter>
     </ClInclude>
     <ClInclude Include="CMiniWindow.h">
-      <Filter>GameObject\Iventory_UI</Filter>
+      <Filter>GameObject\UI</Filter>
     </ClInclude>
     <ClInclude Include="CBuyEvent.h">
       <Filter>GameObject\NPC %28talk%29</Filter>
@@ -371,6 +371,9 @@
     </ClInclude>
     <ClInclude Include="CStatePush.h">
       <Filter>GameObject\Player\PlayerState</Filter>
+    </ClInclude>
+    <ClInclude Include="CDamageNumber.h">
+      <Filter>GameObject\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -546,10 +549,10 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="CSelect.cpp">
-      <Filter>GameObject\Iventory_UI</Filter>
+      <Filter>GameObject\UI</Filter>
     </ClCompile>
     <ClCompile Include="CMiniWindow.cpp">
-      <Filter>GameObject\Iventory_UI</Filter>
+      <Filter>GameObject\UI</Filter>
     </ClCompile>
     <ClCompile Include="CBuyEvent.cpp">
       <Filter>GameObject\NPC %28talk%29</Filter>
@@ -646,6 +649,9 @@
     </ClCompile>
     <ClCompile Include="CStatePush.cpp">
       <Filter>GameObject\Player\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="CDamageNumber.cpp">
+      <Filter>GameObject\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
