@@ -57,6 +57,7 @@ enum class Layer
 	Default,
 	BackGround,
 	MiddleGround,
+	Cloud,
 	Tile,
 	Door,
 	NPC,

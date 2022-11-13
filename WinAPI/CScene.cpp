@@ -26,6 +26,8 @@ CScene::CScene()
 	pBImagePrev = nullptr;
 	pBImageNext = nullptr;
 	pBImageMiddle = nullptr;
+
+	pCloudImage = nullptr;
 }
 
 
@@ -116,6 +118,11 @@ void CScene::SceneRender()
 		else if ((int)Layer::BackGround == layer)
 		{
 			BackGroundRender();
+			continue;
+		}
+		else if ((int)Layer::Cloud == layer)
+		{
+			CloudRender();
 			continue;
 		}
 		else if ((int)Layer::Tile == layer)
@@ -282,6 +289,29 @@ void CScene::LoadBackground(CImage* img)
 	AddGameObject(pBImageNext);
 }
 
+void CScene::LoadCloud(CImage* img)
+{
+	pCloudImage = img;
+
+	pCloud.push_back(new CImageObject);
+	pCloud.push_back(new CImageObject);
+	pCloud.push_back(new CImageObject);
+
+	pCloud[1]->SetImage(img);
+	pCloud[1]->SetPos(pCloud[1]->GetPos().x - pCloudImage->GetWidth(), 0);
+
+	pCloud[0]->SetImage(img);
+	pCloud[0]->SetPos(pCloud[0]->GetPos().x - pCloudImage->GetWidth() + 2, 0);
+
+	pCloud[2]->SetImage(img);
+	pCloud[2]->SetPos(pCloud[2]->GetPos().x + pCloudImage->GetWidth() - 2, 0);
+
+	AddGameObject(pCloud[0]);
+	AddGameObject(pCloud[1]);
+	AddGameObject(pCloud[2]);
+
+}
+
 void CScene::MiddleGroundRender()
 {
 
@@ -355,6 +385,47 @@ void CScene::BackGroundRender()
 
 
 		}
+	}
+}
+
+void CScene::CloudRender()
+{
+	if (pCloudImage != nullptr)
+	{
+		pCloud[0]->SetPos(pCloud[0]->GetPos().x + DT * 10, pCloud[0]->GetPos().y);
+		pCloud[1]->SetPos(pCloud[1]->GetPos().x + DT * 10, pCloud[1]->GetPos().y);
+		pCloud[2]->SetPos(pCloud[2]->GetPos().x + DT * 10, pCloud[2]->GetPos().y);
+
+
+		Vector startCameraPos = Vector(CAMERA->GetLookAt().x - (WINSIZEX * 0.5), CAMERA->GetLookAt().y - (WINSIZEY * 0.5));
+		Vector endCameraPos = Vector(CAMERA->GetLookAt().x + (WINSIZEX * 0.5), CAMERA->GetLookAt().y + (WINSIZEY * 0.5));
+
+		
+			if (pCloud[0]->GetPos().x + pCloudImage->GetWidth() < startCameraPos.x)
+			{
+				pCloud[0]->SetPos(pCloud[2]->GetPos().x + pCloudImage->GetWidth(), 0);
+
+				CImageObject* temp;
+				temp = pCloud[2];
+				pCloud[2] = pCloud[0];
+				pCloud[0] = pCloud[1];
+				pCloud[1] = temp;
+
+
+			}
+			else if (pCloud[2]->GetPos().x > endCameraPos.x)
+			{
+				pCloud[2]->SetPos(pCloud[0]->GetPos().x - pCloudImage->GetWidth(), 0);
+
+				CImageObject* temp;
+				temp = pCloud[0];
+				pCloud[0] = pCloud[2];
+				pCloud[2] = pCloud[1];
+				pCloud[1] = temp;
+
+
+			}
+		
 	}
 }
 

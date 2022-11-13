@@ -47,6 +47,9 @@ void CSceneForest::Init()
 	m_pImage = RESOURCE->LoadImg(L"Forest_Middle", L"Image\\Forest_Middle.png");
 	LoadMiddleground(m_pImage);
 
+	m_pImage = RESOURCE->LoadImg(L"Cloud", L"Image\\Cloud.png");
+	LoadCloud(m_pImage);
+
 	m_pImage = RESOURCE->LoadImg(L"Forest", L"Image\\Forest.png");
 	CImageObject* pForest = new CImageObject;
 	pForest->SetImage(m_pImage);

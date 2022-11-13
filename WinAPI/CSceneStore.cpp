@@ -48,6 +48,9 @@ void CSceneStore::Init()
 	m_pImage = RESOURCE->LoadImg(L"Panselo_Middle", L"Image\\Panselo_Middle.png");
 	LoadMiddleground(m_pImage);
 
+	m_pImage = RESOURCE->LoadImg(L"Cloud", L"Image\\Cloud.png");
+	LoadCloud(m_pImage);
+
 	m_pImage = RESOURCE->LoadImg(L"Store", L"Image\\Store.png");
 	CImageObject* pForest = new CImageObject;
 	pForest->SetImage(m_pImage);

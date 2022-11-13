@@ -67,12 +67,17 @@ protected :
 	CImageObject* pBImageNext;
 	CImageObject* pBImageMiddle;
 
+	CImage* pCloudImage;
+	vector<CImageObject*> pCloud;
+
 public :
 	void LoadMiddleground(CImage* img); //중간 배경 업로드
 	void LoadBackground(CImage* img); //뒤 배경 업로드
+	void LoadCloud(CImage* img);
 
 	void MiddleGroundRender();
 	void BackGroundRender();
+	void CloudRender();
 
 protected:
 	list<CGameObject*>& GetLayerObject(Layer layer);
