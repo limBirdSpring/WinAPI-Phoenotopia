@@ -6,7 +6,7 @@ CCoin::CCoin()
 {
 	m_vecScale = Vector(10, 10);
 	m_strName = L"ÄÚÀÎ";
-	m_fSpeed = 100;
+	m_fSpeed = 70;
 }
 
 CCoin::~CCoin()

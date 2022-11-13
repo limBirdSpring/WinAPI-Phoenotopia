@@ -14,6 +14,7 @@
 #include "CMonsterJump.h"
 #include "CMonsterDamage.h"
 #include "CItem.h"
+#include "CCoin.h"
 
 CFrog::CFrog()
 {
@@ -76,6 +77,14 @@ void CFrog::Update()
 				item->SetPos(this->GetPos());
 				item->SetItem(L"개구리 뒷다리");
 				ADDOBJECT(item);
+			}
+			else if (rand() % 2 == 0)
+			{
+				CCoin* coin = new CCoin;
+				coin->SetPos(this->GetPos());
+				coin->SetDir(Vector(rand() % 3 - 1, 0));
+				coin->SetPrice(rand() % 50 + 50);
+				ADDOBJECT(coin);
 			}
 			DELETEOBJECT(this);
 		}
