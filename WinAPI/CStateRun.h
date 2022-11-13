@@ -10,7 +10,7 @@ public:
     CStateRun(CPlayer* player) { pPlayer = player; }
     virtual ~CStateRun();
 private:
-
+    float dir = 0;
 
 private:
     void Init() override;

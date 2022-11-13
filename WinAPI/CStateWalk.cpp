@@ -19,6 +19,8 @@ void CStateWalk::Update()
 {
 	if (pPlayer->m_fSpeed > 100)
 		pPlayer->m_fSpeed -= 0.1;
+	else if (pPlayer->m_fSpeed < 100)
+		pPlayer->m_fSpeed += 0.1;
 
 
 	if (pPlayer->GetGround() == 0)
