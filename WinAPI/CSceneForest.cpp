@@ -109,7 +109,12 @@ void CSceneForest::Enter()
 	CAMERA->ZoomInOut(2);
 	CAMERA->SetTargetObj(pPlayer);
 
-	pBox->SetPos(116, 765);
+	if (pBox->GetPos().x < 60 || pBox->GetPos().x > 670)
+	{
+		pBox->SetPos(116, 765);
+		pBox->SetGround(0);
+		pBox->SetPlatform(0);
+	}
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
 	pPlayer->SetDir(GAME->GetPlayerStartDir());

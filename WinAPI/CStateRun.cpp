@@ -38,11 +38,19 @@ void CStateRun::Update()
 	{
 		if (BUTTONSTAY(VK_RIGHT))
 		{
-			if (pPlayer->m_fSpeed < 200)
-				pPlayer->m_fSpeed += 0.2;
+			if (pPlayer->m_vecMoveDir.x == -1)
+			{
+				coolTime = 0;
+				pPlayer->m_behavior = Behavior::Idle;
+			}
+			else
+			{
+				if (pPlayer->m_fSpeed < 200)
+					pPlayer->m_fSpeed += 0.2;
 
-	
-			pPlayer->m_vecPos.x += (pPlayer->m_fSpeed * DT) * pPlayer->m_vecMoveDir.x;
+
+				pPlayer->m_vecPos.x += (pPlayer->m_fSpeed * DT) * pPlayer->m_vecMoveDir.x;
+			}
 		}
 		else if (BUTTONSTAY(VK_LEFT))
 		{
@@ -55,11 +63,19 @@ void CStateRun::Update()
 	{
 		if (BUTTONSTAY(VK_LEFT))
 		{
-			if (pPlayer->m_fSpeed < 200)
-				pPlayer->m_fSpeed += 0.2;
+			if (pPlayer->m_vecMoveDir.x == 1)
+			{
+				coolTime = 0;
+				pPlayer->m_behavior = Behavior::Idle;
+			}
+			else
+			{
+				if (pPlayer->m_fSpeed < 200)
+					pPlayer->m_fSpeed += 0.2;
 
 
-			pPlayer->m_vecPos.x += (pPlayer->m_fSpeed * DT) * pPlayer->m_vecMoveDir.x;
+				pPlayer->m_vecPos.x += (pPlayer->m_fSpeed * DT) * pPlayer->m_vecMoveDir.x;
+			}
 		}
 		else if (BUTTONSTAY(VK_RIGHT))
 		{
