@@ -55,7 +55,7 @@ void CTurtle::Update()
 {
 	if (m_hp <= 0)
 	{
-		if (m_behavior == MonsterBehavior::Idle)
+		if (m_behavior == MonsterBehavior::Idle || m_behavior == MonsterBehavior::Follow )
 		{
 			DELETEOBJECT(this);
 		}
