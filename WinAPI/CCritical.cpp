@@ -61,10 +61,13 @@ void  CCritical::OnCollisionEnter(CCollider* pOtherCollider)
 {
 	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetObjName() == L"¹Ú½º")
 	{
-		pOtherCollider->GetOwner()->SetHp(-7);
+		pOtherCollider->GetOwner()->SetHp(-9);
 
 		CDamageNumber* pNum = new CDamageNumber;
-		pNum->m_damage = 7;
+		if (pOtherCollider->GetObjName() == L"Slug")
+			pNum->m_damage = 0;
+		else
+			pNum->m_damage = 9;
 		pNum->SetPos(pOtherCollider->GetPos());
 		ADDOBJECT(pNum);
 		DELETEOBJECT(this);

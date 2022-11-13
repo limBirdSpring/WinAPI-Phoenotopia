@@ -63,7 +63,10 @@ void  CAttack::OnCollisionEnter(CCollider* pOtherCollider)
 	{
 		pOtherCollider->GetOwner()->SetHp(-3);
 		CDamageNumber* pNum = new CDamageNumber;
-		pNum->m_damage = 3;
+		if (pOtherCollider->GetObjName() == L"Slug")
+			pNum->m_damage = 0;
+		else
+			pNum->m_damage = 3;
 		pNum->SetPos(pOtherCollider->GetPos());
 		ADDOBJECT(pNum);
 
