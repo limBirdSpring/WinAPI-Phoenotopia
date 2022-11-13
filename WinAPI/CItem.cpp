@@ -36,10 +36,6 @@ void CItem::OnCollisionEnter(CCollider* pOtherCollider)
 {
 	if (pOtherCollider->GetObjName() == L"플레이어")
 	{
-		//if (GAME->GetPlayerDir().x==-1) 
-		//	m_vecPos.x--;
-		//else
-		//	m_vecPos.x++;
 		GAME->PushBackInvenItem(item);
 		DELETEOBJECT(this);
 	}

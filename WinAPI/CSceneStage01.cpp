@@ -28,6 +28,7 @@
 #include "CWarp.h"
 #include "CBigBox.h"
 #include "CBox.h"
+#include "CCoin.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -106,6 +107,10 @@ void CSceneStage01::Init()
 	CBox* pBox = new CBox;
 	pBox->SetPos(811, 363);
 	AddGameObject(pBox);
+
+	CCoin* pCoin = new CCoin;
+	pCoin->SetPos(1165, 434);
+	AddGameObject(pCoin);
 
 }
 
