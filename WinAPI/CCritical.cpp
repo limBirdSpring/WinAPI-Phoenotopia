@@ -70,7 +70,8 @@ void  CCritical::OnCollisionEnter(CCollider* pOtherCollider)
 			pNum->m_damage = 9;
 		pNum->SetPos(pOtherCollider->GetPos());
 		ADDOBJECT(pNum);
-		DELETEOBJECT(this);
+		
 	}
+	DELETEOBJECT(this);
 }
 

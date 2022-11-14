@@ -74,8 +74,8 @@ void  CAttack2::OnCollisionEnter(CCollider* pOtherCollider)
 		pNum->SetPos(pOtherCollider->GetPos());
 		ADDOBJECT(pNum);
 
-		DELETEOBJECT(this);
+		
 	}
-
+	DELETEOBJECT(this);
 }
 

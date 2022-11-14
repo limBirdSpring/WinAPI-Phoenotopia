@@ -393,6 +393,12 @@
     <ClInclude Include="CSetUp.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="CMarble.h">
+      <Filter>GameObject\Things</Filter>
+    </ClInclude>
+    <ClInclude Include="CPillarDoor.h">
+      <Filter>GameObject\Things</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -688,6 +694,12 @@
     </ClCompile>
     <ClCompile Include="CSetUp.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CMarble.cpp">
+      <Filter>GameObject\Things</Filter>
+    </ClCompile>
+    <ClCompile Include="CPillarDoor.cpp">
+      <Filter>GameObject\Things</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

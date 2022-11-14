@@ -30,6 +30,7 @@
 #include "CBox.h"
 #include "CCoin.h"
 #include "CNana.h"
+#include "CMarble.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -120,6 +121,11 @@ void CSceneStage01::Init()
 	pCoin->SetDir(Vector(1, 0));
 	pCoin->SetPrice(10);
 	AddGameObject(pCoin);
+
+	CMarble* pMarble = new CMarble;
+	pMarble->dir = L"Left";
+	pMarble->SetPos(1665, 421);
+	AddGameObject(pMarble);
 
 
 }

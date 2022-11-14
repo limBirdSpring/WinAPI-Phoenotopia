@@ -172,6 +172,7 @@
     <ClInclude Include="CItem.h" />
     <ClInclude Include="CLineMove.h" />
     <ClInclude Include="CLisa.h" />
+    <ClInclude Include="CMarble.h" />
     <ClInclude Include="CMiniWindow.h" />
     <ClInclude Include="CMissile.h" />
     <ClInclude Include="CMonster.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="CMonsterState.h" />
     <ClInclude Include="CNana.h" />
     <ClInclude Include="CNPC.h" />
+    <ClInclude Include="CPillarDoor.h" />
     <ClInclude Include="CPlayerState.h" />
     <ClInclude Include="CSceneBossMap.h" />
     <ClInclude Include="CSceneField.h" />
@@ -279,6 +281,7 @@
     <ClCompile Include="CItem.cpp" />
     <ClCompile Include="CLineMove.cpp" />
     <ClCompile Include="CLisa.cpp" />
+    <ClCompile Include="CMarble.cpp" />
     <ClCompile Include="CMiniWindow.cpp" />
     <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CMonster.cpp" />
@@ -290,6 +293,7 @@
     <ClCompile Include="CMonsterState.cpp" />
     <ClCompile Include="CNana.cpp" />
     <ClCompile Include="CNPC.cpp" />
+    <ClCompile Include="CPillarDoor.cpp" />
     <ClCompile Include="CPlayerState.cpp" />
     <ClCompile Include="CSceneBossMap.cpp" />
     <ClCompile Include="CSceneField.cpp" />
