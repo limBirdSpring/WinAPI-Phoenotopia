@@ -58,6 +58,11 @@ void CStateRun::Update()
 			pPlayer->m_fSpeed -= pPlayer->m_fSpeed *3*DT;
 			pPlayer->m_vecPos.x += (pPlayer->m_fSpeed * DT) * -1;
 		}
+		else
+		{
+			coolTime = 0;
+			pPlayer->m_behavior = Behavior::Idle;
+		}
 	}
 	else if (dir == -1)
 	{
@@ -82,6 +87,11 @@ void CStateRun::Update()
 			pPlayer->m_vecMoveDir.x = 1;
 			pPlayer->m_fSpeed -= pPlayer->m_fSpeed *3 * DT;
 			pPlayer->m_vecPos.x += (pPlayer->m_fSpeed * DT) * 1;
+		}
+		else
+		{
+			coolTime = 0;
+			pPlayer->m_behavior = Behavior::Idle;
 		}
 
 	}

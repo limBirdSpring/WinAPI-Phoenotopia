@@ -65,6 +65,7 @@ enum class Layer
 	Player,
 	Missile,
 	Monster,
+	FlyingMonster,
 
 	Ui,
 	Size,
@@ -118,6 +119,7 @@ enum class MonsterBehavior
 	Jump,
 	Damage,
 	Attack,
+	Fly,
 
 	Size
 };

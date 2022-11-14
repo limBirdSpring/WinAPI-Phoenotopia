@@ -27,6 +27,7 @@
 #include "CBox.h"
 #include "CTurtle.h"
 #include "CFrog.h"
+#include "CBee.h"
 
 CSceneField::CSceneField()
 {
@@ -117,6 +118,11 @@ void CSceneField::Init()
 	m_vFrog[2]->SetStartXToEndX(85, 1027);
 	m_vFrog[2]->SetPos(630, 452);
 	AddGameObject(m_vFrog[2]);
+
+	CBee* pBee = new CBee;
+	pBee->SetStartXToEndX(85, 1027);
+	pBee->SetPos(600, 150);
+	AddGameObject(pBee);
 
 
 }

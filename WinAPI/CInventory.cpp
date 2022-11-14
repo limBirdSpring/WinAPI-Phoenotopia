@@ -66,7 +66,10 @@ void CInventory::Update()
 			GAME->EraseInvenItem(GAME->m_vInventoryItem[selectItem]);
 
 			m_pMiniWindow = nullptr;
-		}	
+		}
+		else if (m_pMiniWindow->GetReserveDelete() && m_pMiniWindow->select == 1)
+			m_pMiniWindow = nullptr;
+		
 		return;
 	}
 

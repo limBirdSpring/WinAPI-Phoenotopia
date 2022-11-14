@@ -378,6 +378,12 @@
     <ClInclude Include="CCoin.h">
       <Filter>GameObject\Things</Filter>
     </ClInclude>
+    <ClInclude Include="CBee.h">
+      <Filter>GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonsterFly.h">
+      <Filter>GameObject\Monster\Monster State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -658,6 +664,12 @@
     </ClCompile>
     <ClCompile Include="CCoin.cpp">
       <Filter>GameObject\Things</Filter>
+    </ClCompile>
+    <ClCompile Include="CBee.cpp">
+      <Filter>GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonsterFly.cpp">
+      <Filter>GameObject\Monster\Monster State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

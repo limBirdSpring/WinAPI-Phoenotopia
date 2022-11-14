@@ -219,7 +219,7 @@ void CPlayer::CreateMissile()
 
 void CPlayer::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster && m_behavior != Behavior::Damage)
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster && pOtherCollider->GetOwner()->GetLayer() == Layer::FlyingMonster && m_behavior != Behavior::Damage)
 	{
 		m_behavior = Behavior::Damage;
 	}
