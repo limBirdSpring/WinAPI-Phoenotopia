@@ -390,6 +390,9 @@
     <ClInclude Include="CSceneBossMap.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="CSetUp.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -681,6 +684,9 @@
       <Filter>GameObject\NPC %28talk%29</Filter>
     </ClCompile>
     <ClCompile Include="CSceneBossMap.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CSetUp.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>

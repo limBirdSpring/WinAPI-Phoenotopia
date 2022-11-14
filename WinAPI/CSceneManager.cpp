@@ -12,6 +12,7 @@
 #include "CSceneGym.h"
 #include "CSceneField.h"
 #include "CSceneBossMap.h"
+#include "CSetUp.h"
 
 CSceneManager::CSceneManager()
 {
@@ -46,6 +47,8 @@ void CSceneManager::Init()
 	m_mapScene.insert(make_pair(GroupScene::BossMap, pBossMap));
 	CScene* pInventory = new CInventory();
 	m_mapScene.insert(make_pair(GroupScene::Inventory, pInventory));
+	CScene* pCSetUp = new CSetUp();
+	m_mapScene.insert(make_pair(GroupScene::SetUp, pCSetUp));
 
 	// 게임씬 자료구조를 순회하며 씬을 초기화
 	for (pair<GroupScene, CScene*> scene : m_mapScene)

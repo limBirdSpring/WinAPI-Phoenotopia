@@ -57,8 +57,7 @@ void CBee::Update()
 {
 	if (m_hp <= 0)
 	{
-		if (m_behavior == MonsterBehavior::Idle)
-		{
+
 			if (rand() % 3 == 0)
 			{
 				CItem* item = new CItem;
@@ -75,7 +74,7 @@ void CBee::Update()
 				ADDOBJECT(coin);
 			}
 			DELETEOBJECT(this);
-		}
+		
 	}
 
 	if (m_vecPos.x > m_endX)

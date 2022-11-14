@@ -136,6 +136,16 @@ void CSceneField::Enter()
 	CAMERA->ZoomInOut(2);
 	CAMERA->SetTargetObj(pPlayer);
 
+	m_vFrog[0]->SetPos(1017, 200);
+	m_vFrog[1]->SetPos(800, 452);
+	m_vFrog[2]->SetPos(630, 452);
+	m_vFrog[0]->SetGround(0);
+	m_vFrog[1]->SetGround(0);
+	m_vFrog[2]->SetGround(0);
+	m_vFrog[0]->SetPlatform(0);
+	m_vFrog[1]->SetPlatform(0);
+	m_vFrog[2]->SetPlatform(0);
+
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
 	pPlayer->SetDir(GAME->GetPlayerStartDir());
 	pPlayer->SetGravity(1);
@@ -150,8 +160,9 @@ void CSceneField::Update()
 {
 	if (BUTTONDOWN(VK_ESCAPE))
 	{
-		CAMERA->FadeOut(0.25f);
-		DELAYCHANGESCENE(GroupScene::Title, 0.25f);
+		GAME->SetCurScene(GroupScene::Field);
+		GAME->SetPlayerStartPos(pPlayer->GetPos());
+		CHANGESCENE(GroupScene::SetUp);
 	}
 
 	if (BUTTONDOWN('I'))

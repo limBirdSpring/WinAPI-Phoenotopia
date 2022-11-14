@@ -191,6 +191,7 @@
     <ClInclude Include="CSceneGym.h" />
     <ClInclude Include="CSceneStore.h" />
     <ClInclude Include="CSelect.h" />
+    <ClInclude Include="CSetUp.h" />
     <ClInclude Include="CSlug.h" />
     <ClInclude Include="CPanel.h" />
     <ClInclude Include="CPathManager.h" />
@@ -297,6 +298,7 @@
     <ClCompile Include="CSceneGym.cpp" />
     <ClCompile Include="CSceneStore.cpp" />
     <ClCompile Include="CSelect.cpp" />
+    <ClCompile Include="CSetUp.cpp" />
     <ClCompile Include="CSlug.cpp" />
     <ClCompile Include="CPanel.cpp" />
     <ClCompile Include="CPathManager.cpp" />

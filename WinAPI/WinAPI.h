@@ -45,6 +45,8 @@ enum class GroupScene
 
 	Inventory,
 
+	SetUp,
+
 	Size,
 };
 

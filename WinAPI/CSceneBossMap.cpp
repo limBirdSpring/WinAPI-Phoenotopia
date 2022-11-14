@@ -109,8 +109,9 @@ void CSceneBossMap::Update()
 {
 	if (BUTTONDOWN(VK_ESCAPE))
 	{
-		CAMERA->FadeOut(0.25f);
-		DELAYCHANGESCENE(GroupScene::Title, 0.25f);
+		GAME->SetCurScene(GroupScene::BossMap);
+		GAME->SetPlayerStartPos(pPlayer->GetPos());
+		CHANGESCENE(GroupScene::SetUp);
 	}
 
 	if (BUTTONDOWN('I'))
