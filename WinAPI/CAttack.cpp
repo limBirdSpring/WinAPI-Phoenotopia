@@ -28,7 +28,7 @@ void  CAttack::Update()
 {
 	if (m_fTime > 0.2)
 	{
-		m_vecScale.x = 30;
+		m_vecScale.x = 40;
 		RemoveCollider();
 		AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
 	}
@@ -59,7 +59,7 @@ void  CAttack::Release()
 
 void  CAttack::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetObjName() == L"박스")
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetOwner()->GetLayer() == Layer::FlyingMonster || pOtherCollider->GetObjName() == L"박스")
 	{
 		pOtherCollider->GetOwner()->SetHp(-3);
 		CDamageNumber* pNum = new CDamageNumber;

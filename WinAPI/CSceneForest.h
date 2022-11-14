@@ -1,10 +1,12 @@
 #pragma once
 #include "CScene.h"
 #include "CFrog.h"
+#include "CBee.h"
 
 class CPlayer;
 class CImage;
 class CBox;
+
 
 class CSceneForest :
 	public CScene
@@ -18,6 +20,7 @@ private:
 	CImage* m_pImage;
 	CBox* pBox;
 	vector<CFrog*> m_vFrog;
+	vector<CBee*> m_vBee;
 
 private:
 	void Init()		override;

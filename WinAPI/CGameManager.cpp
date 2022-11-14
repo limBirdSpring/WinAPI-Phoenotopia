@@ -170,8 +170,8 @@ void CGameManager::Init()
 	frog.img = RESOURCE->LoadImg(L"Item_Frog", L"Image\\Item_Frog.png");
 	frog.price = 0;
 	frog.type = ItemType::Food;
-	frog.text = L"개구리를 잡아서 얻은 개구리 뒷다리. Hp를 4 회복시켜준다.";
-	frog.hp = 4;
+	frog.text = L"개구리를 잡아서 얻은 개구리 뒷다리. Hp를 6 회복시켜준다.";
+	frog.hp = 6;
 	m_vItem.push_back(frog);
 
 	//아이템
@@ -193,6 +193,16 @@ void CGameManager::Init()
 	mill.text = L"고기반찬이 들어있는 맛있는 특제 도시락. Hp를 20 회복시켜준다.";
 	mill.hp = 20;
 	m_vItem.push_back(mill);
+
+	//아이템
+	Item honey;
+	honey.name = L"벌꿀";
+	honey.img = RESOURCE->LoadImg(L"Item_Honey", L"Image\\Item_Honey.png");
+	honey.price = 80;
+	honey.type = ItemType::Food;
+	honey.text = L"꿀벌이 나르고 다녔던 자연산 꿀이다. Hp를 10 회복시켜준다.";
+	honey.hp = 10;
+	m_vItem.push_back(honey);
 
 	//퀘스트
 	Item zem;

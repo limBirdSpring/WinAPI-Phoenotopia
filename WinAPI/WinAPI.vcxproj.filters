@@ -384,6 +384,9 @@
     <ClInclude Include="CMonsterFly.h">
       <Filter>GameObject\Monster\Monster State</Filter>
     </ClInclude>
+    <ClInclude Include="CNana.h">
+      <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -670,6 +673,9 @@
     </ClCompile>
     <ClCompile Include="CMonsterFly.cpp">
       <Filter>GameObject\Monster\Monster State</Filter>
+    </ClCompile>
+    <ClCompile Include="CNana.cpp">
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

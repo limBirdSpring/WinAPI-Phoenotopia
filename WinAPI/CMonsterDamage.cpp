@@ -16,7 +16,8 @@ void CMonsterDamage::Update()
 	if (coolTime ==0)
 	{
 		pMonster->SetPos(monPos.x, --monPos.y);
-		pMonster->SetGravity(-100);
+		if (pMonster->GetLayer() != Layer::FlyingMonster)
+			pMonster->SetGravity(-100);
 	}
 	else if (coolTime > 0.5)
 	{

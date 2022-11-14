@@ -75,12 +75,12 @@ void CSceneField::Init()
 	AddGameObject(pForestDoor);
 
 	CItem* pMill = new CItem;
-	pMill->SetPos(334, 70);
+	pMill->SetPos(598, 420);
 	pMill->SetItem(L"µµ½Ã¶ô");
 	AddGameObject(pMill);
 
 	CItem* pZem = new CItem;
-	pZem->SetPos(598, 420);
+	pZem->SetPos(334, 70);
 	pZem->SetItem(L"Áª");
 	AddGameObject(pZem);
 
@@ -119,10 +119,7 @@ void CSceneField::Init()
 	m_vFrog[2]->SetPos(630, 452);
 	AddGameObject(m_vFrog[2]);
 
-	CBee* pBee = new CBee;
-	pBee->SetStartXToEndX(85, 1027);
-	pBee->SetPos(600, 150);
-	AddGameObject(pBee);
+
 
 
 }

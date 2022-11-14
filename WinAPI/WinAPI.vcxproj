@@ -181,6 +181,7 @@
     <ClInclude Include="CMonsterJump.h" />
     <ClInclude Include="CMonsterMove.h" />
     <ClInclude Include="CMonsterState.h" />
+    <ClInclude Include="CNana.h" />
     <ClInclude Include="CNPC.h" />
     <ClInclude Include="CPlayerState.h" />
     <ClInclude Include="CSceneField.h" />
@@ -285,6 +286,7 @@
     <ClCompile Include="CMonsterJump.cpp" />
     <ClCompile Include="CMonsterMove.cpp" />
     <ClCompile Include="CMonsterState.cpp" />
+    <ClCompile Include="CNana.cpp" />
     <ClCompile Include="CNPC.cpp" />
     <ClCompile Include="CPlayerState.cpp" />
     <ClCompile Include="CSceneField.cpp" />

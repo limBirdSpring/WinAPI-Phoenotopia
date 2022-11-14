@@ -121,6 +121,7 @@ void CSceneGailRoom::Update()
 void CSceneGailRoom::Render()
 {
 	RENDER->Image(m_pDoor, 289, 380, 289 + m_pDoor->GetWidth(), 380 + m_pDoor->GetHeight());
+	RENDER->Text(L"기본조작 : 방향키  / 물체 상호작용 : X", 280, 217, 500, 244);
 }
 
 void CSceneGailRoom::Exit()

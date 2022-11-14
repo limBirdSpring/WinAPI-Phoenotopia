@@ -25,6 +25,7 @@
 #include "CTeacher.h"
 #include "CItem.h"
 #include "CBox.h"
+#include "CBee.h"
 
 CSceneForest::CSceneForest()
 {
@@ -94,7 +95,20 @@ void CSceneForest::Init()
 	m_vFrog[2]->SetPos(102, 393);
 	AddGameObject(m_vFrog[2]);
 
+	m_vBee.push_back(new CBee);
+	m_vBee[0]->SetStartXToEndX(66, 676);
+	m_vBee[0]->SetPos(151, 304);
+	AddGameObject(m_vBee[0]);
 
+	m_vBee.push_back(new CBee);
+	m_vBee[1]->SetStartXToEndX(66, 676);
+	m_vBee[1]->SetPos(335, 344);
+	AddGameObject(m_vBee[1]);
+
+	m_vBee.push_back(new CBee);
+	m_vBee[2]->SetStartXToEndX(66, 676);
+	m_vBee[2]->SetPos(626, 617);
+	AddGameObject(m_vBee[2]);
 }
 
 void CSceneForest::Enter()
@@ -136,7 +150,7 @@ void CSceneForest::Update()
 
 	if (BUTTONDOWN('I'))
 	{
-		GAME->SetCurScene(GroupScene::Field);
+		GAME->SetCurScene(GroupScene::Forest);
 		GAME->SetPlayerStartPos(pPlayer->GetPos());
 		CHANGESCENE(GroupScene::Inventory);
 	}

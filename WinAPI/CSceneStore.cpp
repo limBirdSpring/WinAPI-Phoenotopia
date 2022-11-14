@@ -64,6 +64,13 @@ void CSceneStore::Init()
 	pDoor->SetPlayerStartDir(pPlayer->GetDir());
 	AddGameObject(pDoor);
 
+
+	CBigBox* pBigBox = new CBigBox;
+	pBigBox->SetPos(261, 310);
+	AddGameObject(pBigBox);
+
+
+
 	CLisa* pLisa = new CLisa(pPlayer);
 	pLisa->SetPos(385, 400);
 	AddGameObject(pLisa);
@@ -82,10 +89,6 @@ void CSceneStore::Init()
 	pCake->SetPos(243, 390);
 	pCake->m_strSetDialogue = L"딸기케이크는 다 팔리고 없다.";
 	AddGameObject(pCake);
-
-	CBigBox* pBigBox = new CBigBox;
-	pBigBox->SetPos(261, 310);
-	AddGameObject(pBigBox);
 
 }
 

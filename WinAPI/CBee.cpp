@@ -22,7 +22,7 @@ CBee::CBee()
 	m_vecScale = Vector(20, 15);
 	m_layer = Layer::FlyingMonster;
 	m_fSpeed = 80;
-	m_damageHp = 4;
+	m_damageHp = 3;
 	m_hp = 15;
 }
 

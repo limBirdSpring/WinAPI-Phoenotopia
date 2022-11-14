@@ -29,6 +29,7 @@
 #include "CBigBox.h"
 #include "CBox.h"
 #include "CCoin.h"
+#include "CNana.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -75,22 +76,6 @@ void CSceneStage01::Init()
 	pGailRoomDoor->SetPlayerStartDir(pPlayer->GetDir());
 	AddGameObject(pGailRoomDoor);
 
-	CCarol* pCarol = new CCarol(pPlayer);
-	pCarol->SetPos(625, 489);
-	AddGameObject(pCarol);
-
-	CSoldier* pSoldier = new CSoldier(pPlayer);
-	pSoldier->SetPos(1632, 489);
-	AddGameObject(pSoldier);
-
-	CEventMark* pMilestone = new CEventMark(pPlayer);
-	pMilestone->SetPos(1457, 489);
-	pMilestone->m_strSetDialogue = L"평범한 표지판이다.";
-	AddGameObject(pMilestone);
-
-	//CBigBox* pBigBox = new CBigBox;
-	//pBigBox->SetPos(420, 488);
-	//AddGameObject(pBigBox);
 
 	CBigBox* pBigBox2 = new CBigBox;
 	pBigBox2->SetPos(425, 410);
@@ -107,6 +92,28 @@ void CSceneStage01::Init()
 	CBox* pBox = new CBox;
 	pBox->SetPos(811, 363);
 	AddGameObject(pBox);
+
+	CCarol* pCarol = new CCarol(pPlayer);
+	pCarol->SetPos(625, 489);
+	AddGameObject(pCarol);
+
+	CNana* pNana = new CNana(pPlayer);
+	pNana->SetPos(842, 382);
+	AddGameObject(pNana);
+
+	CSoldier* pSoldier = new CSoldier(pPlayer);
+	pSoldier->SetPos(1632, 489);
+	AddGameObject(pSoldier);
+
+	CEventMark* pMilestone = new CEventMark(pPlayer);
+	pMilestone->SetPos(1457, 489);
+	pMilestone->m_strSetDialogue = L"평범한 표지판이다.";
+	AddGameObject(pMilestone);
+
+	//CBigBox* pBigBox = new CBigBox;
+	//pBigBox->SetPos(420, 488);
+	//AddGameObject(pBigBox);
+
 
 	CCoin* pCoin = new CCoin;
 	pCoin->SetPos(1165, 434);
