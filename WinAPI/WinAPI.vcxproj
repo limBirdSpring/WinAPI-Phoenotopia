@@ -227,6 +227,7 @@
     <ClInclude Include="CStateWalk.h" />
     <ClInclude Include="CMonsterFollow.h" />
     <ClInclude Include="CStateIdle.h" />
+    <ClInclude Include="CStatue.h" />
     <ClInclude Include="CTeacher.h" />
     <ClInclude Include="CThings.h" />
     <ClInclude Include="CTile.h" />
@@ -336,6 +337,7 @@
     <ClCompile Include="CStateWalk.cpp" />
     <ClCompile Include="CMonsterFollow.cpp" />
     <ClCompile Include="CStateIdle.cpp" />
+    <ClCompile Include="CStatue.cpp" />
     <ClCompile Include="CTeacher.cpp" />
     <ClCompile Include="CThings.cpp" />
     <ClCompile Include="CTile.cpp" />

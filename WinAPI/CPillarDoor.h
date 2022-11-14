@@ -8,6 +8,7 @@ class CStatue;
 class CPillarDoor : public CGameObject
 {
 public:
+	enum class CollisionDir { Up, Down, Left, Right, None };
 	CPillarDoor();
 	virtual ~CPillarDoor();
 
@@ -30,5 +31,9 @@ private:
 	void OnCollisionEnter(CCollider* pOtherCollider) override;
 	void OnCollisionStay(CCollider* pOtherCollider) override;
 	void OnCollisionExit(CCollider* pOtherCollider) override;
+
+	CollisionDir dir;
+	float		 offset;
+	CollisionDir GetCollisionDir(CCollider* pOther);
 
 };
