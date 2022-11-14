@@ -136,15 +136,10 @@ void CSceneField::Enter()
 	CAMERA->ZoomInOut(2);
 	CAMERA->SetTargetObj(pPlayer);
 
-	m_vFrog[0]->SetPos(1017, 200);
-	m_vFrog[1]->SetPos(800, 452);
-	m_vFrog[2]->SetPos(630, 452);
-	m_vFrog[0]->SetGround(0);
-	m_vFrog[1]->SetGround(0);
-	m_vFrog[2]->SetGround(0);
-	m_vFrog[0]->SetPlatform(0);
-	m_vFrog[1]->SetPlatform(0);
-	m_vFrog[2]->SetPlatform(0);
+	m_vFrog[0]->SetPos(1017, 332);
+	m_vFrog[1]->SetPos(818, 149);
+	m_vFrog[2]->SetPos(615, 442);
+
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
 	pPlayer->SetDir(GAME->GetPlayerStartDir());

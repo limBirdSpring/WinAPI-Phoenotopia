@@ -95,7 +95,7 @@ void CCollider::Render()
 	{
 		color = Color(0, 255, 0, 1.f);
 	}
-
+	
 	if (m_type == ColliderType::Rect)
 	{
 		RENDER->FrameRect(

@@ -141,15 +141,10 @@ void CSceneForest::Enter()
 	m_vBee[1]->SetPos(335, 344);
 	m_vBee[2]->SetPos(626, 617);
 
-	m_vFrog[0]->SetPos(591, 730);
-	m_vFrog[1]->SetPos(494, 378);
-	m_vFrog[2]->SetPos(102, 393);
-	m_vFrog[0]->SetGround(0);
-	m_vFrog[1]->SetGround(0);
-	m_vFrog[2]->SetGround(0);
-	m_vFrog[0]->SetPlatform(0);
-	m_vFrog[1]->SetPlatform(0);
-	m_vFrog[2]->SetPlatform(0);
+	m_vFrog[0]->SetPos(591, 780);
+	m_vFrog[1]->SetPos(494, 385);
+	m_vFrog[2]->SetPos(102, 546);
+
 
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
