@@ -64,6 +64,13 @@ void CSceneForest::Init()
 	pDoor->SetPlayerStartDir(Vector(-1, 0));
 	AddGameObject(pDoor);
 
+	CWarp* pDoor2 = new CWarp;
+	pDoor2->SetPos(679, 259);
+	pDoor2->SetScale(10, 400);
+	pDoor2->SetScene(GroupScene::BossMap);
+	pDoor2->SetPlayerStartPos(Vector(15, 488));
+	pDoor2->SetPlayerStartDir(Vector(1, 0));
+	AddGameObject(pDoor2);
 	
 
 	CItem* pZem = new CItem;

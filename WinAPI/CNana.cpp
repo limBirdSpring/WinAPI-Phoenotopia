@@ -18,7 +18,7 @@
 CNana::CNana(CPlayer* player)
 {
 	pPlayer = player;
-	m_vecScale = Vector(18, 32);
+	m_vecScale = Vector(22, 32);
 	m_strDialogue = L"";
 	talk = 0;
 }
@@ -33,8 +33,8 @@ void CNana::Init()
 	m_pImage = RESOURCE->LoadImg(L"Nana_Idle", L"Image\\Nana_Idle.png");
 
 	m_pAnimator = new CAnimator;
-	m_pAnimator->CreateAnimation(L"Nana_Idle_Right", m_pImage, Vector(300, 0), Vector(100, 100), Vector(150, 0), 0.5, 7);
-	m_pAnimator->CreateAnimation(L"Nana_Talk_Right", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2, 2);
+	m_pAnimator->CreateAnimation(L"Nana_Idle_Right", m_pImage, Vector(300, 0), Vector(100, 100), Vector(150, 0), 0.2, 7);
+	m_pAnimator->CreateAnimation(L"Nana_Talk_Right", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.5, 2);
 
 	m_pAnimator->Play(L"Nana_Idle_Right");
 	AddComponent(m_pAnimator);
@@ -141,13 +141,16 @@ void CNana::Talk()
 			m_strDialogue = L"";
 			break;
 		case 1:
-			m_strDialogue = L"허허.. 자네 상자를 미는 법에 대해 아는가?";
+			m_strDialogue = L"오, 게일왔구나. 오늘은 마침 날씨가 맑은데, 어디 놀러가니?";
 			break;
 		case 2:
-			m_strDialogue = L"A키를 누르며 상자에 접근하면 상자가 밀린다네.";
+			m_strDialogue = L"아 맞다. 그러고보니 알려줄것이 있단다.";
 			break;
 		case 3:
-			m_strDialogue = L"못믿겠다면 한번 해보게나.";
+			m_strDialogue = L"너 혹시 상자 미는 법에 대해 아니?";
+			break;
+		case 4:
+			m_strDialogue = L"A키를 누르고 상자에 접근하면 된단다. 한번 해보렴.";
 			break;
 		default:
 			CAMERA->ZoomInOut(2, 0.5);
@@ -169,10 +172,10 @@ void CNana::Talk()
 			m_strDialogue = L"뭐? 큰 상자는 안 밀린다고? 허허..";
 			break;
 		case 2:
-			m_strDialogue = L"자네가 밀기엔 너무 무거운가보군..";
+			m_strDialogue = L"큰 상자는 아직 너에게 너무 무거운가보구나.";
 			break;
 		case 3:
-			m_strDialogue = L"큰 상자는 대신 공격을 하여 부술 수 있다네.";
+			m_strDialogue = L"대신 큰 상자는 공격을 하여 부술 수 있단다.";
 			break;
 		case 4:
 			m_strDialogue = L"운이 좋으면 아이템이 들어있기도 하지.";
@@ -195,10 +198,10 @@ void CNana::Talk()
 			m_strDialogue = L"";
 			break;
 		case 1:
-			m_strDialogue = L"상자 위에 올라갈 수도 있으니 잘 활용해보게나.";
+			m_strDialogue = L"아, 그리고 상자 위에 올라갈 수도 있으니 잘 활용해보렴.";
 			break;
 		case 2:
-			m_strDialogue = L"또 상자에 대해 궁금한 점이 있다면 나에게 물어보게나.";
+			m_strDialogue = L"또 상자에 대해 궁금한 점이 있다면 나에게 물어보려무나.";
 			break;
 		default:
 			CAMERA->ZoomInOut(2, 0.5);

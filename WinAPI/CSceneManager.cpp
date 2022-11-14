@@ -11,6 +11,7 @@
 #include "CInventory.h"
 #include "CSceneGym.h"
 #include "CSceneField.h"
+#include "CSceneBossMap.h"
 
 CSceneManager::CSceneManager()
 {
@@ -41,6 +42,8 @@ void CSceneManager::Init()
 	m_mapScene.insert(make_pair(GroupScene::Gym, pGym));
 	CScene* pField = new CSceneField();
 	m_mapScene.insert(make_pair(GroupScene::Field, pField));
+	CScene* pBossMap = new CSceneBossMap();
+	m_mapScene.insert(make_pair(GroupScene::BossMap, pBossMap));
 	CScene* pInventory = new CInventory();
 	m_mapScene.insert(make_pair(GroupScene::Inventory, pInventory));
 

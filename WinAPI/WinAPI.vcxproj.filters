@@ -387,6 +387,9 @@
     <ClInclude Include="CNana.h">
       <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
+    <ClInclude Include="CSceneBossMap.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -676,6 +679,9 @@
     </ClCompile>
     <ClCompile Include="CNana.cpp">
       <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneBossMap.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
