@@ -1,18 +1,25 @@
 #pragma once
-#include "CThings.h"
+#include "CGameObject.h"
 #include "framework.h"
 
 class CMarble;
+class CStatue;
 
-class CPillarDoor :
-	public CThings
+class CPillarDoor : public CGameObject
 {
 public:
-	CPillarDoor(CMarble* marble);
+	CPillarDoor();
 	virtual ~CPillarDoor();
 
-public:
-	CMarble* pMarble;
+
+public :
+	CMarble* pMarble = nullptr;
+	CStatue* pStatue = nullptr;
+private:
+	float closeY;
+	float openY;
+
+	bool isSaveY;
 
 private:
 	void Init() override;

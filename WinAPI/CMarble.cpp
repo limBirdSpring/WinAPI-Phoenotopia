@@ -11,6 +11,7 @@ CMarble::CMarble()
 {
 	m_vecScale = Vector(15, 15);
 	isMarbleOn = true;
+	m_layer = Layer::Things;
 }
 
 CMarble::~CMarble()

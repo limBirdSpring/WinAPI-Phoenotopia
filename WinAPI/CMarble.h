@@ -1,9 +1,8 @@
 #pragma once
-#include "CThings.h"
+#include "CGameObject.h"
 #include "framework.h"
 
-class CMarble :
-	public CThings
+class CMarble : public CGameObject
 {
 public:
 	CMarble();

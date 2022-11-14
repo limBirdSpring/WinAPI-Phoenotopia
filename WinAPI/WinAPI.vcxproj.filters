@@ -394,10 +394,13 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="CMarble.h">
-      <Filter>GameObject\Things</Filter>
+      <Filter>GameObject\Door</Filter>
     </ClInclude>
     <ClInclude Include="CPillarDoor.h">
-      <Filter>GameObject\Things</Filter>
+      <Filter>GameObject\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="CStatue.h">
+      <Filter>GameObject\Door</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -696,10 +699,13 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="CMarble.cpp">
-      <Filter>GameObject\Things</Filter>
+      <Filter>GameObject\Door</Filter>
     </ClCompile>
     <ClCompile Include="CPillarDoor.cpp">
-      <Filter>GameObject\Things</Filter>
+      <Filter>GameObject\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="CStatue.cpp">
+      <Filter>GameObject\Door</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

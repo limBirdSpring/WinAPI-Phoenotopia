@@ -31,6 +31,7 @@
 #include "CCoin.h"
 #include "CNana.h"
 #include "CMarble.h"
+#include "CPillarDoor.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -126,6 +127,12 @@ void CSceneStage01::Init()
 	pMarble->dir = L"Left";
 	pMarble->SetPos(1665, 421);
 	AddGameObject(pMarble);
+
+	CPillarDoor* pPillarDoor = new CPillarDoor;
+	pPillarDoor->SetPos(1727,470);
+	pPillarDoor->pMarble = pMarble;
+	AddGameObject(pPillarDoor);
+	
 
 
 }
