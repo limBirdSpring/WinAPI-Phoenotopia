@@ -14,6 +14,7 @@
 #include "CCameraManager.h"
 #include "CPlayer.h"
 #include "CTalkBox.h"
+#include "CImageBox.h"
 
 CImageEvent::CImageEvent(CPlayer* player)
 {
@@ -44,12 +45,7 @@ void CImageEvent::Update()
 
 void CImageEvent::Render()
 {
-	Vector pos = CAMERA->ScreenToWorldPoint(Vector(WINSIZEX * 0.5, WINSIZEY *0.5), false);
-
-	if (bIsImageRender)
-	{
-		RENDER->Image(pEventImage, pos.x - pEventImage->GetWidth()*0.5, pos.y - pEventImage->GetHeight()*0.5, pos.x + pEventImage->GetWidth() * 0.5, pos.y + pEventImage->GetHeight() * 0.5);
-	}
+	
 }
 
 void CImageEvent::Release()
@@ -68,10 +64,16 @@ void CImageEvent::OnCollisionStay(CCollider* pOtherCollider)
 			{
 				pPlayer->m_behavior = Behavior::Talk;
 				GAME->SetTalk(true);
+
 				bIsImageRender = true;
+				pImageBox = new CImageBox;
+				pImageBox->pEventImage = pEventImage;
+
+				ADDOBJECT(pImageBox);
 			}
 			else
 			{
+				DELETEOBJECT(pImageBox);
 				GAME->SetTalk(false);
 				bIsImageRender = false;
 			}

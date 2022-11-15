@@ -72,7 +72,7 @@ void CSceneGailRoom::Init()
 	AddGameObject(pBed);
 
 	CImageEvent* pPhoto = new CImageEvent(pPlayer);
-	pPhoto->SetPos(390, 400);
+	pPhoto->SetPos(449, 400);
 	pPhoto->pEventImage = RESOURCE->LoadImg(L"Photo", L"Image\\Photo.png");
 	AddGameObject(pPhoto);
 

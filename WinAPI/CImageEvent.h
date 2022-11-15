@@ -4,6 +4,7 @@
 
 class CImage;
 class CPlayer;
+class CImageBox;
 
 class CImageEvent :
 	public CNPC
@@ -14,6 +15,7 @@ public:
 
 	CImage* pEventImage;
 	bool bIsImageRender;
+	CImageBox* pImageBox;
 
 private:
 	void Init() override;
