@@ -414,6 +414,9 @@
     <ClInclude Include="CFrontImage.h">
       <Filter>GameObject\Common</Filter>
     </ClInclude>
+    <ClInclude Include="CImageEvent.h">
+      <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -730,6 +733,9 @@
     </ClCompile>
     <ClCompile Include="CFrontImage.cpp">
       <Filter>GameObject\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="CImageEvent.cpp">
+      <Filter>GameObject\NPC %28talk%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -24,6 +24,7 @@
 #include "CWarp.h"
 #include "CTeacher.h"
 
+
 CSceneGym::CSceneGym()
 {
 	pPlayer = nullptr;
