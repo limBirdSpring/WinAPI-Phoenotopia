@@ -37,6 +37,7 @@ CSceneStage01::CSceneStage01()
 {
 	pPlayer = nullptr;
 	m_pVillageImage = nullptr;
+	m_pVillageFrontImage = RESOURCE->LoadImg(L"Panselo_Front", L"Image\\Panselo_Front.png");
 }
 
 CSceneStage01::~CSceneStage01()
@@ -210,6 +211,7 @@ void CSceneStage01::Update()
 
 void CSceneStage01::Render()
 {
+	RENDER->Image(m_pVillageFrontImage, 0, 0, m_pVillageFrontImage->GetWidth(), m_pVillageFrontImage->GetHeight());
 }
 
 void CSceneStage01::Exit()
