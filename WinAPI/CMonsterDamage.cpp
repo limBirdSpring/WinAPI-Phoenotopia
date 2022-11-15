@@ -15,9 +15,12 @@ void CMonsterDamage::Update()
 	Vector monPos = pMonster->GetPos();
 	if (coolTime ==0)
 	{
-		pMonster->SetPos(monPos.x, --monPos.y);
-		if (pMonster->GetLayer() != Layer::FlyingMonster)
+		
+		if (pMonster->GetLayer() != Layer::FlyingMonster && pMonster->GetName() != L"PinkSlug")
+		{
+			pMonster->SetPos(monPos.x, --monPos.y);
 			pMonster->SetGravity(-100);
+		}
 	}
 	else if (coolTime > 0.5)
 	{

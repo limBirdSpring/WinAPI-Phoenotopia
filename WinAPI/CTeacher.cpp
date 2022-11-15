@@ -214,12 +214,21 @@ void CTeacher::Talk()
 			m_strDialogue = L"점프를 하며 X키를 누르면 일반공격보다 위력이 센 공중공격을 할 수 있지.";
 			break;
 		case 6:
-			m_strDialogue = L"자. 내가 안전한 몬스터를 소환해줄테니 한번 연습해보거라.";
+			m_strDialogue = L"자. 옆에 수련용 슬러그가 있으니, 한번 연습해보렴.";
 			break;
 		case 7:
-			m_strDialogue = L"충분히 연습을 했다면 나에게 다시 말을 걸거라.";
+			m_strDialogue = L"슬러그는 위험한 몬스터 아니냐고?";
 			break;
 		case 8:
+			m_strDialogue = L"그래. 하지만 저 슬러그는 연습용으로 길들여져서 아무런 데미지를 입히지 못한단다.";
+			break;
+		case 9:
+			m_strDialogue = L"하지만 야생 슬러그는 공격을 해도 데미지가 먹지 않는 무시무시한 몬스터이니 가급적 공격을 하지 않는게 좋단다.";
+			break;
+		case 10:
+			m_strDialogue = L"충분히 연습을 했다면 나에게 다시 말을 걸거라.";
+			break;
+		case 11:
 			m_strDialogue = L"그럼 다음 기술인 크리티컬 공격에 대해 설명해주지.";
 			break;
 		default:

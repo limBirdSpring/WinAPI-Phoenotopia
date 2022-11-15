@@ -405,6 +405,9 @@
     <ClInclude Include="CStairTile.h">
       <Filter>Engine\Asset\Tile</Filter>
     </ClInclude>
+    <ClInclude Include="CPinkSlug.h">
+      <Filter>GameObject\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -712,6 +715,9 @@
     </ClCompile>
     <ClCompile Include="CStairTile.cpp">
       <Filter>Engine\Asset\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="CPinkSlug.cpp">
+      <Filter>GameObject\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

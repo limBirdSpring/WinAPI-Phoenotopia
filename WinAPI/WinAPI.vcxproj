@@ -185,6 +185,7 @@
     <ClInclude Include="CNana.h" />
     <ClInclude Include="CNPC.h" />
     <ClInclude Include="CPillarDoor.h" />
+    <ClInclude Include="CPinkSlug.h" />
     <ClInclude Include="CPlayerState.h" />
     <ClInclude Include="CSceneBossMap.h" />
     <ClInclude Include="CSceneField.h" />
@@ -296,6 +297,7 @@
     <ClCompile Include="CNana.cpp" />
     <ClCompile Include="CNPC.cpp" />
     <ClCompile Include="CPillarDoor.cpp" />
+    <ClCompile Include="CPinkSlug.cpp" />
     <ClCompile Include="CPlayerState.cpp" />
     <ClCompile Include="CSceneBossMap.cpp" />
     <ClCompile Include="CSceneField.cpp" />

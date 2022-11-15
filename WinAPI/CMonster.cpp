@@ -3,7 +3,7 @@
 
 CMonster::CMonster()
 {
-	m_damageHp = 5;
+	m_damageHp = 0;
 	m_pAnimator = nullptr;
 	m_pImage = nullptr;
 }

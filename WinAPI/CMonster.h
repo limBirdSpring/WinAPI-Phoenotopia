@@ -13,8 +13,8 @@ public :
 	virtual ~CMonster();
 
 protected :
-
 	int m_damageHp; //플레이어가 맞았을 때 얼마나 데미지를 입는지
+	
 	unordered_map<MonsterBehavior, CMonsterState*> m_mapMonsterState;
 
 	Vector m_vecLookDir;
@@ -25,8 +25,6 @@ protected :
 
 
 public:
-
-	
 
 	void SetStartXToEndX(float x, float x2) { m_startX = x; m_endX = x2; }
 	float GetStartX() { return m_startX; }

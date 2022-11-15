@@ -77,6 +77,7 @@ void CSoldier::Update()
 
 void CSoldier::Render()
 {
+
 	if (m_strDialogue != L"")
 	{
 		if (m_strDialogue.length() > 20)

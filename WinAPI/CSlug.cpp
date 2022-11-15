@@ -10,6 +10,7 @@
 
 CSlug::CSlug()
 {
+	m_damageHp = 5;
 	m_strName = L"Slug";
 	m_vecScale = Vector(30, 13);
 	m_layer = Layer::Monster;

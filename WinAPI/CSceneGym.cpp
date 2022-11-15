@@ -10,7 +10,7 @@
 #include "CPathManager.h"
 
 #include "CPlayer.h"
-#include "CSlug.h"
+#include "CPinkSlug.h"
 #include "CCameraController.h"
 #include "CButton.h"
 #include "CPanel.h"
@@ -63,9 +63,9 @@ void CSceneGym::Init()
 	AddGameObject(pTeacher);
 
 
-	CSlug* pSlug = new CSlug();
-	pSlug->SetPos(370, 452);
-	AddGameObject(pSlug);
+	CPinkSlug* pPinkSlug = new CPinkSlug();
+	pPinkSlug->SetPos(370, 452);
+	AddGameObject(pPinkSlug);
 
 
 	CEventMark* pClothes = new CEventMark(pPlayer);
