@@ -29,6 +29,8 @@
 #include "CFrog.h"
 #include "CBee.h"
 #include "CStatue.h"
+#include "CPillarDoor.h"
+#include "CFrontImage.h"
 
 CSceneBossMap::CSceneBossMap()
 {
@@ -59,6 +61,11 @@ void CSceneBossMap::Init()
 	pBossMap->SetImage(m_pImage);
 	AddGameObject(pBossMap);
 
+	m_pImage = RESOURCE->LoadImg(L"BossMap_Front", L"Image\\BossMap_Front.png");
+	CFrontImage* pBossMap_Front = new CFrontImage;
+	pBossMap_Front->SetImage(m_pImage);
+	AddGameObject(pBossMap_Front);
+
 	//CWarp* pVillageDoor = new CWarp;
 	//pVillageDoor->SetPos(0, 0);
 	//pVillageDoor->SetScale(10, 1000);
@@ -77,12 +84,22 @@ void CSceneBossMap::Init()
 
 
 	CStatue* pStatue = new CStatue;
-	pStatue->SetPos(104, 478);
+	pStatue->SetPos(182, 483);
 	AddGameObject(pStatue);
 
+	CStatue* pStatue2 = new CStatue;
+	pStatue2->SetPos(136, 483);
+	AddGameObject(pStatue2);
 
+	CPillarDoor* pPillarDoor = new CPillarDoor;
+	pPillarDoor->SetPos(260, 466);
+	pPillarDoor->pStatue = pStatue2;
+	AddGameObject(pPillarDoor);
 
-
+	CPillarDoor* pPillarDoor2 = new CPillarDoor;
+	pPillarDoor2->SetPos(300, 466);
+	pPillarDoor2->pStatue = pStatue;
+	AddGameObject(pPillarDoor2);
 
 }
 

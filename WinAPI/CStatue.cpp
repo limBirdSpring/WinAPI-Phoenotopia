@@ -133,7 +133,7 @@ void CStatue::Talk()
 		m_strDialogue = L"젬을 넣을 수 있는 홈이 있다.";
 		break;
 	case 3:
-		m_strDialogue = L"이미 문이 열렸다.";
+		m_strDialogue = L"석상이 빛나고있다.";
 		break;
 	}
 
