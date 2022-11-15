@@ -13,7 +13,6 @@ public:
 private:
 	CPlayer* pPlayer;
 	CImage* m_pVillageImage;
-	CImage* m_pVillageFrontImage;
 
 private:
 	void Init()		override;

@@ -32,12 +32,12 @@
 #include "CNana.h"
 #include "CMarble.h"
 #include "CPillarDoor.h"
+#include "CFrontImage.h"
 
 CSceneStage01::CSceneStage01()
 {
 	pPlayer = nullptr;
 	m_pVillageImage = nullptr;
-	m_pVillageFrontImage = RESOURCE->LoadImg(L"Panselo_Front", L"Image\\Panselo_Front.png");
 }
 
 CSceneStage01::~CSceneStage01()
@@ -158,6 +158,11 @@ void CSceneStage01::Enter()
 	pVillage->SetImage(m_pVillageImage);
 	AddGameObject(pVillage);
 
+	m_pVillageImage = RESOURCE->LoadImg(L"Panselo_Front", L"Image\\Panselo_Front.png");
+	CFrontImage* pVillage2 = new CFrontImage;
+	pVillage2->SetImage(m_pVillageImage);
+	AddGameObject(pVillage2);
+
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
 	pPlayer->SetDir(GAME->GetPlayerStartDir());
 	pPlayer->SetGravity(1);
@@ -211,7 +216,7 @@ void CSceneStage01::Update()
 
 void CSceneStage01::Render()
 {
-	RENDER->Image(m_pVillageFrontImage, 0, 0, m_pVillageFrontImage->GetWidth(), m_pVillageFrontImage->GetHeight());
+	
 }
 
 void CSceneStage01::Exit()

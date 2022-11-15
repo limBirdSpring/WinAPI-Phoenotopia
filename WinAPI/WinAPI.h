@@ -65,11 +65,11 @@ enum class Layer
 	NPC,
 	Things,
 	Player,
+	FrontGround,
 	Missile,
 	Monster,
 	FlyingMonster,
 	TalkBox,
-	FrontGround,
 	Ui,
 	Size,
 };
