@@ -13,6 +13,7 @@
 #include "CAnimator.h"
 #include "CCameraManager.h"
 #include "CPlayer.h"
+#include "CTalkBox.h"
 
 
 CCarol::CCarol(CPlayer* player)
@@ -72,29 +73,12 @@ void CCarol::Update()
 
 void CCarol::Render()
 {
-	if (m_strDialogue != L"")
+	if (talk > 0)
 	{
-		if (m_strDialogue.length() > 20)
-		{
-			//RENDER->FillRect(m_vecPos.x - 130, m_vecPos.y - 100, m_vecPos.x + 70, m_vecPos.y - 50, Color(100, 100, 100, 255));
-			RENDER->Image(m_pTalkBox, m_vecPos.x - 130, m_vecPos.y - 130, m_vecPos.x + 70, m_vecPos.y - 30);
-			RENDER->Text(m_strDialogue, m_vecPos.x - 130 + 10, m_vecPos.y - 130, m_vecPos.x + 70 - 10, m_vecPos.y - 30);
+		pTalkBox->m_choose = &this->m_choose;
+		pTalkBox->m_choosing = &this->m_choosing;
+		pTalkBox->m_strDialogue = this->m_strDialogue;
 
-			if (m_choose != 0)
-			{
-				RENDER->Image(m_pChoose, m_vecPos.x - 120, m_vecPos.y - 86 + (m_choosing * 8), m_vecPos.x - 120 + m_pChoose->GetWidth(), m_vecPos.y - 86 + (m_choosing * 8) + m_pChoose->GetHeight());
-			}
-		}
-		else if (m_strDialogue.length() < 7)
-		{
-			RENDER->Image(m_pTalkBox, m_vecPos.x - 80, m_vecPos.y - 100, m_vecPos.x + 20, m_vecPos.y - 30);
-			RENDER->Text(m_strDialogue, m_vecPos.x - 80 + 10, m_vecPos.y - 100, m_vecPos.x + 20 - 10, m_vecPos.y - 30);
-		}
-		else
-		{
-			RENDER->Image(m_pTalkBox, m_vecPos.x - 130, m_vecPos.y - 100, m_vecPos.x + 70, m_vecPos.y - 30);
-			RENDER->Text(m_strDialogue, m_vecPos.x - 130 + 10, m_vecPos.y - 100, m_vecPos.x + 70 - 10, m_vecPos.y - 30);
-		}
 	}
 }
 
@@ -116,6 +100,10 @@ void CCarol::OnCollisionStay(CCollider* pOtherCollider)
 			pOtherCollider->GetOwner()->SetPos(m_vecPos.x + 30, m_vecPos.y);
 			pPlayer->m_vecMoveDir.x = -1;
 			pPlayer->m_behavior = Behavior::Talk;
+
+			pTalkBox = new CTalkBox;
+			pTalkBox->SetPos(this->GetPos());
+			ADDOBJECT(pTalkBox);
 		}
 	}
 }
@@ -141,6 +129,7 @@ void CCarol::Talk()
 			GAME->SetTalk(false);
 			changeTalkTopic++;
 			talk = 0;
+			DELETEOBJECT(pTalkBox);
 			break;
 		}
 	}
@@ -167,6 +156,7 @@ void CCarol::Talk()
 			GAME->SetTalk(false);
 			changeTalkTopic++;
 			talk = 0;
+			DELETEOBJECT(pTalkBox);
 			break;
 		}
 	}
@@ -189,6 +179,7 @@ void CCarol::Talk()
 			GAME->SetTalk(false);
 			changeTalkTopic = 0;
 			talk = 0;
+			DELETEOBJECT(pTalkBox);
 			break;
 		}
 	}

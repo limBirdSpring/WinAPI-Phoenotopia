@@ -62,13 +62,14 @@ enum class Layer
 	Cloud,
 	Tile,
 	Door,
-	Things,
 	NPC,
+	Things,
 	Player,
 	Missile,
 	Monster,
 	FlyingMonster,
-
+	TalkBox,
+	FrontGround,
 	Ui,
 	Size,
 };

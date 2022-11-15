@@ -408,6 +408,12 @@
     <ClInclude Include="CPinkSlug.h">
       <Filter>GameObject\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="CTalkBox.h">
+      <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClInclude>
+    <ClInclude Include="CFrontImage.h">
+      <Filter>GameObject\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -718,6 +724,12 @@
     </ClCompile>
     <ClCompile Include="CPinkSlug.cpp">
       <Filter>GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CTalkBox.cpp">
+      <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClCompile>
+    <ClCompile Include="CFrontImage.cpp">
+      <Filter>GameObject\Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

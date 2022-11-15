@@ -162,6 +162,7 @@
     <ClInclude Include="CEventManager.h" />
     <ClInclude Include="CEventMark.h" />
     <ClInclude Include="CFrog.h" />
+    <ClInclude Include="CFrontImage.h" />
     <ClInclude Include="CGameManager.h" />
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CGravity.h" />
@@ -230,6 +231,7 @@
     <ClInclude Include="CMonsterFollow.h" />
     <ClInclude Include="CStateIdle.h" />
     <ClInclude Include="CStatue.h" />
+    <ClInclude Include="CTalkBox.h" />
     <ClInclude Include="CTeacher.h" />
     <ClInclude Include="CThings.h" />
     <ClInclude Include="CTile.h" />
@@ -274,6 +276,7 @@
     <ClCompile Include="CEventManager.cpp" />
     <ClCompile Include="CEventMark.cpp" />
     <ClCompile Include="CFrog.cpp" />
+    <ClCompile Include="CFrontImage.cpp" />
     <ClCompile Include="CGameManager.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CGravity.cpp" />
@@ -342,6 +345,7 @@
     <ClCompile Include="CMonsterFollow.cpp" />
     <ClCompile Include="CStateIdle.cpp" />
     <ClCompile Include="CStatue.cpp" />
+    <ClCompile Include="CTalkBox.cpp" />
     <ClCompile Include="CTeacher.cpp" />
     <ClCompile Include="CThings.cpp" />
     <ClCompile Include="CTile.cpp" />

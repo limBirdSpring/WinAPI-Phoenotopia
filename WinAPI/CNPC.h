@@ -4,6 +4,7 @@
 
 class CImage;
 class CPlayer;
+class CTalkBox;
 
 class CNPC :
 	public CGameObject
@@ -21,11 +22,12 @@ protected:
 
 	int changeTalkTopic; // 다음 대화로 넘어가기
 
-	CImage* m_pTalkBox;
+	
 	int m_choose;//선택지유무
 	int m_choosing; //선택된 선택지
-	CImage* m_pChoose;//선택지이미지
+	
 
+	CTalkBox* pTalkBox;
 	CPlayer* pPlayer;
 
 

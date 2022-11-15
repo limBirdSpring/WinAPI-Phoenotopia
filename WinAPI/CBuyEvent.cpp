@@ -13,6 +13,7 @@
 #include "CAnimator.h"
 #include "CCameraManager.h"
 #include "CPlayer.h"
+#include "CTalkBox.h"
 
 
 CBuyEvent::CBuyEvent(CPlayer* player)
@@ -41,51 +42,20 @@ void CBuyEvent::Init()
 void CBuyEvent::Update()
 {
 
-	if (m_choose != 0)
-	{
-		if (BUTTONDOWN(VK_UP))
-		{
-			m_choosing--;
-		}
-		if (BUTTONDOWN(VK_DOWN))
-		{
-			m_choosing++;
-		}
-		if (m_choosing <= 0)
-			m_choosing = 1;
-		else if (m_choosing > m_choose)
-			m_choosing = m_choose;
-	}
 }
 
 void CBuyEvent::Render()
 {
-	if (m_strDialogue != L"")
-	{
-		if (m_strDialogue.length() > 20)
-		{
-			//RENDER->FillRect(m_vecPos.x - 130, m_vecPos.y - 100, m_vecPos.x + 70, m_vecPos.y - 50, Color(100, 100, 100, 255));
-			RENDER->Image(m_pTalkBox, m_vecPos.x - 130, m_vecPos.y - 130, m_vecPos.x + 70, m_vecPos.y - 30);
-			RENDER->Text(m_strDialogue, m_vecPos.x - 130 + 10, m_vecPos.y - 130, m_vecPos.x + 70 - 10, m_vecPos.y - 30);
-
-			if (m_choose != 0)
-			{
-				RENDER->Image(m_pChoose, m_vecPos.x - 120, m_vecPos.y - 86 + (m_choosing * 8), m_vecPos.x - 120 + m_pChoose->GetWidth(), m_vecPos.y - 86 + (m_choosing * 8) + m_pChoose->GetHeight());
-			}
-		}
-		else if (m_strDialogue.length() < 7)
-		{
-			RENDER->Image(m_pTalkBox, m_vecPos.x - 80, m_vecPos.y - 100, m_vecPos.x + 20, m_vecPos.y - 30);
-			RENDER->Text(m_strDialogue, m_vecPos.x - 80 + 10, m_vecPos.y - 100, m_vecPos.x + 20 - 10, m_vecPos.y - 30);
-		}
-		else
-		{
-			RENDER->Image(m_pTalkBox, m_vecPos.x - 130, m_vecPos.y - 100, m_vecPos.x + 70, m_vecPos.y - 30);
-			RENDER->Text(m_strDialogue, m_vecPos.x - 130 + 10, m_vecPos.y - 100, m_vecPos.x + 70 - 10, m_vecPos.y - 30);
-		}
-	}
-
+	//아이템 렌더 추가
 	RENDER->Image(item.img, m_vecPos.x - 20, m_vecPos.y - 20, m_vecPos.x + 20, m_vecPos.y + 20);
+
+	if (talk > 0)
+	{
+		pTalkBox->m_choose = &this->m_choose;
+		pTalkBox->m_choosing = &this->m_choosing;
+		pTalkBox->m_strDialogue = this->m_strDialogue;
+
+	}
 }
 
 void CBuyEvent::Release()
@@ -104,6 +74,13 @@ void CBuyEvent::OnCollisionStay(CCollider* pOtherCollider)
 			GAME->SetTalk(true);
 			pPlayer->m_behavior = Behavior::Talk;
 			Talk();
+
+			if (pTalkBox == nullptr)
+			{
+				pTalkBox = new CTalkBox;
+				pTalkBox->SetPos(this->GetPos());
+				ADDOBJECT(pTalkBox);
+			}
 		}
 	}
 }
@@ -150,6 +127,7 @@ void CBuyEvent::Talk()
 			m_strDialogue = L"";
 			GAME->SetTalk(false);
 			talk = 0;
+			DELETEOBJECT(pTalkBox);
 			break;
 		}
 		m_choose = 0;
@@ -160,6 +138,7 @@ void CBuyEvent::Talk()
 		m_strDialogue = L"";
 		GAME->SetTalk(false);
 		talk = 0;
+		DELETEOBJECT(pTalkBox);
 		break;
 	}
 }
