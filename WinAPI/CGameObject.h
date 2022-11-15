@@ -110,6 +110,8 @@ public:
 	int GetGround();
 	void SetPlatform(int platform);
 	int GetPlatform();
+	void SetWall(int wall);
+	int GetWall();
 
 
 

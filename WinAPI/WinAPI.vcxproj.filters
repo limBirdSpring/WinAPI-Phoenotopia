@@ -402,6 +402,9 @@
     <ClInclude Include="CStatue.h">
       <Filter>GameObject\Door</Filter>
     </ClInclude>
+    <ClInclude Include="CStairTile.h">
+      <Filter>Engine\Asset\Tile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -706,6 +709,9 @@
     </ClCompile>
     <ClCompile Include="CStatue.cpp">
       <Filter>GameObject\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="CStairTile.cpp">
+      <Filter>Engine\Asset\Tile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

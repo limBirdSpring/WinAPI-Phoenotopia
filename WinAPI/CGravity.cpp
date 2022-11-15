@@ -8,6 +8,7 @@ CGravity::CGravity()
 	m_fVelocity = 1;
 	m_ground = 0;
 	m_platform = 0;
+	m_wall = 0;
 }
 
 CGravity::~CGravity()

@@ -166,6 +166,16 @@ int CGameObject::GetPlatform()
 	return m_pGravity->m_platform;
 }
 
+void CGameObject::SetWall(int wall)
+{
+	m_pGravity->m_wall = wall;
+}
+
+int CGameObject::GetWall()
+{
+	return m_pGravity->m_wall;
+}
+
 void CGameObject::RemoveCollider()
 {
 	if (nullptr == m_pCollider)

@@ -119,6 +119,13 @@ void CTilePanel::CreateTileTypeButton()
 	pWallTypeButton->SetText(L"Wall");
 	pWallTypeButton->SetClickedCallback(click, (DWORD_PTR)pTileToolScene, (DWORD_PTR)TypeTile::Wall);
 	AddChildUI(pWallTypeButton);
+
+	CButton* pStairTypeButton = new CButton;
+	pStairTypeButton->SetScale(100.f, 50.f);
+	pStairTypeButton->SetPos(Vector(150.f, m_vecScale.y - 160.f));
+	pStairTypeButton->SetText(L"Stair");
+	pStairTypeButton->SetClickedCallback(click, (DWORD_PTR)pTileToolScene, (DWORD_PTR)TypeTile::Stair);
+	AddChildUI(pStairTypeButton);
 }
 
 void CTilePanel::SetPage(UINT page)

@@ -80,6 +80,16 @@ void CTile::Render()
 				Color(0, 0, 255, 1), 5
 			);
 		}
+		else if (m_type == TypeTile::Stair)
+		{
+			RENDER->FrameEllipse(
+				m_vecPos.x,
+				m_vecPos.y,
+				m_vecPos.x + m_vecScale.x,
+				m_vecPos.y + m_vecScale.y,
+				Color(200, 200, 0, 1), 5
+			);
+		}
 	}
 
 	// 0번 타일은 빈타일러 정의

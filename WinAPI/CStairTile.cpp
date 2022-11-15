@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "CWallTile.h"
+#include "CStairTile.h"
 
 #include "CResourceManager.h"
 #include "CRenderManager.h"
@@ -7,17 +7,15 @@
 #include "CCollisionManager.h"
 #include "CGameObject.h"
 #include "CPlayer.h"
-CWallTile::CWallTile()
-{
-	
-	m_strName = L"벽";
-}
-
-CWallTile::~CWallTile()
+CStairTile::CStairTile()
 {
 }
 
-void CWallTile::Init()
+CStairTile::~CStairTile()
+{
+}
+
+void CStairTile::Init()
 {
 	CTile::Init();
 
@@ -26,94 +24,94 @@ void CWallTile::Init()
 		Vector(CTile::TILESIZE / 2, CTile::TILESIZE / 2));
 }
 
-void CWallTile::Update()
+void CStairTile::Update()
 {
 	CTile::Update();
 }
 
-void CWallTile::Render()
+void CStairTile::Render()
 {
 	CTile::Render();
 
 	ComponentRender();
 }
 
-void CWallTile::Release()
+void CStairTile::Release()
 {
 	CTile::Release();
 }
 
-void CWallTile::OnCollisionEnter(CCollider* pOther)
+void CStairTile::OnCollisionEnter(CCollider* pOther)
 {
-
-		pOther->GetOwner()->SetGravity(1);
+	pOther->GetOwner()->SetGround(pOther->GetOwner()->GetGround() + 1);
+	pOther->GetOwner()->SetGravity(1);
 }
 
-void CWallTile::OnCollisionStay(CCollider* pOther)
+void CStairTile::OnCollisionStay(CCollider* pOther)
 {
-	
-		// 플레이어가 충돌 중일 경우 밀어내기 연산
-		CPlayer* pPlayer = static_cast<CPlayer*>(pOther->GetOwner());
 
-		dir = GetCollisionDir(pOther);
+	// 플레이어가 충돌 중일 경우 밀어내기 연산
+	CPlayer* pPlayer = static_cast<CPlayer*>(pOther->GetOwner());
 
-		switch (GetCollisionDir(pOther))
-		{
-		case CollisionDir::Up:
-		{
-			
-			pPlayer->SetPos(
-				pPlayer->GetPos().x,
-				GetCollider()->GetPos().y
-				- (GetCollider()->GetScale().y + pOther->GetScale().y) * 0.5f + offset
-				- pOther->GetOffsetPos().y
-			);
+	dir = GetCollisionDir(pOther);
 
-			
-		}
-		break;
+	switch (GetCollisionDir(pOther))
+	{
+	case CollisionDir::Up:
+	{
 
-		case CollisionDir::Down:
-		{
-			
-			pPlayer->SetPos(
-				pPlayer->GetPos().x,
-				GetCollider()->GetPos().y
-				+ (GetCollider()->GetScale().y + pOther->GetScale().y) * 0.5f - offset
-				- pOther->GetOffsetPos().y 
-			);
-		}
-		break;
+		pPlayer->SetPos(
+			pPlayer->GetPos().x,
+			GetCollider()->GetPos().y
+			- (GetCollider()->GetScale().y + pOther->GetScale().y) * 0.5f + offset
+			- pOther->GetOffsetPos().y + 0.1
+		);
 
-		case CollisionDir::Left:
-		{
-			pPlayer->SetPos(
-				GetCollider()->GetPos().x
-				- (GetCollider()->GetScale().x + pOther->GetScale().x) * 0.5f + offset
-				- pOther->GetOffsetPos().x ,
-				pPlayer->GetPos().y
-			);
-		}
-		break;
 
-		case CollisionDir::Right:
-		{
-			pPlayer->SetPos(
-				GetCollider()->GetPos().x
-				+ (GetCollider()->GetScale().x + pOther->GetScale().x) * 0.5f - offset
-				- pOther->GetOffsetPos().x ,
-				pPlayer->GetPos().y
-			);
-		}
-		break;
-		}
-	
-	
+	}
+	break;
+
+	case CollisionDir::Down:
+	{
+
+		pPlayer->SetPos(
+			pPlayer->GetPos().x,
+			GetCollider()->GetPos().y
+			+ (GetCollider()->GetScale().y + pOther->GetScale().y) * 0.5f - offset
+			- pOther->GetOffsetPos().y - 0.1
+		);
+	}
+	break;
+
+	case CollisionDir::Left:
+	{
+		pPlayer->SetPos(
+			GetCollider()->GetPos().x
+			- (GetCollider()->GetScale().x + pOther->GetScale().x) * 0.5f + offset
+			- pOther->GetOffsetPos().x + 0.1,
+			pPlayer->GetPos().y
+		);
+	}
+	break;
+
+	case CollisionDir::Right:
+	{
+		pPlayer->SetPos(
+			GetCollider()->GetPos().x
+			+ (GetCollider()->GetScale().x + pOther->GetScale().x) * 0.5f - offset
+			- pOther->GetOffsetPos().x - 0.1,
+			pPlayer->GetPos().y
+		);
+	}
+	break;
+	}
+
+
 }
 
-void CWallTile::OnCollisionExit(CCollider* pOther)
+void CStairTile::OnCollisionExit(CCollider* pOther)
 {
-
+		pOther->GetOwner()->SetGround(pOther->GetOwner()->GetGround() - 1);
 }
 
 struct ColliderInfo
@@ -138,7 +136,7 @@ struct ColliderInfo
 	}
 };
 
-typename CWallTile::CollisionDir CWallTile::GetCollisionDir(CCollider* pOther)
+typename CStairTile::CollisionDir CStairTile::GetCollisionDir(CCollider* pOther)
 {
 	ColliderInfo obj = ColliderInfo(GetCollider()->GetPos(), GetCollider()->GetScale());
 	ColliderInfo other = ColliderInfo(pOther->GetPos(), pOther->GetScale());

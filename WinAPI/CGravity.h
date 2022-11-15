@@ -16,6 +16,7 @@ private:
 	float m_fVelocity;//속도
 	int m_ground; //땅인지 여부
 	int m_platform; //플랫폼인지 여부
+	int m_wall; //벽인지 여부
 
 	void Init() override;
 	void Update() override;
