@@ -73,6 +73,7 @@ void CSceneGailRoom::Init()
 
 void CSceneGailRoom::Enter()
 {
+	GAME->SetUIRender(true);
 	CAMERA->FadeIn(0.25f);
 
 	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");

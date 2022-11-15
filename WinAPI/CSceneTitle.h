@@ -3,6 +3,8 @@
 
 class CImage;
 class CSound;
+class CImageObject;
+class CFrontImage;
 
 class CSceneTitle : public CScene
 {
@@ -13,6 +15,14 @@ public:
 private:
 
 	CImage* pLoad_Screen;
+	CImage* pTitle;
+	CImageObject* pTitleObject;
+	CFrontImage* pTitle_Front;
+
+	float coolTime;
+
+	float textAlpha;
+	int textAlphaDir;
 
 
 	void Init()		override;
