@@ -21,6 +21,7 @@
 #include "CGameManager.h"
 #include "CDoor.h"
 #include "CEventMark.h"
+#include "CStatue.h"
 
 CSceneGailRoom::CSceneGailRoom()
 {
@@ -68,6 +69,7 @@ void CSceneGailRoom::Init()
 	pBed->SetPos(377, 400);
 	pBed->m_strSetDialogue = L"아직 잘 시간은 아니다.";
 	AddGameObject(pBed);
+
 
 }
 

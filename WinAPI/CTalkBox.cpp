@@ -10,6 +10,10 @@ CTalkBox::CTalkBox()
 
 	m_pChoose = RESOURCE->LoadImg(L"Choose", L"Image\\Choose.png");
 
+
+	m_choose = nullptr;
+	m_choosing = nullptr; 
+
 	m_layer = Layer::TalkBox;
 }
 
@@ -23,7 +27,7 @@ void CTalkBox::Init()
 
 void CTalkBox::Update()
 {
-	if (*m_choose != 0)
+	if (m_choose != nullptr &&*m_choose != 0 )
 	{
 		if (BUTTONDOWN(VK_UP))
 		{
@@ -50,7 +54,7 @@ void CTalkBox::Render()
 			RENDER->Image(m_pTalkBox, m_vecPos.x - 130, m_vecPos.y - 130, m_vecPos.x + 70, m_vecPos.y - 30);
 			RENDER->Text(m_strDialogue, m_vecPos.x - 130 + 10, m_vecPos.y - 130, m_vecPos.x + 70 - 10, m_vecPos.y - 30);
 
-			if (*m_choose != 0)
+			if (*m_choose != 0 && m_choose != nullptr)
 			{
 				RENDER->Image(m_pChoose, m_vecPos.x - 120, m_vecPos.y - 86 + (*m_choosing * 8), m_vecPos.x - 120 + m_pChoose->GetWidth(), m_vecPos.y - 86 + (*m_choosing * 8) + m_pChoose->GetHeight());
 			}

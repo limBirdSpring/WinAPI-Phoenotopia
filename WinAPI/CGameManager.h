@@ -97,6 +97,7 @@ public :
 	void EraseInvenItem(const Item item);
 	void PushBackInvenItem(const wstring name);
 	void EraseInvenItem(const wstring name);
+	bool IsItemInvenItem(const wstring name);
 	Item FindItem(const wstring name);
 	bool isItemSetting(const wstring name);
 

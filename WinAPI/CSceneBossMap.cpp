@@ -28,6 +28,7 @@
 #include "CTurtle.h"
 #include "CFrog.h"
 #include "CBee.h"
+#include "CStatue.h"
 
 CSceneBossMap::CSceneBossMap()
 {
@@ -75,7 +76,9 @@ void CSceneBossMap::Init()
 	AddGameObject(pForestDoor);
 
 
-
+	CStatue* pStatue = new CStatue;
+	pStatue->SetPos(104, 478);
+	AddGameObject(pStatue);
 
 
 

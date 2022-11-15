@@ -1,10 +1,12 @@
 #pragma once
-#include "CNPC.h"
+#include "CThings.h"
 
 #include "framework.h"
 
+class CTalkBox;
+
 class CStatue :
-	public CNPC
+	public CThings
 {
 public:
 	CStatue();
@@ -13,6 +15,10 @@ public:
 public:
 	bool isStatueOn;
 	wstring dir;
+	CTalkBox* pTalkBox;
+
+	wstring m_strDialogue;
+	int talk; //대화순서
 
 private:
 	void Init() override;
@@ -24,4 +30,5 @@ private:
 	void OnCollisionStay(CCollider* pOtherCollider) override;
 	void OnCollisionExit(CCollider* pOtherCollider) override;
 
+	void Talk();
 };

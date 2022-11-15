@@ -120,6 +120,18 @@ void CGameManager::EraseInvenItem(const wstring name)
 	}
 }
 
+bool CGameManager::IsItemInvenItem(const wstring name)
+{
+	for (int i = 0; i < m_vInventoryItem.size(); i++)
+	{
+		if (m_vInventoryItem[i].name == name)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 Item CGameManager::FindItem(const wstring name)
 {
 	for (int i = 0; i < m_vItem.size(); i++)
@@ -136,7 +148,7 @@ bool CGameManager::isItemSetting(const wstring name)
 {
 	for (int i = 0; i < m_vSetItem.size(); i++)
 	{
-		if (m_vItem[i].name == name)
+		if (m_vSetItem[i].name == name)
 		{
 			return true;
 		}
