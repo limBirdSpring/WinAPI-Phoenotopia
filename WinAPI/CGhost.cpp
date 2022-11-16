@@ -16,16 +16,16 @@
 #include "CBossAttack2.h"
 #include "CItem.h"
 #include "CCoin.h"
+#include "CItem.h"
 
 CGhost::CGhost()
 {
 
-	m_vecScale = Vector(20, 15);
+	m_vecScale = Vector(60, 40);
 	m_layer = Layer::Boss;
 	m_fSpeed = 120;
 	m_vecMoveDir.x = 0;
-	m_damageHp = 4;
-	m_hp = 15;
+	m_hp = 80;
 }
 
 CGhost::~CGhost()
@@ -64,11 +64,11 @@ void CGhost::Init()
 
 	m_pImage = RESOURCE->LoadImg(L"Boss_Attack2", L"Image\\Boss_Attack2.png");
 
-	m_pAnimator->CreateAnimation(L"Boss_Attack2_Left", m_pImage, Vector(0, 0), Vector(400, 200), Vector(614, 0), 0.2f, 15, false);
-	m_pAnimator->CreateAnimation(L"Boss_Attack2_Right", m_pImage, Vector(8600, 300), Vector(400, 200), Vector(-614, 0), 0.2f, 15, false);
+	m_pAnimator->CreateAnimation(L"Boss_Attack2_Left", m_pImage, Vector(0, 0), Vector(400, 200), Vector(614, 0), 0.15f, 15, false);
+	m_pAnimator->CreateAnimation(L"Boss_Attack2_Right", m_pImage, Vector(8600, 300), Vector(400, 200), Vector(-614, 0), 0.15f, 15, false);
 
 
-	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 8));
+	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, -4));
 
 	m_pAnimator->Play(L"Boss_Appear_Left", false);
 	AddComponent(m_pAnimator); 
@@ -87,6 +87,14 @@ void CGhost::Init()
 
 void CGhost::Update()
 {
+
+	if (m_hp <= 0)
+	{
+		m_behavior = BossBehavior::Dead;
+		
+	}
+
+
 	m_mapBossState.find(m_behavior)->second->Update();
 	AnimatorUpdate();
 

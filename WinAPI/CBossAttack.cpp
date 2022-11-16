@@ -18,7 +18,7 @@ void CBossAttack::Update()
 	{
 		CBossSkill* pBossSkill = new CBossSkill;
 		pBossSkill->SetPos(pBoss->GetPos());
-		pBossSkill->SetScale(100, 100);
+		pBossSkill->SetScale(130, 100);
 		pBossSkill->damage = 8;
 		pBossSkill->coolTime = 0.5;
 		pBossSkill->idleTime = 0.5;

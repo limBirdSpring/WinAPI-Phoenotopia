@@ -14,17 +14,20 @@ void CBossMove::Update()
 {
 	
 
-	if (coolTime == 0 || coolTime > 2 && coolTime < 2.1)
+	//if (coolTime == 0 || coolTime > 2 && coolTime < 2.1)
+	if (GAME->GetPlayerPos().x > pBoss->GetPos().x+10 || GAME->GetPlayerPos().x < pBoss->GetPos().x - 10)
 	{
 		if (GAME->GetPlayerPos().x > pBoss->GetPos().x)
 			pBoss->SetDir(Vector(1, 0));
 		else
 			pBoss->SetDir(Vector(-1, 0));
+		pBoss->SetPos(pBoss->GetPos().x + DT * pBoss->GetSpeed() * pBoss->GetDir().x, pBoss->GetPos().y);
 	}
+
 
 	coolTime += DT;
 
-	pBoss->SetPos(pBoss->GetPos().x + DT * pBoss->GetSpeed() * pBoss->GetDir().x, pBoss->GetPos().y);
+	
 
 
 	if (coolTime > 4)

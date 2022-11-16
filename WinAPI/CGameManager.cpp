@@ -223,6 +223,22 @@ void CGameManager::Init()
 	zem.type = ItemType::Quest;
 	zem.text = L"반짝거리는 젬이다. 문을 여는 데에 쓸 수 있을 것 같다.";
 	m_vItem.push_back(zem);
+
+	//퀘스트
+	Item Ghostzem;
+	Ghostzem.name = L"고스트의 젬스톤";
+	Ghostzem.img = RESOURCE->LoadImg(L"Item_Ghost_Zem", L"Image\\Ghost_Zem.png");
+	Ghostzem.type = ItemType::Quest;
+	Ghostzem.text = L"반짝거리는 젬이다. 문을 여는 데에 쓸 수 있을 것 같다.";
+	m_vItem.push_back(Ghostzem);
+
+	//퀘스트
+	Item ring;
+	ring.name = L"엄청 비싸보이는 반지";
+	ring.img = RESOURCE->LoadImg(L"Item_Rich_Ring", L"Image\\Rich_Ring.png");
+	ring.type = ItemType::Quest;
+	ring.text = L"팔면 돈을 많이 벌 수 있을 거 같은 희귀한 반지다.";
+	m_vItem.push_back(ring);
 }
 
 void CGameManager::Update()

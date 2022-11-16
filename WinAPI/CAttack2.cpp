@@ -63,7 +63,8 @@ void  CAttack2::Release()
 
 void  CAttack2::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetOwner()->GetLayer() == Layer::FlyingMonster || pOtherCollider->GetObjName() == L"박스")
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetOwner()->GetLayer() == Layer::FlyingMonster || pOtherCollider->GetOwner()->GetLayer() == Layer::Boss
+		|| pOtherCollider->GetObjName() == L"박스")
 	{
 		pOtherCollider->GetOwner()->SetHp(-5);
 		CDamageNumber* pNum = new CDamageNumber;

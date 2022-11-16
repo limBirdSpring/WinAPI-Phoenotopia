@@ -59,7 +59,8 @@ void  CCritical::Release()
 
 void  CCritical::OnCollisionEnter(CCollider* pOtherCollider)
 {
-	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetOwner()->GetLayer() == Layer::FlyingMonster || pOtherCollider->GetObjName() == L"박스")
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetOwner()->GetLayer() == Layer::FlyingMonster || pOtherCollider->GetOwner()->GetLayer() == Layer::Boss
+		|| pOtherCollider->GetObjName() == L"박스")
 	{
 		pOtherCollider->GetOwner()->SetHp(-9);
 
