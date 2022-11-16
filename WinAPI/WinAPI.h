@@ -126,3 +126,15 @@ enum class MonsterBehavior
 
 	Size
 };
+
+enum class BossBehavior
+{
+	Appear,
+	Idle,
+	Move,
+	Attack,
+	Attack2,
+	Dead,
+
+	Size
+};

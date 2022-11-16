@@ -145,6 +145,14 @@
     <ClInclude Include="CAttack2.h" />
     <ClInclude Include="CBee.h" />
     <ClInclude Include="CBigBox.h" />
+    <ClInclude Include="CBoss.h" />
+    <ClInclude Include="CBossAppear.h" />
+    <ClInclude Include="CBossAttack.h" />
+    <ClInclude Include="CBossAttack2.h" />
+    <ClInclude Include="CBossDead.h" />
+    <ClInclude Include="CBossIdle.h" />
+    <ClInclude Include="CBossMove.h" />
+    <ClInclude Include="CBossState.h" />
     <ClInclude Include="CBox.h" />
     <ClInclude Include="CButton.h" />
     <ClInclude Include="CBuyEvent.h" />
@@ -165,6 +173,7 @@
     <ClInclude Include="CFrontImage.h" />
     <ClInclude Include="CGameManager.h" />
     <ClInclude Include="CGameObject.h" />
+    <ClInclude Include="CGhost.h" />
     <ClInclude Include="CGravity.h" />
     <ClInclude Include="CGroundTile.h" />
     <ClInclude Include="CImageBox.h" />
@@ -261,6 +270,14 @@
     <ClCompile Include="CAttack2.cpp" />
     <ClCompile Include="CBee.cpp" />
     <ClCompile Include="CBigBox.cpp" />
+    <ClCompile Include="CBoss.cpp" />
+    <ClCompile Include="CBossAppear.cpp" />
+    <ClCompile Include="CBossAttack.cpp" />
+    <ClCompile Include="CBossAttack2.cpp" />
+    <ClCompile Include="CBossDead.cpp" />
+    <ClCompile Include="CBossIdle.cpp" />
+    <ClCompile Include="CBossMove.cpp" />
+    <ClCompile Include="CBossState.cpp" />
     <ClCompile Include="CBox.cpp" />
     <ClCompile Include="CButton.cpp" />
     <ClCompile Include="CBuyEvent.cpp" />
@@ -281,6 +298,7 @@
     <ClCompile Include="CFrontImage.cpp" />
     <ClCompile Include="CGameManager.cpp" />
     <ClCompile Include="CGameObject.cpp" />
+    <ClCompile Include="CGhost.cpp" />
     <ClCompile Include="CGravity.cpp" />
     <ClCompile Include="CGroundTile.cpp" />
     <ClCompile Include="CImageBox.cpp" />

@@ -76,6 +76,9 @@
     <Filter Include="GameObject\UI">
       <UniqueIdentifier>{0dc48191-2c69-4833-b3c2-b6191bca4248}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Boss\BossState">
+      <UniqueIdentifier>{e236cebb-4fe2-479d-871c-94ee5a8f5797}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -420,6 +423,33 @@
     <ClInclude Include="CImageBox.h">
       <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
+    <ClInclude Include="CBoss.h">
+      <Filter>GameObject\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="CBossState.h">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClInclude>
+    <ClInclude Include="CGhost.h">
+      <Filter>GameObject\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="CBossAttack.h">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClInclude>
+    <ClInclude Include="CBossMove.h">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClInclude>
+    <ClInclude Include="CBossAttack2.h">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClInclude>
+    <ClInclude Include="CBossIdle.h">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClInclude>
+    <ClInclude Include="CBossAppear.h">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClInclude>
+    <ClInclude Include="CBossDead.h">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -742,6 +772,33 @@
     </ClCompile>
     <ClCompile Include="CImageBox.cpp">
       <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClCompile>
+    <ClCompile Include="CBoss.cpp">
+      <Filter>GameObject\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossState.cpp">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClCompile>
+    <ClCompile Include="CGhost.cpp">
+      <Filter>GameObject\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossMove.cpp">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossIdle.cpp">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossAttack2.cpp">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossAttack.cpp">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossAppear.cpp">
+      <Filter>GameObject\Boss\BossState</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossDead.cpp">
+      <Filter>GameObject\Boss\BossState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
