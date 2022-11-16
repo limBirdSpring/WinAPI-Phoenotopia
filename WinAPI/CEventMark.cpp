@@ -66,17 +66,13 @@ void CEventMark::OnCollisionStay(CCollider* pOtherCollider)
 		
 		if (BUTTONDOWN('X'))
 		{
-			talk++;
+			
 			pPlayer->m_behavior = Behavior::Talk;
 			GAME->SetTalk(true);
+			talk++;
 			Talk();
 
-			if (pTalkBox == nullptr)
-			{
-				pTalkBox = new CTalkBox;
-				pTalkBox->SetPos(this->GetPos());
-				ADDOBJECT(pTalkBox);
-			}
+			
 		}
 	}
 }
@@ -94,8 +90,13 @@ void CEventMark::Talk()
 		m_strDialogue = L"";
 		break;
 	case 1:
+	{
 		m_strDialogue = m_strSetDialogue;
+		pTalkBox = new CTalkBox;
+		pTalkBox->SetPos(this->GetPos());
+		ADDOBJECT(pTalkBox);
 		break;
+	}
 	
 	default:
 		m_strDialogue = L"";

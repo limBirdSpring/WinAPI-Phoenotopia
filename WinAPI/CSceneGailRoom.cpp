@@ -23,6 +23,7 @@
 #include "CEventMark.h"
 #include "CStatue.h"
 #include "CImageEvent.h"
+#include "CFrontImage.h"
 
 CSceneGailRoom::CSceneGailRoom()
 {
@@ -46,12 +47,20 @@ void CSceneGailRoom::Init()
 	LoadMiddleground(m_pImage);
 
 	m_pImage = RESOURCE->LoadImg(L"Cloud", L"Image\\Cloud.png");
+
+	m_pImage = RESOURCE->LoadImg(L"InDoor", L"Image\\InDoor.png");
+	CFrontImage* pInDoor = new CFrontImage;
+	pInDoor->SetImage(m_pImage);
+	pInDoor->SetPos(289, 380);
+	AddGameObject(pInDoor);
 	LoadCloud(m_pImage);
 
 	m_pImage = RESOURCE->LoadImg(L"GailRoom", L"Image\\GailRoom.png");
 	CImageObject* pForest = new CImageObject;
 	pForest->SetImage(m_pImage);
 	AddGameObject(pForest);
+
+	
 
 	CDoor* pDoor = new CDoor;
 	pDoor->SetPos(306, 400);
@@ -130,7 +139,7 @@ void CSceneGailRoom::Update()
 
 void CSceneGailRoom::Render()
 {
-	RENDER->Image(m_pDoor, 289, 380, 289 + m_pDoor->GetWidth(), 380 + m_pDoor->GetHeight());
+	
 	RENDER->Text(L"기본조작 : 방향키  / 물체 상호작용 : X", 280, 217, 500, 244);
 }
 

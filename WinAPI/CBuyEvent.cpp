@@ -74,13 +74,6 @@ void CBuyEvent::OnCollisionStay(CCollider* pOtherCollider)
 			GAME->SetTalk(true);
 			pPlayer->m_behavior = Behavior::Talk;
 			Talk();
-
-			if (pTalkBox == nullptr)
-			{
-				pTalkBox = new CTalkBox;
-				pTalkBox->SetPos(this->GetPos());
-				ADDOBJECT(pTalkBox);
-			}
 		}
 	}
 }
@@ -99,10 +92,16 @@ void CBuyEvent::Talk()
 		m_strDialogue = L"";
 		break;
 	case 1:
+	{
+		pTalkBox = new CTalkBox;
+		pTalkBox->SetPos(this->GetPos());
+		ADDOBJECT(pTalkBox);
+
 		m_strDialogue = to_wstring(item.price) + L"G에 " + item.name + L"을(를) 살까?  \n\n 네. \n 아니요.";
 		m_choose = 2;
 		m_choosing = 1;
 		break;
+	}
 	case 2:
 	{
 		if (m_choosing == 1)
