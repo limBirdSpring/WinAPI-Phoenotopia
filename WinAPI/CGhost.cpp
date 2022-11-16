@@ -21,8 +21,9 @@ CGhost::CGhost()
 {
 
 	m_vecScale = Vector(20, 15);
-	m_layer = Layer::Monster;
-	m_fSpeed = 80;
+	m_layer = Layer::Boss;
+	m_fSpeed = 120;
+	m_vecMoveDir.x = 0;
 	m_damageHp = 4;
 	m_hp = 15;
 }
@@ -36,25 +37,41 @@ void CGhost::Init()
 	srand(time(NULL));
 	m_pAnimator = new CAnimator;
 
-	m_pImage = RESOURCE->LoadImg(L"Frog_Idle", L"Image\\Frog_Idle.png");
+	m_pImage = RESOURCE->LoadImg(L"Boss_Idle", L"Image\\Boss_Idle.png");
 
-	m_pAnimator->CreateAnimation(L"Frog_Idle_Right", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 4);
-	m_pAnimator->CreateAnimation(L"Frog_Idle_Left", m_pImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.2f, 4);
+	m_pAnimator->CreateAnimation(L"Boss_Idle_Right", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 4);
+	m_pAnimator->CreateAnimation(L"Boss_Idle_Left", m_pImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.2f, 4);
 
-	m_pImage = RESOURCE->LoadImg(L"Frog_Jump", L"Image\\Frog_Jump.png");
+	m_pImage = RESOURCE->LoadImg(L"Boss_Move", L"Image\\Boss_Move.png");
 
-	m_pAnimator->CreateAnimation(L"Frog_Jump_Right", m_pImage, Vector(150, 0), Vector(100, 100), Vector(150, 0), 0.3f, 2);
-	m_pAnimator->CreateAnimation(L"Frog_Jump_Left", m_pImage, Vector(150, 150), Vector(100, 100), Vector(150, 0), 0.3f, 2);
+	m_pAnimator->CreateAnimation(L"Boss_Move_Left", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 7);
+	m_pAnimator->CreateAnimation(L"Boss_Move_Right", m_pImage, Vector(900, 150), Vector(100, 100), Vector(-150, 0), 0.2f, 7);
 
-	m_pImage = RESOURCE->LoadImg(L"Frog_Damage", L"Image\\Frog_Damage.png");
+	m_pImage = RESOURCE->LoadImg(L"Boss_Dead", L"Image\\Boss_Dead.png");
 
-	m_pAnimator->CreateAnimation(L"Frog_Damage_Right", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.3f, 2, false);
-	m_pAnimator->CreateAnimation(L"Frog_Damage_Left", m_pImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.3f, 2, false);
+	m_pAnimator->CreateAnimation(L"Boss_Dead_Left", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 9, false);
+	m_pAnimator->CreateAnimation(L"Boss_Dead_Right", m_pImage, Vector(1200, 150), Vector(100, 100), Vector(-150, 0), 0.2f, 9, false);
+
+	m_pImage = RESOURCE->LoadImg(L"Boss_Appear", L"Image\\Boss_Appear.png");
+
+	m_pAnimator->CreateAnimation(L"Boss_Appear_Left", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 10, false);
+	m_pAnimator->CreateAnimation(L"Boss_Appear_Right", m_pImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 10, false);
+
+	m_pImage = RESOURCE->LoadImg(L"Boss_Attack", L"Image\\Boss_Attack.png");
+
+	m_pAnimator->CreateAnimation(L"Boss_Attack_Left", m_pImage, Vector(0, 0), Vector(200, 200), Vector(300, 0), 0.2f, 9, false);
+	m_pAnimator->CreateAnimation(L"Boss_Attack_Right", m_pImage, Vector(2400, 300), Vector(200, 200), Vector(-300, 0), 0.2f, 9, false);
+
+	m_pImage = RESOURCE->LoadImg(L"Boss_Attack2", L"Image\\Boss_Attack2.png");
+
+	m_pAnimator->CreateAnimation(L"Boss_Attack2_Left", m_pImage, Vector(0, 0), Vector(400, 200), Vector(614, 0), 0.2f, 15, false);
+	m_pAnimator->CreateAnimation(L"Boss_Attack2_Right", m_pImage, Vector(8600, 300), Vector(400, 200), Vector(-614, 0), 0.2f, 15, false);
+
 
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 8));
 
-	m_pAnimator->Play(L"Frog_Idle_Right", false);
-	AddComponent(m_pAnimator);
+	m_pAnimator->Play(L"Boss_Appear_Left", false);
+	AddComponent(m_pAnimator); 
 	AddGravity(1);
 
 	m_mapBossState.insert(make_pair(BossBehavior::Appear, new CBossAppear(this)));
@@ -65,55 +82,14 @@ void CGhost::Init()
 	m_mapBossState.insert(make_pair(BossBehavior::Dead, new CBossDead(this)));
 
 
-	m_behavior = MonsterBehavior::Idle;
+	m_behavior = BossBehavior::Appear;
 }
 
 void CGhost::Update()
 {
-	if (m_hp <= 0)
-	{
-		if (m_behavior == MonsterBehavior::Idle)
-		{
-			if (rand() % 3 == 0)
-			{
-				CItem* item = new CItem;
-				item->SetPos(this->GetPos());
-				item->SetItem(L"개구리 뒷다리");
-				ADDOBJECT(item);
-			}
-			else if (rand() % 2 == 0)
-			{
-				CCoin* coin = new CCoin;
-				coin->SetPos(this->GetPos());
-				coin->SetDir(Vector(rand() % 3 - 1, 0));
-				coin->SetPrice(rand() % 30 + 10);
-				ADDOBJECT(coin);
-			}
-			DELETEOBJECT(this);
-		}
-	}
-
-	if (m_vecPos.x > m_endX)
-	{
-		m_vecPos.x--;
-		m_behavior = MonsterBehavior::Idle;
-	}
-	else if (m_vecPos.x < m_startX)
-	{
-		m_vecPos.x++;
-		m_behavior = MonsterBehavior::Idle;
-	}
-
-
 	m_mapBossState.find(m_behavior)->second->Update();
-
-
-	if (m_behavior == MonsterBehavior::Idle && GAME->GetPlayerPos().x > m_vecPos.x - 200 && GAME->GetPlayerPos().x < m_vecPos.x + 200)
-	{
-		if (rand() % 500 == 1)m_behavior = MonsterBehavior::Jump;
-	}
-
 	AnimatorUpdate();
+
 }
 
 void CGhost::Render()
@@ -133,7 +109,7 @@ void CGhost::OnCollisionEnter(CCollider* pOtherCollider)
 			m_vecMoveDir.x = -1;
 		else
 			m_vecMoveDir.x = 1;
-		m_behavior = MonsterBehavior::Damage;
+	
 	}
 	else if (pOtherCollider->GetObjName() == L"플레이어")
 	{
@@ -159,18 +135,22 @@ void CGhost::OnCollisionExit(CCollider* pOtherCollider)
 
 void CGhost::AnimatorUpdate()
 {
-	if (m_vecMoveDir.Length() > 0 && m_behavior != MonsterBehavior::Damage)
+	if (m_vecMoveDir.Length() > 0)
 		m_vecLookDir = m_vecMoveDir;
-
-	wstring str = L"Frog";
+	
+	wstring str = L"Boss";
 
 	switch (m_behavior)
 	{
-	case MonsterBehavior::Follow: str += L"_Jump";
+	case BossBehavior::Move: str += L"_Move";
 		break;
-	case MonsterBehavior::Jump: str += L"_Jump";
+	case BossBehavior::Attack: str += L"_Attack";
 		break;
-	case MonsterBehavior::Damage: str += L"_Damage";
+	case BossBehavior::Attack2: str += L"_Attack2";
+		break;
+	case BossBehavior::Appear: str += L"_Appear";
+		break;
+	case BossBehavior::Dead: str += L"_Dead";
 		break;
 	default: str += L"_Idle";
 	}

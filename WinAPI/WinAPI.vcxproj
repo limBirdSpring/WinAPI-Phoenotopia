@@ -152,6 +152,7 @@
     <ClInclude Include="CBossDead.h" />
     <ClInclude Include="CBossIdle.h" />
     <ClInclude Include="CBossMove.h" />
+    <ClInclude Include="CBossSkill.h" />
     <ClInclude Include="CBossState.h" />
     <ClInclude Include="CBox.h" />
     <ClInclude Include="CButton.h" />
@@ -277,6 +278,7 @@
     <ClCompile Include="CBossDead.cpp" />
     <ClCompile Include="CBossIdle.cpp" />
     <ClCompile Include="CBossMove.cpp" />
+    <ClCompile Include="CBossSkill.cpp" />
     <ClCompile Include="CBossState.cpp" />
     <ClCompile Include="CBox.cpp" />
     <ClCompile Include="CButton.cpp" />

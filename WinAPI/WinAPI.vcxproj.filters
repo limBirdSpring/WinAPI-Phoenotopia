@@ -450,6 +450,9 @@
     <ClInclude Include="CBossDead.h">
       <Filter>GameObject\Boss\BossState</Filter>
     </ClInclude>
+    <ClInclude Include="CBossSkill.h">
+      <Filter>GameObject\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -799,6 +802,9 @@
     </ClCompile>
     <ClCompile Include="CBossDead.cpp">
       <Filter>GameObject\Boss\BossState</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossSkill.cpp">
+      <Filter>GameObject\Boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
