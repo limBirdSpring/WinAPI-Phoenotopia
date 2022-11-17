@@ -10,7 +10,7 @@ public:
 
 private:
 
-
+	int quest;
 
 private:
 	void Init() override;

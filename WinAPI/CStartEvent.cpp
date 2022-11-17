@@ -28,7 +28,7 @@ void CStartEvent::Update()
 	}
 
 	
-	else if (coolTime > 3 && cake == false)
+	else if (coolTime > 2 && cake == false)
 	{
 		cake = true;
 		pCake = new CImageBox;
@@ -37,7 +37,7 @@ void CStartEvent::Update()
 		ADDOBJECT(pCake);
 	}
 
-	else if (coolTime > 5)
+	else if (coolTime > 4)
 	{
 		DELETEOBJECT(pCake);
 		GAME->SetTalk(false);
