@@ -32,6 +32,9 @@
 #include "CStateFall.h"
 #include "CStateTalk.h"
 #include "CStatePush.h"
+#include "CStateDead.h"
+#include "CStateWonder.h"
+#include "CStateBored.h"
 
 CPlayer::CPlayer()
 {
@@ -53,6 +56,7 @@ CPlayer::CPlayer()
 	m_pDamageImage = nullptr;
 	m_pPushImage = nullptr;
 	m_pDeadImage = nullptr;
+	m_pExpresionImage = nullptr;
 
 	isThingCollision = false;
 
@@ -82,6 +86,7 @@ void CPlayer::Init()
 	m_pAttackReadyImage = RESOURCE->LoadImg(L"Gail_AttackReady", L"Image\\Gail_AttackReady.png");
 	m_pDamageImage = RESOURCE->LoadImg(L"Gail_Damage", L"Image\\Gail_Damage.png");
 	m_pPushImage = RESOURCE->LoadImg(L"Gail_Push", L"Image\\Gail_Push.png");
+	m_pDeadImage = RESOURCE->LoadImg(L"Gail_Dead", L"Image\\Gail_Dead.png");
 
 	m_pAnimator = new CAnimator;
 	m_pAnimator->CreateAnimation(L"Gail_Standing_Right", m_pIdleImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 6);
@@ -111,6 +116,13 @@ void CPlayer::Init()
 	m_pAnimator->CreateAnimation(L"Gail_CriticalReady_Left", m_pAttackReadyImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.1f, 3);
 	m_pAnimator->CreateAnimation(L"Gail_Damage_Right", m_pDamageImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.05f, 4, false);
 	m_pAnimator->CreateAnimation(L"Gail_Damage_Left", m_pDamageImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.05f, 4, false);
+	m_pAnimator->CreateAnimation(L"Gail_Dead_Right", m_pDeadImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 6, false);
+	m_pAnimator->CreateAnimation(L"Gail_Dead_Left", m_pDeadImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 6, false);
+
+	m_pAnimator->CreateAnimation(L"Gail_Bored_Right", m_pExpresionImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 2);
+	m_pAnimator->CreateAnimation(L"Gail_Bored_Left", m_pExpresionImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.2f, 2);
+	m_pAnimator->CreateAnimation(L"Gail_Wonder_Right", m_pExpresionImage, Vector(300, 0), Vector(100, 100), Vector(150, 0), 0.2f, 2);
+	m_pAnimator->CreateAnimation(L"Gail_Wonder_Left", m_pExpresionImage, Vector(300, 150), Vector(100, 100), Vector(150, 0), 0.2f, 2);
 
 
 #pragma endregion ¿ÃπÃ¡ˆ
@@ -133,6 +145,9 @@ void CPlayer::Init()
 	m_mapPlayerState.insert(make_pair(Behavior::Fall, new CStateFall(this)));
 	m_mapPlayerState.insert(make_pair(Behavior::Push, new CStatePush(this)));
 	m_mapPlayerState.insert(make_pair(Behavior::Talk, new CStateTalk(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Dead, new CStateDead(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Bored, new CStateBored(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Wonder, new CStateWonder(this)));
 
 
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 4));
@@ -196,6 +211,8 @@ void CPlayer::AnimatorUpdate()
 	case Behavior::Damage: str += L"_Damage";
 		break;
 	case Behavior::Push: str += L"_Push";
+		break;
+	case Behavior::Dead: str += L"_Dead";
 		break;
 	default: str += L"_Standing";
 	}

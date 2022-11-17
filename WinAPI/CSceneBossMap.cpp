@@ -31,6 +31,8 @@
 #include "CStatue.h"
 #include "CPillarDoor.h"
 #include "CFrontImage.h"
+#include "CBossAppearBlock.h"
+#include "CGhost.h"
 
 CSceneBossMap::CSceneBossMap()
 {
@@ -82,6 +84,14 @@ void CSceneBossMap::Init()
 	pForestDoor->SetPlayerStartDir(Vector(-1, 0));
 	AddGameObject(pForestDoor);
 
+	CWarp* pPrinceDoor = new CWarp;
+	pPrinceDoor->SetPos(1021, 500);
+	pPrinceDoor->SetScale(10, 1000);
+	pPrinceDoor->SetScene(GroupScene::PrinceForest);
+	pPrinceDoor->SetPlayerStartPos(Vector(72, 488));
+	pPrinceDoor->SetPlayerStartDir(Vector(1, 0));
+	AddGameObject(pPrinceDoor);
+
 
 	CStatue* pStatue = new CStatue;
 	pStatue->SetPos(182, 483);
@@ -100,6 +110,26 @@ void CSceneBossMap::Init()
 	pPillarDoor2->SetPos(300, 466);
 	pPillarDoor2->pStatue = pStatue;
 	AddGameObject(pPillarDoor2);
+
+	CStatue* pStatue3 = new CStatue;
+	pStatue3->SetPos(851, 483);
+	AddGameObject(pStatue3);
+
+	CPillarDoor* pPillarDoor3 = new CPillarDoor;
+	pPillarDoor3->SetPos(891, 466);
+	pPillarDoor3->pStatue = pStatue3;
+	AddGameObject(pPillarDoor3);
+
+	CGhost* pGhost = new CGhost;
+	pGhost->SetPos(700,477);
+
+	CBossAppearBlock* pBlock = new CBossAppearBlock(pPlayer);
+	pBlock->pBoss = pGhost;
+	pBlock->pDoor = pPillarDoor2;
+	pBlock->SetPos(574,488);
+	pBlock->SetScale(10, 500);
+	AddGameObject(pBlock);
+
 
 }
 
@@ -127,18 +157,18 @@ void CSceneBossMap::Enter()
 
 void CSceneBossMap::Update()
 {
-	if (BUTTONDOWN(VK_ESCAPE))
-	{
-		GAME->SetCurScene(GroupScene::BossMap);
-		GAME->SetPlayerStartPos(pPlayer->GetPos());
-		CHANGESCENE(GroupScene::SetUp);
-	}
 
 	if (BUTTONDOWN('I'))
 	{
 		GAME->SetCurScene(GroupScene::BossMap);
 		GAME->SetPlayerStartPos(pPlayer->GetPos());
 		CHANGESCENE(GroupScene::Inventory);
+	}
+
+	if (GAME->GetHp() <= 0)
+	{
+		CAMERA->FadeOut(0.25f);
+		DELAYCHANGESCENE(GroupScene::Dead, 1.f);
 	}
 
 }

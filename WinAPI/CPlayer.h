@@ -70,6 +70,7 @@ private:
 	CImage* m_pDamageImage;
 	CImage* m_pPushImage;
 	CImage* m_pDeadImage;
+	CImage* m_pExpresionImage;
 
 
 	bool isThingCollision;

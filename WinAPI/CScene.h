@@ -68,7 +68,11 @@ protected :
 	CImageObject* pBImageMiddle;
 
 	CImage* pCloudImage;
-	vector<CImageObject*> pCloud;
+	CImageObject* pCloudPrev;
+	CImageObject* pCloudNext;
+	CImageObject* pCloudMiddle;
+
+
 
 public :
 	void LoadMiddleground(CImage* img); //중간 배경 업로드

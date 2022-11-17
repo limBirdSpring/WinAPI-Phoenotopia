@@ -5,14 +5,6 @@ class CCore;
 class CImage;
 
 
-enum ItemType
-{
-	Food,
-	Weapon,
-	Quest,
-
-	Size
-};
 
 struct Item
 {
@@ -26,6 +18,7 @@ struct Item
 };
 
 
+
 class CGameManager : public SingleTon<CGameManager>
 {
 	friend CCore;
@@ -36,6 +29,8 @@ public:
 	virtual ~CGameManager();
 
 private:
+	MainQuest mainQuest;
+
 	bool m_bTalk;
 
 	GroupScene m_curScene;
@@ -100,6 +95,8 @@ public :
 	bool IsItemInvenItem(const wstring name);
 	Item FindItem(const wstring name);
 	bool isItemSetting(const wstring name);
+
+	void ResetGame();
 
 //UI¿ÃπÃ¡ˆ
 private :

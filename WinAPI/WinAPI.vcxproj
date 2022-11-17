@@ -147,6 +147,7 @@
     <ClInclude Include="CBigBox.h" />
     <ClInclude Include="CBoss.h" />
     <ClInclude Include="CBossAppear.h" />
+    <ClInclude Include="CBossAppearBlock.h" />
     <ClInclude Include="CBossAttack.h" />
     <ClInclude Include="CBossAttack2.h" />
     <ClInclude Include="CBossDead.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="CCritical.h" />
     <ClInclude Include="CDamageNumber.h" />
     <ClInclude Include="CDoor.h" />
+    <ClInclude Include="CEnding.h" />
     <ClInclude Include="CEventManager.h" />
     <ClInclude Include="CEventMark.h" />
     <ClInclude Include="CFrog.h" />
@@ -200,7 +202,9 @@
     <ClInclude Include="CPillarDoor.h" />
     <ClInclude Include="CPinkSlug.h" />
     <ClInclude Include="CPlayerState.h" />
+    <ClInclude Include="CPrinceForest.h" />
     <ClInclude Include="CSceneBossMap.h" />
+    <ClInclude Include="CSceneDead.h" />
     <ClInclude Include="CSceneField.h" />
     <ClInclude Include="CSceneForest.h" />
     <ClInclude Include="CSceneGailRoom.h" />
@@ -229,9 +233,11 @@
     <ClInclude Include="CStateAttack.h" />
     <ClInclude Include="CStateAttack2.h" />
     <ClInclude Include="CStateAttackReady.h" />
+    <ClInclude Include="CStateBored.h" />
     <ClInclude Include="CStateCritical.h" />
     <ClInclude Include="CStateCriticalReady.h" />
     <ClInclude Include="CStateDamage.h" />
+    <ClInclude Include="CStateDead.h" />
     <ClInclude Include="CStateDown.h" />
     <ClInclude Include="CStateDownJump.h" />
     <ClInclude Include="CStateFall.h" />
@@ -242,6 +248,7 @@
     <ClInclude Include="CStateWalk.h" />
     <ClInclude Include="CMonsterFollow.h" />
     <ClInclude Include="CStateIdle.h" />
+    <ClInclude Include="CStateWonder.h" />
     <ClInclude Include="CStatue.h" />
     <ClInclude Include="CTalkBox.h" />
     <ClInclude Include="CTeacher.h" />
@@ -273,6 +280,7 @@
     <ClCompile Include="CBigBox.cpp" />
     <ClCompile Include="CBoss.cpp" />
     <ClCompile Include="CBossAppear.cpp" />
+    <ClCompile Include="CBossAppearBlock.cpp" />
     <ClCompile Include="CBossAttack.cpp" />
     <ClCompile Include="CBossAttack2.cpp" />
     <ClCompile Include="CBossDead.cpp" />
@@ -294,6 +302,7 @@
     <ClCompile Include="CCritical.cpp" />
     <ClCompile Include="CDamageNumber.cpp" />
     <ClCompile Include="CDoor.cpp" />
+    <ClCompile Include="CEnding.cpp" />
     <ClCompile Include="CEventManager.cpp" />
     <ClCompile Include="CEventMark.cpp" />
     <ClCompile Include="CFrog.cpp" />
@@ -326,7 +335,9 @@
     <ClCompile Include="CPillarDoor.cpp" />
     <ClCompile Include="CPinkSlug.cpp" />
     <ClCompile Include="CPlayerState.cpp" />
+    <ClCompile Include="CPrinceForest.cpp" />
     <ClCompile Include="CSceneBossMap.cpp" />
+    <ClCompile Include="CSceneDead.cpp" />
     <ClCompile Include="CSceneField.cpp" />
     <ClCompile Include="CSceneForest.cpp" />
     <ClCompile Include="CSceneGailRoom.cpp" />
@@ -355,9 +366,11 @@
     <ClCompile Include="CStateAttack.cpp" />
     <ClCompile Include="CStateAttack2.cpp" />
     <ClCompile Include="CStateAttackReady.cpp" />
+    <ClCompile Include="CStateBored.cpp" />
     <ClCompile Include="CStateCritical.cpp" />
     <ClCompile Include="CStateCriticalReady.cpp" />
     <ClCompile Include="CStateDamage.cpp" />
+    <ClCompile Include="CStateDead.cpp" />
     <ClCompile Include="CStateDown.cpp" />
     <ClCompile Include="CStateDownJump.cpp" />
     <ClCompile Include="CStateFall.cpp" />
@@ -368,6 +381,7 @@
     <ClCompile Include="CStateWalk.cpp" />
     <ClCompile Include="CMonsterFollow.cpp" />
     <ClCompile Include="CStateIdle.cpp" />
+    <ClCompile Include="CStateWonder.cpp" />
     <ClCompile Include="CStatue.cpp" />
     <ClCompile Include="CTalkBox.cpp" />
     <ClCompile Include="CTeacher.cpp" />

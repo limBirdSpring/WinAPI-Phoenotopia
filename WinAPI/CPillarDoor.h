@@ -16,6 +16,7 @@ public:
 public :
 	CMarble* pMarble = nullptr;
 	CStatue* pStatue = nullptr;
+	bool isClosed = false;
 private:
 	float closeY;
 	float openY;

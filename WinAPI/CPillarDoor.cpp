@@ -61,6 +61,19 @@ void CPillarDoor::Update()
 				this->m_vecPos.y -= DT * m_fSpeed;
 		}
 	}
+	else
+	{
+		if (isClosed == true)
+		{
+			if (m_vecPos.y < closeY)
+				this->m_vecPos.y += DT * m_fSpeed;
+		}
+		else
+		{
+			if (m_vecPos.y > openY)
+				this->m_vecPos.y -= DT * m_fSpeed;
+		}
+	}
 }
 
 void CPillarDoor::Render()

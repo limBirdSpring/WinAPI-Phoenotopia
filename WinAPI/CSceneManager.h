@@ -29,6 +29,7 @@ private:
 public:
 	CScene* GetCurScene();					// 현재 게임씬 반환
 	void ChangeScene(GroupScene scene);		// 게임씬 변경
+	void ResetScene();
 };
 
 #define SCENE				CSceneManager::GetInstance()

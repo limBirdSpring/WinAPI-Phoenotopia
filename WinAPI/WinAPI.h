@@ -43,9 +43,15 @@ enum class GroupScene
 
 	Field,
 
+	PrinceForest,
+
 	Inventory,
 
 	SetUp,
+
+	Ending,
+
+	Dead,
 
 	Size,
 };
@@ -110,7 +116,10 @@ enum class Behavior
 	Critical,
 	Damage,
 	Talk,
+	Wonder,
+	Bored,
 	Push,
+	Dead,
 
 	Size
 };
@@ -137,6 +146,31 @@ enum class BossBehavior
 	Attack,
 	Attack2,
 	Dead,
+
+	Size
+};
+
+
+//========================================
+//##				±‚≈∏ 				##
+//========================================
+
+enum class MainQuest
+{
+	Start,
+
+	VisitStore,
+	FindBoard,
+	LearnAttack,
+
+	Size
+};
+
+enum class ItemType
+{
+	Food,
+	Weapon,
+	Quest,
 
 	Size
 };

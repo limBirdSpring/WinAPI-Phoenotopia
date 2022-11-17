@@ -167,6 +167,12 @@ void CSceneField::Update()
 		CHANGESCENE(GroupScene::Inventory);
 	}
 
+	if (GAME->GetHp() <= 0)
+	{
+		CAMERA->FadeOut(0.25f);
+		DELAYCHANGESCENE(GroupScene::Dead, 1.f);
+	}
+
 }
 
 void CSceneField::Render()

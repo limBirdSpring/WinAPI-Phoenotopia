@@ -13,6 +13,9 @@
 #include "CSceneField.h"
 #include "CSceneBossMap.h"
 #include "CSetUp.h"
+#include "CPrinceForest.h"
+#include "CSceneDead.h"
+#include "CEnding.h"
 
 CSceneManager::CSceneManager()
 {
@@ -45,10 +48,17 @@ void CSceneManager::Init()
 	m_mapScene.insert(make_pair(GroupScene::Field, pField));
 	CScene* pBossMap = new CSceneBossMap();
 	m_mapScene.insert(make_pair(GroupScene::BossMap, pBossMap));
+	CScene* pPrinceForest = new CPrinceForest();
+	m_mapScene.insert(make_pair(GroupScene::PrinceForest, pPrinceForest));
 	CScene* pInventory = new CInventory();
 	m_mapScene.insert(make_pair(GroupScene::Inventory, pInventory));
 	CScene* pCSetUp = new CSetUp();
 	m_mapScene.insert(make_pair(GroupScene::SetUp, pCSetUp));
+	CScene* pCEnding = new CEnding();
+	m_mapScene.insert(make_pair(GroupScene::Ending, pCEnding));
+	CScene* pCSceneDead = new CSceneDead();
+	m_mapScene.insert(make_pair(GroupScene::Dead, pCSceneDead));
+
 
 	// 게임씬 자료구조를 순회하며 씬을 초기화
 	for (pair<GroupScene, CScene*> scene : m_mapScene)
@@ -91,6 +101,20 @@ void CSceneManager::ChangeScene(GroupScene scene)
 	m_pCurScene->SceneExit();
 	m_pCurScene = m_mapScene[scene];
 	m_pCurScene->SceneEnter();
+}
+
+void CSceneManager::ResetScene()
+{
+	map<GroupScene, CScene*>::iterator scene = m_mapScene.begin();
+
+
+	for (;scene != --m_mapScene.end();scene++)
+	{
+		(*scene).second->SceneRelease();
+		(*scene).second->SceneInit();
+	}
+
+
 }
 
 CScene* CSceneManager::GetCurScene()

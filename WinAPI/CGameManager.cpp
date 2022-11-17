@@ -25,6 +25,8 @@ CGameManager::CGameManager()
 
 	 UIRender = false;
 
+	 mainQuest = MainQuest::Start;
+
 	 m_vecPlayerPos = {0,0};
 }
 CGameManager::~CGameManager()
@@ -154,6 +156,20 @@ bool CGameManager::isItemSetting(const wstring name)
 		}
 	}
 	return false;
+}
+
+void CGameManager::ResetGame()
+{
+	gold = 100;
+	hp = 15;
+
+	m_vecStartPos = Vector(0,0); //맵으로 워프했을 경우 플레이어의 초기 위치 
+	m_vecStartDir = Vector(0, 0); //맵으로 워프했을 경우 플레이어의 초기 방향
+
+	m_vInventoryItem.clear(); //인벤토리에 들어있는 아이템
+	m_vSetItem.clear(); //착용한 아이템
+
+	mainQuest = MainQuest::Start;
 }
 
 void CGameManager::Init()

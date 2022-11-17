@@ -135,9 +135,7 @@ void CSceneStage01::Init()
 	pPillarDoor->pMarble = pMarble;
 	AddGameObject(pPillarDoor);
 	
-	CGhost* pGhost = new CGhost;
-	pGhost->SetPos(1600, 470);
-	AddGameObject(pGhost);
+
 
 
 }

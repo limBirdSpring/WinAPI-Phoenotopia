@@ -453,6 +453,27 @@
     <ClInclude Include="CBossSkill.h">
       <Filter>GameObject\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="CBossAppearBlock.h">
+      <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClInclude>
+    <ClInclude Include="CPrinceForest.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneDead.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CStateDead.h">
+      <Filter>GameObject\Player\PlayerState</Filter>
+    </ClInclude>
+    <ClInclude Include="CEnding.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CStateWonder.h">
+      <Filter>GameObject\Player\PlayerState</Filter>
+    </ClInclude>
+    <ClInclude Include="CStateBored.h">
+      <Filter>GameObject\Player\PlayerState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -805,6 +826,27 @@
     </ClCompile>
     <ClCompile Include="CBossSkill.cpp">
       <Filter>GameObject\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossAppearBlock.cpp">
+      <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClCompile>
+    <ClCompile Include="CPrinceForest.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneDead.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CStateDead.cpp">
+      <Filter>GameObject\Player\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="CEnding.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CStateBored.cpp">
+      <Filter>GameObject\Player\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="CStateWonder.cpp">
+      <Filter>GameObject\Player\PlayerState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

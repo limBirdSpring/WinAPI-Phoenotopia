@@ -25,7 +25,7 @@ CGhost::CGhost()
 	m_layer = Layer::Boss;
 	m_fSpeed = 120;
 	m_vecMoveDir.x = 0;
-	m_hp = 80;
+	m_hp = 100;
 }
 
 CGhost::~CGhost()
