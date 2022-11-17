@@ -87,6 +87,7 @@ void CPlayer::Init()
 	m_pDamageImage = RESOURCE->LoadImg(L"Gail_Damage", L"Image\\Gail_Damage.png");
 	m_pPushImage = RESOURCE->LoadImg(L"Gail_Push", L"Image\\Gail_Push.png");
 	m_pDeadImage = RESOURCE->LoadImg(L"Gail_Dead", L"Image\\Gail_Dead.png");
+	m_pExpresionImage = RESOURCE->LoadImg(L"Gail_Expression", L"Image\\Gail_Expression.png");
 
 	m_pAnimator = new CAnimator;
 	m_pAnimator->CreateAnimation(L"Gail_Standing_Right", m_pIdleImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 6);
@@ -213,6 +214,10 @@ void CPlayer::AnimatorUpdate()
 	case Behavior::Push: str += L"_Push";
 		break;
 	case Behavior::Dead: str += L"_Dead";
+		break;
+	case Behavior::Bored: str += L"_Bored";
+		break;
+	case Behavior::Wonder: str += L"_Wonder";
 		break;
 	default: str += L"_Standing";
 	}

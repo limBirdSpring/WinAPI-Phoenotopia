@@ -4,6 +4,7 @@
 
 CStateBored::CStateBored(CPlayer* player)
 {
+	pPlayer = player;
 }
 
 CStateBored::~CStateBored()
@@ -17,8 +18,12 @@ void CStateBored::Init()
 void CStateBored::Update()
 {
 	coolTime += DT;
-
-	if (coolTime > 2)
+	if (!GAME->GetTalk())
+	{
+		coolTime = 0;
+		pPlayer->m_behavior = Behavior::Idle;
+	}
+	else if (coolTime > 2)
 	{
 		coolTime = 0;
 		pPlayer->SetBehavior(Behavior::Talk);

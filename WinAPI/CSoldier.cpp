@@ -130,14 +130,18 @@ void CSoldier::Talk()
 			break;
 		case 2:
 			m_strDialogue = L"뭐? 이 너머로 지나가고 싶다고?";
+			
 			break;
 		case 3:
 			m_strDialogue = L"무기도 없이 가면 위험할 거야.";
+
 			break;
 		case 4:
 			m_strDialogue = L"난 자격이 되는 자에게만 문을 열어주지.";
+			pPlayer->m_behavior = Behavior::Bored;
 			break;
 		default:
+			
 			CAMERA->ZoomInOut(2, 1);
 			m_strDialogue = L"";
 			GAME->SetTalk(false);
