@@ -16,6 +16,7 @@ public:
 	CImage* pEventImage;
 	bool bIsImageRender;
 	CImageBox* pImageBox;
+	bool quest = false;
 
 private:
 	void Init() override;

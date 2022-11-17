@@ -24,6 +24,7 @@
 #include "CStatue.h"
 #include "CImageEvent.h"
 #include "CFrontImage.h"
+#include "CImageBox.h"
 
 CSceneGailRoom::CSceneGailRoom()
 {
@@ -86,6 +87,9 @@ void CSceneGailRoom::Init()
 	AddGameObject(pPhoto);
 
 	GAME->SetBossHpBarRender(true);
+
+
+
 }
 
 void CSceneGailRoom::Enter()
@@ -113,6 +117,9 @@ void CSceneGailRoom::Enter()
 
 void CSceneGailRoom::Update()
 {
+
+
+
 	if (BUTTONDOWN(VK_ESCAPE))
 	{
 		GAME->SetCurScene(GroupScene::GailRoom);

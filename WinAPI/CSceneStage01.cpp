@@ -34,6 +34,7 @@
 #include "CPillarDoor.h"
 #include "CFrontImage.h"
 #include "CGhost.h"
+#include "CImageEvent.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -142,6 +143,13 @@ void CSceneStage01::Init()
 
 void CSceneStage01::Enter()
 {
+	if (GAME->mainQuest == MainQuest::VisitStore)
+	{
+		CImageEvent* pImageEvent = new CImageEvent(pPlayer);
+		pImageEvent->SetPos(1099, 489);
+		pImageEvent->pEventImage = RESOURCE->LoadImg(L"Board", L"Image\\Board.png");
+		AddGameObject(pImageEvent);
+	}
 
 	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
 	//SOUND->Play(pLoad_BGM, 1, true);

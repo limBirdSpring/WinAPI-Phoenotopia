@@ -54,6 +54,10 @@ void CLisa::Update()
 		}
 	}
 
+	if (GAME->mainQuest == MainQuest::VisitStore)
+		changeTalkTopic = 1;
+	else
+		changeTalkTopic = 0;
 	
 }
 
@@ -96,42 +100,54 @@ void CLisa::OnCollisionStay(CCollider* pOtherCollider)
 
 void CLisa::Talk()
 {
-	switch (talk)
+	if (changeTalkTopic == 1)
 	{
-	case 0:
-		m_strDialogue = L"";
-		break;
-	case 1:
-		m_strDialogue = L"뭐? 딸기케이크?";
-		break;
-	case 2:
-		m_strDialogue = L"그건 벌써 다 팔렸는데?";
-		break;
-	case 3:
-		m_strDialogue = L"대신 신선한 계란이 들어왔어. \n\n 계란주세요. \n 계란은 싫어요.";
-		m_choose = 2;
-		break;
-	case 4:
-		if (m_choosing == 1)
+		switch (talk)
 		{
-			m_strDialogue = L"싫어.";
+		case 0:
+			m_strDialogue = L"";
+			break;
+		case 1:
+			m_strDialogue = L"뭐? 딸기케이크?";
+			break;
+		case 2:
+			m_strDialogue = L"그건 벌써 다 팔렸는데?";
+			break;
+		case 3:
+			m_strDialogue = L"그러고보니, 밖에 새로운 전단지가 붙었다는데.";
+			break;
+		case 4:
+			m_strDialogue = L"궁금하면 한번 가보는 것은 어때?";
+			break;
+		default:
+			CAMERA->ZoomInOut(3, 1.5);
+			m_strDialogue = L"";
+			GAME->SetTalk(false);
+			talk = 0;
+			DELETEOBJECT(pTalkBox);
+			break;
 		}
-		else
+	}
+	else
+	{
+		switch (talk)
 		{
-			m_strDialogue = L"그래? 아쉽구나.";
+		case 0:
+			m_strDialogue = L"";
+			break;
+		case 1:
+			m_strDialogue = L"어서오세요~ 판셀로 상점입니다!";
+			break;
+		case 2:
+			m_strDialogue = L"게일 안녕! 뭐 필요한 거 있어?";
+			break;
+		default:
+			CAMERA->ZoomInOut(3, 1.5);
+			m_strDialogue = L"";
+			GAME->SetTalk(false);
+			talk = 0;
+			DELETEOBJECT(pTalkBox);
+			break;
 		}
-		m_choose = 0;
-		m_choosing = 1;
-		break;
-	case 5:
-		m_strDialogue = L"딸기케이크 말고도 먹을 만한게 많으니 얼마든지 골라보렴";
-		break;
-	default:
-		CAMERA->ZoomInOut(3, 1.5);
-		m_strDialogue = L"";
-		GAME->SetTalk(false);
-		talk = 0;
-		DELETEOBJECT(pTalkBox);
-		break;
 	}
 }

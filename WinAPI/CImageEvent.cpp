@@ -70,6 +70,12 @@ void CImageEvent::OnCollisionStay(CCollider* pOtherCollider)
 				pImageBox->pEventImage = pEventImage;
 
 				ADDOBJECT(pImageBox);
+
+				if (pEventImage == RESOURCE->FindImg(L"Board") && quest == false)
+				{
+					quest = true;
+					GAME->mainQuest = MainQuest::FindBoard;
+				}
 			}
 			else
 			{

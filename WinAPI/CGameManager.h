@@ -28,9 +28,9 @@ public:
 	CGameManager();
 	virtual ~CGameManager();
 
-private:
-	MainQuest mainQuest;
 
+	MainQuest mainQuest;
+private:
 	bool m_bTalk;
 
 	GroupScene m_curScene;

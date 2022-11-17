@@ -170,6 +170,7 @@
     <ClInclude Include="CDamageNumber.h" />
     <ClInclude Include="CDoor.h" />
     <ClInclude Include="CEnding.h" />
+    <ClInclude Include="CEvent.h" />
     <ClInclude Include="CEventManager.h" />
     <ClInclude Include="CEventMark.h" />
     <ClInclude Include="CFrog.h" />
@@ -185,6 +186,7 @@
     <ClInclude Include="CInputManager.h" />
     <ClInclude Include="CInventory.h" />
     <ClInclude Include="CItem.h" />
+    <ClInclude Include="CLeo.h" />
     <ClInclude Include="CLineMove.h" />
     <ClInclude Include="CLisa.h" />
     <ClInclude Include="CMarble.h" />
@@ -230,6 +232,7 @@
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CSoundManager.h" />
     <ClInclude Include="CStairTile.h" />
+    <ClInclude Include="CStartEvent.h" />
     <ClInclude Include="CStateAttack.h" />
     <ClInclude Include="CStateAttack2.h" />
     <ClInclude Include="CStateAttackReady.h" />
@@ -250,6 +253,8 @@
     <ClInclude Include="CStateIdle.h" />
     <ClInclude Include="CStateWonder.h" />
     <ClInclude Include="CStatue.h" />
+    <ClInclude Include="CStoreEvent.h" />
+    <ClInclude Include="CStudent.h" />
     <ClInclude Include="CTalkBox.h" />
     <ClInclude Include="CTeacher.h" />
     <ClInclude Include="CThings.h" />
@@ -303,6 +308,7 @@
     <ClCompile Include="CDamageNumber.cpp" />
     <ClCompile Include="CDoor.cpp" />
     <ClCompile Include="CEnding.cpp" />
+    <ClCompile Include="CEvent.cpp" />
     <ClCompile Include="CEventManager.cpp" />
     <ClCompile Include="CEventMark.cpp" />
     <ClCompile Include="CFrog.cpp" />
@@ -318,6 +324,7 @@
     <ClCompile Include="CInputManager.cpp" />
     <ClCompile Include="CInventory.cpp" />
     <ClCompile Include="CItem.cpp" />
+    <ClCompile Include="CLeo.cpp" />
     <ClCompile Include="CLineMove.cpp" />
     <ClCompile Include="CLisa.cpp" />
     <ClCompile Include="CMarble.cpp" />
@@ -363,6 +370,7 @@
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CSoundManager.cpp" />
     <ClCompile Include="CStairTile.cpp" />
+    <ClCompile Include="CStartEvent.cpp" />
     <ClCompile Include="CStateAttack.cpp" />
     <ClCompile Include="CStateAttack2.cpp" />
     <ClCompile Include="CStateAttackReady.cpp" />
@@ -383,6 +391,8 @@
     <ClCompile Include="CStateIdle.cpp" />
     <ClCompile Include="CStateWonder.cpp" />
     <ClCompile Include="CStatue.cpp" />
+    <ClCompile Include="CStoreEvent.cpp" />
+    <ClCompile Include="CStudent.cpp" />
     <ClCompile Include="CTalkBox.cpp" />
     <ClCompile Include="CTeacher.cpp" />
     <ClCompile Include="CThings.cpp" />
