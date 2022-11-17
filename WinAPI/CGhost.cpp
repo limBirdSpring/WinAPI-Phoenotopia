@@ -34,6 +34,8 @@ CGhost::~CGhost()
 
 void CGhost::Init()
 {
+	
+
 	srand(time(NULL));
 	m_pAnimator = new CAnimator;
 
@@ -88,10 +90,18 @@ void CGhost::Init()
 void CGhost::Update()
 {
 
+
+	GAME->SetBossHp(m_hp);
+
 	if (m_hp <= 0)
 	{
+		GAME->SetBossHpBarRender(false);
 		m_behavior = BossBehavior::Dead;
 		
+	}
+	else
+	{
+		GAME->SetBossHpBarRender(true);
 	}
 
 

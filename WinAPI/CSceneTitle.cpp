@@ -49,6 +49,7 @@ void CSceneTitle::Enter()
 	pTitle_Front->SetPos(0, 0);
 
 	GAME->SetUIRender(false);
+	GAME->SetBossHpBarRender(false);
 	CAMERA->FadeIn(0.25f);
 	CAMERA->ZoomInOut(1);
 

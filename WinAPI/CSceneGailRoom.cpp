@@ -85,7 +85,7 @@ void CSceneGailRoom::Init()
 	pPhoto->pEventImage = RESOURCE->LoadImg(L"Photo", L"Image\\Photo.png");
 	AddGameObject(pPhoto);
 
-
+	GAME->SetBossHpBarRender(true);
 }
 
 void CSceneGailRoom::Enter()

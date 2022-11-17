@@ -23,7 +23,12 @@ CGameManager::CGameManager()
 	m_fUIItemGetX = -187;
 	getItemName = L"";
 
+	m_pBossHpBar = RESOURCE->LoadImg(L"Energy_Bar", L"Image\\Energy_Bar.png");
+	m_pBossHp = RESOURCE->LoadImg(L"Energy", L"Image\\Energy.png");
+
 	 UIRender = false;
+	 bossHpBarRender = false;
+	 bossHp = 100;
 
 	 mainQuest = MainQuest::Start;
 
@@ -269,6 +274,7 @@ void CGameManager::Update()
 	if (coolTime <= 0)
 		m_fUIItemGetX = -187;
 	
+	bossHp = clamp(bossHp, 0, 100);
 }
 void CGameManager::Render()
 {
@@ -325,8 +331,18 @@ void CGameManager::Render()
 		}
 		
 
+		if (bossHpBarRender == true)
+		{
+			RENDER->Image(m_pBossHpBar, start.x + 640 - m_pBossHpBar->GetWidth() * 0.5, start.y +644 - m_pBossHpBar->GetHeight() * 0.5, start.x + 640 + m_pBossHpBar->GetWidth() * 0.5, start.y +644 + m_pBossHpBar->GetHeight() * 0.5);
+			RENDER->Image(m_pBossHp, start.x + 356, start.y +639, start.x + 352 + (600 / 100) * bossHp, start.y +649);
+		}
+
 		CAMERA->SetScale(scale);
+
 	}
+
+	
+
 }
 void CGameManager::Release()
 {

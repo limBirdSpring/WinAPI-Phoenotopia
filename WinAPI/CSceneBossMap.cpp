@@ -179,6 +179,7 @@ void CSceneBossMap::Render()
 
 void CSceneBossMap::Exit()
 {
+	GAME->SetBossHpBarRender(false);
 }
 
 void CSceneBossMap::Release()

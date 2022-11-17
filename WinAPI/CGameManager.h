@@ -37,6 +37,11 @@ private:
 
 	bool UIRender;
 
+	//보스 정보
+private :
+	bool bossHpBarRender;
+	int bossHp;
+
 private :
 	//플레이어 정보
 	Vector m_vecPlayerPos;
@@ -61,6 +66,13 @@ public :
 
 	bool GetUIRender() { return UIRender; }
 	void SetUIRender(bool render) { UIRender = render; }
+
+	bool GetBossHpBarRender() { return bossHpBarRender; }
+	void SetBossHpBarRender(bool render) { bossHpBarRender = render; }
+
+	int GetBossHp() { return bossHp; }
+	void SetBossHp(int hp) {bossHp = hp; }
+
 
 
 public :
@@ -108,6 +120,10 @@ private :
 	float m_fUIItemGetX;
 	wstring getItemName;
 	float m_fHeartScale;
+
+	CImage* m_pBossHpBar;
+	CImage* m_pBossHp;
+
 
 private :
 	void Init();
