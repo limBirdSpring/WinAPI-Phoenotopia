@@ -79,7 +79,7 @@
     <Filter Include="GameObject\Boss\BossState">
       <UniqueIdentifier>{e236cebb-4fe2-479d-871c-94ee5a8f5797}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Event">
+    <Filter Include="GameObject\Quest">
       <UniqueIdentifier>{f72c2d17-1ea2-4b8c-89b5-d7ebf93bcc59}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -484,13 +484,16 @@
       <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
     <ClInclude Include="CEvent.h">
-      <Filter>GameObject\Event</Filter>
+      <Filter>GameObject\Quest</Filter>
     </ClInclude>
     <ClInclude Include="CStartEvent.h">
-      <Filter>GameObject\Event</Filter>
+      <Filter>GameObject\Quest</Filter>
     </ClInclude>
     <ClInclude Include="CStoreEvent.h">
-      <Filter>GameObject\Event</Filter>
+      <Filter>GameObject\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="CPrinceEvent.h">
+      <Filter>GameObject\Quest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -873,13 +876,16 @@
       <Filter>GameObject\NPC %28talk%29</Filter>
     </ClCompile>
     <ClCompile Include="CEvent.cpp">
-      <Filter>GameObject\Event</Filter>
+      <Filter>GameObject\Quest</Filter>
     </ClCompile>
     <ClCompile Include="CStartEvent.cpp">
-      <Filter>GameObject\Event</Filter>
+      <Filter>GameObject\Quest</Filter>
     </ClCompile>
     <ClCompile Include="CStoreEvent.cpp">
-      <Filter>GameObject\Event</Filter>
+      <Filter>GameObject\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="CPrinceEvent.cpp">
+      <Filter>GameObject\Quest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

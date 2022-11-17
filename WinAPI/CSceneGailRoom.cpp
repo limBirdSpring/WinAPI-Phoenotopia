@@ -25,6 +25,7 @@
 #include "CImageEvent.h"
 #include "CFrontImage.h"
 #include "CImageBox.h"
+#include "CStartEvent.h"
 
 CSceneGailRoom::CSceneGailRoom()
 {
@@ -88,7 +89,8 @@ void CSceneGailRoom::Init()
 
 	GAME->SetBossHpBarRender(true);
 
-
+	CStartEvent* pStartEvent = new CStartEvent(pPlayer);
+	AddGameObject(pStartEvent);
 
 }
 

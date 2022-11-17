@@ -23,7 +23,7 @@
 #include "CEventMark.h"
 #include "CWarp.h"
 #include "CTeacher.h"
-
+#include "CStudent.h"
 
 CSceneGym::CSceneGym()
 {
@@ -62,6 +62,10 @@ void CSceneGym::Init()
 	CTeacher* pTeacher = new CTeacher(pPlayer);
 	pTeacher->SetPos(162, 417);
 	AddGameObject(pTeacher);
+
+	CStudent* pStudent = new CStudent(pPlayer);
+	pStudent->SetPos(572, 453);
+	AddGameObject(pStudent);
 
 
 	CPinkSlug* pPinkSlug = new CPinkSlug();

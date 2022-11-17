@@ -204,6 +204,7 @@
     <ClInclude Include="CPillarDoor.h" />
     <ClInclude Include="CPinkSlug.h" />
     <ClInclude Include="CPlayerState.h" />
+    <ClInclude Include="CPrinceEvent.h" />
     <ClInclude Include="CPrinceForest.h" />
     <ClInclude Include="CSceneBossMap.h" />
     <ClInclude Include="CSceneDead.h" />
@@ -342,6 +343,7 @@
     <ClCompile Include="CPillarDoor.cpp" />
     <ClCompile Include="CPinkSlug.cpp" />
     <ClCompile Include="CPlayerState.cpp" />
+    <ClCompile Include="CPrinceEvent.cpp" />
     <ClCompile Include="CPrinceForest.cpp" />
     <ClCompile Include="CSceneBossMap.cpp" />
     <ClCompile Include="CSceneDead.cpp" />

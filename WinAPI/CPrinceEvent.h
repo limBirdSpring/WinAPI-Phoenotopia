@@ -1,20 +1,14 @@
-
 #pragma once
 #include "CEvent.h"
 
-class CImageBox;
-
-class CStartEvent :
+class CPrinceEvent :
 	public CEvent
 {
 public:
-	CStartEvent(CPlayer* player);
-	virtual ~CStartEvent();
+	CPrinceEvent(CPlayer* player) { pPlayer = player; };
+	virtual ~CPrinceEvent();
 
 private:
-	CImageBox* pCake;
-	bool cake;
-
 
 private:
 	void Init() override;

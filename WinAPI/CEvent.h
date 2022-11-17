@@ -30,6 +30,8 @@ protected:
 	CTalkBox* pTalkBox;
 	CPlayer* pPlayer;
 
+	float coolTime;
+
 
 private:
 	virtual void Init() override = 0;
