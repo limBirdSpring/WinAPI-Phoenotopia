@@ -156,6 +156,7 @@
     <ClInclude Include="CBossSkill.h" />
     <ClInclude Include="CBossState.h" />
     <ClInclude Include="CBox.h" />
+    <ClInclude Include="CBoy.h" />
     <ClInclude Include="CButton.h" />
     <ClInclude Include="CBuyEvent.h" />
     <ClInclude Include="CCameraController.h" />
@@ -299,6 +300,7 @@
     <ClCompile Include="CBossSkill.cpp" />
     <ClCompile Include="CBossState.cpp" />
     <ClCompile Include="CBox.cpp" />
+    <ClCompile Include="CBoy.cpp" />
     <ClCompile Include="CButton.cpp" />
     <ClCompile Include="CBuyEvent.cpp" />
     <ClCompile Include="CCameraController.cpp" />

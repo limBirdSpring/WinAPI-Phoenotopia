@@ -507,6 +507,9 @@
     <ClInclude Include="CGrandma.h">
       <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
+    <ClInclude Include="CBoy.h">
+      <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -909,6 +912,9 @@
       <Filter>GameObject\NPC %28talk%29</Filter>
     </ClCompile>
     <ClCompile Include="CSoldier2.cpp">
+      <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClCompile>
+    <ClCompile Include="CBoy.cpp">
       <Filter>GameObject\NPC %28talk%29</Filter>
     </ClCompile>
   </ItemGroup>

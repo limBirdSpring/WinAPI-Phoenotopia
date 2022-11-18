@@ -37,6 +37,7 @@
 #include "CImageEvent.h"
 #include "CGrandma.h"
 #include "CSoldier2.h"
+#include "CBoy.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -146,6 +147,10 @@ void CSceneStage01::Init()
 	CSoldier2* pSoldier2 = new CSoldier2(pPlayer);
 	pSoldier2->SetPos(1153, 489);
 	AddGameObject(pSoldier2);
+
+	CBoy* pBoy = new CBoy(pPlayer);
+	pBoy->SetPos(190, 310);
+	AddGameObject(pBoy);
 
 
 }
