@@ -35,6 +35,8 @@
 #include "CStateDead.h"
 #include "CStateWonder.h"
 #include "CStateBored.h"
+#include "CStateMove.h"
+#include "CStateBat.h"
 
 CPlayer::CPlayer()
 {
@@ -109,6 +111,8 @@ void CPlayer::Init()
 	m_pAnimator->CreateAnimation(L"Gail_Attack2_Left", m_pAttackImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.08f, 7, false);
 	m_pAnimator->CreateAnimation(L"Gail_Attack_Right", m_pAttack2Image, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.08f, 5, false);
 	m_pAnimator->CreateAnimation(L"Gail_Attack_Left", m_pAttack2Image, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.08f, 5, false);
+	m_pAnimator->CreateAnimation(L"Gail_Bat_Right", m_pAttack2Image, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.2f, 5, false);
+	m_pAnimator->CreateAnimation(L"Gail_Bat_Left", m_pAttack2Image, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.2f, 5, false);
 	m_pAnimator->CreateAnimation(L"Gail_AttackReady_Right", m_pAttackReadyImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 12);
 	m_pAnimator->CreateAnimation(L"Gail_AttackReady_Left", m_pAttackReadyImage, Vector(0, 150), Vector(100, 100), Vector(150, 0), 0.1f, 12);
 	m_pAnimator->CreateAnimation(L"Gail_Critical_Right", m_pCriticalImage, Vector(0, 0), Vector(100, 100), Vector(150, 0), 0.1f, 10, false);
@@ -149,6 +153,8 @@ void CPlayer::Init()
 	m_mapPlayerState.insert(make_pair(Behavior::Dead, new CStateDead(this)));
 	m_mapPlayerState.insert(make_pair(Behavior::Bored, new CStateBored(this)));
 	m_mapPlayerState.insert(make_pair(Behavior::Wonder, new CStateWonder(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Move, new CStateMove(this)));
+	m_mapPlayerState.insert(make_pair(Behavior::Bat, new CStateBat(this)));
 
 
 	AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 4));
@@ -218,6 +224,10 @@ void CPlayer::AnimatorUpdate()
 	case Behavior::Bored: str += L"_Bored";
 		break;
 	case Behavior::Wonder: str += L"_Wonder";
+		break;
+	case Behavior::Move: str += L"_Walking";
+		break;
+	case Behavior::Bat: str += L"_Bat";
 		break;
 	default: str += L"_Standing";
 	}

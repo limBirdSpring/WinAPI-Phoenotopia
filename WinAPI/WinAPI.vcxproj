@@ -237,6 +237,7 @@
     <ClInclude Include="CStateAttack.h" />
     <ClInclude Include="CStateAttack2.h" />
     <ClInclude Include="CStateAttackReady.h" />
+    <ClInclude Include="CStateBat.h" />
     <ClInclude Include="CStateBored.h" />
     <ClInclude Include="CStateCritical.h" />
     <ClInclude Include="CStateCriticalReady.h" />
@@ -246,6 +247,7 @@
     <ClInclude Include="CStateDownJump.h" />
     <ClInclude Include="CStateFall.h" />
     <ClInclude Include="CStateJump.h" />
+    <ClInclude Include="CStateMove.h" />
     <ClInclude Include="CStatePush.h" />
     <ClInclude Include="CStateRun.h" />
     <ClInclude Include="CStateTalk.h" />
@@ -376,6 +378,7 @@
     <ClCompile Include="CStateAttack.cpp" />
     <ClCompile Include="CStateAttack2.cpp" />
     <ClCompile Include="CStateAttackReady.cpp" />
+    <ClCompile Include="CStateBat.cpp" />
     <ClCompile Include="CStateBored.cpp" />
     <ClCompile Include="CStateCritical.cpp" />
     <ClCompile Include="CStateCriticalReady.cpp" />
@@ -385,6 +388,7 @@
     <ClCompile Include="CStateDownJump.cpp" />
     <ClCompile Include="CStateFall.cpp" />
     <ClCompile Include="CStateJump.cpp" />
+    <ClCompile Include="CStateMove.cpp" />
     <ClCompile Include="CStatePush.cpp" />
     <ClCompile Include="CStateRun.cpp" />
     <ClCompile Include="CStateTalk.cpp" />

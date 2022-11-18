@@ -96,7 +96,7 @@ void CTeacher::OnCollisionStay(CCollider* pOtherCollider)
 {
 	if (pOtherCollider->GetObjName() == L"플레이어")
 	{
-		if (BUTTONDOWN('X'))
+		if (BUTTONDOWN('X') && GAME->mainQuest >= MainQuest::FindBoard)
 		{
 			CAMERA->ZoomInOut(2.5, 1);
 

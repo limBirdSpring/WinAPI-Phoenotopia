@@ -118,6 +118,8 @@ enum class Behavior
 	Talk,
 	Wonder,
 	Bored,
+	Move,
+	Bat,
 	Push,
 	Dead,
 
@@ -162,6 +164,7 @@ enum class MainQuest
 	VisitStore,
 	FindBoard,
 	LearnAttack,
+	SavePrince,
 
 	Size
 };

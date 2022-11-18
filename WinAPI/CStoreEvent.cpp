@@ -26,24 +26,24 @@ void CStoreEvent::Update()
 	}
 	else if (coolTime > 2.5 && quest == 1)
 	{
-		quest++;
 		CAMERA->ZoomInOut(4);
+		quest++;
 	}
 	else if (coolTime > 3 && quest == 2)
 	{
-		quest++;
 		CAMERA->ZoomInOut(5.5);
+		quest++;
 	}
 	else if (coolTime > 3.5 && quest == 3)
 	{
-		quest++;
 		CAMERA->ZoomInOut(7);
+		quest++;
 	}
 	else if (coolTime > 4.5)
 	{
 		GAME->mainQuest = MainQuest::VisitStore;
-		quest++;
 		CAMERA->ZoomInOut(3, 1);
+		quest++;
 		GAME->SetTalk(false);
 		DELETEOBJECT(this);
 	}
@@ -56,7 +56,7 @@ void CStoreEvent::Render()
 {
 	if (coolTime > 1)
 	{
-		RENDER->Text(L"еж~", 232, 366, 289, 404, Color(255,255,255,1), 40+ (quest>2?(quest*10):0));
+		RENDER->Text(L"еж~", 232, 366, 289, 404, Color(255,255,255,1), 40+ (quest>1?(quest*10):0));
 	}
 }
 

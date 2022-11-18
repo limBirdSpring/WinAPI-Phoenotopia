@@ -17,6 +17,7 @@ private:
 	CPlayer* pPlayer;
 	CImage* m_pImage;
 
+	float coolTime;
 
 private:
 	void Init()		override;

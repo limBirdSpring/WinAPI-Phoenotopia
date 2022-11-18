@@ -24,6 +24,7 @@
 #include "CStatue.h"
 #include "CImageEvent.h"
 #include "CFrontImage.h"
+#include "CLeo.h"
 
 CPrinceForest::CPrinceForest()
 {
@@ -40,7 +41,7 @@ void CPrinceForest::Init()
 	pPlayer = new CPlayer();
 	AddGameObject(pPlayer);
 
-	pPlayer->SetBehavior(Behavior::Talk);
+
 
 	m_pImage = RESOURCE->LoadImg(L"Field_Back", L"Image\\Field_Back.png");
 	LoadBackground(m_pImage);
@@ -50,13 +51,20 @@ void CPrinceForest::Init()
 
 	m_pImage = RESOURCE->LoadImg(L"Cloud", L"Image\\Cloud.png");
 
+	m_pImage = RESOURCE->LoadImg(L"PrinceForest", L"Image\\PrinceForest.png");
+	CImageObject* pBossMap = new CImageObject;
+	pBossMap->SetImage(m_pImage);
+	AddGameObject(pBossMap);
 
+	CLeo* pLeo = new CLeo(pPlayer);
+	pLeo->SetPos(262,488);
+	AddGameObject(pLeo);
 
 }
 
 void CPrinceForest::Enter()
 {
-	GAME->SetUIRender(true);
+	
 	CAMERA->FadeIn(0.25f);
 
 	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
@@ -65,7 +73,7 @@ void CPrinceForest::Enter()
 
 	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));
 	CAMERA->ZoomInOut(3);
-	CAMERA->SetTargetPos(Vector(m_pImage->GetWidth() * 0.5, m_pImage->GetHeight()));
+	CAMERA->SetTargetPos(Vector(250, 503));
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
 	pPlayer->SetDir(GAME->GetPlayerStartDir());
@@ -75,10 +83,39 @@ void CPrinceForest::Enter()
 
 	CAMERA->FadeIn(0.25f);
 	LoadTile(GETPATH + L"Tile\\PrinceForest.tile");
+
+	pPlayer->SetBehavior(Behavior::Talk);
+	GAME->SetTalk(true);
 }
 
 void CPrinceForest::Update()
 {
+	
+	if (coolTime > 4 && coolTime < 5)
+	{
+		GAME->mainQuest = MainQuest::SavePrince;
+		coolTime = 10;
+	}
+	else
+	{
+		if (coolTime >= 2 && coolTime < 4)
+		{
+			pPlayer->SetBehavior(Behavior::Move);
+			
+		}
+	}
+
+	if (coolTime <= 6)
+		coolTime += DT;
+
+	if (pPlayer->GetBehavoir() == Behavior::Bat)
+	{
+		if (coolTime > 10.8)
+		{
+			CHANGESCENE(GroupScene::Ending);
+		}
+		coolTime += DT;
+	}
 }
 
 void CPrinceForest::Render()
