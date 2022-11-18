@@ -78,6 +78,11 @@ void CInventory::Update()
 		CHANGESCENE(GAME->GetCurScene());
 	}
 
+	if (BUTTONDOWN('I'))
+	{
+		CHANGESCENE(GAME->GetCurScene());
+	}
+
 	if (BUTTONDOWN(VK_LEFT))
 	{
 		selectItem--;

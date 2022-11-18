@@ -15,7 +15,7 @@ void CStoreEvent::Update()
 	if (coolTime == 0)
 	{
 		pPlayer->SetBehavior(Behavior::Talk);
-		pPlayer->SetPos(268, 398);
+		pPlayer->SetPos(258, 398);
 		GAME->SetTalk(true);
 	}
 

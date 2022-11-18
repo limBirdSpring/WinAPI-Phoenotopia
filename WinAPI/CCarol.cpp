@@ -123,6 +123,15 @@ void CCarol::Talk()
 		case 2:
 			m_strDialogue = L"오늘은 매점에 신선한 페로 알이 들어왔다나봐.";
 			break;
+		case 3:
+			m_strDialogue = L"맞다. 너 달리기하는 법 아니?";
+			break;
+		case 4:
+			m_strDialogue = L"Shift키를 눌러봐. 대쉬점프도 가능해.";
+			break;
+		case 5:
+			m_strDialogue = L"나한테 한번 더 말을 걸면 점프에 대해 알려줄게.";
+			break;
 		default:
 			CAMERA->ZoomInOut(2, 0.5);
 			m_strDialogue = L"";
@@ -141,13 +150,16 @@ void CCarol::Talk()
 			m_strDialogue = L"";
 			break;
 		case 1:
-			m_strDialogue = L"그거 아니? Z키를 누르면 점프를 할 수 있어.";
+			m_strDialogue = L"Z키를 누르면 점프를 할 수 있어.";
 			break;
 		case 2:
 			m_strDialogue = L"↓키를 누르면 앉을 수 있지.";
 			break;
 		case 3:
 			m_strDialogue = L"앉은 상태에서 Z키를 누르면 하향 점프를 할 수 있어.";
+			break;
+		case 4:
+			m_strDialogue = L"마을사람들에게 여러번 말을 시켜봐. 다른 대답이 나올지도.";
 			break;
 
 		default:

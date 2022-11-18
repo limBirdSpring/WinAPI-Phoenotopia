@@ -128,18 +128,18 @@ void CGrandma::Talk()
 			m_strDialogue = L"아이고, 눈이 안좋아서 안보이네..";
 			break;
 		case 4:
-			m_strDialogue = L"여보게나. 자네가 한번 봐줄수 있나? \n\n 페로알이라고 쓰여있어요.\n 싫어요.";
+			m_strDialogue = L"여보게나. 자네가 한번 봐줄수 있나? \n\n 싫어요.\n 페로알이라고 쓰여있어요.";
 			m_choose = 2;
 			break;
 		case 5:
 			if (m_choosing == 1)
 			{
-				m_strDialogue = L"도와줘서 고맙구나. 이건 답례란다.";
-				GAME->PushBackInvenItem(L"벌꿀");
+				m_strDialogue = L"뭐어? 이런 버르장머리없는 놈을 봤나!";
 			}
 			else
 			{
-				m_strDialogue = L"뭐어? 이런 버르장머리없는 놈을 봤나!";
+				m_strDialogue = L"도와줘서 고맙구나. 이건 답례란다.";
+				GAME->PushBackInvenItem(L"벌꿀");
 			}
 			m_choose = 0;
 			m_choosing = 1;

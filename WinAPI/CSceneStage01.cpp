@@ -119,6 +119,11 @@ void CSceneStage01::Init()
 	pMilestone->m_strSetDialogue = L"´õºñ½£ ->";
 	AddGameObject(pMilestone);
 
+	CEventMark* pStore = new CEventMark(pPlayer);
+	pStore->SetPos(900, 489);
+	pStore->m_strSetDialogue = L"- ÆÇ¼¿·Î»óÁ¡ -";
+	AddGameObject(pStore);
+
 	//CBigBox* pBigBox = new CBigBox;
 	//pBigBox->SetPos(420, 488);
 	//AddGameObject(pBigBox);

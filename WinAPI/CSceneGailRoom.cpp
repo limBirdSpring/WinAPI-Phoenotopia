@@ -149,7 +149,7 @@ void CSceneGailRoom::Update()
 void CSceneGailRoom::Render()
 {
 	
-	RENDER->Text(L"기본조작 : 방향키  / 물체 상호작용 : X", 280, 217, 500, 244);
+	RENDER->Text(L"기본조작 : 방향키   상호작용/말걸기 : X", 280, 217, 500, 244);
 }
 
 void CSceneGailRoom::Exit()
