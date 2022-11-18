@@ -64,7 +64,7 @@ void CPrinceForest::Init()
 
 void CPrinceForest::Enter()
 {
-	
+	GAME->SetUIRender(false);
 	CAMERA->FadeIn(0.25f);
 
 	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
@@ -110,7 +110,7 @@ void CPrinceForest::Update()
 
 	if (pPlayer->GetBehavoir() == Behavior::Bat)
 	{
-		if (coolTime > 10.8)
+		if (coolTime > 11)
 		{
 			CHANGESCENE(GroupScene::Ending);
 		}

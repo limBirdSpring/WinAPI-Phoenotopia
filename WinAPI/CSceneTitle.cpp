@@ -93,7 +93,7 @@ void CSceneTitle::Update()
 		//SOUND->FadeOut(pLoad_BGM, 3.f, 0);
 		CAMERA->FadeOut(0.25f);
 		DELAYCHANGESCENE(GroupScene::GailRoom, 2.f);
-		GAME->SetPlayerStartPos(Vector(378, 398));
+		GAME->SetPlayerStartPos(Vector(400, 398));
 
 	}
 

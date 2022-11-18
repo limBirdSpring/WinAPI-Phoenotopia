@@ -16,7 +16,8 @@ public:
 
 private:
 	CImage* m_pImage;
-
+	int talk=0;
+	wstring m_strDialogue = L"";
 
 private:
 	void Init()		override;

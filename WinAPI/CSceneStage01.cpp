@@ -112,7 +112,7 @@ void CSceneStage01::Init()
 
 	CEventMark* pMilestone = new CEventMark(pPlayer);
 	pMilestone->SetPos(1457, 489);
-	pMilestone->m_strSetDialogue = L"평범한 표지판이다.";
+	pMilestone->m_strSetDialogue = L"더비숲 ->";
 	AddGameObject(pMilestone);
 
 	//CBigBox* pBigBox = new CBigBox;
