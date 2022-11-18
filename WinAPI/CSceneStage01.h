@@ -3,6 +3,7 @@
 
 class CPlayer;
 class CImage;
+class CBox;
 
 class CSceneStage01 : public CScene
 {
@@ -13,6 +14,7 @@ public:
 private:
 	CPlayer* pPlayer;
 	CImage* m_pVillageImage;
+	CBox* pBox;
 
 private:
 	void Init()		override;

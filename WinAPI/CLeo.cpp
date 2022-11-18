@@ -22,6 +22,7 @@ CLeo::CLeo(CPlayer* player)
 	m_vecScale = Vector(18, 32);
 	m_strDialogue = L"";
 	talk = 0;
+	coolTime = 0;
 }
 
 CLeo::~CLeo()
@@ -66,7 +67,7 @@ void CLeo::Update()
 	}
 
 
-	if (talk > 0 && talk < 15)
+	if (talk > 0 && talk < 13)
 	{
 		if (BUTTONDOWN('X'))
 		{
@@ -74,6 +75,19 @@ void CLeo::Update()
 			Talk();
 		}
 	}
+	if (coolTime > 0)
+	{
+		coolTime -= DT;
+
+		if (coolTime < 3)
+			CAMERA->ZoomInOut(6);
+
+		if (coolTime < 1)
+		{
+			pPlayer->SetBehavior(Behavior::Bat);
+		}
+	}
+
 
 }
 
@@ -99,68 +113,61 @@ void CLeo::OnCollisionStay(CCollider* pOtherCollider)
 
 void CLeo::Talk()
 {
-		switch (talk)
-		{
-		case 0:
-			m_strDialogue = L"";
-			break;
-		case 1:
-			m_pAnimator->Play(L"Leo_Strech_Left");
-			m_strDialogue = L"와! 진짜 짐을 구하러오다니!";
-			break;
-		case 2:
-			m_pAnimator->Play(L"Leo_Idle_Left");
-			m_strDialogue = L"고맙다 서민!";
-			break;
-		case 3:
-			m_pAnimator->Play(L"Leo_Sleepy_Left");
-			m_strDialogue = L"너무 지루해서 마침 그냥 괴물한테 잡아먹힐까 하던 참이었는데.";
-			break;
-		case 4:
-			m_pAnimator->Play(L"Leo_Idle_Left");
-			m_strDialogue = L"...";
-			break;
-		case 5:
-			m_strDialogue = L"이제 슬슬 왕궁으로 돌아가볼까나~";
-			break;
-		case 6:
-			m_strDialogue = L"...";
-			pPlayer->SetBehavior(Behavior::Bored);
-			break;
-		case 7:
-			m_strDialogue = L"뭐해? 비켜서지 않고.";
-			break;
-		case 8:
-			pPlayer->SetBehavior(Behavior::Talk);
-			m_strDialogue = L"\n\n 딸기케이크 어딨어요? \n 딸기케이크 내놔";
-			m_choose = 2;
-			break;
-		case 9:
-			m_choose = 0;
-			m_strDialogue = L"아 그거? 그게 어딨냐면..";
-			break;
-		case 10:
-			m_pAnimator->Play(L"Leo_Sleepy_Left");
-			m_strDialogue = L"짐의 뱃속에 있느니라!";
-			break;
-		case 11:
-			m_pAnimator->Play(L"Leo_Idle_Left");
-			m_strDialogue = L"기다리는동안 배가고파서 이미 다 먹어버렸지 뭐야.";
-			break;
-		case 12:
-			m_pAnimator->Play(L"Leo_Strech_Left");
-			m_strDialogue = L"그러게 빨리오지 그랬어?";
-			break;
-		case 13:
-			m_strDialogue = L"";
-			break;
-		case 14:
-			CAMERA->ZoomInOut(6);
-			m_strDialogue = L"";
-			break;
-		case 15:
-			pPlayer->SetBehavior(Behavior::Bat);
-			break;
-		}
-
+	switch (talk)
+	{
+	case 0:
+		m_strDialogue = L"";
+		break;
+	case 1:
+		m_pAnimator->Play(L"Leo_Strech_Left");
+		m_strDialogue = L"와! 진짜 짐을 구하러오다니!";
+		break;
+	case 2:
+		m_pAnimator->Play(L"Leo_Idle_Left");
+		m_strDialogue = L"고맙다 서민!";
+		break;
+	case 3:
+		m_pAnimator->Play(L"Leo_Sleepy_Left");
+		m_strDialogue = L"너무 지루해서 마침 그냥 괴물한테 잡아먹힐까 하던 참이었는데.";
+		break;
+	case 4:
+		m_pAnimator->Play(L"Leo_Idle_Left");
+		m_strDialogue = L"...";
+		break;
+	case 5:
+		m_strDialogue = L"이제 슬슬 왕궁으로 돌아가볼까나~";
+		break;
+	case 6:
+		m_strDialogue = L"...";
+		pPlayer->SetBehavior(Behavior::Bored);
+		break;
+	case 7:
+		m_strDialogue = L"뭐해? 비켜서지 않고.";
+		break;
+	case 8:
+		pPlayer->SetBehavior(Behavior::Talk);
+		m_strDialogue = L"\n\n 딸기케이크 어딨어요? \n 딸기케이크 내놔";
+		m_choose = 2;
+		break;
+	case 9:
+		m_choose = 0;
+		m_strDialogue = L"아 그거? 그게 어딨냐면..";
+		break;
+	case 10:
+		m_pAnimator->Play(L"Leo_Sleepy_Left");
+		m_strDialogue = L"짐의 뱃속에 있느니라!";
+		break;
+	case 11:
+		m_pAnimator->Play(L"Leo_Idle_Left");
+		m_strDialogue = L"기다리는동안 배가고파서 이미 다 먹어버렸지 뭐야.";
+		break;
+	case 12:
+		m_pAnimator->Play(L"Leo_Strech_Left");
+		m_strDialogue = L"그러게 빨리오지 그랬어?";
+		break;
+	case 13:
+		coolTime = 5;
+		m_strDialogue = L"";
+		break;
+	}
 }

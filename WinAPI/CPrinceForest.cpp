@@ -91,14 +91,14 @@ void CPrinceForest::Enter()
 void CPrinceForest::Update()
 {
 	
-	if (coolTime > 4 && coolTime < 5)
+	if (coolTime > 4.1 && coolTime < 5)
 	{
 		GAME->mainQuest = MainQuest::SavePrince;
 		coolTime = 10;
 	}
 	else
 	{
-		if (coolTime >= 2 && coolTime < 4)
+		if (coolTime >= 2 && coolTime < 4.1)
 		{
 			pPlayer->SetBehavior(Behavior::Move);
 			

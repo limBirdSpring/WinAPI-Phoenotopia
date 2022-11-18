@@ -1,15 +1,16 @@
 #pragma once
 #include "CNPC.h"
 
-class CLeo :
+class CPlayer;
+
+class CSoldier2 :
 	public CNPC
 {
 public:
-	CLeo(CPlayer* player);
-	virtual ~CLeo();
+	CSoldier2(CPlayer* player);
+	virtual ~CSoldier2();
 
 private:
-	float coolTime;
 
 private:
 	void Init() override;

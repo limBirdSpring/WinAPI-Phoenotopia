@@ -90,8 +90,8 @@ void CSceneDead::Render()
 
 void CSceneDead::Exit()
 {
-	GAME->ResetGame();
-	SCENE->ResetScene();
+	//GAME->ResetGame();
+	//SCENE->ResetScene();
 }
 
 void CSceneDead::Release()

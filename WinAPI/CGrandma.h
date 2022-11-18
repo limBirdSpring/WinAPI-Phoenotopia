@@ -1,15 +1,14 @@
 #pragma once
 #include "CNPC.h"
 
-class CLeo :
+class CGrandma :
 	public CNPC
 {
 public:
-	CLeo(CPlayer* player);
-	virtual ~CLeo();
+	CGrandma(CPlayer* player);
+	virtual ~CGrandma();
 
 private:
-	float coolTime;
 
 private:
 	void Init() override;
@@ -20,4 +19,5 @@ private:
 	void OnCollisionStay(CCollider* pOtherCollider) override;
 
 	void Talk();
+
 };

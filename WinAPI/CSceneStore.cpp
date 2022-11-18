@@ -26,6 +26,7 @@
 #include "CEventMark.h"
 #include "CBigBox.h"
 #include "CStoreEvent.h"
+#include "CGrandma.h"
 
 CSceneStore::CSceneStore()
 {
@@ -77,6 +78,8 @@ void CSceneStore::Init()
 	CLisa* pLisa = new CLisa(pPlayer);
 	pLisa->SetPos(385, 400);
 	AddGameObject(pLisa);
+
+
 
 	CBuyEvent* pEgg = new CBuyEvent(pPlayer);
 	pEgg->item = GAME->FindItem(L"Æä·Î ¾Ë");

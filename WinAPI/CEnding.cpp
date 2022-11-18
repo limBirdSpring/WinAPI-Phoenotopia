@@ -51,7 +51,7 @@ void CEnding::Update()
 		m_strDialogue = L"플레이해주셔서 감사합니다.";
 		break;
 	case 6:
-		m_strDialogue = L"<Pheonotopia 모작> \n제작툴 : WinAPI \n제작 : 임새봄\n";
+		m_strDialogue = L"<Pheonotopia 모작> \n\n제작툴 : WinAPI \n\n제작 : 임새봄\n";
 		break;
 	case 7:
 		CAMERA->FadeOut(0.25f);

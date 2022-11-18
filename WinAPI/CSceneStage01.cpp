@@ -35,11 +35,14 @@
 #include "CFrontImage.h"
 #include "CGhost.h"
 #include "CImageEvent.h"
+#include "CGrandma.h"
+#include "CSoldier2.h"
 
 CSceneStage01::CSceneStage01()
 {
 	pPlayer = nullptr;
 	m_pVillageImage = nullptr;
+	pBox = nullptr;
 }
 
 CSceneStage01::~CSceneStage01()
@@ -94,7 +97,7 @@ void CSceneStage01::Init()
 	pBigBox4->SetPos(109, 362);
 	AddGameObject(pBigBox4);
 
-	CBox* pBox = new CBox;
+	pBox = new CBox;
 	pBox->SetPos(811, 363);
 	AddGameObject(pBox);
 
@@ -136,13 +139,23 @@ void CSceneStage01::Init()
 	pPillarDoor->pMarble = pMarble;
 	AddGameObject(pPillarDoor);
 	
+	CGrandma* pGrandma = new CGrandma(pPlayer);
+	pGrandma->SetPos(728, 489);
+	AddGameObject(pGrandma);
 
+	CSoldier2* pSoldier2 = new CSoldier2(pPlayer);
+	pSoldier2->SetPos(1153, 489);
+	AddGameObject(pSoldier2);
 
 
 }
 
 void CSceneStage01::Enter()
 {
+	pBox->SetPos(811, 380);
+	pBox->SetPlatform(0);
+	pBox->SetGround(0);
+
 	if (GAME->mainQuest == MainQuest::VisitStore)
 	{
 		CImageEvent* pImageEvent = new CImageEvent(pPlayer);
