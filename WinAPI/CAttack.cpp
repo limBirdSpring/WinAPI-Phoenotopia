@@ -22,6 +22,8 @@ CAttack::~CAttack()
 
 void CAttack::Init()
 {
+	pSe = RESOURCE->FindSound(L"Attack");
+	SOUND->Play(pSe);
 }
 
 void  CAttack::Update()

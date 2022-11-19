@@ -61,6 +61,12 @@ void CSoundManager::Stop(CSound* pSound)
 	assert(FMOD_OK == result && L"Stop sound failed");
 }
 
+void CSoundManager::Stop()
+{
+
+}
+
+
 void CSoundManager::Pause(CSound* pSound)
 {
 	if (pSound->IsPaused())
@@ -102,6 +108,18 @@ void CSoundManager::FadeIn(CSound* pSound, float time, float volume, bool loop)
 	FadeOut(pSound, time, volume);
 }
 
+float CSoundManager::GetVolume(CSound* pSound)
+{
+	float volume;
+	pSound->m_pChannel->getVolume(&volume);
+	return volume;
+}
+
+void CSoundManager::SetVolume(CSound* pSound, float volume)
+{
+	pSound->m_pChannel->setVolume(volume);
+}
+
 void CSoundManager::Init()
 {
 	// 사운드 시스템 생성
@@ -125,7 +143,7 @@ void CSoundManager::Update()
 		
 		m_fTime += DT;
 
-		if (m_fStartVolume <= 0)
+		if (m_fStartVolume <= 0.1)
 		{
 			pFadeSound->m_pChannel->stop();
 			pFadeSound = nullptr;

@@ -28,11 +28,13 @@
 #include "CTurtle.h"
 #include "CFrog.h"
 #include "CBee.h"
+#include "CSound.h"
 
 CSceneField::CSceneField()
 {
 	pPlayer = nullptr;
 	m_pImage = nullptr;
+	
 }
 
 CSceneField::~CSceneField()
@@ -121,11 +123,20 @@ void CSceneField::Init()
 
 
 
-
+	
 }
 
 void CSceneField::Enter()
 {
+	pLoad_BGM = RESOURCE->FindSound(L"Panselo");
+	SOUND->Stop(pLoad_BGM);
+
+	pLoad_BGM = RESOURCE->FindSound(L"DubbiForest");
+
+	if (!(pLoad_BGM->IsPlaying()))
+	{
+		SOUND->Play(pLoad_BGM, 1, true);
+	}
 	CAMERA->FadeIn(0.25f);
 
 	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
@@ -181,6 +192,7 @@ void CSceneField::Render()
 
 void CSceneField::Exit()
 {
+	//SOUND->Stop(pLoad_BGM);
 }
 
 void CSceneField::Release()

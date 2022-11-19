@@ -26,7 +26,7 @@ bool CSound::IsPlaying()
 	FMOD_RESULT result = m_pChannel->isPlaying(&playing);
 	if (FMOD_ERR_INVALID_HANDLE == result)
 		return false;
-	assert(FMOD_OK == result && L"Channel isPlaying failed");
+	//assert(FMOD_OK == result && L"Channel isPlaying failed");
 	return playing;
 }
 
@@ -39,7 +39,7 @@ bool CSound::IsPaused()
 	FMOD_RESULT result = m_pChannel->getPaused(&paused);
 	if (FMOD_ERR_INVALID_HANDLE == result)
 		return false;
-	assert(FMOD_OK == result && L"Channel getPaused failed");
+	//assert(FMOD_OK == result && L"Channel getPaused failed");
 	return paused;
 }
 

@@ -16,6 +16,7 @@
 #include "CPrinceForest.h"
 #include "CSceneDead.h"
 #include "CEnding.h"
+#include "CSceneLoad.h"
 
 CSceneManager::CSceneManager()
 {
@@ -30,6 +31,9 @@ void CSceneManager::Init()
 {
 	// TODO : 게임에 필요한 씬 추가
 	// 게임씬들을 자료구조에 추가
+	CScene* pSceneLoad = new CSceneLoad();
+	m_mapScene.insert(make_pair(GroupScene::Load, pSceneLoad));
+
 	CScene* pSceneTitle = new CSceneTitle();
 	m_mapScene.insert(make_pair(GroupScene::Title, pSceneTitle));
 	CSceneTileTool* pSceneTileTool = new CSceneTileTool;
@@ -67,7 +71,7 @@ void CSceneManager::Init()
 	}
 
 	// 가장 처음으로 진행해야할 게임씬 시작
-	m_pCurScene = pSceneTitle;
+	m_pCurScene = pSceneLoad;
 	m_pCurScene->SceneEnter();
 }
 

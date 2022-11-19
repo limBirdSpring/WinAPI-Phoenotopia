@@ -2,6 +2,9 @@
 #pragma once
 #include "CGameObject.h"
 #include "framework.h"
+
+class CSound;
+
 class CAttack : public CGameObject
 {
 public:
@@ -10,6 +13,7 @@ public:
 
 private:
 	float m_fTime;
+	CSound* pSe;
 
 private:
 	void Init() override;

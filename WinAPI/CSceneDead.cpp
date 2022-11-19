@@ -75,9 +75,11 @@ void CSceneDead::Update()
 {
 	if (BUTTONDOWN('X'))
 	{
-		GAME->SetHp(13);
-		CAMERA->FadeOut(0.25f);
-		DELAYCHANGESCENE(GroupScene::Title, 2.f);
+		//GAME->SetHp(13);
+		//CAMERA->FadeOut(0.25f);
+		//DELAYCHANGESCENE(GroupScene::Title, 2.f);
+
+		SendMessage(hWnd, WM_CLOSE, 0, 0);//윈도우 핸들에 종료메세지를 넣어줌
 	}
 	
 }

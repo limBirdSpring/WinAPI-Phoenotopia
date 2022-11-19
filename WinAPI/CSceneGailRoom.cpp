@@ -96,11 +96,16 @@ void CSceneGailRoom::Init()
 
 void CSceneGailRoom::Enter()
 {
+	pLoad_BGM = RESOURCE->FindSound(L"Panselo");
+
+	if (pLoad_BGM->IsPlaying(), SOUND->GetVolume(pLoad_BGM) != 0.5);
+	{
+		SOUND->SetVolume(pLoad_BGM, 0.5);
+	}
+
 	GAME->SetUIRender(true);
 	CAMERA->FadeIn(0.25f);
 
-	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
-	//SOUND->Play(pLoad_BGM, 1, true);
 
 	
 	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));

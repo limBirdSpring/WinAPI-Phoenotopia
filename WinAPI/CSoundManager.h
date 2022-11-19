@@ -26,10 +26,14 @@ public:
 
 	void Play(CSound* pSound, float volume = 1.f, bool loop = false);
 	void Stop(CSound* pSound);
+	void Stop();
+
 	void Pause(CSound* pSound);
 	void Resume(CSound* pSound);
 	void FadeOut(CSound* pSound, float time, float volume);
 	void FadeIn(CSound* pSound, float time, float volume = 1.f, bool loop = false);
+	float GetVolume(CSound* pSound);
+	void SetVolume(CSound* pSound, float volume);
 
 private:
 	void Init();

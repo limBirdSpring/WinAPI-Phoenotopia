@@ -510,6 +510,9 @@
     <ClInclude Include="CBoy.h">
       <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
+    <ClInclude Include="CSceneLoad.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -916,6 +919,9 @@
     </ClCompile>
     <ClCompile Include="CBoy.cpp">
       <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneLoad.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

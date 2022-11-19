@@ -38,12 +38,14 @@
 #include "CGrandma.h"
 #include "CSoldier2.h"
 #include "CBoy.h"
+#include "CSound.h"
 
 CSceneStage01::CSceneStage01()
 {
 	pPlayer = nullptr;
 	m_pVillageImage = nullptr;
 	pBox = nullptr;
+	
 }
 
 CSceneStage01::~CSceneStage01()
@@ -52,6 +54,8 @@ CSceneStage01::~CSceneStage01()
 
 void CSceneStage01::Init()
 {
+
+
 	pPlayer = new CPlayer();
 	AddGameObject(pPlayer);
 
@@ -162,6 +166,21 @@ void CSceneStage01::Init()
 
 void CSceneStage01::Enter()
 {
+	pLoad_BGM = RESOURCE->FindSound(L"DubbiForest");
+	SOUND->Stop(pLoad_BGM);
+
+
+	pLoad_BGM = RESOURCE->FindSound(L"Panselo");
+
+	if (!(pLoad_BGM->IsPlaying()))
+	{
+		SOUND->Play(pLoad_BGM, 1, true);
+	}
+	else if (SOUND->GetVolume(pLoad_BGM) != 1);
+	{
+		SOUND->SetVolume(pLoad_BGM, 1);
+	}
+
 	pBox->SetPos(811, 380);
 	pBox->SetPlatform(0);
 	pBox->SetGround(0);
@@ -174,8 +193,7 @@ void CSceneStage01::Enter()
 		AddGameObject(pImageEvent);
 	}
 
-	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
-	//SOUND->Play(pLoad_BGM, 1, true);
+	
 
 	m_pVillageImage = RESOURCE->LoadImg(L"Panselo_Back", L"Image\\Panselo_Back.png");
 	LoadBackground(m_pVillageImage);
@@ -254,6 +272,7 @@ void CSceneStage01::Render()
 
 void CSceneStage01::Exit()
 {
+	//SOUND->Stop(pLoad_BGM);
 }
 
 void CSceneStage01::Release()

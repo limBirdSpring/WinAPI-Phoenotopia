@@ -27,6 +27,7 @@
 #include "CBigBox.h"
 #include "CStoreEvent.h"
 #include "CGrandma.h"
+#include "CSound.h"
 
 CSceneStore::CSceneStore()
 {
@@ -104,6 +105,14 @@ void CSceneStore::Init()
 
 void CSceneStore::Enter()
 {
+	pLoad_BGM = RESOURCE->FindSound(L"Panselo");
+
+	if (SOUND->GetVolume(pLoad_BGM) != 0.5);
+	{
+		SOUND->SetVolume(pLoad_BGM, 0.5);
+	}
+
+
 	CAMERA->FadeIn(0.25f);
 
 	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");

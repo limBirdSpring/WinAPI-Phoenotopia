@@ -53,8 +53,8 @@ void CSceneTitle::Enter()
 	CAMERA->FadeIn(0.25f);
 	CAMERA->ZoomInOut(1);
 
-	//pLoad_BGM = RESOURCE->FindSound(L"Title");
-	//SOUND->Play(pLoad_BGM, 1.f, true);
+	pLoad_BGM = RESOURCE->FindSound(L"Title");
+	SOUND->Play(pLoad_BGM, 1.f, true);
 	
 	
 	CAMERA->SetMapSize(Vector(0, 0));
@@ -90,7 +90,7 @@ void CSceneTitle::Update()
 			pTitleObject->SetPos(pTitleObject->GetPos().x, pTitleObject->GetPos().y - DT * 800);
 		pTitle_Front->SetPos(pTitle_Front->GetPos().x, pTitle_Front->GetPos().y - DT * 200);
 
-		//SOUND->FadeOut(pLoad_BGM, 3.f, 0);
+		SOUND->FadeOut(pLoad_BGM, 1.f, 0);
 		CAMERA->FadeOut(0.25f);
 		DELAYCHANGESCENE(GroupScene::GailRoom, 2.f);
 		GAME->SetPlayerStartPos(Vector(400, 398));

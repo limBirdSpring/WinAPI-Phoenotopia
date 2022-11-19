@@ -32,6 +32,8 @@ void  CAttack2::Update()
 {
 	if (m_fTime > 0.3)
 	{
+		pSe = RESOURCE->FindSound(L"Attack2");
+		SOUND->Play(pSe,0.9);
 		RemoveCollider();
 		AddCollider(ColliderType::Rect, Vector(m_vecScale.x - 1, m_vecScale.y - 1), Vector(0, 0));
 	}

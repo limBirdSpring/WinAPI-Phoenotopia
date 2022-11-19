@@ -82,8 +82,7 @@ CSound* CResourceManager::LoadSound(const wstring& key, const wstring& fileName)
 
 void CResourceManager::Init()
 {
-	//CSound* sound1 = LoadSound(L"Panselo", L"Sound\\Panselo.mp3");
-	//CSound* sound2 = LoadSound(L"Title", L"Sound\\Title.mp3");
+	
 
 }
 

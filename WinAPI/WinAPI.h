@@ -27,6 +27,8 @@ enum class GroupScene
 {
 	Title,
 
+	Load,
+
 	TileTool,
 
 	GailRoom,
