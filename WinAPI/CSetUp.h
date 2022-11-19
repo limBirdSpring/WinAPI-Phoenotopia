@@ -13,7 +13,7 @@ public:
 
 private:
 	CImage* m_pImage;
-
+	CSound* pSe;
 
 	int selectNum;
 

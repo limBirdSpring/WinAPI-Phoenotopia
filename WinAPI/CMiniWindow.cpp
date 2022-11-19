@@ -9,7 +9,7 @@
 
 CMiniWindow::CMiniWindow()
 {
-	m_layer = Layer::Things;
+	m_layer = Layer::TalkBox;
 	m_pImage = nullptr;
 	m_vecPos = Vector(0, 0);
 	m_vecScale = Vector(100, 100);

@@ -42,6 +42,7 @@ void CSceneTitle::Init()
 
 void CSceneTitle::Enter()
 {
+
 	coolTime = -1;
 	textAlpha = 0;
 

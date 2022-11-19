@@ -30,16 +30,23 @@ void CSetUp::Enter()
 	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));
 
 	GAME->SetUIRender(false);
+
+	pSe = RESOURCE->FindSound(L"Choice");
+	SOUND->Play(pSe);
 }
 
 void CSetUp::Update()
 {
 	if (BUTTONDOWN(VK_UP))
 	{
+		pSe = RESOURCE->FindSound(L"Cursor");
+		SOUND->Play(pSe);
 		selectNum--;
 	}
 	else if (BUTTONDOWN(VK_DOWN))
 	{
+		pSe = RESOURCE->FindSound(L"Cursor");
+		SOUND->Play(pSe);
 		selectNum++;
 	}
 
@@ -47,6 +54,8 @@ void CSetUp::Update()
 
 	if (BUTTONDOWN(VK_ESCAPE))
 	{
+		GAME->SetUIRender(true);
+		pSe = RESOURCE->FindSound(L"Cursor");
 		CHANGESCENE(GAME->GetCurScene());
 	}
 
@@ -59,8 +68,10 @@ void CSetUp::Update()
 		}
 		else
 		{
+			pSe = RESOURCE->FindSound(L"Choice");
+			SOUND->Play(pSe);
 			CAMERA->FadeOut(0.25f);
-			DELAYCHANGESCENE(GroupScene::Title, 0.25f);
+			DELAYCHANGESCENE(GroupScene::Title, 2.f);
 		}
 	}
 }
@@ -87,7 +98,8 @@ void CSetUp::Render()
 
 void CSetUp::Exit()
 {
-	GAME->SetUIRender(true);
+	
+	SOUND->Play(pSe);
 }
 
 void CSetUp::Release()

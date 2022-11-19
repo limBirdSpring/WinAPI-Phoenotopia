@@ -44,7 +44,8 @@ void CInventory::Enter()
 	m_pSelect->SetPos(160, 190);
 	CAMERA->ZoomInOut(1);
 	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));
-
+	pSe = RESOURCE->FindSound(L"Choice");
+	SOUND->Play(pSe);
 }
 
 void CInventory::Update()
@@ -173,6 +174,8 @@ void CInventory::Render()
 
 void CInventory::Exit()
 {
+	pSe = RESOURCE->FindSound(L"Cursor");
+	SOUND->Play(pSe);
 }
 
 void CInventory::Release()
