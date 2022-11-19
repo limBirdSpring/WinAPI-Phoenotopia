@@ -11,8 +11,9 @@ public:
 
 public:
 	Item item; //아이템을 무조건 입력해서 사용해야함.
-
 private:
+	CSound* pSe;
+
 	void Init() override;
 	void Update() override;
 	void Render() override;

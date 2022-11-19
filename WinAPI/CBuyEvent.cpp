@@ -116,6 +116,8 @@ void CBuyEvent::Talk()
 			}
 			else
 			{
+				pSe = RESOURCE->FindSound(L"Buy");
+				SOUND->Play(pSe);
 				GAME->SetGold(-item.price);
 				GAME->PushBackInvenItem(item);
 				m_strDialogue = item.name + L"을(를) 구매했다.";

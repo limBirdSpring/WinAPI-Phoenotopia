@@ -8,7 +8,9 @@ public:
 	virtual ~CMonsterDamage();
 
 
-
+private :
+	CSound* pSe;
+public :
 	void Init() override;
 	void Update() override;
 	void Release() override;

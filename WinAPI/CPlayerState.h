@@ -7,6 +7,7 @@ class CPlayerState
 	friend CPlayer;
 protected :
 
+	CSound* pSe;
 	CPlayer* pPlayer;
 	float coolTime;
 public :

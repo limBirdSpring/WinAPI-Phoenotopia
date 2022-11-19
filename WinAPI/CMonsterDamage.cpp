@@ -15,6 +15,8 @@ void CMonsterDamage::Update()
 	Vector monPos = pMonster->GetPos();
 	if (coolTime ==0)
 	{
+		pSe = RESOURCE->FindSound(L"Damage");
+		SOUND->Play(pSe);
 		
 		if (pMonster->GetLayer() != Layer::FlyingMonster && pMonster->GetName() != L"PinkSlug")
 		{

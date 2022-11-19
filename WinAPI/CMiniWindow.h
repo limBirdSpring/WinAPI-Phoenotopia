@@ -16,7 +16,7 @@ public:
 	virtual ~CMiniWindow();
 
 private:
-
+	CSound* pSe;
 	int select;
 	int selectItem;
 

@@ -58,10 +58,17 @@ void CInventory::Update()
 			if (GAME->m_vInventoryItem[selectItem].type == ItemType::Weapon)
 			{
 				GAME->m_vSetItem.push_back(GAME->m_vInventoryItem[selectItem]);
+
+				pSe = RESOURCE->FindSound(L"Equip");
+				SOUND->Play(pSe);
+
 			}
 			else if (GAME->m_vInventoryItem[selectItem].type == ItemType::Food)
 			{
 				GAME->SetHp(GAME->m_vInventoryItem[selectItem].hp);
+
+				pSe = RESOURCE->FindSound(L"Heal2");
+				SOUND->Play(pSe);
 			}
 			GAME->EraseInvenItem(GAME->m_vInventoryItem[selectItem]);
 
@@ -86,18 +93,26 @@ void CInventory::Update()
 	if (BUTTONDOWN(VK_LEFT))
 	{
 		selectItem--;
+		pSe = RESOURCE->FindSound(L"Cursor");
+		SOUND->Play(pSe);
 	}
 	else if (BUTTONDOWN(VK_RIGHT))
 	{
 		selectItem++;
+		pSe = RESOURCE->FindSound(L"Cursor");
+		SOUND->Play(pSe);
 	}
 	else if (BUTTONDOWN(VK_UP))
 	{
 		selectItem-=4;
+		pSe = RESOURCE->FindSound(L"Cursor");
+		SOUND->Play(pSe);
 	}
 	else if (BUTTONDOWN(VK_DOWN))
 	{
 		selectItem += 4;
+		pSe = RESOURCE->FindSound(L"Cursor");
+		SOUND->Play(pSe);
 	}
 
 	selectItem = clamp(selectItem, 0, 11);
@@ -110,6 +125,8 @@ void CInventory::Update()
 		m_pMiniWindow->SetPos(160 + (90 * (selectItem % 4)), 190 + (90 * (selectItem / 4)));
 		m_pMiniWindow->selectItem = this->selectItem;
 		AddGameObject(m_pMiniWindow);
+		pSe = RESOURCE->FindSound(L"Choice");
+		SOUND->Play(pSe);
 	}
 }
 

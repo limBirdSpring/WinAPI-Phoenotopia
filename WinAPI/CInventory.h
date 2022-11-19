@@ -18,6 +18,8 @@ private:
 	CSelect* m_pSelect;
 	CMiniWindow* m_pMiniWindow;
 
+	CSound* pSe;
+
 	int selectItem;
 
 

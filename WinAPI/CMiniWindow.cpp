@@ -32,17 +32,22 @@ void CMiniWindow::Update()
 	if (BUTTONDOWN(VK_UP))
 	{
 		select--;
+		pSe = RESOURCE->FindSound(L"Cursor");
+		SOUND->Play(pSe);
 	}
 	else if (BUTTONDOWN(VK_DOWN))
 	{
 		select++;
+		pSe = RESOURCE->FindSound(L"Cursor");
+		SOUND->Play(pSe);
 	}
 	
 	select = clamp(select, 0, 1);
 
 	if (BUTTONDOWN('X'))
 	{
-		
+		pSe = RESOURCE->FindSound(L"Cursor");
+		SOUND->Play(pSe);
 		DELETEOBJECT(this);
 	}
 }
