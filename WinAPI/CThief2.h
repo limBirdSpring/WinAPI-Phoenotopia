@@ -3,17 +3,14 @@
 
 class CPlayer;
 
-class CThief :
+class CThief2 :
 	public CNPC
 {
 public:
-	CThief(CPlayer* player);
-	virtual ~CThief();
+	CThief2(CPlayer* player);
+	virtual ~CThief2();
 
 private:
-	bool isRun;
-	float coolTime;
-	CSound* pSe;
 
 private:
 	void Init() override;

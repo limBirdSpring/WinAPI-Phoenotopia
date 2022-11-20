@@ -39,6 +39,7 @@
 #include "CSoldier2.h"
 #include "CBoy.h"
 #include "CSound.h"
+#include "CThief.h"
 
 CSceneStage01::CSceneStage01()
 {
@@ -160,6 +161,10 @@ void CSceneStage01::Init()
 	CBoy* pBoy = new CBoy(pPlayer);
 	pBoy->SetPos(190, 310);
 	AddGameObject(pBoy);
+
+	CThief* pThief = new CThief(pPlayer);
+	pThief->SetPos(1507, 489);
+	AddGameObject(pThief);
 
 
 }

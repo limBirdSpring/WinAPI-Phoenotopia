@@ -125,6 +125,7 @@ void CPrinceForest::Render()
 
 void CPrinceForest::Exit()
 {
+
 }
 
 void CPrinceForest::Release()

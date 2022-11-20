@@ -98,7 +98,7 @@ void CBee::Update()
 		m_behavior = MonsterBehavior::Fly;
 		pSe = RESOURCE->FindSound(L"Bee");
 		if (!pSe->IsPlaying())
-			SOUND->Play(pSe, 1, true);
+			SOUND->Play(pSe, 1, false);
 	}
 
 	AnimatorUpdate();

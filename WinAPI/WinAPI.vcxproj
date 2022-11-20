@@ -264,6 +264,8 @@
     <ClInclude Include="CStudent.h" />
     <ClInclude Include="CTalkBox.h" />
     <ClInclude Include="CTeacher.h" />
+    <ClInclude Include="CThief.h" />
+    <ClInclude Include="CThief2.h" />
     <ClInclude Include="CThings.h" />
     <ClInclude Include="CTile.h" />
     <ClInclude Include="CTileButton.h" />
@@ -409,6 +411,8 @@
     <ClCompile Include="CStudent.cpp" />
     <ClCompile Include="CTalkBox.cpp" />
     <ClCompile Include="CTeacher.cpp" />
+    <ClCompile Include="CThief.cpp" />
+    <ClCompile Include="CThief2.cpp" />
     <ClCompile Include="CThings.cpp" />
     <ClCompile Include="CTile.cpp" />
     <ClCompile Include="CTileButton.cpp" />

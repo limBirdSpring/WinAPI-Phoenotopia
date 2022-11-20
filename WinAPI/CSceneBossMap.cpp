@@ -33,6 +33,7 @@
 #include "CFrontImage.h"
 #include "CBossAppearBlock.h"
 #include "CGhost.h"
+#include "CThief2.h"
 
 CSceneBossMap::CSceneBossMap()
 {
@@ -130,6 +131,9 @@ void CSceneBossMap::Init()
 	pBlock->SetScale(10, 500);
 	AddGameObject(pBlock);
 
+	CThief2* pThief2 = new CThief2(pPlayer);
+	pThief2->SetPos(248,489);
+	AddGameObject(pThief2);
 
 }
 

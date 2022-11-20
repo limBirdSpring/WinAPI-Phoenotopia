@@ -4,6 +4,7 @@
 
 CSceneLoad::CSceneLoad()
 {
+	curCount = 0;
 }
 
 CSceneLoad::~CSceneLoad()
@@ -47,6 +48,7 @@ void CSceneLoad::Init()
 	vLoadList.push_back(make_pair(L"Critical2", L"Sound\\Critical2.ogg"));
 	vLoadList.push_back(make_pair(L"Save", L"Sound\\Save.ogg"));
 	vLoadList.push_back(make_pair(L"Frog", L"Sound\\Frog.ogg"));
+	vLoadList.push_back(make_pair(L"Run", L"Sound\\Run.ogg"));
 
 
 
@@ -70,19 +72,15 @@ void CSceneLoad::Enter()
 void CSceneLoad::Update()
 {
 	
-	//curCount++;
+	curCount++;
 	
 	RESOURCE->LoadSound(vLoadList.back().first, vLoadList.back().second);
 	vLoadList.pop_back();
-	//float percent = curCount / vLoadList.size();
+	if (vLoadList.size() != 0)
+		percent = (curCount / vLoadList.size());
+	else
+		percent = 100;
 
-	//if (vLoadList.empty())
-
-	//for (int i = 0; i < vLoadList.size(); i++)
-	//{
-	//	RESOURCE->LoadSound(vLoadList[i].first, vLoadList[i].second);
-	//}
-	//
 	if (vLoadList.empty())
 		CHANGESCENE(GroupScene::Title);
 		
@@ -90,7 +88,9 @@ void CSceneLoad::Update()
 
 void CSceneLoad::Render()
 {
-	
+	RENDER->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_TRAILING);
+	RENDER->Text(to_wstring(percent)+L"%", 1000, 675, 1080, 705,  Color(255,255,255,1), 30);
+	RENDER->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
 }
 
 void CSceneLoad::Exit()
