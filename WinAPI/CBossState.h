@@ -12,6 +12,7 @@ public:
 protected:
 	CBoss* pBoss;
 	float coolTime;
+	CSound* pSe;
 
 public:
 

@@ -15,6 +15,7 @@ public:
 	CPillarDoor* pDoor;
 	CBoss* pBoss;
 	float coolTime;
+	bool IsStart;
 
 private:
 	void Init() override;

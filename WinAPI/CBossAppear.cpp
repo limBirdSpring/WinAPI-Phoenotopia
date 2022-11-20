@@ -12,6 +12,12 @@ void CBossAppear::Init()
 
 void CBossAppear::Update()
 {
+	if (coolTime == 0)
+	{
+		pSe = RESOURCE->FindSound(L"BossAppear");
+		SOUND->Play(pSe);
+	}
+
 	coolTime += DT;
 
 	if (coolTime > 2)

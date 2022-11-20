@@ -64,11 +64,15 @@ void CPrinceForest::Init()
 
 void CPrinceForest::Enter()
 {
+	pLoad_BGM = RESOURCE->FindSound(L"BossBattle");
+	SOUND->Stop(pLoad_BGM);
+	pLoad_BGM = RESOURCE->FindSound(L"DubbiForest");
+	SOUND->Stop(pLoad_BGM);
+
 	GAME->SetUIRender(false);
 	CAMERA->FadeIn(0.25f);
 
-	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
-	//SOUND->Play(pLoad_BGM, 1, true);
+
 
 
 	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));
@@ -112,6 +116,8 @@ void CPrinceForest::Update()
 	{
 		if (coolTime > 11)
 		{
+			CSound* pSe = RESOURCE->FindSound(L"Damage");
+			SOUND->Play(pSe);
 			CHANGESCENE(GroupScene::Ending);
 		}
 		coolTime += DT;

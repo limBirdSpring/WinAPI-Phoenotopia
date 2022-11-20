@@ -17,6 +17,10 @@ void CEnding::Init()
 
 void CEnding::Enter()
 {
+	pLoad_BGM = RESOURCE->FindSound(L"Fun");
+	SOUND->Play(pLoad_BGM);
+
+
 	m_pImage = RESOURCE->LoadImg(L"Dead", L"Image\\Dead.png");
 	CImageObject* pDead = new CImageObject;
 	pDead->SetImage(m_pImage);
@@ -72,6 +76,8 @@ void CEnding::Render()
 
 void CEnding::Exit()
 {
+	pLoad_BGM = RESOURCE->FindSound(L"Fun");
+	SOUND->Stop(pLoad_BGM);
 }
 
 void CEnding::Release()

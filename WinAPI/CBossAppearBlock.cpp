@@ -10,6 +10,7 @@ CBossAppearBlock::CBossAppearBlock(CPlayer* player)
 	pPlayer = player;
 	m_vecScale = Vector(10, 50);
 	pDoor = nullptr;
+	IsStart = false;
 }
 
 CBossAppearBlock::~CBossAppearBlock()
@@ -25,10 +26,12 @@ void CBossAppearBlock::Update()
 {
 	if (coolTime > 3)
 	{
+		CSound* pLoad_Bgm = RESOURCE->FindSound(L"BossBattle");
+		SOUND->Play(pLoad_Bgm,1,true);
 		GAME->SetTalk(false);
 		DELETEOBJECT(this);
 	}
-	else if(GAME->GetTalk())
+	else if(IsStart)
 	{
 		coolTime += DT;
 	}
@@ -46,8 +49,11 @@ void CBossAppearBlock::OnCollisionEnter(CCollider* pOtherCollider)
 {
 	if (pOtherCollider->GetObjName() == L"플레이어")
 	{
+		IsStart = true;
 		GAME->SetTalk(true);
 		pPlayer->m_behavior = Behavior::Talk;
+		CSound* pLoad_Bgm = RESOURCE->FindSound(L"DubbiForest");
+		SOUND->Stop(pLoad_Bgm);
 		ADDOBJECT(pBoss);
 		if (pDoor != nullptr)
 		{

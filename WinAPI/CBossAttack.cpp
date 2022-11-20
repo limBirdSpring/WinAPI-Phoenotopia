@@ -16,6 +16,9 @@ void CBossAttack::Update()
 	
 	if (coolTime == 0)
 	{
+		pSe = RESOURCE->FindSound(L"BossAttack");
+		SOUND->Play(pSe);
+
 		CBossSkill* pBossSkill = new CBossSkill;
 		pBossSkill->SetPos(pBoss->GetPos());
 		pBossSkill->SetScale(130, 100);

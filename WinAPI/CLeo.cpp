@@ -121,9 +121,13 @@ void CLeo::Talk()
 		m_strDialogue = L"";
 		break;
 	case 1:
+	{
+		CSound* pBgm = RESOURCE->FindSound(L"Fun");
+		SOUND->Play(pBgm, 1, true);
 		m_pAnimator->Play(L"Leo_Strech_Left");
 		m_strDialogue = L"¿Í! ÁøÂ¥ ÁüÀ» ±¸ÇÏ·¯¿À´Ù´Ï!";
 		break;
+	}
 	case 2:
 		m_pAnimator->Play(L"Leo_Idle_Left");
 		m_strDialogue = L"°í¸¿´Ù ¼­¹Î!";
@@ -168,8 +172,12 @@ void CLeo::Talk()
 		m_strDialogue = L"±×·¯°Ô »¡¸®¿ÀÁö ±×·¨¾î?";
 		break;
 	case 13:
+	{
+		CSound* pBgm = RESOURCE->FindSound(L"Fun");
+		SOUND->Stop(pBgm);
 		coolTime = 5;
 		m_strDialogue = L"";
 		break;
+	}
 	}
 }

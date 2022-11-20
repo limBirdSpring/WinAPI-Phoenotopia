@@ -14,10 +14,13 @@ CSceneLoad::~CSceneLoad()
 void CSceneLoad::Init()
 {
 	vLoadList.push_back(make_pair(L"Panselo", L"Sound\\Panselo.mp3"));
+	vLoadList.push_back(make_pair(L"BossBattle", L"Sound\\BossBattle.mp3"));
+	vLoadList.push_back(make_pair(L"Fun", L"Sound\\Fun.mp3"));
 	vLoadList.push_back(make_pair(L"Title", L"Sound\\Title.mp3"));
 	vLoadList.push_back(make_pair(L"DubbiForest", L"Sound\\DubbiForest.mp3"));
 	vLoadList.push_back(make_pair(L"Attack", L"Sound\\Attack.mp3"));
 	vLoadList.push_back(make_pair(L"Attack2", L"Sound\\Attack2.mp3"));
+	vLoadList.push_back(make_pair(L"AttackSlow", L"Sound\\AttackSlow.mp3"));
 	vLoadList.push_back(make_pair(L"Damage", L"Sound\\Damage.mp3"));
 	vLoadList.push_back(make_pair(L"Bee", L"Sound\\Bee.mp3"));
 
@@ -32,7 +35,7 @@ void CSceneLoad::Init()
 	vLoadList.push_back(make_pair(L"CriticalReady", L"Sound\\CriticalReady.ogg"));
 	vLoadList.push_back(make_pair(L"Equip", L"Sound\\Equip.ogg"));
 	vLoadList.push_back(make_pair(L"Heal", L"Sound\\Heal.ogg"));
-	vLoadList.push_back(make_pair(L"Heal2", L"Sound\\Heal.ogg"));
+	vLoadList.push_back(make_pair(L"Heal2", L"Sound\\Heal2.ogg"));
 
 	vLoadList.push_back(make_pair(L"Close", L"Sound\\Close.ogg"));
 	vLoadList.push_back(make_pair(L"Item", L"Sound\\Item.ogg"));
@@ -54,6 +57,15 @@ void CSceneLoad::Init()
 	vLoadList.push_back(make_pair(L"Coin", L"Sound\\Coin.mp3"));
 	vLoadList.push_back(make_pair(L"PlayerRun", L"Sound\\PlayerRun.ogg"));
 	vLoadList.push_back(make_pair(L"Dialogue", L"Sound\\Dialogue.mp3"));
+
+	vLoadList.push_back(make_pair(L"BossDead", L"Sound\\BossDead.ogg"));
+	vLoadList.push_back(make_pair(L"BossAppear", L"Sound\\BossAppear.mp3"));
+	vLoadList.push_back(make_pair(L"Walk", L"Sound\\Walk.mp3"));
+
+	vLoadList.push_back(make_pair(L"BossAttack", L"Sound\\BossAttack.ogg"));
+	vLoadList.push_back(make_pair(L"BossAttack2", L"Sound\\BossAttack2.ogg"));
+	vLoadList.push_back(make_pair(L"BossAttack3", L"Sound\\BossAttack3.ogg"));
+
 
 	pLoad_Screen = RESOURCE->LoadImg(L"Load_Screen", L"Image\\Load_Screen.png");
 	pTitleObject = new CImageObject;

@@ -123,10 +123,8 @@ void CGhost::OnCollisionEnter(CCollider* pOtherCollider)
 {
 	if (pOtherCollider->GetObjName() == L"공격")
 	{
-		if (pOtherCollider->GetPos().x > m_vecPos.x)
-			m_vecMoveDir.x = -1;
-		else
-			m_vecMoveDir.x = 1;
+		pSe = RESOURCE->FindSound(L"Damage");
+		SOUND->Play(pSe);
 	
 	}
 	else if (pOtherCollider->GetObjName() == L"플레이어")

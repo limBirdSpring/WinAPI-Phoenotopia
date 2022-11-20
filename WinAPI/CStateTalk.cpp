@@ -19,7 +19,11 @@ void CStateTalk::Init()
 
 void CStateTalk::Update()
 {
-
+	if (coolTime == 0)
+	{
+		pSe = RESOURCE->FindSound(L"Walk");
+		SOUND->Stop(pSe);
+	}
 
 	if (!GAME->GetTalk())
 	{

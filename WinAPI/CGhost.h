@@ -12,6 +12,7 @@ public:
 	virtual ~CGhost();
 
 private:
+	CSound* pSe;
 
 	void Init() override;
 	void Update() override;
