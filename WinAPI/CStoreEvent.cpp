@@ -14,6 +14,8 @@ void CStoreEvent::Update()
 {
 	if (coolTime == 0)
 	{
+		CSound* pBgm = RESOURCE->FindSound(L"Panselo");
+		SOUND->Stop(pBgm);
 		pPlayer->SetBehavior(Behavior::Talk);
 		pPlayer->SetPos(258, 398);
 		GAME->SetTalk(true);
@@ -26,16 +28,22 @@ void CStoreEvent::Update()
 	}
 	else if (coolTime > 2.5 && quest == 1)
 	{
+		CSound* pSe = RESOURCE->FindSound(L"BBamm");
+		SOUND->Play(pSe, 0.5);
 		CAMERA->ZoomInOut(4);
 		quest++;
 	}
 	else if (coolTime > 3 && quest == 2)
 	{
+		CSound* pSe = RESOURCE->FindSound(L"BBamm2");
+		SOUND->Play(pSe, 0.5);
 		CAMERA->ZoomInOut(5.5);
 		quest++;
 	}
 	else if (coolTime > 3.5 && quest == 3)
 	{
+		CSound* pSe = RESOURCE->FindSound(L"BBamm3");
+		SOUND->Play(pSe, 0.5);
 		CAMERA->ZoomInOut(7);
 		quest++;
 	}
@@ -45,6 +53,8 @@ void CStoreEvent::Update()
 		CAMERA->ZoomInOut(3, 1);
 		quest++;
 		GAME->SetTalk(false);
+		CSound* pBgm = RESOURCE->FindSound(L"Panselo");
+		SOUND->Play(pBgm, 0.7);
 		DELETEOBJECT(this);
 	}
 

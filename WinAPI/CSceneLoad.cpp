@@ -65,6 +65,9 @@ void CSceneLoad::Init()
 	vLoadList.push_back(make_pair(L"BossAttack", L"Sound\\BossAttack.ogg"));
 	vLoadList.push_back(make_pair(L"BossAttack2", L"Sound\\BossAttack2.ogg"));
 	vLoadList.push_back(make_pair(L"BossAttack3", L"Sound\\BossAttack3.ogg"));
+	vLoadList.push_back(make_pair(L"BBamm", L"Sound\\BBamm.mp3"));
+	vLoadList.push_back(make_pair(L"BBamm2", L"Sound\\BBamm2.mp3"));
+	vLoadList.push_back(make_pair(L"BBamm3", L"Sound\\BBamm3.mp3"));
 
 
 	pLoad_Screen = RESOURCE->LoadImg(L"Load_Screen", L"Image\\Load_Screen.png");

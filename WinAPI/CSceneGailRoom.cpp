@@ -98,9 +98,9 @@ void CSceneGailRoom::Enter()
 {
 	pLoad_BGM = RESOURCE->FindSound(L"Panselo");
 
-	if (pLoad_BGM->IsPlaying(), SOUND->GetVolume(pLoad_BGM) != 0.5);
+	if (pLoad_BGM->IsPlaying(), SOUND->GetVolume(pLoad_BGM) != 0.7);
 	{
-		SOUND->SetVolume(pLoad_BGM, 0.5);
+		SOUND->SetVolume(pLoad_BGM, 0.7);
 	}
 
 	GAME->SetUIRender(true);
