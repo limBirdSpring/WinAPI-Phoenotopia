@@ -18,11 +18,14 @@ void CSceneLoad::Init()
 	vLoadList.push_back(make_pair(L"Attack", L"Sound\\Attack.mp3"));
 	vLoadList.push_back(make_pair(L"Attack2", L"Sound\\Attack2.mp3"));
 	vLoadList.push_back(make_pair(L"Damage", L"Sound\\Damage.mp3"));
+	vLoadList.push_back(make_pair(L"Bee", L"Sound\\Bee.mp3"));
 
 	vLoadList.push_back(make_pair(L"BoxDamage", L"Sound\\BoxDamage.ogg"));
 	vLoadList.push_back(make_pair(L"BoxDead", L"Sound\\BoxDead.ogg"));
 	vLoadList.push_back(make_pair(L"Buy", L"Sound\\Buy.ogg"));
 	vLoadList.push_back(make_pair(L"Choice", L"Sound\\Choice.ogg"));
+	vLoadList.push_back(make_pair(L"Choice2", L"Sound\\Choice2.ogg"));
+	vLoadList.push_back(make_pair(L"Ice", L"Sound\\Ice.ogg"));
 
 	vLoadList.push_back(make_pair(L"Cursor", L"Sound\\Cursor.ogg"));
 	vLoadList.push_back(make_pair(L"CriticalReady", L"Sound\\CriticalReady.ogg"));
@@ -37,6 +40,15 @@ void CSceneLoad::Init()
 	vLoadList.push_back(make_pair(L"Shop", L"Sound\\Shop.ogg"));
 	vLoadList.push_back(make_pair(L"PillarDoor", L"Sound\\PillarDoor.ogg"));
 	vLoadList.push_back(make_pair(L"SlugDamage", L"Sound\\SlugDamage.ogg"));
+	
+	vLoadList.push_back(make_pair(L"Jump1", L"Sound\\Jump1.ogg"));
+	vLoadList.push_back(make_pair(L"Jump2", L"Sound\\Jump2.ogg"));
+	vLoadList.push_back(make_pair(L"Critical", L"Sound\\Critical.ogg"));
+	vLoadList.push_back(make_pair(L"Critical2", L"Sound\\Critical2.ogg"));
+	vLoadList.push_back(make_pair(L"Save", L"Sound\\Save.ogg"));
+	vLoadList.push_back(make_pair(L"Frog", L"Sound\\Frog.ogg"));
+
+
 
 
 	pLoad_Screen = RESOURCE->LoadImg(L"Load_Screen", L"Image\\Load_Screen.png");

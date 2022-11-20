@@ -62,6 +62,12 @@ void  CCritical::OnCollisionEnter(CCollider* pOtherCollider)
 	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetOwner()->GetLayer() == Layer::FlyingMonster || pOtherCollider->GetOwner()->GetLayer() == Layer::Boss
 		|| pOtherCollider->GetObjName() == L"박스")
 	{
+		if (pOtherCollider->GetObjName() == L"박스")
+		{
+			pSe = RESOURCE->FindSound(L"BoxDamage");
+			SOUND->Play(pSe);
+		}
+
 		pOtherCollider->GetOwner()->SetHp(-9);
 
 		CDamageNumber* pNum = new CDamageNumber;

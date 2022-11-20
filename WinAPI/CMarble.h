@@ -13,6 +13,8 @@ public:
 	wstring dir;
 
 private:
+	CSound* pSe;
+
 	void Init() override;
 	void Update() override;
 	void Render() override;

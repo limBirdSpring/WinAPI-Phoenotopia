@@ -120,6 +120,11 @@ void CSoundManager::SetVolume(CSound* pSound, float volume)
 	pSound->m_pChannel->setVolume(volume);
 }
 
+void CSoundManager::SoundAllStop()
+{
+	
+}
+
 void CSoundManager::Init()
 {
 	// 사운드 시스템 생성

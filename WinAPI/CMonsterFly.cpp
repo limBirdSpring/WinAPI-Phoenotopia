@@ -44,6 +44,9 @@ void CMonsterFly::Update()
 
 	if (coolTime >= 1)
 	{
+		pSe = RESOURCE->FindSound(L"Bee");
+		if (pSe->IsPlaying())
+			SOUND->Stop(pSe);
 		coolTime = 0;
 		pMonster->SetBehavior(MonsterBehavior::Idle);
 	}

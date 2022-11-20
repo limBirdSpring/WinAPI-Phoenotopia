@@ -116,7 +116,7 @@ void CBuyEvent::Talk()
 			}
 			else
 			{
-				pSe = RESOURCE->FindSound(L"Buy");
+				pSe = RESOURCE->FindSound(L"Shop");
 				SOUND->Play(pSe);
 				GAME->SetGold(-item.price);
 				GAME->PushBackInvenItem(item);

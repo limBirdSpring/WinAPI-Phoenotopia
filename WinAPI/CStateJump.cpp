@@ -16,11 +16,15 @@ void CStateJump::Update()
 {
 	if (coolTime == 0)
 	{
+		
+
 		pPlayer->m_vecPos.y--;
 		pPlayer->SetGravity(-260);
 
 		if (BUTTONSTAY(VK_SHIFT))
 		{
+			pSe = RESOURCE->FindSound(L"Jump2");
+			SOUND->Play(pSe);
 			pPlayer->m_fSpeed = 200;
 			if (BUTTONSTAY(VK_LEFT))
 			{
@@ -31,6 +35,11 @@ void CStateJump::Update()
 				pPlayer->m_vecMoveDir.x = 1;
 			}
 			farJump = true;
+		}
+		else
+		{
+			pSe = RESOURCE->FindSound(L"Jump1");
+			SOUND->Play(pSe);
 		}
 	}
 	coolTime += DT;

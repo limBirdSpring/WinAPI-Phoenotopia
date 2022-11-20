@@ -74,11 +74,15 @@ void CDoor::OnCollisionStay(CCollider* pOtherCollider)
 				if (!isOpen)
 				{
 					m_pAnimator->Play(L"Door_Opened");
+					pSe = RESOURCE->FindSound(L"Open");
+					SOUND->Play(pSe);
 					isOpen = true;
 				}
 				else
 				{
 					m_pAnimator->Play(L"Door_Closed");
+					pSe = RESOURCE->FindSound(L"Open");
+					SOUND->Play(pSe);
 					isOpen = false;
 				}
 			}

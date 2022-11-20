@@ -23,6 +23,8 @@ private:
 
 	bool isSaveY;
 
+	CSound* pSe;
+
 private:
 	void Init() override;
 	void Update() override;

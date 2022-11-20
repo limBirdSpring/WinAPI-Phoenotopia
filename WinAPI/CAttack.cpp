@@ -64,6 +64,12 @@ void  CAttack::OnCollisionEnter(CCollider* pOtherCollider)
 	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Monster || pOtherCollider->GetOwner()->GetLayer() == Layer::FlyingMonster || pOtherCollider->GetOwner()->GetLayer() == Layer::Boss
 		|| pOtherCollider->GetObjName() == L"박스")
 	{
+		if (pOtherCollider->GetObjName() == L"박스")
+		{
+			pSe = RESOURCE->FindSound(L"BoxDamage");
+			SOUND->Play(pSe);
+		}
+
 		pOtherCollider->GetOwner()->SetHp(-3);
 		CDamageNumber* pNum = new CDamageNumber;
 		if (pOtherCollider->GetObjName() == L"Slug")

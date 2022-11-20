@@ -128,6 +128,8 @@ void CStatue::Talk()
 	{
 	case 1:
 		m_strDialogue = L"젬을 끼웠다.";
+		pSe = RESOURCE->FindSound(L"PillarDoor");
+		SOUND->Play(pSe);
 		break;
 	case 2:
 		m_strDialogue = L"젬을 넣을 수 있는 홈이 있다.";

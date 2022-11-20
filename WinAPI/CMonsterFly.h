@@ -10,6 +10,8 @@ public:
 	Vector playerPos;
 	Vector plusPos;
 
+	CSound* pSe;
+
 	float coolTimeDT;
 
 	void Init() override;

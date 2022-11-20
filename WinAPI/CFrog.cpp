@@ -105,9 +105,19 @@ void CFrog::Update()
 	m_mapMonsterState.find(m_behavior)->second->Update();
 
 
+
 	if (m_behavior == MonsterBehavior::Idle && GAME->GetPlayerPos().x > m_vecPos.x - 200 && GAME->GetPlayerPos().x < m_vecPos.x + 200)
 	{
-		if (rand()%500 == 1)m_behavior = MonsterBehavior::Jump;
+		if (rand() % 500 == 1)
+		{
+			m_behavior = MonsterBehavior::Jump;
+
+			if (rand() % 10== 1)
+			{
+				pSe = RESOURCE->FindSound(L"Frog");
+				SOUND->Play(pSe, 0.5);
+			}
+		}
 	}
 
 	AnimatorUpdate();

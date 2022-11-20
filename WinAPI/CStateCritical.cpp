@@ -15,6 +15,9 @@ void CStateCritical::Update()
 {
 	if (coolTime == 0)
 	{
+		pSe = RESOURCE->FindSound(L"Critical2");
+		SOUND->Play(pSe);
+
 		CCritical* pCritical = new CCritical();
 
 		if (pPlayer->m_vecMoveDir.x == -1)

@@ -18,6 +18,8 @@ private:
 	CImage* pTitle;
 	CImageObject* pTitleObject;
 	CFrontImage* pTitle_Front;
+	CSound* pSe;
+
 
 	float coolTime;
 

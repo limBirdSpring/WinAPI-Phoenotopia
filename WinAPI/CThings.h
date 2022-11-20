@@ -12,7 +12,7 @@ public:
 	virtual ~CThings();
 
 protected :
-
+	CSound* pSe;
 
 private:
 	virtual void Init() override =0;

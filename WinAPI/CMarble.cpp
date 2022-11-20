@@ -64,6 +64,8 @@ void CMarble::OnCollisionEnter(CCollider* pOtherCollider)
 	if (pOtherCollider->GetObjName() == L"АјАн")
 	{
 		isMarbleOn = !isMarbleOn;
+		pSe = RESOURCE->FindSound(L"PillarDoor");
+		SOUND->Play(pSe);
 	}
 }
 

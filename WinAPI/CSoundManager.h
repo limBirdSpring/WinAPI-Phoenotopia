@@ -35,6 +35,8 @@ public:
 	float GetVolume(CSound* pSound);
 	void SetVolume(CSound* pSound, float volume);
 
+	void SoundAllStop();
+
 private:
 	void Init();
 	void Update();

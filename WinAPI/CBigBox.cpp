@@ -42,11 +42,14 @@ void CBigBox::Update()
 	{
 		if (rand() % 10 == 0)
 		{
+			
 			CItem* item = new CItem;
 			item->SetPos(this->GetPos());
 			item->SetItem(L"Æä·Î ¾Ë");
 			ADDOBJECT(item);
 		}
+		pSe = RESOURCE->FindSound(L"BoxDead");
+		SOUND->Play(pSe);
 		DELETEOBJECT(this);
 	}
 	else if (m_hp <=3)

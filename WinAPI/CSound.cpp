@@ -49,5 +49,5 @@ void CSound::Load(const wstring& soundName)
 	wcstombs_s(nullptr, str, soundName.c_str(), 255);
 
 	FMOD_RESULT result = SOUND->GetSystem()->createSound(str, FMOD_LOOP_OFF, 0, &m_pSound);
-	assert(FMOD_OK == result && L"System createSound failed");
+	//assert(FMOD_OK == result && L"System createSound failed");
 }

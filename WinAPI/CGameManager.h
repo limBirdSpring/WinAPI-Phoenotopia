@@ -124,6 +124,7 @@ private :
 	CImage* m_pBossHpBar;
 	CImage* m_pBossHp;
 
+	CSound* pSe;
 
 private :
 	void Init();

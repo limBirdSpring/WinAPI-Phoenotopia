@@ -91,10 +91,14 @@ void CBee::Update()
 
 	m_mapMonsterState.find(m_behavior)->second->Update();
 
+	
 
 	if (m_behavior == MonsterBehavior::Idle && GAME->GetPlayerPos().x > m_vecPos.x - 100 && GAME->GetPlayerPos().x < m_vecPos.x + 100 && GAME->GetPlayerPos().y > m_vecPos.y - 100 && GAME->GetPlayerPos().y < m_vecPos.y + 100)
 	{
 		m_behavior = MonsterBehavior::Fly;
+		pSe = RESOURCE->FindSound(L"Bee");
+		if (!pSe->IsPlaying())
+			SOUND->Play(pSe, 1, true);
 	}
 
 	AnimatorUpdate();

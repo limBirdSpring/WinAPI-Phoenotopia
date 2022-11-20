@@ -9,7 +9,7 @@ public:
 
 private:
 	float m_fTime;
-
+	CSound* pSe;
 private:
 	void Init() override;
 	void Update() override;

@@ -36,6 +36,7 @@ void CItem::OnCollisionEnter(CCollider* pOtherCollider)
 {
 	if (pOtherCollider->GetObjName() == L"플레이어")
 	{
+
 		GAME->PushBackInvenItem(item);
 		DELETEOBJECT(this);
 	}

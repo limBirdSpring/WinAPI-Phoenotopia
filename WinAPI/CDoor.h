@@ -15,7 +15,7 @@ public:
 
 private:
 
-	
+	CSound* pSe;
 	bool haveImage = true;
 	bool isOpen;
 

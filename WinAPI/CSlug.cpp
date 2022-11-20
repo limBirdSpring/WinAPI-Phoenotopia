@@ -59,7 +59,8 @@ void CSlug::OnCollisionEnter(CCollider* pOtherCollider)
 	else if (pOtherCollider->GetObjName() == L"공격")
 	{
 		Logger::Debug(L"몬스터가 공격과 충돌진입");
-
+		pSe = RESOURCE->FindSound(L"SlugDamage");
+		SOUND->Play(pSe);
 	}
 }
 

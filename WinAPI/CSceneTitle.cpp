@@ -42,6 +42,7 @@ void CSceneTitle::Init()
 
 void CSceneTitle::Enter()
 {
+	SOUND->SoundAllStop();
 
 	coolTime = -1;
 	textAlpha = 0;
@@ -104,6 +105,8 @@ void CSceneTitle::Update()
 	}
 	if (BUTTONDOWN('X'))
 	{
+		pSe = RESOURCE->FindSound(L"Ice");
+		SOUND->Play(pSe);
 		coolTime = 1.5;
 	}
 	//if (BUTTONDOWN(VK_F2))
