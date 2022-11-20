@@ -17,6 +17,7 @@ void CSceneLoad::Init()
 	vLoadList.push_back(make_pair(L"BossBattle", L"Sound\\BossBattle.mp3"));
 	vLoadList.push_back(make_pair(L"Fun", L"Sound\\Fun.mp3"));
 	vLoadList.push_back(make_pair(L"Title", L"Sound\\Title.mp3"));
+	vLoadList.push_back(make_pair(L"Gym", L"Sound\\Gym.mp3"));
 	vLoadList.push_back(make_pair(L"DubbiForest", L"Sound\\DubbiForest.mp3"));
 	vLoadList.push_back(make_pair(L"Attack", L"Sound\\Attack.mp3"));
 	vLoadList.push_back(make_pair(L"Attack2", L"Sound\\Attack2.mp3"));

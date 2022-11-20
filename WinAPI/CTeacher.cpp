@@ -304,7 +304,7 @@ void CTeacher::Talk()
 		m_strDialogue = L"너 설마 수련하러 온거냐? 오늘은 해가 서쪽에서 뜨겠구만.";
 		break;
 	case 3:
-		m_strDialogue = L"\n\n 공격에 대해 다시 듣고싶어요.\n 안녕히계세요.";
+		m_strDialogue = L"...\n\n 공격에 대해 다시 듣고싶어요.\n 안녕히계세요.";
 		m_choose = 2;
 		break;
 	case 4:

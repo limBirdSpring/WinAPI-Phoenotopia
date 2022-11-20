@@ -59,9 +59,7 @@ void CSceneGym::Init()
 	pDoor->SetPlayerStartDir(pPlayer->GetDir());
 	AddGameObject(pDoor);
 
-	CTeacher* pTeacher = new CTeacher(pPlayer);
-	pTeacher->SetPos(162, 417);
-	AddGameObject(pTeacher);
+
 
 	CStudent* pStudent = new CStudent(pPlayer);
 	pStudent->SetPos(572, 453);
@@ -83,6 +81,24 @@ void CSceneGym::Init()
 
 void CSceneGym::Enter()
 {
+	if (GAME->mainQuest == MainQuest::FindBoard && isTeacher == false)
+	{
+		isTeacher = true;
+		CTeacher* pTeacher = new CTeacher(pPlayer);
+		pTeacher->SetPos(162, 417);
+		AddGameObject(pTeacher);
+	}
+
+	pLoad_BGM = RESOURCE->FindSound(L"Panselo");
+	SOUND->Stop(pLoad_BGM);
+
+	pLoad_BGM = RESOURCE->FindSound(L"Gym");
+
+	if (!(pLoad_BGM->IsPlaying()))
+	{
+		SOUND->Play(pLoad_BGM, 1, true);
+	}
+
 	CAMERA->FadeIn(0.25f);
 
 	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
@@ -133,6 +149,7 @@ void CSceneGym::Render()
 
 void CSceneGym::Exit()
 {
+
 }
 
 void CSceneGym::Release()

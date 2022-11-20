@@ -14,6 +14,7 @@ public:
 private:
 	CPlayer* pPlayer;
 	CImage* m_pImage;
+	bool isTeacher = false;
 
 private:
 	void Init()		override;

@@ -174,6 +174,8 @@ void CSceneStage01::Enter()
 	pLoad_BGM = RESOURCE->FindSound(L"DubbiForest");
 	SOUND->Stop(pLoad_BGM);
 
+	pLoad_BGM = RESOURCE->FindSound(L"Gym");
+	SOUND->Stop(pLoad_BGM);
 
 	pLoad_BGM = RESOURCE->FindSound(L"Panselo");
 

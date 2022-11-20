@@ -152,7 +152,7 @@ void CLeo::Talk()
 		break;
 	case 8:
 		pPlayer->SetBehavior(Behavior::Talk);
-		m_strDialogue = L"\n\n µþ±âÄÉÀÌÅ© ¾îµø¾î¿ä? \n µþ±âÄÉÀÌÅ© ³»³ö";
+		m_strDialogue = L"...\n\n µþ±âÄÉÀÌÅ© ¾îµø¾î¿ä? \n µþ±âÄÉÀÌÅ© ³»³ö";
 		m_choose = 2;
 		break;
 	case 9:
