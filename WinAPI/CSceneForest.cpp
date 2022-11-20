@@ -175,6 +175,8 @@ void CSceneForest::Update()
 
 	if (GAME->GetHp() <= 0)
 	{
+		pLoad_BGM = RESOURCE->FindSound(L"DubbiForest");
+		SOUND->Stop(pLoad_BGM);
 		CAMERA->FadeOut(0.25f);
 		DELAYCHANGESCENE(GroupScene::Dead, 1.f);
 	}

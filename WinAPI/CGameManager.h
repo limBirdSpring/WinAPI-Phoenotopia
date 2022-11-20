@@ -83,7 +83,7 @@ public :
 	void SetPlayerDir(Vector dir) { m_vecplayerDir = dir; }
 
 	int GetGold() { return gold; }
-	void SetGold(int gold) { this->gold += gold; }
+	void SetGold(int gold) { this->gold += gold; CSound* pSe = RESOURCE->FindSound(L"Coin"); SOUND->Play(pSe); }
 
 	int GetHp() { return hp; }
 	void SetHp(int hp) { this->hp += hp; }

@@ -14,7 +14,11 @@ void CStateRun::Init()
 void CStateRun::Update()
 {
 	if (coolTime == 0)
+	{
+		pSe = RESOURCE->FindSound(L"PlayerRun");
+		SOUND->Play(pSe,0.5, false);
 		dir = pPlayer->GetDir().x;
+	}
 
 	coolTime += DT;
 
@@ -22,7 +26,10 @@ void CStateRun::Update()
 
 	if (GAME->GetMp() < 1)
 	{
+
 		coolTime = 0;
+		pSe = RESOURCE->FindSound(L"PlayerRun");
+		SOUND->Stop(pSe);
 		pPlayer->m_behavior = Behavior::Walk;
 	}
 
@@ -30,6 +37,8 @@ void CStateRun::Update()
 	if (pPlayer->GetGround() == 0)
 	{
 		coolTime = 0;
+		pSe = RESOURCE->FindSound(L"PlayerRun");
+		SOUND->Stop(pSe);
 		pPlayer->m_behavior = Behavior::Fall;
 	}
 
@@ -41,6 +50,8 @@ void CStateRun::Update()
 			if (pPlayer->m_vecMoveDir.x == -1)
 			{
 				coolTime = 0;
+				pSe = RESOURCE->FindSound(L"PlayerRun");
+				SOUND->Stop(pSe);
 				pPlayer->m_behavior = Behavior::Idle;
 			}
 			else
@@ -61,6 +72,8 @@ void CStateRun::Update()
 		else
 		{
 			coolTime = 0;
+			pSe = RESOURCE->FindSound(L"PlayerRun");
+			SOUND->Stop(pSe);
 			pPlayer->m_behavior = Behavior::Idle;
 		}
 	}
@@ -71,6 +84,8 @@ void CStateRun::Update()
 			if (pPlayer->m_vecMoveDir.x == 1)
 			{
 				coolTime = 0;
+				pSe = RESOURCE->FindSound(L"PlayerRun");
+				SOUND->Stop(pSe);
 				pPlayer->m_behavior = Behavior::Idle;
 			}
 			else
@@ -91,6 +106,8 @@ void CStateRun::Update()
 		else
 		{
 			coolTime = 0;
+			pSe = RESOURCE->FindSound(L"PlayerRun");
+			SOUND->Stop(pSe);
 			pPlayer->m_behavior = Behavior::Idle;
 		}
 
@@ -101,12 +118,16 @@ void CStateRun::Update()
 	if (BUTTONUP(VK_SHIFT))
 	{
 		coolTime = 0;
+		pSe = RESOURCE->FindSound(L"PlayerRun");
+		SOUND->Stop(pSe);
 		pPlayer->m_behavior = Behavior::Walk;
 	}
 
 	if (BUTTONDOWN('Z'))
 	{
 		coolTime = 0;
+		pSe = RESOURCE->FindSound(L"PlayerRun");
+		SOUND->Stop(pSe);
 		pPlayer->m_behavior = Behavior::Jump;
 	}
 
@@ -114,6 +135,8 @@ void CStateRun::Update()
 	if (pPlayer->m_fSpeed < 10)
 	{
 		coolTime = 0;
+		pSe = RESOURCE->FindSound(L"PlayerRun");
+		SOUND->Stop(pSe);
 		pPlayer->m_behavior = Behavior::Walk;
 	}
 }

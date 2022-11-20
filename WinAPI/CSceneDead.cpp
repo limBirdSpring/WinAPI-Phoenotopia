@@ -46,7 +46,8 @@ void CSceneDead::Init()
 
 void CSceneDead::Enter()
 {
-
+	CSound* pSe = RESOURCE->FindSound(L"PlayerDead");
+	SOUND->Play(pSe);
 
 	m_pImage = RESOURCE->LoadImg(L"Dead", L"Image\\Dead.png");
 	CImageObject* pDead = new CImageObject;

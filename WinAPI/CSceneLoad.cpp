@@ -49,8 +49,10 @@ void CSceneLoad::Init()
 	vLoadList.push_back(make_pair(L"Save", L"Sound\\Save.ogg"));
 	vLoadList.push_back(make_pair(L"Frog", L"Sound\\Frog.ogg"));
 	vLoadList.push_back(make_pair(L"Run", L"Sound\\Run.ogg"));
-
-
+	vLoadList.push_back(make_pair(L"PlayerDamage", L"Sound\\PlayerDamage.ogg"));
+	vLoadList.push_back(make_pair(L"PlayerDead", L"Sound\\PlayerDead.ogg"));
+	vLoadList.push_back(make_pair(L"Coin", L"Sound\\Coin.mp3"));
+	vLoadList.push_back(make_pair(L"PlayerRun", L"Sound\\PlayerRun.ogg"));
 
 
 	pLoad_Screen = RESOURCE->LoadImg(L"Load_Screen", L"Image\\Load_Screen.png");

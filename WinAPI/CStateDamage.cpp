@@ -14,6 +14,11 @@ void CStateDamage::Init()
 void CStateDamage::Update()
 {
 	//TODO : 더 섬세한 데미지 구현
+	if (coolTime == 0)
+	{
+		pSe = RESOURCE->FindSound(L"PlayerDamage");
+		SOUND->Play(pSe);
+	}
 
 	coolTime += DT;
 
