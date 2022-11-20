@@ -71,6 +71,8 @@ void CLeo::Update()
 	{
 		if (BUTTONDOWN('X'))
 		{
+			CSound* pSe = RESOURCE->FindSound(L"Dialogue");
+			SOUND->Play(pSe, 0.5);
 			talk++;
 			Talk();
 		}

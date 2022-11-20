@@ -492,9 +492,6 @@
     <ClInclude Include="CStoreEvent.h">
       <Filter>GameObject\Quest</Filter>
     </ClInclude>
-    <ClInclude Include="CPrinceEvent.h">
-      <Filter>GameObject\Quest</Filter>
-    </ClInclude>
     <ClInclude Include="CStateMove.h">
       <Filter>GameObject\Player\PlayerState</Filter>
     </ClInclude>
@@ -906,9 +903,6 @@
       <Filter>GameObject\Quest</Filter>
     </ClCompile>
     <ClCompile Include="CStoreEvent.cpp">
-      <Filter>GameObject\Quest</Filter>
-    </ClCompile>
-    <ClCompile Include="CPrinceEvent.cpp">
       <Filter>GameObject\Quest</Filter>
     </ClCompile>
     <ClCompile Include="CStateMove.cpp">

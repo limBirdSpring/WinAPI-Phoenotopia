@@ -30,6 +30,8 @@ void CStartEvent::Update()
 	
 	else if (coolTime > 2 && cake == false)
 	{
+		CSound* pSe = RESOURCE->FindSound(L"Dialogue");
+		SOUND->Play(pSe, 0.5);
 		cake = true;
 		pCake = new CImageBox;
 		pPlayer->SetBehavior(Behavior::Talk);

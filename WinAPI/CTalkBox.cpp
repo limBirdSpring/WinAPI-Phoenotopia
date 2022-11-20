@@ -23,6 +23,8 @@ CTalkBox::~CTalkBox()
 
 void CTalkBox::Init()
 {
+	CSound* pSe = RESOURCE->FindSound(L"Dialogue");
+	SOUND->Play(pSe, 0.5);
 }
 
 void CTalkBox::Update()
@@ -31,10 +33,14 @@ void CTalkBox::Update()
 	{
 		if (BUTTONDOWN(VK_UP))
 		{
+			CSound* pSe = RESOURCE->FindSound(L"Cursor");
+			SOUND->Play(pSe);
 			(* m_choosing)--;
 		}
 		if (BUTTONDOWN(VK_DOWN))
 		{
+			CSound* pSe = RESOURCE->FindSound(L"Cursor");
+			SOUND->Play(pSe);
 			(* m_choosing)++;
 		}
 		if (*m_choosing <= 0)

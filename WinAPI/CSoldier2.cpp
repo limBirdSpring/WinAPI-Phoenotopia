@@ -54,6 +54,8 @@ void CSoldier2::Update()
 	{
 		if (BUTTONDOWN('X'))
 		{
+			CSound* pSe = RESOURCE->FindSound(L"Dialogue");
+			SOUND->Play(pSe, 0.5);
 			talk++;
 			Talk();
 		}
@@ -100,6 +102,7 @@ void CSoldier2::OnCollisionStay(CCollider* pOtherCollider)
 	{
 		if (BUTTONDOWN('X'))
 		{
+
 			CAMERA->ZoomInOut(2.5, 1);
 
 			talk++;

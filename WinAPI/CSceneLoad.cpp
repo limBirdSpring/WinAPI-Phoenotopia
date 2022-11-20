@@ -53,7 +53,7 @@ void CSceneLoad::Init()
 	vLoadList.push_back(make_pair(L"PlayerDead", L"Sound\\PlayerDead.ogg"));
 	vLoadList.push_back(make_pair(L"Coin", L"Sound\\Coin.mp3"));
 	vLoadList.push_back(make_pair(L"PlayerRun", L"Sound\\PlayerRun.ogg"));
-
+	vLoadList.push_back(make_pair(L"Dialogue", L"Sound\\Dialogue.mp3"));
 
 	pLoad_Screen = RESOURCE->LoadImg(L"Load_Screen", L"Image\\Load_Screen.png");
 	pTitleObject = new CImageObject;
