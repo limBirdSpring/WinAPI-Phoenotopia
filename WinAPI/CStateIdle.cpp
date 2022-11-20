@@ -15,6 +15,10 @@ void CStateIdle::Init()
 
 void CStateIdle::Update()
 {
+
+	pSe = RESOURCE->FindSound(L"PlayerRun");
+	SOUND->Stop(pSe);
+
 	pPlayer->m_fSpeed = 100;
 
 	if (pPlayer->GetGround() ==0)

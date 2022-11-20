@@ -76,6 +76,9 @@ void CSceneLoad::Init()
 	pTitleObject->SetImage(pLoad_Screen);
 	pTitleObject->SetPos(0, 0);
 	AddGameObject(pTitleObject);
+
+
+	listSize = vLoadList.size();
 }
 
 void CSceneLoad::Enter()
@@ -95,7 +98,7 @@ void CSceneLoad::Update()
 	RESOURCE->LoadSound(vLoadList.back().first, vLoadList.back().second);
 	vLoadList.pop_back();
 	if (vLoadList.size() != 0)
-		percent = (curCount / vLoadList.size());
+		percent = ((100/ listSize) * curCount);
 	else
 		percent = 100;
 

@@ -28,6 +28,7 @@ private:
 	vector<pair<wstring, wstring>> vLoadList;
 	UINT curCount;
 	int percent;
+	int listSize;
 
 
 	void Init()		override;
