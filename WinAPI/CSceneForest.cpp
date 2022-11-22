@@ -137,14 +137,16 @@ void CSceneForest::Enter()
 		pBox->SetPlatform(0);
 	}
 
-	m_vBee[0]->SetPos(151, 304);
-	m_vBee[1]->SetPos(335, 344);
-	m_vBee[2]->SetPos(626, 617);
+	if (GAME->GetCurScene() != GroupScene::Forest)
+	{
+		m_vBee[0]->SetPos(151, 304);
+		m_vBee[1]->SetPos(335, 344);
+		m_vBee[2]->SetPos(626, 617);
 
-	m_vFrog[0]->SetPos(591, 780);
-	m_vFrog[1]->SetPos(494, 385);
-	m_vFrog[2]->SetPos(102, 546);
-
+		m_vFrog[0]->SetPos(591, 780);
+		m_vFrog[1]->SetPos(494, 385);
+		m_vFrog[2]->SetPos(102, 546);
+	}
 
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
@@ -155,6 +157,9 @@ void CSceneForest::Enter()
 
 	CAMERA->FadeIn(0.25f);
 	LoadTile(GETPATH + L"Tile\\Forest.tile");
+
+
+	GAME->SetCurScene(GroupScene::Forest);
 }
 
 void CSceneForest::Update()

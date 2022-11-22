@@ -115,8 +115,26 @@ void CStudent::Talk()
 			m_strDialogue = L"그나저나 사부님 진짜 나빴어.";
 			break;
 		case 4:
+		{
 			m_strDialogue = L"이 동작만 100번을 시키다니!";
 			break;
+		}
+		
+		case 5:
+			if (GAME->mainQuest < MainQuest::FindBoard)
+			{
+			m_strDialogue = L"사부님? 요즘 자리를 자주 비우셔. 금방 오시겠지 뭐.";
+			break;
+			}
+			else
+			{
+				CAMERA->ZoomInOut(2, 1.5);
+				m_strDialogue = L"";
+				GAME->SetTalk(false);
+				talk = 0;
+				DELETEOBJECT(pTalkBox);
+				break;
+			}
 		default:
 			CAMERA->ZoomInOut(2, 1.5);
 			m_strDialogue = L"";

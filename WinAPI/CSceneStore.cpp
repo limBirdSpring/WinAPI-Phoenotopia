@@ -107,9 +107,9 @@ void CSceneStore::Enter()
 {
 	pLoad_BGM = RESOURCE->FindSound(L"Panselo");
 
-	if (SOUND->GetVolume(pLoad_BGM) != 0.7);
+	if (SOUND->GetVolume(pLoad_BGM) != 0.5);
 	{
-		SOUND->SetVolume(pLoad_BGM, 0.7);
+		SOUND->SetVolume(pLoad_BGM, 0.5);
 	}
 
 

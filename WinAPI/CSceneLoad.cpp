@@ -70,6 +70,8 @@ void CSceneLoad::Init()
 	vLoadList.push_back(make_pair(L"BBamm2", L"Sound\\BBamm2.mp3"));
 	vLoadList.push_back(make_pair(L"BBamm3", L"Sound\\BBamm3.mp3"));
 
+	vLoadList.push_back(make_pair(L"MonsterDead", L"Sound\\MonsterDead.mp3"));
+
 
 	pLoad_Screen = RESOURCE->LoadImg(L"Load_Screen", L"Image\\Load_Screen.png");
 	pTitleObject = new CImageObject;
@@ -98,7 +100,7 @@ void CSceneLoad::Update()
 	RESOURCE->LoadSound(vLoadList.back().first, vLoadList.back().second);
 	vLoadList.pop_back();
 	if (vLoadList.size() != 0)
-		percent = ((100/ listSize) * curCount);
+		percent = (100/listSize) * (curCount);
 	else
 		percent = 100;
 

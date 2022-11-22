@@ -42,6 +42,9 @@ CGameManager::~CGameManager()
 
 void CGameManager::PushBackInvenItem(const Item item)
 {
+	pSe = RESOURCE->FindSound(L"Item");
+	SOUND->Play(pSe);
+
 	if (coolTime <= 0)
 		coolTime = 3;
 		getItemName = item.name;
@@ -53,15 +56,11 @@ void CGameManager::PushBackInvenItem(const Item item)
 	{
 		if (m_vInventoryItem[i].name == item.name)
 		{
-			pSe = RESOURCE->FindSound(L"Item");
-			SOUND->Play(pSe);
-
 			m_vInventoryItem[i].num++;
 			return;
 		}
 	}
 	m_vInventoryItem.push_back(item);
-
 	
 }
 

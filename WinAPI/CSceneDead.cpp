@@ -80,6 +80,9 @@ void CSceneDead::Update()
 		//CAMERA->FadeOut(0.25f);
 		//DELAYCHANGESCENE(GroupScene::Title, 2.f);
 
+
+
+		CORE->Release();
 		SendMessage(hWnd, WM_CLOSE, 0, 0);//윈도우 핸들에 종료메세지를 넣어줌
 	}
 	

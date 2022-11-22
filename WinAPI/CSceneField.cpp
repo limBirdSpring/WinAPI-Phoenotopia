@@ -147,10 +147,13 @@ void CSceneField::Enter()
 	CAMERA->ZoomInOut(2);
 	CAMERA->SetTargetObj(pPlayer);
 
-	m_vFrog[0]->SetPos(1017, 332);
-	m_vFrog[1]->SetPos(818, 149);
-	m_vFrog[2]->SetPos(615, 442);
 
+	if (GAME->GetCurScene() != GroupScene::Field)
+	{
+		m_vFrog[0]->SetPos(1017, 332);
+		m_vFrog[1]->SetPos(818, 149);
+		m_vFrog[2]->SetPos(615, 442);
+	}
 
 	pPlayer->SetPos(GAME->GetPlayerStartPos());
 	pPlayer->SetDir(GAME->GetPlayerStartDir());
@@ -160,6 +163,9 @@ void CSceneField::Enter()
 
 	CAMERA->FadeIn(0.25f);
 	LoadTile(GETPATH + L"Tile\\Field.tile");
+
+	GAME->SetCurScene(GroupScene::Field);
+
 }
 
 void CSceneField::Update()

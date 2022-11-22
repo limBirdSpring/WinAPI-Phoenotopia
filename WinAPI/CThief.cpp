@@ -166,6 +166,9 @@ void CThief::Talk()
 				if (GAME->GetGold() >= 80)
 				{
 					m_strDialogue = L"말이 잘 통하는 녀석이군. 잘 속기까지 하고 말이야~ 그럼 이만!";
+					pPlayer->m_behavior = Behavior::Wonder;
+
+
 					GAME->SetGold(-80);
 					isRun = true;
 					pSe = RESOURCE->FindSound(L"Run");

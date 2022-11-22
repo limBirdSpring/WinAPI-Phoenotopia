@@ -69,6 +69,9 @@ void CFrog::Update()
 {
 	if (m_hp <= 0)
 	{
+		pSe = RESOURCE->FindSound(L"MonsterDead");
+		SOUND->Play(pSe);
+
 		if (m_behavior == MonsterBehavior::Idle)
 		{
 			if (rand() % 3 == 0)

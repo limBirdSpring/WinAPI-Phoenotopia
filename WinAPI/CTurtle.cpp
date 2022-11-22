@@ -100,6 +100,9 @@ void CTurtle::OnCollisionEnter(CCollider* pOtherCollider)
 {
 	if (pOtherCollider->GetObjName() == L"АјАн")
 	{
+		pSe = RESOURCE->FindSound(L"MonsterDead");
+		SOUND->Play(pSe);
+
 		if (pOtherCollider->GetPos().x > m_vecPos.x)
 			m_vecMoveDir.x = -1;
 		else
