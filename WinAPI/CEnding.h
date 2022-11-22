@@ -18,6 +18,7 @@ private:
 	CImage* m_pImage;
 	int talk=0;
 	wstring m_strDialogue = L"";
+	float coolTime;
 
 private:
 	void Init()		override;

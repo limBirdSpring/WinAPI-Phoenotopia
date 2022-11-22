@@ -13,6 +13,7 @@ CEnding::~CEnding()
 
 void CEnding::Init()
 {
+	coolTime = 0;
 }
 
 void CEnding::Enter()
@@ -63,8 +64,13 @@ void CEnding::Update()
 		break;
 	}
 
-	if (BUTTONDOWN('X'))
+	if (coolTime > 2)
+	{
 		talk++;
+		coolTime = 0;
+	}
+
+	coolTime += DT;
 }
 
 void CEnding::Render()
