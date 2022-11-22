@@ -73,10 +73,15 @@ void CCollider::SetScale(Vector scale)
 
 void CCollider::Init()
 {
+	colliderRender = false;
 }
 
 void CCollider::Update()
 {
+	if (BUTTONDOWN(VK_F1))
+	{
+		colliderRender = !colliderRender;
+	}
 }
 
 void CCollider::PhysicsUpdate()
@@ -86,34 +91,37 @@ void CCollider::PhysicsUpdate()
 
 void CCollider::Render()
 {
-	//Color color = Color(0, 0, 0, 0);
-	//if (m_uiCollisionCount > 0)
-	//{
-	//	color = Color(255, 0, 0, 1.f);
-	//}
-	//else
-	//{
-	//	color = Color(0, 255, 0, 1.f);
-	//}
-	//
-	//if (m_type == ColliderType::Rect)
-	//{
-	//	RENDER->FrameRect(
-	//		m_vecPos.x - m_vecScale.x * 0.5f,
-	//		m_vecPos.y - m_vecScale.y * 0.5f,
-	//		m_vecPos.x + m_vecScale.x * 0.5f,
-	//		m_vecPos.y + m_vecScale.y * 0.5f,
-	//		color);
-	//}
-	//else if (m_type == ColliderType::Circle)
-	//{
-	//	RENDER->FrameCircle(
-	//		m_vecPos.x,
-	//		m_vecPos.y,
-	//		m_vecScale.x,
-	//		color
-	//	);
-	//}
+	if (colliderRender)
+	{
+		Color color = Color(0, 0, 0, 0);
+		if (m_uiCollisionCount > 0)
+		{
+			color = Color(255, 0, 0, 1.f);
+		}
+		else
+		{
+			color = Color(0, 255, 0, 1.f);
+		}
+
+		if (m_type == ColliderType::Rect)
+		{
+			RENDER->FrameRect(
+				m_vecPos.x - m_vecScale.x * 0.5f,
+				m_vecPos.y - m_vecScale.y * 0.5f,
+				m_vecPos.x + m_vecScale.x * 0.5f,
+				m_vecPos.y + m_vecScale.y * 0.5f,
+				color);
+		}
+		else if (m_type == ColliderType::Circle)
+		{
+			RENDER->FrameCircle(
+				m_vecPos.x,
+				m_vecPos.y,
+				m_vecScale.x,
+				color
+			);
+		}
+	}
 }
 
 void CCollider::Release()

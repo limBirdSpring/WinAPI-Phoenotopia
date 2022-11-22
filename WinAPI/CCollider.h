@@ -15,6 +15,8 @@ public:
 	virtual ~CCollider();
 
 private:
+	bool colliderRender;
+
 	static UINT s_uiID;		// 모든 충돌체가 공유하는 ID 값
 	UINT m_uiID;			// 충돌체의 고유 ID 값
 	UINT m_uiCollisionCount;// 충돌중인 충돌체 갯수

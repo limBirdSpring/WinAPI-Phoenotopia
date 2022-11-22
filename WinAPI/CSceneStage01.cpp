@@ -252,23 +252,6 @@ void CSceneStage01::Update()
 		CHANGESCENE(GroupScene::Inventory);
 	}
 
-	if (BUTTONDOWN(VK_F1))
-	{
-		CSlug* pSlug = new CSlug();
-		pSlug->SetPos(300, WINSIZEY * 0.5f);
-		AddGameObject(pSlug);
-	}
-
-	if (BUTTONDOWN(VK_F2))
-	{
-		DELAYCHANGESCENE(GroupScene::Forest, 0.25f);
-	}
-
-	if (BUTTONDOWN(VK_F3))
-	{
-		CAMERA->ZoomInOut(2,3);
-	}
-
 
 }
 

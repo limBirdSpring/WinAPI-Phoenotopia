@@ -109,14 +109,6 @@ void CSceneTitle::Update()
 		SOUND->Play(pSe);
 		coolTime = 1.5;
 	}
-	//if (BUTTONDOWN(VK_F2))
-	//{
-	//	SOUND->FadeOut(pLoad_BGM, 2, 0);
-	//}
-	//if (BUTTONDOWN(VK_F3))
-	//{
-	//	SOUND->FadeIn(pLoad_BGM, 2, 1, true);
-	//}
 }
 
 void CSceneTitle::Render()
