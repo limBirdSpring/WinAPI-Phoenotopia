@@ -6,6 +6,7 @@
 class CPlayer;
 class CImage;
 class CBox;
+class CSlug;
 
 
 class CSceneForest :
@@ -21,6 +22,7 @@ private:
 	CBox* pBox;
 	vector<CFrog*> m_vFrog;
 	vector<CBee*> m_vBee;
+	CSlug* pSlug;
 
 private:
 	void Init()		override;

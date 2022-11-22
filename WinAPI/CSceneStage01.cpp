@@ -234,6 +234,8 @@ void CSceneStage01::Enter()
 	
 	CAMERA->FadeIn(0.25f);
 	LoadTile(GETPATH + L"Tile\\Stage01.tile");
+
+	GAME->SetCurScene(GroupScene::Stage01);
 }
 
 void CSceneStage01::Update()

@@ -157,6 +157,8 @@ void CSceneBossMap::Enter()
 
 	CAMERA->FadeIn(0.25f);
 	LoadTile(GETPATH + L"Tile\\BossMap.tile");
+
+	GAME->SetCurScene(GroupScene::BossMap);
 }
 
 void CSceneBossMap::Update()

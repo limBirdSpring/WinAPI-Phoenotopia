@@ -82,7 +82,7 @@ void CSceneForest::Init()
 	pBox->SetPos(116, 765);
 	AddGameObject(pBox);
 
-	CSlug* pSlug = new CSlug();
+	pSlug = new CSlug();
 	pSlug->SetPos(370, 452);
 	AddGameObject(pSlug);
 
@@ -122,9 +122,6 @@ void CSceneForest::Enter()
 {
 	CAMERA->FadeIn(0.25f);
 
-	//pLoad_BGM = RESOURCE->FindSound(L"Panselo");
-	//SOUND->Play(pLoad_BGM, 1, true);
-
 
 	CAMERA->SetMapSize(Vector(m_pImage->GetWidth(), m_pImage->GetHeight()));
 	CAMERA->ZoomInOut(2);
@@ -146,6 +143,10 @@ void CSceneForest::Enter()
 		m_vFrog[0]->SetPos(591, 780);
 		m_vFrog[1]->SetPos(494, 385);
 		m_vFrog[2]->SetPos(102, 546);
+
+		pSlug->SetGround(0);
+		pSlug->SetPlatform(0);
+		pSlug->SetGravity(1);
 	}
 
 

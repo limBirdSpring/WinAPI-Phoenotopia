@@ -9,7 +9,7 @@
 
 CBigBox::CBigBox()
 {
-	m_vecScale = Vector(30, 30);
+	m_vecScale = Vector(32, 32);
 	m_strName = L"¹Ú½º";
 	m_hp = 12;
 }
