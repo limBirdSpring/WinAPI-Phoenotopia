@@ -15,7 +15,9 @@ CCoin::~CCoin()
 
 void CCoin::Init()
 {
-	if (price > 50)
+	if (price > 80)
+		m_pImage = RESOURCE->LoadImg(L"Coin3", L"Image\\Coin3.png");
+	else if (price > 45)
 		m_pImage = RESOURCE->LoadImg(L"Coin", L"Image\\Coin.png");
 	else
 		m_pImage = RESOURCE->LoadImg(L"Coin2", L"Image\\Coin2.png");

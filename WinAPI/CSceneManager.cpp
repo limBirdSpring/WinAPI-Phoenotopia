@@ -17,6 +17,7 @@
 #include "CSceneDead.h"
 #include "CEnding.h"
 #include "CSceneLoad.h"
+#include "CSceneCave.h"
 
 CSceneManager::CSceneManager()
 {
@@ -55,6 +56,8 @@ void CSceneManager::Init()
 	CScene* pPrinceForest = new CPrinceForest();
 	m_mapScene.insert(make_pair(GroupScene::PrinceForest, pPrinceForest));
 	CScene* pInventory = new CInventory();
+	CScene* pCave = new CSceneCave();
+	m_mapScene.insert(make_pair(GroupScene::Cave, pCave));
 	m_mapScene.insert(make_pair(GroupScene::Inventory, pInventory));
 	CScene* pCSetUp = new CSetUp();
 	m_mapScene.insert(make_pair(GroupScene::SetUp, pCSetUp));

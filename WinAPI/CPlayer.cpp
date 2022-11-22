@@ -257,7 +257,7 @@ void CPlayer::OnCollisionEnter(CCollider* pOtherCollider)
 		m_behavior = Behavior::Damage;
 	}
 
-	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Door || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC || pOtherCollider->GetObjName() == L"박스")
+	if (pOtherCollider->GetOwner()->GetLayer() == Layer::Door || pOtherCollider->GetOwner()->GetLayer() == Layer::NPC || pOtherCollider->GetObjName() == L"박스" || pOtherCollider->GetObjName() == L"보물")
 	{
 		isThingCollision = true;
 	}

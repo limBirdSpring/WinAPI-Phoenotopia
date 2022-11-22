@@ -53,6 +53,8 @@ enum class GroupScene
 
 	Ending,
 
+	Cave,
+
 	Dead,
 
 	Size,

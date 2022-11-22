@@ -32,6 +32,12 @@ void CStateFall::Update()
 		pPlayer->m_vecPos.x += (pPlayer->m_fSpeed * DT) * pPlayer->m_vecMoveDir.x;
 	}
 
+	if (BUTTONDOWN('X') && !pPlayer->isThingCollision && GAME->isItemSetting(L"¹æ¸ÁÀÌ"))
+	{
+		coolTime = 0;
+		pPlayer->m_behavior = Behavior::AttackReady;
+	}
+
 }
 
 void CStateFall::Render()

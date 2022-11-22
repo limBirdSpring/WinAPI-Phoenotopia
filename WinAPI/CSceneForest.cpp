@@ -71,6 +71,14 @@ void CSceneForest::Init()
 	pDoor2->SetPlayerStartPos(Vector(15, 488));
 	pDoor2->SetPlayerStartDir(Vector(1, 0));
 	AddGameObject(pDoor2);
+
+	CDoor* pDoor3 = new CDoor;
+	pDoor3->SetPos(630, 776);
+	pDoor3->SetScene(GroupScene::Cave);
+	pDoor3->SetImage(false);
+	pDoor3->SetPlayerStartPos(Vector(270, 22));
+	pDoor3->SetPlayerStartDir(pPlayer->GetDir());
+	AddGameObject(pDoor3);
 	
 
 	CItem* pZem = new CItem;
@@ -88,17 +96,17 @@ void CSceneForest::Init()
 
 
 	m_vFrog.push_back(new CFrog);
-	m_vFrog[0]->SetStartXToEndX(66, 676);
+	m_vFrog[0]->SetStartXToEndX(66, 646);
 	m_vFrog[0]->SetPos(591, 730);
 	AddGameObject(m_vFrog[0]);
 
 	m_vFrog.push_back(new CFrog);
-	m_vFrog[1]->SetStartXToEndX(66, 676);
+	m_vFrog[1]->SetStartXToEndX(66, 646);
 	m_vFrog[1]->SetPos(494, 378);
 	AddGameObject(m_vFrog[1]);
 
 	m_vFrog.push_back(new CFrog);
-	m_vFrog[2]->SetStartXToEndX(66, 676);
+	m_vFrog[2]->SetStartXToEndX(66, 646);
 	m_vFrog[2]->SetPos(102, 393);
 	AddGameObject(m_vFrog[2]);
 
@@ -120,6 +128,12 @@ void CSceneForest::Init()
 
 void CSceneForest::Enter()
 {
+	pLoad_BGM = RESOURCE->FindSound(L"DubbiForest");
+	if (SOUND->GetVolume(pLoad_BGM) != 1);
+	{
+		SOUND->SetVolume(pLoad_BGM, 1);
+	}
+
 	CAMERA->FadeIn(0.25f);
 
 

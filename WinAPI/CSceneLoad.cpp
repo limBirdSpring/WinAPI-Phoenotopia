@@ -71,6 +71,7 @@ void CSceneLoad::Init()
 	vLoadList.push_back(make_pair(L"BBamm3", L"Sound\\BBamm3.mp3"));
 
 	vLoadList.push_back(make_pair(L"MonsterDead", L"Sound\\MonsterDead.mp3"));
+	vLoadList.push_back(make_pair(L"Treasure", L"Sound\\Treasure.mp3"));
 
 
 	pLoad_Screen = RESOURCE->LoadImg(L"Load_Screen", L"Image\\Load_Screen.png");

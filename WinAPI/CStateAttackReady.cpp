@@ -26,7 +26,7 @@ void CStateAttackReady::Update()
 			pPlayer->m_behavior = Behavior::Attack2;
 	}
 
-	if (coolTime > 1.5)
+	if (coolTime > 1.5 && pPlayer->GetGround()!=0)
 	{
 		coolTime = 0;
 		pSe = RESOURCE->FindSound(L"CriticalReady");

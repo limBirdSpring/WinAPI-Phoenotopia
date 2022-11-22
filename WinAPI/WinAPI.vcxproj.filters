@@ -516,6 +516,12 @@
     <ClInclude Include="CThief.h">
       <Filter>GameObject\NPC %28talk%29</Filter>
     </ClInclude>
+    <ClInclude Include="CSceneCave.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CTreasure.h">
+      <Filter>GameObject\Things</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinAPI.cpp">
@@ -928,6 +934,12 @@
     </ClCompile>
     <ClCompile Include="CThief.cpp">
       <Filter>GameObject\NPC %28talk%29</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneCave.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CTreasure.cpp">
+      <Filter>GameObject\Things</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
